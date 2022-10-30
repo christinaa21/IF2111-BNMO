@@ -1,3 +1,43 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "./src/ADT/queue/queue.h"
+#include "./src/ADT/array/arraydin.h"
+#include "./src/game_util/game_util.h"
+#include "./src/games/games.h"
+#include "./src/main_util/main_util.h"
 
+int main()
+{
+    srand(time(NULL));
+    ArrayDin arr;
+    CreateArrayDin(&arr);
+    int n;
+    printf("Welcome to the game!\n");
+    printf("1. Start\n");
+    printf("2. Load\n");
+    printf("3. Help\n");
+    printf("4. Quit\n");
+    printf("Choose: ");
+    scanf("%d", &n);
+    switch (n)
+    {
+    case 1:
+        start();
+        break;
+    case 2:
+        load();
+        break;
+    case 3:
+        help();
+        break;
+    case 4:
+        quit(&arr);
+        break;
+    default:
+        printf("Invalid input\n");
+        break;
+    }
+    return 0;
+}
 // main file
