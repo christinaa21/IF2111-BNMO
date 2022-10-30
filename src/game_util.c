@@ -1,1 +1,0 @@
-// create game, list game, queue game, delete game, play game, skip game
