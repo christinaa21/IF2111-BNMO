@@ -79,7 +79,7 @@ void DinerDash()
         }
 
         //  handle input command
-        while (!compare(command, "COOK") || !compare(command, "SERVE") || !compare(cookedFood, "M0") || !compare(cookedFood, "M1") || !compare(cookedFood, "M2") || !compare(cookedFood, "M3") || !compare(cookedFood, "M4") || !compare(cookedFood, "M5") || !compare(cookedFood, "M6") || !compare(cookedFood, "M7") || !compare(cookedFood, "M8") || !compare(cookedFood, "M9") || !compare(cookedFood, "M10") || !compare(cookedFood, "M11") || !compare(cookedFood, "M12") || !compare(cookedFood, "M13") || !compare(cookedFood, "M14") || !compare(cookedFood, "M15"))
+        while (!compare(command, "COOK") || !compare(command, "SERVE") || !compare(cookedFood, "M0") || !compare(cookedFood, "M1") || !compare(cookedFood, "M2") || !compare(cookedFood, "M3") || !compare(cookedFood, "M4") || !compare(cookedFood, "M5") || !compare(cookedFood, "M6") || !compare(cookedFood, "M7") || !compare(cookedFood, "M8") || !compare(cookedFood, "M9") || !compare(cookedFood, "M10") || !compare(cookedFood, "M11") || !compare(cookedFood, "M12") || !compare(cookedFood, "M13") || !compare(cookedFood, "M14"))
         {
             otherCommand();
             printf("Masukkan command: ");
@@ -106,6 +106,10 @@ void DinerDash()
         if (compare(command, "COOK"))
         {
             printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
+
+            // masukin cook duration ke array
+            // kurnag-kurangin dari array,
+            // tampilin ke daftar masakan yang sedang dimasak
             foodQueue++;
 
             // bikin makanan baru
