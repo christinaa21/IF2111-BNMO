@@ -1,10 +1,11 @@
-#ifndef __GAMES_H__
-#define __GAMES_H__
+#ifndef __DINER_DASH_H__
+#define __DINER_DASH_H__
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../ADT/queue/queue.h"
-#include "../ADT/array/arraydin.h"
+#include "../../ADT/array/arraydin.h"
+#include "../../ADT/mesinkata/mesinkata.h"
+#include "../../ADT/queue/queue.h"
 
 // Path: src\game_util\game_util.h
 

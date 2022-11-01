@@ -4,8 +4,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "./games.h"
-#include "../ADT/mesinkata/mesinkata.h"
+#include "./diner_dash.h"
+
+// bikin adt queue dinerdash
 
 void RandomNumberGenerator(int n)
 {
@@ -17,8 +18,75 @@ void RandomNumberGenerator(int n)
 // -	Skor untuk game ini tergantung dengan seberapa cepat pemain menebak X. Formula skor dibebaskan.
 // -	Batasan X dan maksimal giliran dibebaskan.
 
-void DinerDash(Word command)
+void DinerDash()
 {
+    // Kamus
+
+    // Algoritma
+
+    // bikin adt queue baru, adt meal (id, durasi masak, Ketahanan, price)
+
+    // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
+
+    char input[100];
+    int customer = 0;
+    int foodQueue = 0;
+    int saldo = 0;
+    printf("Selamat datang di Diner Dash");
+    printf("SALDO : %d", saldo);
+
+    while (foodQueue <= 7 && customer <= 15)
+    {
+
+        printf("Daftar Pesanan: ");
+        printf("Makanan | Durasi memasak | Ketahanan | Harga");
+        printf("--------------------------------------------");
+        // print queue
+
+        printf("Daftar Makanan yang sedang dimasak");
+        printf("Makanan | Sisa durasi memasak");
+        printf("-----------------------------");
+        printf("        |                  ");
+
+        printf("Daftar Makanan yang dapat disajikan");
+        printf("Makanan | Sisa ketahanan makanan");
+        printf("-----------------------------");
+        printf("        |                  ");
+
+        // input command
+        printf("Masukkan command: ");
+        scanf("%s", input);
+
+        //  handle input command
+
+        // baca sampe sebelum spasi
+
+        int i = 0;
+        char command[5];
+        while (input[i] != " ")
+        {
+            command[i] = input[i];
+            i++;
+
+            if (command != "COOK" || command != "SERVE")
+            {
+                printf(otherinput());
+                printf("Masukkan input: ");
+                scanf("%s", input);
+            }
+        }
+
+        // -	COOK merupakan command yang bertujuan untuk memasak makanan
+        if (command == "COOK")
+        {
+            printf("Berhasil memasak %s", command);
+        }
+
+        // -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
+        else if (command == "SERVE")
+        {
+        }
+    }
 }
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
 // -	COOK merupakan command yang bertujuan untuk memasak makanan

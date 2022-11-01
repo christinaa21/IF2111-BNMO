@@ -4,7 +4,8 @@
 #include "./src/ADT/queue/queue.h"
 #include "./src/ADT/array/arraydin.h"
 #include "./src/game_util/game_util.h"
-#include "./src/games/games.h"
+#include "./src/games/diner_dash/diner_dash.h"
+#include "./src/games/random_number_generator/random_number_generator.h"
 #include "./src/main_util/main_util.h"
 
 int main()
