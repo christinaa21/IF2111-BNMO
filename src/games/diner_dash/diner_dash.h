@@ -6,16 +6,7 @@
 #include "../../ADT/array/arraydin.h"
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/queue/queue.h"
-
-// Path: src\game_util\game_util.h
-
-void RandomNumberGenerator(int n);
-//
-// -	Setiap permainan dimulai dengan program sudah menentukan sebuah angka acak X.
-// -	Di setiap giliran, pemain diberi kesempatan menebak angka X. Game akan memberi tahu apakah tebakan pemain dibandingkan terhadap X lebih besar atau lebih kecil.
-// -	Permainan selesai jika pemain menebak angka X dengan benar.
-// -	Skor untuk game ini tergantung dengan seberapa cepat pemain menebak X. Formula skor dibebaskan.
-// -	Batasan X dan maksimal giliran dibebaskan.
+#include "../../ADT/prioQueue/prioqueue.h"
 
 void DinerDash();
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE

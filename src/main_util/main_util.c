@@ -29,3 +29,10 @@ void quit(ArrayDin *arr)
 }
 // I.S. Program sedang berjalan
 // F.S. Keluar dari program dengan array telah didealokasikan
+
+void otherCommand()
+{
+    printf("Command yang diberikan tidak sesuai yang diinginkan\n");
+}
+// I.S. Program sedang berjalan
+// F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid

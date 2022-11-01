@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "../ADT/array/arraydin.h"
 
-// start, load, save, quit, help
+// start, load, save, quit, help, other command
 // Path: src\main_util\main_util.c
 
 void start();
@@ -26,4 +26,8 @@ void help();
 void quit(ArrayDin *arr);
 // I.S. Program sedang berjalan
 // F.S. Keluar dari program dengan array telah didealokasikan
+
+void otherCommand();
+// I.S. Program sedang berjalan
+// F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid
 #endif

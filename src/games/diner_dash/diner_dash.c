@@ -6,18 +6,20 @@
 
 #include "./diner_dash.h"
 
-// bikin adt queue dinerdash
-
-void RandomNumberGenerator(int n)
+boolean compare(char str1[], char str2[])
 {
-}
-//
-// -	Setiap permainan dimulai dengan program sudah menentukan sebuah angka acak X.
-// -	Di setiap giliran, pemain diberi kesempatan menebak angka X. Game akan memberi tahu apakah tebakan pemain dibandingkan terhadap X lebih besar atau lebih kecil.
-// -	Permainan selesai jika pemain menebak angka X dengan benar.
-// -	Skor untuk game ini tergantung dengan seberapa cepat pemain menebak X. Formula skor dibebaskan.
-// -	Batasan X dan maksimal giliran dibebaskan.
+    boolean found = false, i = 0;                        // integer variables declaration
+    while (str1[i] != '\0' && str2[i] != '\0' && !found) // while loop
+    {
+        if (str1[i] != str2[i])
+        {
+            found = true;
+        }
+        i++;
+    }
 
+    return !found;
+}
 void DinerDash()
 {
     // Kamus
@@ -33,10 +35,12 @@ void DinerDash()
     int foodQueue = 0;
     int saldo = 0;
     printf("Selamat datang di Diner Dash");
-    printf("SALDO : %d", saldo);
+
+    Queue q;
 
     while (foodQueue <= 7 && customer <= 15)
     {
+        printf("SALDO : %d", saldo);
 
         printf("Daftar Pesanan: ");
         printf("Makanan | Durasi memasak | Ketahanan | Harga");
@@ -46,46 +50,93 @@ void DinerDash()
         printf("Daftar Makanan yang sedang dimasak");
         printf("Makanan | Sisa durasi memasak");
         printf("-----------------------------");
-        printf("        |                  ");
+        printf("%s      | %d                 ", HEAD(q).ID, HEAD(q).cookDuration);
 
         printf("Daftar Makanan yang dapat disajikan");
         printf("Makanan | Sisa ketahanan makanan");
         printf("-----------------------------");
-        printf("        |                  ");
+        printf("%s      | %d                ", HEAD(q).ID, HEAD(q).stayDuration);
 
         // input command
         printf("Masukkan command: ");
         scanf("%s", input);
 
-        //  handle input command
-
         // baca sampe sebelum spasi
 
         int i = 0;
         char command[5];
-        while (input[i] != " ")
+        while (input[i] != ' ')
         {
             command[i] = input[i];
             i++;
+        }
 
-            if (command != "COOK" || command != "SERVE")
+        i++;
+        char cookedFood[5];
+        while (input[i] != '\0')
+        {
+            cookedFood[i] = input[i];
+        }
+
+        //  handle input command
+        while (!compare(command, "COOK") || !compare(command, "SERVE") || !compare(cookedFood, "M0") || !compare(cookedFood, "M1") || !compare(cookedFood, "M2") || !compare(cookedFood, "M3") || !compare(cookedFood, "M4") || !compare(cookedFood, "M5") || !compare(cookedFood, "M6") || !compare(cookedFood, "M7") || !compare(cookedFood, "M8") || !compare(cookedFood, "M9") || !compare(cookedFood, "M10") || !compare(cookedFood, "M11") || !compare(cookedFood, "M12") || !compare(cookedFood, "M13") || !compare(cookedFood, "M14") || !compare(cookedFood, "M15"))
+        {
+            otherCommand();
+            printf("Masukkan command: ");
+            scanf("%s", input);
+
+            // baca sampe sebelum spasi
+
+            int i = 0;
+            char command[5];
+            while (input[i] != ' ')
             {
-                printf(otherinput());
-                printf("Masukkan input: ");
-                scanf("%s", input);
+                command[i] = input[i];
+                i++;
+            }
+
+            i++;
+            char cookedFood[5];
+            while (input[i] != '\0')
+            {
+                cookedFood[i] = input[i];
             }
         }
 
-        // -	COOK merupakan command yang bertujuan untuk memasak makanan
-        if (command == "COOK")
+        if (compare(command, "COOK"))
         {
-            printf("Berhasil memasak %s", command);
+            printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
+            foodQueue++;
+
+            // bikin makanan baru
+            // masukin ke queue
+            // print queue
         }
 
-        // -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
-        else if (command == "SERVE")
+        else if (compare(command, "SERVE"))
         {
+            if (compare(cookedFood, HEAD(q).ID))
+            {
+                if (HEAD(q).cookDuration == 0)
+                {
+                    printf("Makanan %s telah selesai dimasak", HEAD(q).ID);
+                }
+            }
+
+            else
+            {
+                printf("Makanan %s tidak dapat disajikan karena %s belum selesai", cookedFood, HEAD(q).ID);
+            }
+            // print queue
+            // print makanan yang sedang dimasak
+            // print makanan yang dapat disajikan
+            // print saldo
         }
+
+        printf("=============================================================================================");
+
+        // -	COOK merupakan command yang bertujuan untuk memasak makanan
+        // input command
     }
 }
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
