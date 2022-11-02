@@ -2,7 +2,7 @@
 #define __MAIN_UTIL__H__
 
 #include <stdio.h>
-#include "../ADT/array/arraydin.h"
+// #include "../ADT/arrayOfGame/arrayOfGame.h"
 
 // start, load, save, quit, help, other command
 // Path: src\main_util\main_util.c
@@ -23,7 +23,7 @@ void help();
 // I.S. Program telah berjalan
 // F.S. Menampilkan bantuan untuk penggunaan program
 
-void quit(ArrayDin *arr);
+void quit();
 // I.S. Program sedang berjalan
 // F.S. Keluar dari program dengan array telah didealokasikan
 
