@@ -20,8 +20,12 @@ void RNG(){
     printf("Ya, X adalah %d", X);
 }
 
+// -	Permainan dimulai dengan menyediakan sebuah number random dari sistem
+// -    User akan memasukan sebuah angka untuk menebak
+// -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
+// -    User akan terus memasukan input nomor hingga berhasil tertebak
 
-/*
+/* ### DRIVER ###
 int main(){
     RNG();
     
@@ -41,5 +45,4 @@ int main(){
     }
     else {
         RNG(x+27);
-    }
-*/ 
+    } */ 
