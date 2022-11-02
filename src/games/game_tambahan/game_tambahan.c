@@ -7,7 +7,7 @@ void gameTambahan(){
     int skor;
     srand(time(NULL));
     skor=rand()%25;
-    printf("Skor yang Anda peroleh: %d", skor);
+    printf("Skor yang Anda peroleh: %d\n", skor);
 
 }
 // Game buatan pemain yang dibuat dengan command CREATE GAME
