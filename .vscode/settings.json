@@ -2,6 +2,7 @@
     "files.associations": {
         "queue.h": "c",
         "diner_dash.h": "c",
-        "main_util.h": "c"
+        "main_util.h": "c",
+        "mesinkata.h": "c"
     }
 }

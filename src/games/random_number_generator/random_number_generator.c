@@ -7,16 +7,17 @@ void RNG(){
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     srand(time(NULL));
     int X = rand() % 50;
-    int Y = -999;
-    while (Y!=X){
-        printf("Tebakan: ");
-        scanf("%d",&Y);
-        if (Y>X){
+    printf("Tebakan: ");
+    STARTINPUTKATA();
+    while (WordToInt(currentWord)!=X){
+        if (WordToInt(currentWord)>X){
             printf("Lebih kecil\n");
         }
-        else if(Y<X){
+        else if(WordToInt(currentWord)<X){
             printf("Lebih besar\n");
         }
+        printf("Tebakan: ");
+        STARTINPUTKATA();
     }
     printf("Ya, X adalah %d", X);
 }
@@ -26,10 +27,11 @@ void RNG(){
 // -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
 // -    User akan terus memasukan input nomor hingga berhasil tertebak
 
-/* ### DRIVER ###
-int main(){
-    RNG();
-    
+//### DRIVER ###
+//int main(){
+  //  RNG();
+//}
+/*
     int score;
     int x = 20;
     if (score<10){
