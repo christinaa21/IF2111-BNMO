@@ -5,8 +5,10 @@
 #define _GAME_UTIL_h
 
 #include "../ADT/queue/queue.h"
+#include "../ADT/array/arraydin.h"
 #include "../games/diner_dash/diner_dash.h"
 #include "../games/random_number_generator/random_number_generator.h"
+#include "../games/game_tambahan/game_tambahan.h"
 
 void createGame();
 // I.S. Program telah berjalan

@@ -63,7 +63,7 @@ void playGame(Queue qGame) {
             } else if (qGame.buffer[game-1] >= 5) {
                 printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
             } else {
-                GameTambahan();
+                gameTambahan();
             }
         }
     }
