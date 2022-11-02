@@ -87,6 +87,19 @@ void playGame(Queue *qGame) {
 // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
 //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 
-void skipGame();
+void skipGame(ArrayOfGame *arr, int n){ 
+    // belum di cek lagi bentar gais
+    //jujur masih bingung cara baca <n> nya
+    displayQueueGame(); 
+    if (n > LengthArrayOfGame(*arr)) {
+        printf("Tidak ada permainan lagi dalam daftar game-mu.");
+     } else if (n<1) {
+        printf("Maaf, nomor game yang Anda masukkan tidak valid. Nomor game harus lebih dari 0.");
+    } else {
+        for (int i =0; i<n; i++){
+            DeleteAt(arr, n+1); // delete game yang ke n
+            }
+        }
+    }
 // I.S. Program telah berjalan
 // F.S. Game dilewatkan sebanyak n, lalu game dimulai.
