@@ -9,7 +9,7 @@
  */
 ArrayDin MakeArrayDin(){
 	ArrayDin array;
-	(array).A = (ElType*) malloc (InitialSize * sizeof(ElType));
+	(array).A = (ElTypeArrayDin*) malloc (InitialSize * sizeof(ElTypeArrayDin));
 	(array).Capacity = InitialSize;
 	(array).Neff = 0;
 	return array;
@@ -46,7 +46,7 @@ int Length(ArrayDin array){
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i){
+ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i){
 	return ((array).A[i]);
 }
 
@@ -62,14 +62,14 @@ int GetCapacity(ArrayDin array){
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i){
+void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 	int length = Length(*array);
 	int capacity = GetCapacity(*array);
 	int j;
 
 	if (length == capacity){
 		int newCapacity = capacity + InitialSize;
-		ElType *arr = (ElType *) malloc(newCapacity * sizeof(ElType));
+		ElTypeArrayDin *arr = (ElTypeArrayDin *) malloc(newCapacity * sizeof(ElTypeArrayDin));
 		for (j = 0; j < length; j++){
 			arr[j] = Get(*array, j);
 		}
@@ -101,7 +101,7 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i){
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el){
+void InsertLast(ArrayDin *array, ElTypeArrayDin el){
 	int nums = Length(*array);
 	InsertAt(array, el, nums);
 }
@@ -110,7 +110,7 @@ void InsertLast(ArrayDin *array, ElType el){
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el){
+void InsertFirst(ArrayDin *array, ElTypeArrayDin el){
 	InsertAt(array, el, 0);
 }
 
@@ -118,7 +118,7 @@ void InsertFirst(ArrayDin *array, ElType el){
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i){
+void DeleteAt(ArrayDin *array, IdxTypeArrayDin i){
 	int length = Length(*array);
 	int j;
 	for (j = i; j < length - 1; j ++){
@@ -175,7 +175,7 @@ void ReverseArrayDin(ArrayDin *array){
 	int length = Length(*array);
 	int i;
 	for (i = 0; i < length/2; i ++){
-		ElType temp = (*array).A[i];
+		ElTypeArrayDin temp = (*array).A[i];
 		(*array).A[i] = (*array).A[length - i -1];
 		(*array).A[length - i - 1] = temp;
 	}
@@ -200,7 +200,7 @@ ArrayDin CopyArrayDin(ArrayDin array){
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el){
+IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el){
 	int i;
 	for (i = 0; i < array.Neff; i++){
 		if (array.A[i] == el){
