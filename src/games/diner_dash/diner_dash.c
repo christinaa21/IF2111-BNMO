@@ -51,6 +51,9 @@ void DinerDash()
 
     PrioQueue q;
     CreateQueuePQ(&q);
+    enqueuePQ(&q, food[0]);
+    enqueuePQ(&q, food[1]);
+    enqueuePQ(&q, food[2]);
 
     printf("SALDO : %d\n", saldo);
 
@@ -148,7 +151,8 @@ void DinerDash()
         // print makanan yang dapat disajikan
         // print saldo
     }
-    printf("=============================================================================================");
+
+        printf("=============================================================================================");
 }
 
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE

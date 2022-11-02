@@ -12,7 +12,8 @@
 
 typedef int IdxTypeArrayOfGame;
 typedef Word ElTypeArrayOfGame;
-typedef struct {
+typedef struct
+{
     ElTypeArrayOfGame *A;
     int Capacity;
     int Neff;
