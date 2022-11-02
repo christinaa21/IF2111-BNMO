@@ -6,6 +6,9 @@
 
 #include "../ADT/queue/queue.h"
 #include "../ADT/array/arraydin.h"
+#include "../games/diner_dash/diner_dash.h"
+#include "../games/random_number_generator/random_number_generator.h"
+#include "../games/game_tambahan/game_tambahan.h"
 
 void createGame();
 // I.S. Program telah berjalan
@@ -29,6 +32,10 @@ void queueGame();
 //      Jika nomro game yang dipilih tidak ada pada daftar game yang tersedia, maka
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
+
+void displayQueueGame();
+// I.S. Program telah berjalan
+// F.S. Menampilkan antrian game pengguna.
 
 void playGame();
 // I.S. Program telah berjalan
