@@ -46,7 +46,7 @@ boolean IsFull(ArrayOfGame array){
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayOfGame array){
+int LengthArrayOfGame(ArrayOfGame array){
 	return (array).Neff;
 }
 
@@ -54,7 +54,7 @@ int Length(ArrayOfGame array){
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayOfGame i){
+ElTypeArrayOfGame GetGame(ArrayOfGame array, IdxTypeArrayOfGame i){
 	return ((array).A[i]);
 }
 
@@ -62,7 +62,7 @@ ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayOfGame i){
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ArrayOfGame array){
+int GetCapacityArrayOfGame(ArrayOfGame array){
 	return ((array).Capacity);
 }
 
@@ -70,16 +70,16 @@ int GetCapacity(ArrayOfGame array){
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i){
-	int length = Length(*array);
-	int capacity = GetCapacity(*array);
+void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i){
+	int length = LengthArrayOfGame(*array);
+	int capacity = GetCapacityArrayOfGame(*array);
 	int j;
 
 	if (length == capacity){
 		int newCapacity = capacity + InitialSize;
 		ElTypeArrayOfGame *arr = (ElTypeArrayOfGame *) malloc(newCapacity * sizeof(ElTypeArrayOfGame));
 		for (j = 0; j < length; j++){
-			arr[j] = Get(*array, j);
+			arr[j] = GetGame(*array, j);
 		}
 		free((*array).A);
 
@@ -109,25 +109,25 @@ void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i){
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayOfGame *array, ElTypeArrayOfGame el){
-	int nums = Length(*array);
-	InsertAt(array, el, nums);
+void InsertGameLast(ArrayOfGame *array, ElTypeArrayOfGame el){
+	int nums = LengthArrayOfGame(*array);
+	InsertGameAt(array, el, nums);
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayOfGame *array, ElTypeArrayOfGame el){
-	InsertAt(array, el, 0);
+void InsertGameFirst(ArrayOfGame *array, ElTypeArrayOfGame el){
+	InsertGameAt(array, el, 0);
 }
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayOfGame
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayOfGame *array, IdxTypeArrayOfGame i){
-	int length = Length(*array);
+void DeleteGameAt(ArrayOfGame *array, IdxTypeArrayOfGame i){
+	int length = LengthArrayOfGame(*array);
 	int j;
 	for (j = i; j < length - 1; j ++){
 		(*array).A[j] = (*array).A[j + 1];
@@ -139,17 +139,17 @@ void DeleteAt(ArrayOfGame *array, IdxTypeArrayOfGame i){
  * Fungsi untuk menghapus elemen terakhir ArrayOfGame
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ArrayOfGame *array){
-	int nums = Length(*array);
-	DeleteAt(array, nums);
+void DeleteGameLast(ArrayOfGame *array){
+	int nums = LengthArrayOfGame(*array);
+	DeleteGameAt(array, nums);
 }
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayOfGame
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ArrayOfGame *array){
-	DeleteAt(array, 0);
+void DeleteGameFirst(ArrayOfGame *array){
+	DeleteGameAt(array, 0);
 }
 
 /**
@@ -177,7 +177,7 @@ void PrintArrayOfGame(ArrayOfGame array){
  * Prekondisi: array terdefinisi
  */
 void ReverseArrayOfGame(ArrayOfGame *array){
-	int length = Length(*array);
+	int length = LengthArrayOfGame(*array);
 	int i;
 	for (i = 0; i < length/2; i ++){
 		ElTypeArrayOfGame temp = (*array).A[i];
@@ -194,7 +194,7 @@ ArrayOfGame CopyArrayOfGame(ArrayOfGame array){
 	ArrayOfGame newArr = MakeArrayOfGame();
 	int i;
 	for (i = 0; i < array.Neff; i ++){
-		InsertLast(&newArr, array.A[i]);
+		InsertGameLast(&newArr, array.A[i]);
 	}
 	return newArr;
 }
