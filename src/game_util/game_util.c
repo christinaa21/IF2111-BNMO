@@ -8,11 +8,11 @@ void createGame(ArrayDin *arr);
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 
-void listGame(ArrayDin *arr);
+void listGame(ArrayOfGame *arr);
 // I.S. Program telah berjalan
 // F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
 
-void deleteGame(ArrayDin *arr);
+void deleteGame(ArrayOfGame *arr);
 // I.S. Program telah berjalan
 // F.S. Game yang dipilih dari daftar game dihapus dengan aturan sebagai berikut:
 //      - Game yang dapat dihapus hanya game yang dibuat secara custom oleh pengguna.
