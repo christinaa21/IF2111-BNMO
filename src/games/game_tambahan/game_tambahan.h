@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //Hapus aja kalo ga perlu
 #include "../../../boolean.h"

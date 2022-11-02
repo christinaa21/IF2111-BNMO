@@ -4,7 +4,14 @@
 
 #include "game_util.h"
 
-void createGame(ArrayDin *arr);
+void createGame(ArrayOfGame arr){
+    printf("Masukkan nama game yang akan ditambahkan: ");
+    Word namagame;
+    scanf("%[^\n]s", namagame.TabWord);
+    printf("\n");
+    InsertLast(&arr,namagame);
+    printf("Game berhasil ditambahkan\n");
+}
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 
