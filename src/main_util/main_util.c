@@ -1,6 +1,7 @@
 #include "../ADT/queue/queue.h"
-#include "../ADT/array/arraydin.h"
+#include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "./main_util.h"
+#include "../ADT/mesinkata/mesinkata.h"
 #include <stdlib.h>
 #include <stdio.h>
 // start, load, save, quit, help
@@ -9,7 +10,24 @@ void start();
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
 
-void load();
+void load(char* savefile, ArrayOfGame *arrGame, ArrayOfGame *arrHistory){
+    *arrGame = MakeArrayOfGame();
+    *arrHistory = MakeArrayOfGame();
+    STARTWORD(savefile);
+    int count = currentWord.TabWord[0]-48;
+    int i;
+    for (i=0; i<count; i++) {
+        ADVWORD();
+        InsertLast(arrGame, currentWord);
+    }
+    ADVWORD();
+    count = currentWord.TabWord[0]-48;
+    int j;
+    for (j=0; j<count; j++) {
+        ADVWORD();
+        InsertLast(arrHistory, currentWord);
+    }
+}
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 

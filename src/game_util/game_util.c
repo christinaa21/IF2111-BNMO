@@ -9,24 +9,49 @@ void createGame(ArrayOfGame *arr){
     Word namagame;
     scanf("%[^\n]s", namagame.TabWord);
     printf("\n");
-    InsertGameLast(&arr,namagame);
+    InsertGameLast(arr,namagame);
     printf("Game berhasil ditambahkan\n");
 }
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 
-void listGame(ArrayOfGame *arr);
+void listGame(ArrayOfGame *arr) {
 // I.S. Program telah berjalan
 // F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
+    ElTypeArrayOfGame game;
+    printf("Berikut adalah daftar game yang tersedia\n");
+    for (int i = 0; i < LengthArrayOfGame(*arr); i++) {
+        game = arr->A[i];
+        printf("%d. ", i);
+        printf("%s\n", game.TabWord);
+    }
+    
+}
 
-void deleteGame(ArrayOfGame *arr);
+void deleteGame(ArrayOfGame *arr) {
 // I.S. Program telah berjalan
 // F.S. Game yang dipilih dari daftar game dihapus dengan aturan sebagai berikut:
 //      - Game yang dapat dihapus hanya game yang dibuat secara custom oleh pengguna.
 //      - 5 game pertama pada file konfigurasi tidak dapat dihapus.
 //      - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
+    IdxTypeArrayOfGame idx;
+    listGame(arr);
+    printf("Masukkan nomor yang akan dihapus :");
+    scanf("%d", &idx);
+    if (idx <= 5) {
+        printf("Game tidak");
+    } 
+    // case game ada pada queue
+    // else if () {}
+    else {
+        DeleteGameAt(arr, (idx-1));
+        printf("Game berhasil dihapus\n");
+    }
+    
+    
+}
 
-void queueGame(Queue *qGame);
+void queueGame(Queue *qGame, ArrayOfGame arr);
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
 //      tersebut ditambahkan ke dalam antrian game pengguna.

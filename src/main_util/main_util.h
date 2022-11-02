@@ -2,7 +2,8 @@
 #define __MAIN_UTIL__H__
 
 #include <stdio.h>
-// #include "../ADT/arrayOfGame/arrayOfGame.h"
+#include "../ADT/arrayOfGame/arrayOfGame.h"
+#include "../ADT/mesinkata/mesinkata.h"
 
 // start, load, save, quit, help, other command
 // Path: src\main_util\main_util.c
@@ -11,7 +12,7 @@ void start();
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
 
-void load();
+void load(char* savefile, ArrayOfGame *arrGame, ArrayOfGame *arrHistory);
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 
