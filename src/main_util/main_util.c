@@ -17,7 +17,20 @@ void save();
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
 
-void help();
+void help(){
+    printf("Hai Hai Jangan Merasa Tersesat,\n");
+    printf("Berikut adalah hal-hal yang bisa kamu lakukan :\n"); 
+    printf("01. START           : untuk memulai BNMO\n"); 
+    printf("02. LOAD <filename> : untuk membuka file yang berisi game\n");
+    printf("03. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
+    printf("04. CREATEGAME      : untuk menambahkan game baru pada daftar game\n"); 
+    printf("05. LISTGAME        : untuk menampilkan daftar game yang disediakan oleh sistem\n"); 
+    printf("06. DELETEGAME      : untuk menghapus sebuah game dari daftar game\n"); 
+    printf("07. QUEUE GAME      : untuk mendaftarkan permainan kedalam list\n"); 
+    printf("08. PLAY GAME       : ntuk memainkan sebuah permainan\n"); 
+    printf("09. QUIT            : untuk keluar dari program\n");
+    printf("10. HELP            : untuk melihat informasi dari command-command\n");
+}
 // I.S. Program telah berjalan
 // F.S. Menampilkan bantuan untuk penggunaan program
 
