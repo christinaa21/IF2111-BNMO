@@ -8,10 +8,10 @@
 
 #define InitialSize 10
 
-typedef int IdxType;
-typedef int ElType;
+typedef int IdxTypeArrayDin;
+typedef int ElTypeArrayDin;
 typedef struct {
-    ElType *A;
+    ElTypeArrayDin *A;
     int Capacity;
     int Neff;
 } ArrayDin;
@@ -45,7 +45,7 @@ int Length(ArrayDin array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i);
+ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
@@ -57,25 +57,25 @@ int GetCapacity(ArrayDin array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el);
+void InsertLast(ArrayDin *array, ElTypeArrayDin el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el);
+void InsertFirst(ArrayDin *array, ElTypeArrayDin el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i);
+void DeleteAt(ArrayDin *array, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayDin
@@ -115,6 +115,6 @@ ArrayDin CopyArrayDin(ArrayDin array);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
+IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el);
 
 #endif

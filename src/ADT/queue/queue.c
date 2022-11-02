@@ -43,7 +43,7 @@ int length(Queue q){
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val){
+void enqueue(Queue *q, ElTypeQueue val){
 	// empty case
 	if (isEmpty(*q)){
 		IDX_HEAD(*q) = 0;
@@ -75,7 +75,7 @@ void enqueue(Queue *q, ElType val){
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, ElType *val){
+void dequeue(Queue *q, ElTypeQueue *val){
 	*val = HEAD(*q);
 
 	// 
@@ -108,7 +108,7 @@ void displayQueue(Queue q){
 		printf("[]\n");
 	}
 	else{
-		ElType val;
+		ElTypeQueue val;
 		// alt 3
 		printf("[");
 

@@ -17,9 +17,9 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD()
+void STARTWORD(char * FILE)
 {
-	START();
+	START(FILE);
 	IgnoreBlanks();
 
 	if (IsEOP())
