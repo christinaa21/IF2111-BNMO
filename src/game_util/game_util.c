@@ -4,7 +4,14 @@
 
 #include "game_util.h"
 
-void createGame(ArrayDin *arr);
+void createGame(ArrayOfGame arr){
+    printf("Masukkan nama game yang akan ditambahkan: ");
+    Word namagame;
+    scanf("%[^\n]s", namagame.TabWord);
+    printf("\n");
+    InsertLast(&arr,namagame);
+    printf("Game berhasil ditambahkan\n");
+}
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 
@@ -23,7 +30,7 @@ void queueGame(Queue *qGame);
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
 //      tersebut ditambahkan ke dalam antrian game pengguna.
-//      Jika nomro game yang dipilih tidak ada pada daftar game yang tersedia, maka
+//      Jika nomor game yang dipilih tidak ada pada daftar game yang tersedia, maka
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
