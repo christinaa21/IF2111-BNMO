@@ -42,6 +42,7 @@ void deleteGame(ArrayOfGame *arr) {
         printf("Game tidak");
     } 
     // case game ada pada queue
+    // else if () {}
     else {
         DeleteGameAt(arr, (idx-1));
         printf("Game berhasil dihapus\n");
