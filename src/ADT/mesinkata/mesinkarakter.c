@@ -6,7 +6,7 @@ char currentChar;
 boolean EOP;
 static FILE *pita;
 
-void START(){
+void START(char * FILE){
 	/* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -14,7 +14,7 @@ void START(){
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-	pita = stdin;
+	pita = fopen(FILE, "r");
 	ADV();
 }
 

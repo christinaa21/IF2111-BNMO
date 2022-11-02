@@ -8,7 +8,7 @@
 #include "mesinkarakter.h"
 
 #define NMax 50
-#define BLANK ' '
+#define BLANK '\n'
 
 typedef struct
 {
@@ -25,7 +25,7 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD();
+void STARTWORD(char * FILE);
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
