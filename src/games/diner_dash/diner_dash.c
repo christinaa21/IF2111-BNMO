@@ -115,8 +115,11 @@ void DinerDash()
 
     else if (compare(command, serve))
     {
-        if (compare(cookedFood, HEAD(q).foodID))
+        if (HEAD(q).foodID == id)
         {
+            // kurnag-kurangin dari array,
+            // tampilin ke daftar masakan yang sedang dimasak
+            // print queue
             if (HEAD(q).cookDuration == 0)
             {
                 printf("Makanan %d telah selesai dimasak", HEAD(q).foodID);
@@ -131,12 +134,12 @@ void DinerDash()
         // print makanan yang sedang dimasak
         // print makanan yang dapat disajikan
         // print saldo
+
+        // printf("=============================================================================================");
+
+        // -	COOK merupakan command yang bertujuan untuk memasak makanan
+        // input command
     }
-
-    // printf("=============================================================================================");
-
-    // -	COOK merupakan command yang bertujuan untuk memasak makanan
-    // input command
 }
 
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
