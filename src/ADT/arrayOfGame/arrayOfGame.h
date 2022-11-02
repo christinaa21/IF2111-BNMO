@@ -10,7 +10,7 @@
 
 #define InitialSize 10
 
-typedef int IdxTypeArrayDin;
+typedef int IdxTypeArrayOfGame;
 typedef Word ElTypeArrayOfGame;
 typedef struct {
     ElTypeArrayOfGame *A;
@@ -23,19 +23,19 @@ typedef struct {
  * I.S. sembarang
  * F.S. Terbentuk ArrayOfGame kosong dengan ukuran InitialSize
  */
-ArrayOfGame MakeArrayDin();
+ArrayOfGame MakeArrayOfGame();
 
 /**
  * Destruktor
  * I.S. ArrayOfGame terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayOfGame *array);
+void DeallocateArrayOfGame(ArrayOfGame *array);
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayOfGame array);
+boolean IsFull(ArrayOfGame array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
@@ -47,7 +47,7 @@ int Length(ArrayOfGame array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayDin i);
+ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayOfGame i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
@@ -59,7 +59,7 @@ int GetCapacity(ArrayOfGame array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayDin i);
+void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
@@ -77,7 +77,7 @@ void InsertFirst(ArrayOfGame *array, ElTypeArrayOfGame el);
  * Fungsi untuk menghapus elemen di index ke-i ArrayOfGame
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayOfGame *array, IdxTypeArrayDin i);
+void DeleteAt(ArrayOfGame *array, IdxTypeArrayOfGame i);
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayOfGame
@@ -97,19 +97,19 @@ void DeleteFirst(ArrayOfGame *array);
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ArrayOfGame array);
+void PrintArrayOfGame(ArrayOfGame array);
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayOfGame.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ArrayOfGame *array);
+void ReverseArrayOfGame(ArrayOfGame *array);
 
 /**
  * Fungsi untuk melakukan copy suatu ArrayOfGame.
  * Prekondisi: array terdefinisi
  */
-ArrayOfGame CopyArrayDin(ArrayOfGame array);
+ArrayOfGame CopyArrayOfGame(ArrayOfGame array);
 
 /**
  * Fungsi untuk melakukan search suatu ArrayOfGame.
@@ -117,6 +117,6 @@ ArrayOfGame CopyArrayDin(ArrayOfGame array);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxTypeArrayDin SearchArrayDin(ArrayOfGame array, ElTypeArrayOfGame el);
+IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el);
 
 #endif

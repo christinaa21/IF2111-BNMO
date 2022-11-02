@@ -7,7 +7,7 @@
  * I.S. sembarang
  * F.S. Terbentuk ArrayOfGame kosong dengan ukuran InitialSize5
  */
-ArrayOfGame MakeArrayDin(){
+ArrayOfGame MakeArrayOfGame(){
 	ArrayOfGame array;
 	(array).A = (ElTypeArrayOfGame*) malloc (InitialSize * sizeof(ElTypeArrayOfGame));
 	(array).Capacity = InitialSize;
@@ -20,7 +20,7 @@ ArrayOfGame MakeArrayDin(){
  * I.S. ArrayOfGame terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayOfGame *array){
+void DeallocateArrayOfGame(ArrayOfGame *array){
 	free((*array).A);
 	(*array).Capacity = 0;
 	(*array).Neff = 0;
@@ -46,7 +46,7 @@ int Length(ArrayOfGame array){
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayDin i){
+ElTypeArrayOfGame Get(ArrayOfGame array, IdxTypeArrayOfGame i){
 	return ((array).A[i]);
 }
 
@@ -62,7 +62,7 @@ int GetCapacity(ArrayOfGame array){
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayDin i){
+void InsertAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i){
 	int length = Length(*array);
 	int capacity = GetCapacity(*array);
 	int j;
@@ -118,7 +118,7 @@ void InsertFirst(ArrayOfGame *array, ElTypeArrayOfGame el){
  * Fungsi untuk menghapus elemen di index ke-i ArrayOfGame
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayOfGame *array, IdxTypeArrayDin i){
+void DeleteAt(ArrayOfGame *array, IdxTypeArrayOfGame i){
 	int length = Length(*array);
 	int j;
 	for (j = i; j < length - 1; j ++){
@@ -150,7 +150,7 @@ void DeleteFirst(ArrayOfGame *array){
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ArrayOfGame array){
+void PrintArrayOfGame(ArrayOfGame array){
 	if (IsEmpty(array)){
 		printf("[]\n");
 	}
@@ -158,7 +158,7 @@ void PrintArrayDin(ArrayOfGame array){
 		printf("[");
 		int i;
 		for (i = 0; i < (array).Neff; i++){
-			printf("%d", (array).A[i]);
+			printf("%d", (array).A[i].TabWord);
 			if (i < array.Neff - 1){
 				printf(", ");
 			}
@@ -171,7 +171,7 @@ void PrintArrayDin(ArrayOfGame array){
  * Fungsi untuk melakukan reverse suatu ArrayOfGame.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ArrayOfGame *array){
+void ReverseArrayOfGame(ArrayOfGame *array){
 	int length = Length(*array);
 	int i;
 	for (i = 0; i < length/2; i ++){
@@ -185,8 +185,8 @@ void ReverseArrayDin(ArrayOfGame *array){
  * Fungsi untuk melakukan copy suatu ArrayOfGame.
  * Prekondisi: array terdefinisi
  */
-ArrayOfGame CopyArrayDin(ArrayOfGame array){
-	ArrayOfGame newArr = MakeArrayDin();
+ArrayOfGame CopyArrayOfGame(ArrayOfGame array){
+	ArrayOfGame newArr = MakeArrayOfGame();
 	int i;
 	for (i = 0; i < array.Neff; i ++){
 		InsertLast(&newArr, array.A[i]);
@@ -200,7 +200,7 @@ ArrayOfGame CopyArrayDin(ArrayOfGame array){
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxTypeArrayDin SearchArrayDin(ArrayOfGame array, ElTypeArrayOfGame el){
+IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el){
 	int i;
 	for (i = 0; i < array.Neff; i++){
 		if (array.A[i].TabWord == el.TabWord && array.A[i].Length == el.Length){
