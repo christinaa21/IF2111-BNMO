@@ -9,7 +9,7 @@
 boolean compare(char str1[], char str2[])
 {
     boolean found = false, i = 0;
-    while (str1[i] != '\0' && str2[i] != '\0' && !found)
+    while ((str1[i] != '\0' || str2[i] != '\0') && !found)
     {
         if (str1[i] != str2[i])
         {
@@ -39,119 +39,95 @@ void DinerDash()
 
     PrioQueue q;
 
-    while (foodQueue <= 1 && customer <= 15)
+    printf("SALDO : %d\n", saldo);
+
+    printf("Daftar Pesanan: \n");
+    printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
+    printf("--------------------------------------------\n\n");
+    // print queue
+
+    printf("Daftar Makanan yang sedang dimasak\n");
+    printf("Makanan | Sisa durasi memasak\n\n");
+    printf("-----------------------------\n\n");
+    // printf("%s      | %d                 ", HEAD(q).ID, HEAD(q).cookDuration);
+
+    printf("Daftar Makanan yang dapat disajikan\n");
+    printf("Makanan | Sisa ketahanan makanan\n");
+    printf("-----------------------------\n");
+    // printf("%s      | %d                ", HEAD(q).ID, HEAD(q).stayDuration);
+
+    // input command
+    char command[6];
+    char cookedFood[5];
+    printf("Masukkan permintaan ('%s / %s' + ' ' + M {1 - 5}): ", cook, serve);
+    scanf("%s %s", command, cookedFood);
+    printf("\n");
+
+    // baca sampe sebelum spasi
+
+    printf("Command: %s\n", command);
+    printf("cookedFood: %s\n", cookedFood);
+
+    // printf("%d\n", compare(command, cook));
+    // printf("%d\n", compare(cookedFood, "M1"));
+
+    printf("command same : %d\n", (compare(command, cook) || compare(command, serve)));
+
+    //  handle input command
+    while (!(compare(command, cook) || compare(command, serve)))
     {
-        printf("SALDO : %d\n", saldo);
-
-        printf("Daftar Pesanan: \n");
-        printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
-        printf("--------------------------------------------\n\n");
-        // print queue
-
-        printf("Daftar Makanan yang sedang dimasak\n");
-        printf("Makanan | Sisa durasi memasak\n\n");
-        printf("-----------------------------\n\n");
-        // printf("%s      | %d                 ", HEAD(q).ID, HEAD(q).cookDuration);
-
-        printf("Daftar Makanan yang dapat disajikan\n");
-        printf("Makanan | Sisa ketahanan makanan\n");
-        printf("-----------------------------\n");
-        // printf("%s      | %d                ", HEAD(q).ID, HEAD(q).stayDuration);
-
-        // input command
+        otherCommand();
         printf("Masukkan command: ");
-        scanf("%s", input);
-        printf("\n");
-
-        // baca sampe sebelum spasi
-
-        int i = 0;
-        char command[6];
-        while (input[i] != ' ')
-        {
-            command[i] = input[i];
-            i++;
-        }
-        // command[i] = '\0';
-        printf("command: %s\n", command);
-
-        printf("index: %d\n", i);
-        // char cookedFood[5];
-        // while (input[i] != '\0')
-        // {
-        //     cookedFood[i] = input[i];
-        //     printf("cookedFood: %s\n", cookedFood);
-        //     printf("index: %d\n", i);
-        //     i++;
-        // }
-
-        // printf("cookedFood : %s\n", cookedFood);
-
-        // //  handle input command
-        // while (!compare(command, cook) || !compare(command, serve) || !compare(cookedFood, "M0") || !compare(cookedFood, "M1") || !compare(cookedFood, "M2") || !compare(cookedFood, "M3") || !compare(cookedFood, "M4") || !compare(cookedFood, "M5") || !compare(cookedFood, "M6") || !compare(cookedFood, "M7") || !compare(cookedFood, "M8") || !compare(cookedFood, "M9") || !compare(cookedFood, "M10") || !compare(cookedFood, "M11") || !compare(cookedFood, "M12") || !compare(cookedFood, "M13") || !compare(cookedFood, "M14"))
-        // {
-        //     otherCommand();
-        //     printf("Masukkan command: ");
-        //     scanf("Masukkan command : %s", input);
-
-        //     // baca sampe sebelum spasi
-
-        //     int i = 0;
-        //     char command[5];
-        //     while (input[i] != ' ')
-        //     {
-        //         command[i] = input[i];
-        //         i++;
-        //     }
-
-        //     i++;
-        //     char cookedFood[5];
-        //     while (input[i] != '\0')
-        //     {
-        //         cookedFood[i] = input[i];
-        //     }
-        // }
-
-        // if (compare(command, cook))
-        // {
-        //     printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
-
-        //     // masukin cook duration ke array
-        //     // kurnag-kurangin dari array,
-        //     // tampilin ke daftar masakan yang sedang dimasak
-        //     foodQueue++;
-
-        //     // bikin makanan baru
-        //     // masukin ke queue
-        //     // print queue
-        // }
-
-        // else if (compare(command, serve))
-        // {
-        //     if (compare(cookedFood, HEAD(q).ID))
-        //     {
-        //         if (HEAD(q).cookDuration == 0)
-        //         {
-        //             printf("Makanan %s telah selesai dimasak", HEAD(q).ID);
-        //         }
-        //     }
-
-        //     else
-        //     {
-        //         printf("Makanan %s tidak dapat disajikan karena %s belum selesai", cookedFood, HEAD(q).ID);
-        //     }
-        //     // print queue
-        //     // print makanan yang sedang dimasak
-        //     // print makanan yang dapat disajikan
-        //     // print saldo
-        // }
-
-        // printf("=============================================================================================");
-
-        // -	COOK merupakan command yang bertujuan untuk memasak makanan
-        // input command
+        scanf("%s %s", command, cookedFood);
     }
+
+    while (!(compare(cookedFood, "M0") || compare(cookedFood, "M1") || compare(cookedFood, "M2") || compare(cookedFood, "M3") || compare(cookedFood, "M4") || compare(cookedFood, "M5")))
+    {
+        otherCommand();
+        printf("Masukkan command: ");
+        scanf("%s %s", command, cookedFood);
+    }
+
+    if (compare(command, cook))
+    {
+        printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
+
+        // masukin cook duration ke array
+        // kurnag-kurangin dari array,
+        // tampilin ke daftar masakan yang sedang dimasak
+        foodQueue++;
+
+        // bikin makanan baru
+        // masukin ke queue
+        // print queue
+    }
+
+    else if (compare(command, serve))
+    {
+        if (compare(cookedFood, HEAD(q).ID))
+        {
+            if (HEAD(q).cookDuration == 0)
+            {
+                printf("Makanan %s telah selesai dimasak", HEAD(q).ID);
+            }
+        }
+
+        else
+        {
+            printf("Makanan %s tidak dapat disajikan karena %s belum selesai", cookedFood, HEAD(q).ID);
+        }
+        // print queue
+        // print makanan yang sedang dimasak
+        // print makanan yang dapat disajikan
+        // print saldo
+    }
+
+    // printf("=============================================================================================");
+
+    // -	COOK merupakan command yang bertujuan untuk memasak makanan
+    // input command
 }
+
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
 // -	COOK merupakan command yang bertujuan untuk memasak makanan
 // -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
