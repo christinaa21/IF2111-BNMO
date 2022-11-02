@@ -3,7 +3,11 @@
         "queue.h": "c",
         "diner_dash.h": "c",
         "main_util.h": "c",
+<<<<<<< HEAD
         "prioqueue.h": "c",
         "time.h": "c"
+=======
+        "mesinkata.h": "c"
+>>>>>>> 3d690a562fc3c802ec6621d72130ac036a1a655a
     }
 }

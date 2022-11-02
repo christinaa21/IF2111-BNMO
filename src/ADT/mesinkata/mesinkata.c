@@ -66,7 +66,7 @@ void CopyWord()
 	//   		int Length;
 	// } Word;
 	int i = 0;
-	while ((!IsEOP()) && (currentChar != BLANK))
+	while ((currentChar != MARK) && (currentChar != BLANK))
 	{
 
 		if (i < NMax)
@@ -78,7 +78,6 @@ void CopyWord()
 		ADV();
 	}
 	currentWord.Length = i;
-	IgnoreBlanks();
 }
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
@@ -86,3 +85,33 @@ void CopyWord()
 		  currentChar = BLANK atau currentChar = MARK;
 		  currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
 		  Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+int WordToInt(Word word)
+{
+    int hasil = 0;
+    int i;
+    hasil += word.TabWord[0] - 48;
+    if (word.Length > 1)
+    {
+        for (i = 1; i < word.Length; i++)
+        {
+            hasil *= 10;
+            hasil += word.TabWord[i] - 48;
+        }
+    }
+
+    return hasil;
+}
+
+void STARTINPUTKATA(){
+	STARTINPUT();
+    if (currentChar == '\0')
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWord();
+    }
+}

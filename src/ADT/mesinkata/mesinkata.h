@@ -46,4 +46,12 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
+int WordToInt(Word word);
+/* Merubah tipe data dari word menjadi integer 
+Mengembalikan nilai hasil convert dari word ke integer*/
+
+void STARTINPUTKATA();
+/* Start input
+*/
+
 #endif
