@@ -3,7 +3,7 @@
 #include "boolean.h"
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q)
+void CreateQueuePQ(PrioQueue *q)
 {
 	IDX_HEAD(*q) = IDX_UNDEF;
 	IDX_TAIL(*q) = IDX_UNDEF;
@@ -15,22 +15,22 @@ void CreateQueue(Queue *q)
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q)
+boolean isEmptyPQ(PrioQueue q)
 {
 	return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 /* Mengirim true jika q kosong: lihat definisi di atas */
 
-boolean isFull(Queue q)
+boolean isFullPQ(PrioQueue q)
 {
-	return (length(q) == CAPACITY);
+	return (lengthPQ(q) == PQCAPACITY);
 }
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(Queue q)
+int lengthPQ(PrioQueue q)
 {
-	if (isEmpty(q))
+	if (isEmptyPQ(q))
 	{
 		return 0;
 	}
@@ -42,7 +42,7 @@ int length(Queue q)
 		while (i != IDX_TAIL(q))
 		{
 			count++;
-			i = (i + 1) % CAPACITY;
+			i = (i + 1) % PQCAPACITY;
 		}
 		return count;
 	}
@@ -50,9 +50,9 @@ int length(Queue q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val)
+void enqueuePQ(PrioQueue *q, PQElType val)
 {
-	if (isEmpty(*q))
+	if (isEmptyPQ(*q))
 	{
 		IDX_HEAD(*q) = 0;
 		IDX_TAIL(*q) = 0;
@@ -61,11 +61,11 @@ void enqueue(Queue *q, ElType val)
 
 	else
 	{
-		IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % CAPACITY;
+		IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
 		int idx = IDX_HEAD(*q);
 		while (((*q).buffer[IDX_HEAD(*q)].cookDuration > val.cookDuration) && (IDX_HEAD(*q) != (IDX_TAIL(*q))))
 		{
-			ElType temp = (*q).buffer[IDX_HEAD(*q)];
+			PQElType temp = (*q).buffer[IDX_HEAD(*q)];
 			(*q).buffer[IDX_HEAD(*q)] = (*q).buffer[IDX_HEAD(*q) + 1];
 			(*q).buffer[IDX_HEAD(*q) + 1] = temp;
 			IDX_HEAD(*q)
@@ -81,7 +81,7 @@ void enqueue(Queue *q, ElType val)
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, ElType *val)
+void dequeuePQ(PrioQueue *q, PQElType *val)
 {
 	*val = HEAD(*q);
 
@@ -94,7 +94,7 @@ void dequeue(Queue *q, ElType *val)
 
 	else
 	{
-		IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % CAPACITY;
+		IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % PQCAPACITY;
 	}
 }
 /* Proses: Menghapus val pada q dengan aturan FIFO */
@@ -103,23 +103,23 @@ void dequeue(Queue *q, ElType *val)
 		q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(Queue q)
+void displayQueuePQ(PrioQueue q)
 {
-	if (isEmpty(q))
+	if (isEmptyPQ(q))
 	{
 		printf("[]\n");
 	}
 	else
 	{
-		ElType val;
+		PQElType val;
 		// alt 3
 		printf("[");
 
-		while (!isEmpty(q))
+		while (!isEmptyPQ(q))
 		{
-			dequeue(&q, &val);
+			dequeuePQ(&q, &val);
 			printf("%d", val);
-			if (!isEmpty(q))
+			if (!isEmptyPQ(q))
 			{
 				printf(",");
 			}

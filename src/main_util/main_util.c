@@ -23,7 +23,7 @@ void help();
 
 void quit(ArrayDin *arr)
 {
-    DeallocateArrayDin(arr);
+    // DeallocateArrayDin(arr);
     printf("Game has ended\n");
     exit(0);
 }

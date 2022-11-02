@@ -3,10 +3,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../../boolean.h"
+#include "../../main_util/main_util.h"
 #include "../../ADT/array/arraydin.h"
 #include "../../ADT/mesinkata/mesinkata.h"
-#include "../../ADT/queue/queue.h"
 #include "../../ADT/prioQueue/prioqueue.h"
+
+boolean compare(char str1[], char str2[]);
+// mengembalikan true jika str1 sama dengan str2
 
 void DinerDash();
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
