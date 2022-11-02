@@ -13,7 +13,7 @@
 typedef struct
 {
         /* data */
-        char ID[3];
+        int foodID;
         int cookDuration;
         int stayDuration;
 } PQElType;

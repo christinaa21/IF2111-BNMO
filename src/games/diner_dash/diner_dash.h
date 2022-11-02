@@ -6,7 +6,6 @@
 
 #include "../../../boolean.h"
 #include "../../main_util/main_util.h"
-#include "../../ADT/array/arraydin.h"
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/prioQueue/prioqueue.h"
 

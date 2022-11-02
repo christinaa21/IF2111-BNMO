@@ -38,6 +38,7 @@ void DinerDash()
     printf("Selamat datang di Diner Dash\n\n");
 
     PrioQueue q;
+    CreateQueuePQ(&q);
 
     printf("SALDO : %d\n", saldo);
 
@@ -88,14 +89,24 @@ void DinerDash()
         scanf("%s %s", command, cookedFood);
     }
 
+    // mengubah cookedFood menjadi int
+
+    int id = 0;
+    for (int i = 1; cookedFood[i] != '\0'; i++)
+    {
+        id = id * 10 + (cookedFood[i] - '0');
+    }
+
+    printf("id: %d\n", id);
+
     if (compare(command, cook))
     {
+        // enqueuePQ(&q, );
         printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
 
         // masukin cook duration ke array
         // kurnag-kurangin dari array,
         // tampilin ke daftar masakan yang sedang dimasak
-        foodQueue++;
 
         // bikin makanan baru
         // masukin ke queue
@@ -104,17 +115,17 @@ void DinerDash()
 
     else if (compare(command, serve))
     {
-        if (compare(cookedFood, HEAD(q).ID))
+        if (compare(cookedFood, HEAD(q).foodID))
         {
             if (HEAD(q).cookDuration == 0)
             {
-                printf("Makanan %s telah selesai dimasak", HEAD(q).ID);
+                printf("Makanan %d telah selesai dimasak", HEAD(q).foodID);
             }
         }
 
         else
         {
-            printf("Makanan %s tidak dapat disajikan karena %s belum selesai", cookedFood, HEAD(q).ID);
+            printf("Makanan %s tidak dapat disajikan karena M%d belum selesai", cookedFood, HEAD(q).foodID);
         }
         // print queue
         // print makanan yang sedang dimasak
