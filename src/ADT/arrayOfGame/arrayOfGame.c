@@ -5,13 +5,21 @@
 /**
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ArrayOfGame kosong dengan ukuran InitialSize5
+ * F.S. Terbentuk ArrayOfGame yang berisi game default dengan ukuran InitialSize
  */
 ArrayOfGame MakeArrayOfGame(){
 	ArrayOfGame array;
 	(array).A = (ElTypeArrayOfGame*) malloc (InitialSize * sizeof(ElTypeArrayOfGame));
 	(array).Capacity = InitialSize;
-	(array).Neff = 0;
+
+	STARTWORD("../../Data/list_game.txt");
+	(array).A[0] = currentWord;
+	for (int i = 1; i < 5; i++)	{
+		ADVWORD();
+		(array).A[i] = currentWord;
+	}
+
+	(array).Neff = 5;
 	return array;
 }
 
@@ -27,11 +35,11 @@ void DeallocateArrayOfGame(ArrayOfGame *array){
 }
 
 /**
- * Fungsi untuk mengetahui apakah suatu array kosong.
+ * Fungsi untuk mengetahui apakah suatu array penuh.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayOfGame array){
-	return ((array).Neff == 0);
+boolean IsFull(ArrayOfGame array){
+	return ((array).Neff == InitialSize);
 }
 
 /**
@@ -147,24 +155,21 @@ void DeleteFirst(ArrayOfGame *array){
 /**
  * Fungsi untuk melakukan print suatu ArrayOfGame.
  * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
- * dan diakhiri newline.
+ * dengan setiap elemen (length,TabWord) dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
 void PrintArrayOfGame(ArrayOfGame array){
-	if (IsEmpty(array)){
-		printf("[]\n");
-	}
-	else{
-		printf("[");
-		int i;
-		for (i = 0; i < (array).Neff; i++){
-			printf("%d", (array).A[i].TabWord);
-			if (i < array.Neff - 1){
-				printf(", ");
-			}
+	printf("[");
+	int i;
+	for (i = 0; i < (array).Neff; i++){
+		printf("(%d,", (array).A[i].Length);
+		printf("%s)", (array).A[i].TabWord);
+		if (i < array.Neff - 1){
+			printf(", ");
 		}
-		printf("]\n");
 	}
+	printf("]\n");
+
 }
 
 /**

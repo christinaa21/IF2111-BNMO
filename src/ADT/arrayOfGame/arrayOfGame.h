@@ -21,7 +21,7 @@ typedef struct {
 /**
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ArrayOfGame kosong dengan ukuran InitialSize
+ * F.S. Terbentuk ArrayOfGame yang berisi game default dengan ukuran InitialSize
  */
 ArrayOfGame MakeArrayOfGame();
 
@@ -32,7 +32,7 @@ ArrayOfGame MakeArrayOfGame();
  */
 void DeallocateArrayOfGame(ArrayOfGame *array);
 /**
- * Fungsi untuk mengetahui apakah suatu array kosong.
+ * Fungsi untuk mengetahui apakah suatu array penuh.
  * Prekondisi: array terdefinisi
  */
 boolean IsFull(ArrayOfGame array);
