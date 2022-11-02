@@ -16,6 +16,7 @@ typedef struct
         int foodID;
         int cookDuration;
         int stayDuration;
+        int price;
 } PQElType;
 
 typedef struct
@@ -63,7 +64,7 @@ void dequeuePQ(PrioQueue *q, PQElType *val);
         q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueuePQ(PrioQueue q);
+void displayTimePQ(PrioQueue q);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -72,4 +73,8 @@ void displayQueuePQ(PrioQueue q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 
+void displayStayPQ(PrioQueue q);
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 #endif

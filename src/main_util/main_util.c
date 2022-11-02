@@ -13,7 +13,9 @@ void load();
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 
-void save();
+void save()
+{
+}
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
 
@@ -37,6 +39,7 @@ void help()
 
 void quit()
 {
+    save();
     // DeallocateArrayDin(arr);
     printf("Game has ended\n");
     exit(0);

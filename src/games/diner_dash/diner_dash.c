@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+// #include <math.h>
 
 #include "./diner_dash.h"
 
@@ -32,10 +33,21 @@ void DinerDash()
 
     char input[100];
     char cook[] = "COOK", serve[] = "SERVE";
-    int customer = 0;
     int foodQueue = 0;
+    int successfulServe = 0;
     int saldo = 0;
     printf("Selamat datang di Diner Dash\n\n");
+
+    PQElType food[10];
+
+    srand(time(NULL));
+    for (int i = 0; i < 6; i++)
+    {
+        food[i].foodID = i;
+        food[i].cookDuration = rand() % 5;
+        food[i].stayDuration = (rand() * 5 + rand() * 2) % 5;
+        food[i].price = rand() % 4 * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100 + (rand() % 9) * 10 + (rand() % 9);
+    }
 
     PrioQueue q;
     CreateQueuePQ(&q);
@@ -44,18 +56,23 @@ void DinerDash()
 
     printf("Daftar Pesanan: \n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
-    printf("--------------------------------------------\n\n");
+    printf("--------------------------------------------\n");
+    for (int i = 1; i < 6; i++)
+    {
+        printf("M%d      | %d              | %d         | %d    \n", food[i].foodID + 1, food[i].cookDuration, food[i].stayDuration, food[i].price);
+    }
     // print queue
 
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Makanan | Sisa durasi memasak\n\n");
     printf("-----------------------------\n\n");
-    // printf("%s      | %d                 ", HEAD(q).ID, HEAD(q).cookDuration);
+    displayTImePQ(q);
+    // printf("M%d      | %d                 \n", HEAD(q).ID, HEAD(q).cookDuration);
 
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
     printf("-----------------------------\n");
-    // printf("%s      | %d                ", HEAD(q).ID, HEAD(q).stayDuration);
+    // printf("M%d      | %d                \n", HEAD(q).ID, HEAD(q).stayDuration);
 
     // input command
     char command[6];
@@ -101,16 +118,10 @@ void DinerDash()
 
     if (compare(command, cook))
     {
-        // enqueuePQ(&q, );
+        enqueuePQ(&q, food[id]);
         printf("Makanan %s telah dimasukkan ke dalam antrian", cookedFood);
 
-        // masukin cook duration ke array
-        // kurnag-kurangin dari array,
-        // tampilin ke daftar masakan yang sedang dimasak
-
-        // bikin makanan baru
-        // masukin ke queue
-        // print queue
+        foodQueue++;
     }
 
     else if (compare(command, serve))
@@ -120,10 +131,12 @@ void DinerDash()
             // kurnag-kurangin dari array,
             // tampilin ke daftar masakan yang sedang dimasak
             // print queue
+
             if (HEAD(q).cookDuration == 0)
             {
                 printf("Makanan %d telah selesai dimasak", HEAD(q).foodID);
             }
+            successfulServe++;
         }
 
         else
@@ -134,12 +147,8 @@ void DinerDash()
         // print makanan yang sedang dimasak
         // print makanan yang dapat disajikan
         // print saldo
-
-        // printf("=============================================================================================");
-
-        // -	COOK merupakan command yang bertujuan untuk memasak makanan
-        // input command
     }
+    printf("=============================================================================================");
 }
 
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../../../boolean.h"
 #include "../../main_util/main_util.h"

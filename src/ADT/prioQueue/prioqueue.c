@@ -97,34 +97,50 @@ void dequeuePQ(PrioQueue *q, PQElType *val)
 		IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % PQCAPACITY;
 	}
 }
+
+void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
+{
+	*val = (*q).buffer[idx];
+
+	//
+	if (IDX_HEAD(*q) == IDX_TAIL(*q))
+	{
+		IDX_HEAD(*q) = IDX_UNDEF;
+		IDX_TAIL(*q) = IDX_UNDEF;
+	}
+
+	else
+	{
+		int i = idx;
+		while (i != IDX_TAIL(*q) + 1)
+		{
+			(*q).buffer[i] = (*q).buffer[i + 1];
+			i = (i + 1) % PQCAPACITY;
+		}
+		IDX_TAIL(*q) = (IDX_TAIL(*q) - 1) % PQCAPACITY;
+	}
+}
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
 		q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueuePQ(PrioQueue q)
+void displayTimePQ(PrioQueue q)
 {
 	if (isEmptyPQ(q))
 	{
-		printf("[]\n");
+		printf("\n");
 	}
 	else
 	{
 		PQElType val;
-		// alt 3
-		printf("[");
-
-		while (!isEmptyPQ(q))
+		int i = IDX_HEAD(q);
+		while (i != IDX_TAIL(q))
 		{
-			dequeuePQ(&q, &val);
-			printf("%d", val);
-			if (!isEmptyPQ(q))
-			{
-				printf(",");
-			}
+			printf("M%d      | %d              ", q.buffer[i].foodID, q.buffer[i].cookDuration);
+			i++;
 		}
-		printf("]\n");
 	}
 }
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
@@ -134,3 +150,21 @@ void displayQueuePQ(PrioQueue q)
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
+
+void displayStayPQ(PrioQueue q)
+{
+	if (isEmptyPQ(q))
+	{
+		printf("\n");
+	}
+	else
+	{
+		PQElType val;
+		int i = IDX_HEAD(q);
+		while (i != IDX_TAIL(q))
+		{
+			printf("M%d      | %d              ", q.buffer[i].foodID, q.buffer[i].stayDuration);
+			i++;
+		}
+	}
+}

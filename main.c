@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #include "./src/game_util/game_util.h"
 #include "./src/games/diner_dash/diner_dash.h"
@@ -13,6 +14,8 @@ int main()
     // char input[100];
     // scanf("%s", input);
     // printf("%d", compare(input, "COOK"));
+    // srand(time(NULL));
+    // printf("%d", rand() % 5);
     DinerDash();
     // srand(time(NULL));
     // ArrayDin arr;
