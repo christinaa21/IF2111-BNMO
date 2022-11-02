@@ -1,5 +1,5 @@
-#ifndef __ARRAY_DINAMIK__
-#define __ARRAY_DINAMIK__
+#ifndef __ARRAY_OF_GAME__
+#define __ARRAY_OF_GAME__
 
 #include "../mesinkata/mesinkata.h"
 
