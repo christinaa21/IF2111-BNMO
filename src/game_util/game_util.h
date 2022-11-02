@@ -10,7 +10,7 @@
 #include "../games/random_number_generator/random_number_generator.h"
 #include "../games/game_tambahan/game_tambahan.h"
 
-void createGame();
+void createGame(ArrayDin *arr);
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 

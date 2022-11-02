@@ -4,7 +4,7 @@
 
 #include "game_util.h"
 
-void createGame();
+void createGame(ArrayDin *arr);
 // I.S. Program telah berjalan
 // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
 
