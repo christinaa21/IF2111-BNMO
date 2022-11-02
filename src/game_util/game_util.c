@@ -38,11 +38,19 @@ void deleteGame(ArrayOfGame *arr) {
     listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
     scanf("%d", &idx);
-    DeleteGameAt(arr, (idx-1));
-    printf("Game berhasil dihapus\n");
+    if (idx <= 5) {
+        printf("Game tidak");
+    } 
+    // case game ada pada queue
+    else {
+        DeleteGameAt(arr, (idx-1));
+        printf("Game berhasil dihapus\n");
+    }
+    
+    
 }
 
-void queueGame(Queue *qGame);
+void queueGame(Queue *qGame, ArrayOfGame arr);
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
 //      tersebut ditambahkan ke dalam antrian game pengguna.
