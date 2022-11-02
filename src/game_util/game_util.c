@@ -23,7 +23,7 @@ void queueGame(Queue *qGame);
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
 //      tersebut ditambahkan ke dalam antrian game pengguna.
-//      Jika nomro game yang dipilih tidak ada pada daftar game yang tersedia, maka
+//      Jika nomor game yang dipilih tidak ada pada daftar game yang tersedia, maka
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
