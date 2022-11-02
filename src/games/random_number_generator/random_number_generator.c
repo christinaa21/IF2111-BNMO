@@ -4,9 +4,9 @@
 #include "random_number_generator.h"
 
 void RNG(){
-    printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.");
+    printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     srand(time(NULL));
-    int X = rand() % 20;
+    int X = rand() % 50;
     int Y = -999;
     while (Y!=X){
         printf("Tebakan: ");
