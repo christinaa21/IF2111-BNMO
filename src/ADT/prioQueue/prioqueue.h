@@ -53,6 +53,11 @@ int lengthPQ(PrioQueue q);
 
 /* *** Primitif Add/Delete *** */
 void enqueuePQ(PrioQueue *q, PQElType val);
+/* Proses: Menambahkan val pada q dengan aturan FIFO jika val belum ditemukan*/
+/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
+/* F.S. val menjadi TAIL yang baru jika val belum ditemukan, IDX_TAIL "mundur" dalam buffer melingkar. */
+
+void enqueueCSQ(PrioQueue *q, PQElType val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */

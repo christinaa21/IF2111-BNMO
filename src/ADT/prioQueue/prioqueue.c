@@ -56,12 +56,27 @@ void enqueuePQ(PrioQueue *q, PQElType val)
 	{
 		IDX_HEAD(*q) = 0;
 		IDX_TAIL(*q) = 0;
-		HEAD(*q) = val;
+		TAIL(*q) = val;
 	}
 
 	else
 	{
-		IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
+		boolean found = false;
+		int i = IDX_HEAD(*q);
+		while ((i != IDX_TAIL(*q) + 1) && !found)
+		{
+			if (val.foodID == (*q).buffer[i].foodID)
+			{
+				found = true;
+			}
+			i = (i + 1) % PQCAPACITY;
+		}
+
+		if (!found)
+		{
+			IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
+			(*q).buffer[IDX_TAIL(*q)] = val;
+		}
 		// int idx = IDX_HEAD(*q);
 		// while (((*q).buffer[IDX_HEAD(*q)].cookDuration > val.cookDuration) && (IDX_HEAD(*q) != (IDX_TAIL(*q))))
 		// {
@@ -76,8 +91,27 @@ void enqueuePQ(PrioQueue *q, PQElType val)
 
 		// (*q).buffer[IDX_HEAD(*q)] = val;
 	}
-	TAIL(*q) = val;
 }
+/* Proses: Menambahkan val pada q dengan aturan FIFO jika val belum ditemukan*/
+/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
+/* F.S. val menjadi TAIL yang baru jika val belum ditemukan, IDX_TAIL "mundur" dalam buffer melingkar. */
+
+void enqueueCSQ(PrioQueue *q, PQElType val)
+{
+	if (isEmptyPQ(*q))
+	{
+		IDX_HEAD(*q) = 0;
+		IDX_TAIL(*q) = 0;
+		TAIL(*q) = val;
+	}
+
+	else
+	{
+		IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
+		TAIL(*q) = val;
+	}
+}
+
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
