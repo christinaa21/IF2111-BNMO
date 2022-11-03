@@ -155,9 +155,9 @@ void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
 		IDX_TAIL(*q) = (IDX_TAIL(*q) - 1) % PQCAPACITY;
 	}
 }
-/* Proses: Menghapus val pada q dengan aturan FIFO */
+/* Proses: Menghapus val pada q  pada indeks idx */
 /* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
+/* F.S. val = nilai elemen q pada indeks idx pd I.S., IDX_TAIL "mundur";
 		q mungkin kosong */
 
 /* *** Display Queue *** */
@@ -165,13 +165,12 @@ void displayTimePQ(PrioQueue q)
 {
 	if (isEmptyPQ(q))
 	{
-		printf("\n");
+		printf("");
 	}
 	else
 	{
-		PQElType val;
 		int i = IDX_HEAD(q);
-		while (i != IDX_TAIL(q))
+		while (i != IDX_TAIL(q) + 1)
 		{
 			if (q.buffer[i].cookDuration > 0)
 			{
@@ -193,17 +192,20 @@ void displayStayPQ(PrioQueue q)
 {
 	if (isEmptyPQ(q))
 	{
-		printf("\n");
+		printf("");
 	}
 	else
 	{
-		PQElType val;
 		int i = IDX_HEAD(q);
-		while (i != IDX_TAIL(q))
+		while (i != IDX_TAIL(q) + 1)
 		{
 			if (q.buffer[i].cookDuration == 0)
 			{
 				printf("M%d      | %d              \n", q.buffer[i].foodID, q.buffer[i].stayDuration);
+			}
+			else if (q.buffer[i].cookDuration > 0)
+			{
+				printf("");
 			}
 			i = (i + 1) % PQCAPACITY;
 		}

@@ -68,6 +68,12 @@ void dequeuePQ(PrioQueue *q, PQElType *val);
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
 
+void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx);
+/* Proses: Menghapus val pada q  pada indeks idx */
+/* I.S. q tidak mungkin kosong */
+/* F.S. val = nilai elemen q pada indeks idx pd I.S., IDX_TAIL "mundur";
+                q mungkin kosong */
+
 /* *** Display Queue *** */
 void displayTimePQ(PrioQueue q);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
