@@ -34,7 +34,7 @@ void STARTINPUT(){
 void ADV(){
 	retval = fscanf(pita, "%c", &currentChar);
 
-	EOP = (currentChar == MARK);
+	EOP = (currentChar == MARK || feof(pita));
 
 	if (EOP){
 		fclose(pita);
