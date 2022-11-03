@@ -72,10 +72,12 @@ void CopyWord()
 		if (i < NMax)
 		{
 			currentWord.TabWord[i] = currentChar;
+			ADV();
 			i++;
 		}
-
-		ADV();
+		else {
+			break;
+		}
 	}
 	currentWord.Length = i;
 }

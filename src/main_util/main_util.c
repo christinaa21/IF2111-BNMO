@@ -11,10 +11,9 @@ void start();
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
 
-void load(char *savefile, ArrayOfGame *arrGame, ArrayOfGame *arrHistory)
+void load(char *savefile, ArrayOfGame *arrGame)
 {
     *arrGame = MakeArrayOfGame();
-    *arrHistory = MakeArrayOfGame();
     STARTWORD(savefile);
     int count = WordToInt(currentWord);
     int i;
@@ -23,14 +22,7 @@ void load(char *savefile, ArrayOfGame *arrGame, ArrayOfGame *arrHistory)
         ADVWORD();
         InsertGameLast(arrGame, currentWord);
     }
-    ADVWORD();
-    count = WordToInt(currentWord);
-    int j;
-    for (j = 0; j < count; j++)
-    {
-        ADVWORD();
-        InsertGameLast(arrHistory, currentWord);
-    }
+    printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
