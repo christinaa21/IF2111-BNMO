@@ -62,20 +62,21 @@ void enqueuePQ(PrioQueue *q, PQElType val)
 	else
 	{
 		IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
-		int idx = IDX_HEAD(*q);
-		while (((*q).buffer[IDX_HEAD(*q)].cookDuration > val.cookDuration) && (IDX_HEAD(*q) != (IDX_TAIL(*q))))
-		{
-			PQElType temp = (*q).buffer[IDX_HEAD(*q)];
-			(*q).buffer[IDX_HEAD(*q)] = (*q).buffer[IDX_HEAD(*q) + 1];
-			(*q).buffer[IDX_HEAD(*q) + 1] = temp;
-			IDX_HEAD(*q)
-			++;
-		}
+		// int idx = IDX_HEAD(*q);
+		// while (((*q).buffer[IDX_HEAD(*q)].cookDuration > val.cookDuration) && (IDX_HEAD(*q) != (IDX_TAIL(*q))))
+		// {
+		// 	PQElType temp = (*q).buffer[IDX_HEAD(*q)];
+		// 	(*q).buffer[IDX_HEAD(*q)] = (*q).buffer[IDX_HEAD(*q) + 1];
+		// 	(*q).buffer[IDX_HEAD(*q) + 1] = temp;
+		// 	IDX_HEAD(*q)
+		// 	++;
+		// }
 
-		IDX_HEAD(*q) = idx;
+		// IDX_HEAD(*q) = idx;
 
-		(*q).buffer[IDX_HEAD(*q)] = val;
+		// (*q).buffer[IDX_HEAD(*q)] = val;
 	}
+	TAIL(*q) = val;
 }
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
@@ -138,8 +139,11 @@ void displayTimePQ(PrioQueue q)
 		int i = IDX_HEAD(q);
 		while (i != IDX_TAIL(q))
 		{
-			printf("M%d      | %d              ", q.buffer[i].foodID, q.buffer[i].cookDuration);
-			i++;
+			if (q.buffer[i].cookDuration > 0)
+			{
+				printf("M%d      | %d              \n", q.buffer[i].foodID, q.buffer[i].cookDuration);
+			}
+			i = (i + 1) % PQCAPACITY;
 		}
 	}
 }
@@ -163,8 +167,11 @@ void displayStayPQ(PrioQueue q)
 		int i = IDX_HEAD(q);
 		while (i != IDX_TAIL(q))
 		{
-			printf("M%d      | %d              ", q.buffer[i].foodID, q.buffer[i].stayDuration);
-			i++;
+			if (q.buffer[i].cookDuration == 0)
+			{
+				printf("M%d      | %d              \n", q.buffer[i].foodID, q.buffer[i].stayDuration);
+			}
+			i = (i + 1) % PQCAPACITY;
 		}
 	}
 }

@@ -21,60 +21,79 @@ boolean compare(char str1[], char str2[])
 
     return !found;
 }
+
+void createFood(PQElType *food, int id)
+{
+    srand(time(NULL));
+    (*food).foodID = id;
+    (*food).cookDuration = rand() % 4 + 2;
+    (*food).stayDuration = (rand() * 5 + rand() * 2) % 4 + 2;
+    (*food).price = rand() % 4 * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100 + (rand() % 9) * 10 + (rand() % 9);
+}
 void DinerDash()
 {
     // Kamus
 
     // Algoritma
 
-    // bikin adt queue baru, adt meal (id, durasi masak, Ketahanan, price)
-
-    // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
-
     char input[100];
     char cook[] = "COOK", serve[] = "SERVE";
     int foodQueue = 0;
     int successfulServe = 0;
     int saldo = 0;
+
     printf("Selamat datang di Diner Dash\n\n");
 
     PQElType food[10];
 
-    srand(time(NULL));
-    for (int i = 0; i < 6; i++)
-    {
-        food[i].foodID = i;
-        food[i].cookDuration = rand() % 5;
-        food[i].stayDuration = (rand() * 5 + rand() * 2) % 5;
-        food[i].price = rand() % 4 * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100 + (rand() % 9) * 10 + (rand() % 9);
-    }
-
     PrioQueue q;
     CreateQueuePQ(&q);
-    enqueuePQ(&q, food[0]);
-    enqueuePQ(&q, food[1]);
-    enqueuePQ(&q, food[2]);
+    for (int i = 0; i < 3; i++)
+    {
+        createFood(&food[i], i);
+        enqueuePQ(&q, food[i]);
+    }
+
+    while (successfulServe <= 15 || foodQueue <= 7)
+    {
+    }
 
     printf("SALDO : %d\n", saldo);
 
-    printf("Daftar Pesanan: \n");
+    printf("Daftar pesanan: \n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
     printf("--------------------------------------------\n");
-    for (int i = 1; i < 6; i++)
+
+    for (int i = IDX_HEAD(q); i != IDX_TAIL(q); i++)
     {
-        printf("M%d      | %d              | %d         | %d    \n", food[i].foodID + 1, food[i].cookDuration, food[i].stayDuration, food[i].price);
+        // pengurangan cookDuration
+        if (q.buffer[i].cookDuration > 0)
+        {
+            q.buffer[i].cookDuration--;
+        }
+
+        // pengurangan stayDuration
+        else if (q.buffer[i].cookDuration == 0)
+        {
+            q.buffer[i].stayDuration--;
+        }
     }
-    // print queue
+
+    for (int i = 0; i < lengthPQ(q); i++)
+    {
+        printf("M%d      | %d              | %d         | %d    \n", q.buffer[i].foodID + 1, q.buffer[i].cookDuration, q.buffer[i].stayDuration, q.buffer[i].price);
+    }
 
     printf("Daftar Makanan yang sedang dimasak\n");
-    printf("Makanan | Sisa durasi memasak\n\n");
-    printf("-----------------------------\n\n");
-    displayTImePQ(q);
+    printf("Makanan | Sisa durasi memasak\n");
+    printf("-----------------------------\n");
+    displayTimePQ(q);
     // printf("M%d      | %d                 \n", HEAD(q).ID, HEAD(q).cookDuration);
 
     printf("Daftar Makanan yang dapat disajikan\n");
     printf("Makanan | Sisa ketahanan makanan\n");
     printf("-----------------------------\n");
+    displayStayPQ(q);
     // printf("M%d      | %d                \n", HEAD(q).ID, HEAD(q).stayDuration);
 
     // input command
@@ -88,11 +107,6 @@ void DinerDash()
 
     printf("Command: %s\n", command);
     printf("cookedFood: %s\n", cookedFood);
-
-    // printf("%d\n", compare(command, cook));
-    // printf("%d\n", compare(cookedFood, "M1"));
-
-    printf("command same : %d\n", (compare(command, cook) || compare(command, serve)));
 
     //  handle input command
     while (!(compare(command, cook) || compare(command, serve)))
@@ -119,6 +133,7 @@ void DinerDash()
 
     printf("id: %d\n", id);
 
+    // cook
     if (compare(command, cook))
     {
         enqueuePQ(&q, food[id]);
@@ -127,32 +142,53 @@ void DinerDash()
         foodQueue++;
     }
 
+    // serve
     else if (compare(command, serve))
     {
-        if (HEAD(q).foodID == id)
-        {
-            // kurnag-kurangin dari array,
-            // tampilin ke daftar masakan yang sedang dimasak
-            // print queue
+        PQElType currentFood;
+        PQElType servableFood;
+        PQElType brokenFood;
 
-            if (HEAD(q).cookDuration == 0)
+        int i = IDX_HEAD(q);
+
+        while (i != IDX_TAIL(q) + 1)
+        {
+            if (q.buffer[i].foodID == id)
             {
-                printf("Makanan %d telah selesai dimasak", HEAD(q).foodID);
+                currentFood = q.buffer[i];
             }
-            successfulServe++;
+            i = (i + 1) % PQCAPACITY;
+        }
+
+        if (currentFood.cookDuration == 0)
+        {
+            if (currentFood.stayDuration > 0)
+            {
+                dequeueAtIdx(&q, &servableFood, i);
+                printf("Berhasil mengantar M%s", servableFood.foodID);
+                saldo += servableFood.price;
+                successfulServe++;
+            }
+
+            else
+            {
+                printf("Makanan %s telah rusak", cookedFood);
+                dequeueAtIdx(&q, &brokenFood, i);
+            }
         }
 
         else
         {
-            printf("Makanan %s tidak dapat disajikan karena M%d belum selesai", cookedFood, HEAD(q).foodID);
+            printf("Makanan %s belum siap disajikan", cookedFood);
         }
+
         // print queue
         // print makanan yang sedang dimasak
         // print makanan yang dapat disajikan
         // print saldo
     }
 
-        printf("=============================================================================================");
+    printf("=============================================================================================");
 }
 
 // -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
