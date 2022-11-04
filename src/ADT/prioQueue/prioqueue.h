@@ -75,6 +75,11 @@ void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx);
                 q mungkin kosong */
 
 /* *** Display Queue *** */
+
+void displayQueuePQ(PrioQueue q);
+/* I.S. q terdefinisi */
+/* F.S. Semua elemen q tercetak ke layar */
+
 void displayTimePQ(PrioQueue q);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan

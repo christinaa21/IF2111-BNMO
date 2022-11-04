@@ -135,7 +135,12 @@ void dequeuePQ(PrioQueue *q, PQElType *val)
 
 void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
 {
+	// printf("dequeue at idx %d\n", idx);
 	*val = (*q).buffer[idx];
+	// printf("food id %d\n", (*val).foodID);
+	// printf("cook duration %d\n", (*val).cookDuration);
+	// printf("stay duration %d\n", (*val).stayDuration);
+	// printf("price %d\n", (*val).price);
 
 	//
 	if (IDX_HEAD(*q) == IDX_TAIL(*q))
@@ -146,7 +151,10 @@ void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
 
 	else
 	{
-		int i = idx;
+		// printf("IDX_HEAD(*q) %d\n", IDX_HEAD(*q));
+		// printf("IDX_TAIL(*q) %d\n", IDX_TAIL(*q));
+
+		int i = IDX_HEAD(*q) + idx;
 		while (i != IDX_TAIL(*q) + 1)
 		{
 			(*q).buffer[i] = (*q).buffer[i + 1];
@@ -161,6 +169,27 @@ void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
 		q mungkin kosong */
 
 /* *** Display Queue *** */
+
+void displayQueuePQ(PrioQueue q)
+{
+	if (isEmptyPQ(q))
+	{
+		printf("Queue is empty");
+	}
+
+	else
+	{
+		int i = IDX_HEAD(q);
+		while (i != IDX_TAIL(q) + 1)
+		{
+			printf("food id : %d\n", q.buffer[i].foodID);
+			printf("cook duration : %d\n", q.buffer[i].cookDuration);
+			printf("stay duration: %d\n", q.buffer[i].stayDuration);
+			printf("price: %d\n", q.buffer[i].price);
+			i = (i + 1) % PQCAPACITY;
+		}
+	}
+}
 void displayTimePQ(PrioQueue q)
 {
 	if (isEmptyPQ(q))
