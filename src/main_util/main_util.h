@@ -12,7 +12,7 @@ void start();
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
 
-void load(char* savefile, ArrayOfGame *arrGame, ArrayOfGame *arrHistory);
+void load(char* savefile, ArrayOfGame *arrGame);
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 

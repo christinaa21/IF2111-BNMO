@@ -66,16 +66,12 @@ void CopyWord()
 	//   		int Length;
 	// } Word;
 	int i = 0;
-	while ((currentChar != MARK) && (currentChar != BLANK))
+	while ((!EOP) && (currentChar != BLANK) && (i<NMax))
 	{
-
-		if (i < NMax)
-		{
-			currentWord.TabWord[i] = currentChar;
-			i++;
-		}
-
+		currentWord.TabWord[i] = currentChar;
 		ADV();
+		i++;
+		
 	}
 	currentWord.Length = i;
 }
