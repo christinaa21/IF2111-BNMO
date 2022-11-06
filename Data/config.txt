@@ -1,4 +1,3 @@
-// isi config
 5
 RNG
 LUNCH SLOW
