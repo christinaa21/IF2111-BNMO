@@ -31,6 +31,10 @@ void STARTWORD(char * FILE);
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
 
+void STARTINPUTKATA();
+/* Start input
+*/
+
 void ADVWORD();
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
@@ -50,8 +54,22 @@ int WordToInt(Word word);
 /* Merubah tipe data dari word menjadi integer 
 Mengembalikan nilai hasil convert dari word ke integer*/
 
-void STARTINPUTKATA();
-/* Start input
+int WordToInt(Word word);
+/* Merubah tipe data dari word menjadi integer 
+Mengembalikan nilai hasil convert dari word ke integer*/
+
+char * WordToString (Word word);
+/*Merubah tipe data dari word menjadi string 
+Mengembalikan nilai hasil convert dari word ke string*/
+
+Word takeword(Word command, int ke);
+/* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user 
 */
+
+boolean IsEqual(Word w, char *c);
+/* Mengembalikan true jika kata w tersebut sama dengan string c
+Mengembalikan false jika kata w tidak sama dengan string c
+*/
+
 
 #endif
