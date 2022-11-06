@@ -62,3 +62,18 @@ boolean IsEOP()
    return (currentChar == MARK);
 }
 /* Mengirimkan true jika currentChar = MARK */
+
+// int main() {
+//    char* file = "file.txt";
+//    START(file);
+//    while (!IsEOP()) {
+//       printf("GetCC: %c\n", GetCC());
+//       ADV();
+//    }
+//    STARTINPUT();
+//    while (!IsEOP()) {
+//       printf("%c\n", GetCC());
+//       ADV();
+//    }
+//    printf("...");
+// }

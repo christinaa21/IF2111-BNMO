@@ -7,7 +7,19 @@
 #include "../ADT/mesinkata/mesinkata.h"
 // start, load, save, quit, help
 
-void start();
+void start(char *configfile, ArrayOfGame *arr)
+{
+    int count;
+    *arr = MakeArrayOfGame();
+    STARTWORD(configfile);
+    count = WordToInt(currentWord);
+    for (int i = 0; i < count; i++)
+    {
+        ADVWORD();
+        InsertGameLast(arr, currentWord);
+    }
+    
+}
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
 

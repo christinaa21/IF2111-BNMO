@@ -10,42 +10,50 @@
 
 int main()
 {
-    // Kamus
-    // char input[100];
-    // scanf("%s", input);
-    // printf("%d", compare(input, "COOK"));
-    // srand(time(NULL));
-    // printf("%d", rand() % 5);
-    DinerDash();
-    // srand(time(NULL));
-    // ArrayDin arr;
-    // CreateArrayDin(&arr);
-    // int n;
-    // printf("Welcome to the game!\n");
-    // printf("1. Start\n");
-    // printf("2. Load\n");
-    // printf("3. Help\n");
-    // printf("4. Quit\n");
-    // printf("Choose: ");
-    // scanf("%d", &n);
-    // switch (n)
-    // {
-    // case 1:
-    //     start();
-    //     break;
-    // case 2:
-    //     load();
-    //     break;
-    // case 3:
-    //     help();
-    //     break;
-    // case 4:
-    //     quit(&arr);
-    //     break;
-    // default:
-    //     printf("Invalid input\n");
-    //     break;
-    // }
+    ArrayOfGame ListGame;
+    Queue QueueGame;
+    boolean cek = false;
+    while(!cek){
+        printf("Masukkan Command: ");
+        STARTINPUTKATA();
+        if(IsEqual(takeword(currentWord,1),"LOAD")){
+            Word x = takeword(currentWord,2);
+            load(WordToString(x),&ListGame);
+            cek = true;
+        }
+        else if(IsEqual(takeword(currentWord,1),"START")){
+            start();
+            cek = true;
+        }
+        else {
+            printf("Masukkan command START atau LOAD di awal permainan\n");
+        }
+    while (cek){
+        printf("Masukkan Command: ");
+        STARTINPUTKATA();
+        if(IsEqual(currentWord,"CREATE GAME")){
+            createGame(&ListGame);
+        }
+        else if(IsEqual(currentWord,"LIST GAME")){
+            listGame(&ListGame);
+        }
+        else if(IsEqual(currentWord,"DELETE GAME")){
+            deleteGame(&ListGame);
+        }
+        else if(IsEqual(currentWord,"QUEUE GAME")){
+            queueGame(&QueueGame,ListGame);
+        }
+        else if(IsEqual(currentWord,"PLAY GAME")){
+            playGame(&QueueGame);
+        }
+        else if(IsEqual(takeword(currentWord,1),"SKIPGAME")){
+            listGame(&ListGame);
+        }
+        else if(IsEqual(currentWord,"HELP")){
+            help();        
+        }
+    }
+    }
     return 0;
 }
 // main file
