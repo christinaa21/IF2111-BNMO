@@ -10,42 +10,28 @@
 
 int main()
 {
-    // Kamus
-    // char input[100];
-    // scanf("%s", input);
-    // printf("%d", compare(input, "COOK"));
-    // srand(time(NULL));
-    // printf("%d", rand() % 5);
-    DinerDash();
-    // srand(time(NULL));
-    // ArrayDin arr;
-    // CreateArrayDin(&arr);
-    // int n;
-    // printf("Welcome to the game!\n");
-    // printf("1. Start\n");
-    // printf("2. Load\n");
-    // printf("3. Help\n");
-    // printf("4. Quit\n");
-    // printf("Choose: ");
-    // scanf("%d", &n);
-    // switch (n)
-    // {
-    // case 1:
-    //     start();
-    //     break;
-    // case 2:
-    //     load();
-    //     break;
-    // case 3:
-    //     help();
-    //     break;
-    // case 4:
-    //     quit(&arr);
-    //     break;
-    // default:
-    //     printf("Invalid input\n");
-    //     break;
-    // }
+    ArrayOfGame ListGame;
+    boolean cek = false;
+    while(!cek){
+        printf("Masukkan Command: ");
+        STARTINPUTKATA();
+        if(IsEqual(takeword(currentWord,1),"LOAD")){
+            Word x = takeword(currentWord,2);
+            load(WordToString(x),&ListGame);
+            cek = true;
+        }
+        else if(IsEqual(takeword(currentWord,1),"START")){
+            start();
+            cek = true;
+        }
+        else {
+            printf("Masukkan command START atau LOAD di awal permainan\n");
+        }
+    while (cek){
+        printf("Masukkan Command: ");
+        STARTINPUTKATA();
+        
+    }
     return 0;
 }
 // main file
