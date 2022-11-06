@@ -30,7 +30,10 @@ int main()
     while (cek){
         printf("Masukkan Command: ");
         STARTINPUTKATA();
-        
+        if(IsEqual(currentWord,"CREATE GAME")){
+            createGame(&ListGame);
+        }
+    }
     }
     return 0;
 }

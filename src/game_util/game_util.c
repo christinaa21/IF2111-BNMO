@@ -7,10 +7,8 @@
 void createGame(ArrayOfGame *arr)
 {
     printf("Masukkan nama game yang akan ditambahkan: ");
-    Word namagame;
-    scanf("%[^\n]s", namagame.TabWord);
-    printf("\n");
-    InsertGameLast(arr, namagame);
+    STARTINPUTKATA();
+    InsertGameAt(arr, currentWord,(*arr).Neff);
     printf("Game berhasil ditambahkan\n");
 }
 // I.S. Program telah berjalan
