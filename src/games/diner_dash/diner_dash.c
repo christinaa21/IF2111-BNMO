@@ -156,7 +156,7 @@ void DinerDash()
         }
         printf("\n");
 
-        //  validasi input command
+                //  validasi input command
         while (!(compare(command, cook) || compare(command, serve)))
         {
             otherCommand();

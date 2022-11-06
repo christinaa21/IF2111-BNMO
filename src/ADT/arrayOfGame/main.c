@@ -3,7 +3,7 @@
 
 int main()
 {
-	ArrayOfGame arr = MakeArrayDin();
+	ArrayOfGame arr = MakeArrayOfGame();
 	printf("capacity = %d\n", GetCapacity(arr));
 	printf("length = %d\n", Length(arr));
 	printf("%d\n", IsEmpty(arr));
@@ -20,7 +20,7 @@ int main()
 	PrintArrayDin(arr);
 	ReverseArrayDin(&arr);
 	PrintArrayDin(arr);
-	ArrayOfGame arr2 = CopyArrayDin(arr);
+	ArrayOfGame arr2 = CopyArrayOfGame(arr);
 	PrintArrayDin(arr2);
 	SearchArrayDin(arr, 5);
 	SearchArrayDin(arr, 6);

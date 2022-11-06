@@ -18,7 +18,6 @@ void start(char *configfile, ArrayOfGame *arr)
         ADVWORD();
         InsertGameLast(arr, currentWord);
     }
-    
 }
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
