@@ -32,11 +32,18 @@ ArrayOfGame MakeArrayOfGame();
  * F.S. array->A terdealokasi
  */
 void DeallocateArrayOfGame(ArrayOfGame *array);
+
 /**
  * Fungsi untuk mengetahui apakah suatu array penuh.
  * Prekondisi: array terdefinisi
  */
-boolean IsFull(ArrayOfGame array);
+boolean IsEmptyArrayOfGame(ArrayOfGame array);
+
+/**
+ * Fungsi untuk mengetahui apakah suatu array penuh.
+ * Prekondisi: array terdefinisi
+ */
+boolean IsFullArrayOfGame(ArrayOfGame array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.

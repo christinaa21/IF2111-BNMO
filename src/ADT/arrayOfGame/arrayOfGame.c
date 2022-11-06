@@ -13,15 +13,7 @@ ArrayOfGame MakeArrayOfGame()
 	(array).A = (ElTypeArrayOfGame *)malloc(InitialSize * sizeof(ElTypeArrayOfGame));
 	(array).Capacity = InitialSize;
 
-	STARTWORD("../../Data/list_game.txt");
-	(array).A[0] = currentWord;
-	for (int i = 1; i < 5; i++)
-	{
-		ADVWORD();
-		(array).A[i] = currentWord;
-	}
-
-	(array).Neff = 5;
+	(array).Neff = 0;
 	return array;
 }
 
@@ -35,6 +27,15 @@ void DeallocateArrayOfGame(ArrayOfGame *array)
 	free((*array).A);
 	(*array).Capacity = 0;
 	(*array).Neff = 0;
+}
+
+/**
+ * Fungsi untuk mengetahui apakah suatu array kosong.
+ * Prekondisi: array terdefinisi
+ */
+boolean IsEmptyArrayOfGame(ArrayOfGame array)
+{
+	return ((array).Neff == 0);
 }
 
 /**
