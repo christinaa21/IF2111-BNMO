@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "boolean.h"
 #include "mesinkata.h"
 #include "mesinkarakter.h"
@@ -79,7 +80,7 @@ void CopyWord()
 	//   		int Length;
 	// } Word;
 	int i = 0;
-	while ((!EOP) && (currentChar != BLANK) && (i<NMax))
+	while ((!IsEOP()) && (currentChar != BLANK) && (i<NMax))
 	{
 		currentWord.TabWord[i] = currentChar;
 		ADV();
@@ -100,23 +101,6 @@ int WordToInt(Word word)
     int hasil = 0;
     int i;
     hasil += word.TabWord[0] - 48;
-    if (word.Length > 1)
-    {
-        for (i = 1; i < word.Length; i++)
-        {
-            hasil *= 10;
-            hasil += word.TabWord[i] - 48;
-        }
-    }
-
-    return hasil;
-}
-
-int WordToInt(Word word)
-{
-    int hasil = 0;
-    int i;
-    hasil += word.TabWord[0] - 48;
     for (i = 1; i < word.Length; i++)
     {
     	hasil *= 10;
@@ -130,6 +114,9 @@ Mengembalikan nilai hasil convert dari word ke integer*/
 char * WordToString (Word word){
 	char * C = malloc(word.Length * sizeof(char));
 	int i;
+	while (C == NULL) {
+		C = malloc(word.Length * sizeof(char));
+	}
 	for (i=0;i<word.Length;i++){
 		C[i]=word.TabWord[i];
 	}
@@ -183,3 +170,24 @@ boolean IsEqual(Word w, char *c){
 /* Mengembalikan true jika kata w tersebut sama dengan string c
 Mengembalikan false jika kata w tidak sama dengan string c
 */
+
+// int main() {
+// 	char* file = "file.txt";
+// 	STARTWORD(file);
+// 	char* kata;
+// 	printf("WordLength: %d\n", currentWord.Length);
+// 	kata = WordToString(currentWord);
+// 	printf("%s\n", kata);
+// 	int kata_int = WordToInt(currentWord);
+// 	printf("%d\n", kata_int);
+// 	while (!IsEOP()) {
+// 		ADVWORD();
+// 		printf("WordLength: %d\n", currentWord.Length);
+// 		kata = WordToString(currentWord);
+// 		printf("%s\n", kata);
+// 	}
+// 	STARTINPUTKATA();
+// 	printf("WordLength: %d\n", currentWord.Length);
+// 	kata = WordToString(currentWord);
+// 	printf("%s\n", kata);
+// }
