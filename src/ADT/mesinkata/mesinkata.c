@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "boolean.h"
 #include "mesinkata.h"
 #include "mesinkarakter.h"
@@ -17,7 +18,7 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD(char * FILE)
+void STARTWORD(char *FILE)
 {
 	START(FILE);
 	IgnoreBlanks();
@@ -38,17 +39,18 @@ void STARTWORD(char * FILE)
 		  atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
 		  currentChar karakter pertama sesudah karakter terakhir kata */
 
-void STARTINPUTKATA(){
+void STARTINPUTKATA()
+{
 	STARTINPUT();
-    if (currentChar == '\0')
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
-        CopyWord();
-    }
+	if (currentChar == '\0')
+	{
+		EndWord = true;
+	}
+	else
+	{
+		EndWord = false;
+		CopyWord();
+	}
 }
 
 void ADVWORD()
@@ -79,12 +81,11 @@ void CopyWord()
 	//   		int Length;
 	// } Word;
 	int i = 0;
-	while ((!EOP) && (currentChar != BLANK) && (i<NMax))
+	while ((!EOP) && (currentChar != BLANK) && (i < NMax))
 	{
 		currentWord.TabWord[i] = currentChar;
 		ADV();
 		i++;
-		
 	}
 	currentWord.Length = i;
 }
@@ -97,68 +98,77 @@ void CopyWord()
 
 int WordToInt(Word word)
 {
-    int hasil = 0;
-    int i;
-    hasil += word.TabWord[0] - 48;
-    if (word.Length > 1)
-    {
-        for (i = 1; i < word.Length; i++)
-        {
-            hasil *= 10;
-            hasil += word.TabWord[i] - 48;
-        }
-    }
+	int hasil = 0;
+	int i;
+	hasil += word.TabWord[0] - 48;
+	if (word.Length > 1)
+	{
+		for (i = 1; i < word.Length; i++)
+		{
+			hasil *= 10;
+			hasil += word.TabWord[i] - 48;
+		}
+	}
 
-    return hasil;
+	return hasil;
 }
 
 int WordToInt(Word word)
 {
-    int hasil = 0;
-    int i;
-    hasil += word.TabWord[0] - 48;
-    for (i = 1; i < word.Length; i++)
-    {
-    	hasil *= 10;
-        hasil += word.TabWord[i] - 48;
-    }
-    return hasil;
+	int hasil = 0;
+	int i;
+	hasil += word.TabWord[0] - 48;
+	for (i = 1; i < word.Length; i++)
+	{
+		hasil *= 10;
+		hasil += word.TabWord[i] - 48;
+	}
+	return hasil;
 }
-/* Merubah tipe data dari word menjadi integer 
+/* Merubah tipe data dari word menjadi integer
 Mengembalikan nilai hasil convert dari word ke integer*/
 
-char * WordToString (Word word){
-	char * C = malloc(word.Length * sizeof(char));
+char *WordToString(Word word)
+{
+	char *C = malloc(word.Length * sizeof(char));
 	int i;
-	for (i=0;i<word.Length;i++){
-		C[i]=word.TabWord[i];
+	for (i = 0; i < word.Length; i++)
+	{
+		C[i] = word.TabWord[i];
 	}
-	C[i]='\0';
+	C[i] = '\0';
 	return C;
 }
-/*Merubah tipe data dari word menjadi string 
+/*Merubah tipe data dari word menjadi string
 Mengembalikan nilai hasil convert dari word ke string*/
 
-Word takeword(Word command, int ke){
+Word takeword(Word command, int ke)
+{
 	Word w;
 	int i = 0;
-	int j = 0; 
-	while (j!=ke-1 && i<command.Length){
-		if (command.TabWord[i] == ' '){
+	int j = 0;
+	while (j != ke - 1 && i < command.Length)
+	{
+		if (command.TabWord[i] == ' ')
+		{
 			j++;
 		}
 		i++;
-		if(i==command.Length){
+		if (i == command.Length)
+		{
 			j++;
 		}
 	}
 	boolean cek = false;
 	int length = 0;
-	while(i<command.Length && !cek){
-		if(command.TabWord[i] == ' '){
-			cek =true;
+	while (i < command.Length && !cek)
+	{
+		if (command.TabWord[i] == ' ')
+		{
+			cek = true;
 		}
-		else {
+		else
+		{
 			w.TabWord[length] = command.TabWord[i];
 			length++;
 			i++;
@@ -167,15 +177,18 @@ Word takeword(Word command, int ke){
 	w.Length = length;
 	return w;
 }
-/* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user 
-*/
+/* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user
+ */
 
-boolean IsEqual(Word w, char *c){
-	boolean equal=true;
+boolean IsEqual(Word w, char *c)
+{
+	boolean equal = true;
 	int i;
-	for(i=0;i<w.Length;i++){
-		if(w.TabWord[i]!=c[i]){
-			equal=false;
+	for (i = 0; i < w.Length; i++)
+	{
+		if (w.TabWord[i] != c[i])
+		{
+			equal = false;
 		}
 	}
 	return equal;

@@ -53,9 +53,25 @@ void help()
 
 void quit()
 {
-    save();
+    // save();
     // DeallocateArrayDin(arr);
+
+    // printf("Jangan lupa untuk save game kamu ya!\n");
+    printf("Apakah kamu ingin save game kamu? (Y/N)\n");
+    STARTINPUTKATA();
+    while (getCC() != 'Y' || getCC() != 'N')
+    {
+        printf("Input tidak valid. Silahkan masukkan Y atau N\n");
+        STARTINPUTKATA();
+    }
+
+    if (getCC() == 'Y')
+    {
+        save();
+    }
+
     printf("Game has ended\n");
+    printf("Thank you for playing BNMO\n");
     exit(0);
 }
 // I.S. Program sedang berjalan

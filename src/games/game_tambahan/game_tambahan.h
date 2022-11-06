@@ -5,11 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-//Hapus aja kalo ga perlu
+// Hapus aja kalo ga perlu
 #include "../../../boolean.h"
-#include "../../ADT/array/arraydin.h"
-#include "../../ADT/mesinkata/mesinkata.h"
-#include "../../ADT/prioQueue/prioqueue.h"
 
 void gameTambahan();
 // Game buatan pemain yang dibuat dengan command CREATE GAME

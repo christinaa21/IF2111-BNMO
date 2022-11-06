@@ -102,6 +102,7 @@ void DinerDash()
                     if (cookingAndServingQ.buffer[i].stayDuration == 0)
                     {
                         dequeueAtIdx(&cookingAndServingQ, &brokenFood, i);
+                        printf("Makanan M%d telah rusak\n", brokenFood.foodID);
                     }
                 }
 
@@ -146,7 +147,13 @@ void DinerDash()
         char command[6];
         char cookedFood[5];
         printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        scanf("%s %s", command, cookedFood);
+        // scanf("%s %s", command, cookedFood);
+        STARTINPUTKATA();
+        while (!IsEOP())
+        {
+            printf("%s ", GetCC());
+            ADVKATA();
+        }
         printf("\n");
 
         //  validasi input command
@@ -237,6 +244,7 @@ void DinerDash()
         }
     }
 
+    printf("Congratulation!\nYou've served %d food\n", successfulServe);
     printf("Game Over \n");
 }
 
