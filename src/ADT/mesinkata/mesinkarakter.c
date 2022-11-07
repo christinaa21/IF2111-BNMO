@@ -59,7 +59,7 @@ char GetCC()
 
 boolean IsEOP()
 {
-   return (currentChar == MARK);
+   return (currentChar == MARK || feof(pita));
 }
 /* Mengirimkan true jika currentChar = MARK */
 

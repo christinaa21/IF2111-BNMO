@@ -23,8 +23,8 @@ void listGame(ArrayOfGame *arr)
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
         game = arr->A[i];
-        printf("%d. ", i);
-        printf("%s\n", game.TabWord);
+        printf("%d. ", i+1);
+        printf("%s\n", WordToString(game));
     }
 }
 
@@ -38,8 +38,8 @@ void deleteGame(ArrayOfGame *arr)
     IdxTypeArrayOfGame idx;
     listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
-    scanf("%d", &idx);
-    if (idx <= 5)
+    STARTINPUTKATA();
+    if (WordToInt(currentWord) <= 5)
     {
         printf("Game tidak");
     }
@@ -47,7 +47,7 @@ void deleteGame(ArrayOfGame *arr)
     // else if () {}
     else
     {
-        DeleteGameAt(arr, (idx - 1));
+        DeleteGameAt(arr, WordToInt(currentWord)-1);
         printf("Game berhasil dihapus\n");
     }
 }
