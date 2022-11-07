@@ -19,6 +19,7 @@ void start(ArrayOfGame *arr)
         ADVWORD();
         InsertGameLast(arr, currentWord);
     }
+    printf("File Konfigurasi sistem berhasi dibaca. BNMO berhasil dijalankan\n");
 }
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi

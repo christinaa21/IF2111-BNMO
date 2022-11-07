@@ -41,7 +41,7 @@ void deleteGame(ArrayOfGame *arr)
     STARTINPUTKATA();
     if (WordToInt(currentWord) <= 5)
     {
-        printf("Game tidak");
+        printf("Game tidak dapat dihapus");
     }
     // case game ada pada queue
     // else if () {}
@@ -54,6 +54,14 @@ void deleteGame(ArrayOfGame *arr)
 
 void queueGame(Queue *qGame, ArrayOfGame arr)
 {
+    displayQueueGame(qGame);
+    printf("\n");
+    listGame(&arr);
+    printf("\n");
+    printf("Nomor game yang akan ditambahkan ke antrian: ");
+    STARTINPUTKATA();
+    enqueue(qGame, WordToInt(currentWord));
+    
 }
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
@@ -62,8 +70,16 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
-void displayQueueGame()
+void displayQueueGame(Queue *qGame)
 {
+    Queue q = copyQueue(*qGame);
+    ElTypeQueue val;
+    printf("Berikut adalah daftar antrian game-mu\n");
+    for (int i = 0; i < length(*qGame) ; i++)
+    {
+        val = q.buffer[i];
+        printf("%d. %d\n", i, val);
+    }
 }
 // I.S. Program telah berjalan
 // F.S. Menampilkan antrian game pengguna.
@@ -71,7 +87,7 @@ void displayQueueGame()
 void playGame(Queue *qGame)
 {
     int game;
-    displayQueueGame();
+    displayQueueGame(qGame);
     if (isEmpty(*qGame))
     {
         printf("Maaf, antrian game-mu kosong. Silakan menambahkan game ke antrian terlebih dahulu dengan mengetik command: QUEUE GAME\n");
