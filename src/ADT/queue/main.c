@@ -3,39 +3,47 @@
 
 int main() {
     int val;
-    Queue q;
-    CreateQueue(&q);
+    Queue q1, q2;
+    CreateQueue(&q1);
 
-    enqueue(&q, 5);
-    enqueue(&q, 12);
-    enqueue(&q, 0);
-    enqueue(&q, 3);
-    enqueue(&q, 20);
-    displayQueue(q);
+    enqueue(&q1, 5);
+    enqueue(&q1, 12);
+    enqueue(&q1, 0);
+    enqueue(&q1, 3);
+    enqueue(&q1, 20);
+    printf("q1 = ");
+    displayQueue(q1);
 
-    //dequeue(&q, &val);
-    //dequeue(&q, &val);
-    //enqueue(&q, 11);
+    q2 = copyQueue(q1);
+    printf("q2 = ");
+    displayQueue(q2);
 
-    while (length(q) > 0) {
-        displayQueue(q);
-        printf("panjang : %d\n",length(q));
-        printf("full : %d\n",isFull(q));
-        printf("empty : %d\n",isEmpty(q));
-        printf("head: %d\n",IDX_HEAD(q));
-        printf("tail: %d\n",IDX_TAIL(q));
+    printf("\n===========================\n");
+
+    //dequeue(&q1, &val);
+    //dequeue(&q1, &val);
+    //enqueue(&q1, 11);
+
+    while (length(q1) > 0) {
+        printf("q1 = ");
+        displayQueue(q1);
+        printf("panjang : %d\n",length(q1));
+        printf("full : %d\n",isFull(q1));
+        printf("empty : %d\n",isEmpty(q1));
+        printf("head: %d\n",IDX_HEAD(q1));
+        printf("tail: %d\n",IDX_TAIL(q1));
         printf("===========================\n");
-        dequeue(&q, &val); 
+        dequeue(&q1, &val); 
         printf("dequeued : %d\n",val);
     }
 
-    displayQueue(q);
+    displayQueue(q1);
 
-    printf("panjang: %d\n",length(q));
-    printf("full : %d\n",isFull(q));
-    printf("empty : %d\n",isEmpty(q));
-    printf("head: %d\n",IDX_HEAD(q));
-    printf("tail: %d\n",IDX_TAIL(q));
+    printf("panjang: %d\n",length(q1));
+    printf("full : %d\n",isFull(q1));
+    printf("empty : %d\n",isEmpty(q1));
+    printf("head: %d\n",IDX_HEAD(q1));
+    printf("tail: %d\n",IDX_TAIL(q1));
 
     return 0;
 }

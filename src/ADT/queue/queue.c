@@ -110,26 +110,28 @@ void displayQueue(Queue q){
 	else{
 		ElTypeQueue val;
 		// alt 3
-		printf("[");
+		// printf("[");
 
-		while (!isEmpty(q)){
-			dequeue(&q, &val);
-			printf("%d", val);
-			if (!isEmpty(q)){
-				printf(",");
-			}
-		}
-		printf("]\n");
-
-		// alt 2
-		// int i;
-		// for (i = IDX_HEAD(q); i <= IDX_TAIL(q); i++){
-		// 	printf("%d", q.buffer[i]);
+		// while (!isEmpty(q)){
 		// 	dequeue(&q, &val);
-		// 	if (i != IDX_TAIL(q)){
+		// 	printf("%d", val);
+		// 	if (!isEmpty(q)){
 		// 		printf(",");
 		// 	}
 		// }
+		// printf("]\n");
+
+		// alt 2
+		int i;
+		printf("[");
+		for (i = IDX_HEAD(q); i < IDX_TAIL(q); i++){
+			printf("%d", q.buffer[i]);
+			dequeue(&q, &val);
+			if (i != IDX_TAIL(q)){
+				printf(",");
+			}
+		}
+		printf("%d]\n", q.buffer[IDX_TAIL(q)]);
 		
 	}
 }
@@ -140,3 +142,15 @@ void displayQueue(Queue q){
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
+
+Queue copyQueue(Queue q){
+	Queue copy;
+	CreateQueue(&copy);
+	copy.idxHead = q.idxHead;
+	copy.idxTail = q.idxTail;
+	for (int i = 0; i < length(q); i++)
+	{
+		copy.buffer[i] = q.buffer[i];
+	}
+	return copy;
+}
