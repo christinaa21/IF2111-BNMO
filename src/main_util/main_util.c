@@ -70,13 +70,13 @@ void quit()
     // printf("Jangan lupa untuk save game kamu ya!\n");
     printf("Apakah kamu ingin save game kamu? (Y/N)\n");
     STARTINPUTKATA();
-    while (getCC() != 'Y' || getCC() != 'N')
+    while (GetCC() != 'Y' || GetCC() != 'N')
     {
         printf("Input tidak valid. Silahkan masukkan Y atau N\n");
         STARTINPUTKATA();
     }
 
-    if (getCC() == 'Y')
+    if (GetCC() == 'Y')
     {
         save();
     }

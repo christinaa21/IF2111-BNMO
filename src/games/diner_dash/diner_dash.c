@@ -51,7 +51,6 @@ void DinerDash()
     // Algoritma
 
     // Inisialisasi
-    char input[100];
     char cook[] = "COOK", serve[] = "SERVE";
 
     PrioQueue cookingAndServingQ;
@@ -147,16 +146,16 @@ void DinerDash()
         char command[6];
         char cookedFood[5];
         printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        // scanf("%s %s", command, cookedFood);
-        STARTINPUTKATA();
-        while (!IsEOP())
-        {
-            printf("%s ", GetCC());
-            ADVKATA();
-        }
+        scanf("%s %s", command, cookedFood);
+        // STARTINPUTKATA();
+        // while (!IsEOP())
+        // {
+        //     printf("%s ", GetCC());
+        //     ADVKATA();
+        // }
         printf("\n");
 
-                //  validasi input command
+        //  validasi input command
         while (!(compare(command, cook) || compare(command, serve)))
         {
             otherCommand();

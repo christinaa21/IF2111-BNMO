@@ -192,11 +192,7 @@ void displayQueuePQ(PrioQueue q)
 }
 void displayTimePQ(PrioQueue q)
 {
-	if (isEmptyPQ(q))
-	{
-		printf("");
-	}
-	else
+	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
 		while (i != IDX_TAIL(q) + 1)
@@ -219,11 +215,7 @@ void displayTimePQ(PrioQueue q)
 
 void displayStayPQ(PrioQueue q)
 {
-	if (isEmptyPQ(q))
-	{
-		printf("");
-	}
-	else
+	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
 		while (i != IDX_TAIL(q) + 1)
@@ -231,10 +223,6 @@ void displayStayPQ(PrioQueue q)
 			if (q.buffer[i].cookDuration == 0)
 			{
 				printf("M%d      | %d              \n", q.buffer[i].foodID, q.buffer[i].stayDuration);
-			}
-			else if (q.buffer[i].cookDuration > 0)
-			{
-				printf("");
 			}
 			i = (i + 1) % PQCAPACITY;
 		}

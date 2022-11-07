@@ -6,6 +6,7 @@
 #include "./src/game_util/game_util.h"
 #include "./src/games/diner_dash/diner_dash.h"
 #include "./src/games/random_number_generator/random_number_generator.h"
+#include "./src/games/game_tambahan/game_tambahan.h"
 #include "./src/main_util/main_util.h"
 
 int main()
