@@ -6,53 +6,77 @@
 #include "./src/game_util/game_util.h"
 #include "./src/games/diner_dash/diner_dash.h"
 #include "./src/games/random_number_generator/random_number_generator.h"
+#include "./src/games/game_tambahan/game_tambahan.h"
 #include "./src/main_util/main_util.h"
 
+void displaybinomo(){
+    printf(" _______   ______  __    __   ______   __       __   ______\n");
+    printf("/       \\ /      |/  \\  /  | /      \\ /  \\     /  | /      \\\n");
+    printf("$$$$$$$  |$$$$$$/ $$  \\ $$ |/$$$$$$  |$$  \\   /$$ |/$$$$$$  |\n");
+    printf("$$ |__$$ |  $$ |  $$$  \\$$ |$$ |  $$ |$$$  \\ /$$$ |$$ |  $$ |\n");
+    printf("$$    $$<   $$ |  $$$$  $$ |$$ |  $$ |$$$$  /$$$$ |$$ |  $$ | \n");
+    printf("$$ |__$$ | _$$ |_ $$ |$$$$ |$$ \\__$$ |$$ |$$$/ $$ |$$ \\__$$ |\n");
+    printf("$$    $$/ / $$   |$$ | $$$ |$$    $$/ $$ | $/  $$ |$$    $$/ \n");
+    printf("$$$$$$$/  $$$$$$/ $$/   $$/  $$$$$$/  $$/      $$/  $$$$$$/  \n");
+}
 int main()
 {
+    displaybinomo();
     ArrayOfGame ListGame;
     Queue QueueGame;
     boolean cek = false;
-    while(!cek){
+    while (!cek)
+    {
         printf("Masukkan Command: ");
         STARTINPUTKATA();
-        if(IsEqual(takeword(currentWord,1),"LOAD")){
-            Word x = takeword(currentWord,2);
-            load(WordToString(x),&ListGame);
+        if (IsEqual(takeword(currentWord, 1), "LOAD"))
+        {
+            Word x = takeword(currentWord, 2);
+            load(WordToString(x), &ListGame);
             cek = true;
         }
-        else if(IsEqual(takeword(currentWord,1),"START")){
-            start();
+        else if (IsEqual(takeword(currentWord, 1), "START"))
+        {
+            start(&ListGame);
             cek = true;
         }
-        else {
+        else
+        {
             printf("Masukkan command START atau LOAD di awal permainan\n");
         }
-    while (cek){
-        printf("Masukkan Command: ");
-        STARTINPUTKATA();
-        if(IsEqual(currentWord,"CREATE GAME")){
-            createGame(&ListGame);
+        while (cek)
+        {
+            printf("Masukkan Command: ");
+            STARTINPUTKATA();
+            if (IsEqual(currentWord, "CREATE GAME"))
+            {
+                createGame(&ListGame);
+            }
+            else if (IsEqual(currentWord, "LIST GAME"))
+            {
+                listGame(&ListGame);
+            }
+            else if (IsEqual(currentWord, "DELETE GAME"))
+            {
+                deleteGame(&ListGame);
+            }
+            else if (IsEqual(currentWord, "QUEUE GAME"))
+            {
+                queueGame(&QueueGame, ListGame);
+            }
+            else if (IsEqual(currentWord, "PLAY GAME"))
+            {
+                playGame(&QueueGame);
+            }
+            else if (IsEqual(takeword(currentWord, 1), "SKIPGAME"))
+            {
+                listGame(&ListGame);
+            }
+            else if (IsEqual(currentWord, "HELP"))
+            {
+                help();
+            }
         }
-        else if(IsEqual(currentWord,"LIST GAME")){
-            listGame(&ListGame);
-        }
-        else if(IsEqual(currentWord,"DELETE GAME")){
-            deleteGame(&ListGame);
-        }
-        else if(IsEqual(currentWord,"QUEUE GAME")){
-            queueGame(&QueueGame,ListGame);
-        }
-        else if(IsEqual(currentWord,"PLAY GAME")){
-            playGame(&QueueGame);
-        }
-        else if(IsEqual(takeword(currentWord,1),"SKIPGAME")){
-            listGame(&ListGame);
-        }
-        else if(IsEqual(currentWord,"HELP")){
-            help();        
-        }
-    }
     }
     return 0;
 }

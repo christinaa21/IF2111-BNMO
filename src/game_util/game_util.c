@@ -8,7 +8,7 @@ void createGame(ArrayOfGame *arr)
 {
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUTKATA();
-    InsertGameAt(arr, currentWord,(*arr).Neff);
+    InsertGameAt(arr, currentWord, (*arr).Neff);
     printf("Game berhasil ditambahkan\n");
 }
 // I.S. Program telah berjalan
@@ -23,8 +23,8 @@ void listGame(ArrayOfGame *arr)
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
         game = arr->A[i];
-        printf("%d. ", i);
-        printf("%s\n", game.TabWord);
+        printf("%d. ", i+1);
+        printf("%s\n", WordToString(game));
     }
 }
 
@@ -38,8 +38,8 @@ void deleteGame(ArrayOfGame *arr)
     IdxTypeArrayOfGame idx;
     listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
-    scanf("%d", &idx);
-    if (idx <= 5)
+    STARTINPUTKATA();
+    if (WordToInt(currentWord) <= 5)
     {
         printf("Game tidak");
     }
@@ -47,12 +47,14 @@ void deleteGame(ArrayOfGame *arr)
     // else if () {}
     else
     {
-        DeleteGameAt(arr, (idx - 1));
+        DeleteGameAt(arr, WordToInt(currentWord)-1);
         printf("Game berhasil dihapus\n");
     }
 }
 
-void queueGame(Queue *qGame, ArrayOfGame arr);
+void queueGame(Queue *qGame, ArrayOfGame arr)
+{
+}
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
 //      tersebut ditambahkan ke dalam antrian game pengguna.
@@ -60,7 +62,9 @@ void queueGame(Queue *qGame, ArrayOfGame arr);
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
-void displayQueueGame();
+void displayQueueGame()
+{
+}
 // I.S. Program telah berjalan
 // F.S. Menampilkan antrian game pengguna.
 
@@ -112,19 +116,26 @@ void playGame(Queue *qGame)
 // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
 //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 
-void skipGame(ArrayOfGame *arr, int n){ 
+void skipGame(ArrayOfGame *arr, int n)
+{
     // belum di cek lagi bentar gais
-    //jujur masih bingung cara baca <n> nya
-    displayQueueGame(); 
-    if (n > LengthArrayOfGame(*arr)) {
+    // jujur masih bingung cara baca <n> nya
+    displayQueueGame();
+    if (n > LengthArrayOfGame(*arr))
+    {
         printf("Tidak ada permainan lagi dalam daftar game-mu.");
-     } else if (n<1) {
+    }
+    else if (n < 1)
+    {
         printf("Maaf, nomor game yang Anda masukkan tidak valid. Nomor game harus lebih dari 0.");
-    } else {
-        for (int i =0; i<n; i++){
-            DeleteAt(arr, n+1); // delete game yang ke n
-            }
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            DeleteGameAt((arr), n + 1); // delete game yang ke n
         }
     }
+}
 // I.S. Program telah berjalan
 // F.S. Game dilewatkan sebanyak n, lalu game dimulai.

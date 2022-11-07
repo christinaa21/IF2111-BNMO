@@ -7,18 +7,18 @@
 #include "../ADT/mesinkata/mesinkata.h"
 // start, load, save, quit, help
 
-void start(char *configfile, ArrayOfGame *arr)
+void start(ArrayOfGame *arr)
 {
     int count;
     *arr = MakeArrayOfGame();
-    STARTWORD(configfile);
+    char *FILE = "config.txt";
+    STARTWORD(FILE);
     count = WordToInt(currentWord);
     for (int i = 0; i < count; i++)
     {
         ADVWORD();
         InsertGameLast(arr, currentWord);
     }
-    
 }
 // I.S. Sembarang
 // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
@@ -65,9 +65,25 @@ void help()
 
 void quit()
 {
-    save();
+    // save();
     // DeallocateArrayDin(arr);
+
+    // printf("Jangan lupa untuk save game kamu ya!\n");
+    printf("Apakah kamu ingin save game kamu? (Y/N)\n");
+    STARTINPUTKATA();
+    while (GetCC() != 'Y' || GetCC() != 'N')
+    {
+        printf("Input tidak valid. Silahkan masukkan Y atau N\n");
+        STARTINPUTKATA();
+    }
+
+    if (GetCC() == 'Y')
+    {
+        save();
+    }
+
     printf("Game has ended\n");
+    printf("Thank you for playing BNMO\n");
     exit(0);
 }
 // I.S. Program sedang berjalan
