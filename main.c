@@ -30,7 +30,7 @@ int main()
     boolean cek = false;
     while (!cek)
     {
-        printf("Masukkan Command (START / LOAD): ");
+        printf("Masukkan Command (START / LOAD <file_name>): ");
         STARTINPUTKATA();
         if (IsEqual(takeword(currentWord, 1), "LOAD"))
         {
@@ -81,9 +81,15 @@ int main()
             {
                 help();
             }
-            printf("\n");
+            else if (IsEqual(currentWord, "SAVE"))
+            {
+                save();
+            }
+            else if (IsEqual(currentWord, "QUIT"))
+            {
+                quit();
+            }
         }
-        printf("\n");
     }
     return 0;
 }

@@ -71,15 +71,16 @@ void quit()
     // printf("Jangan lupa untuk save game kamu ya!\n");
     printf("Apakah kamu ingin save game kamu? (Y/N)\n");
     STARTINPUTKATA();
-    while (GetCC() != 'Y' || GetCC() != 'N')
+    while (!(IsEqual(currentWord, "Y") || IsEqual(currentWord, "N")))
     {
-        printf("Input tidak valid. Silahkan masukkan Y atau N\n");
+        printf("Input tidak valid. Silahkan masukkan Y jika kamu ingin save progress kamu dan N jika tidak (Y/N) : \n");
         STARTINPUTKATA();
     }
 
-    if (GetCC() == 'Y')
+    if (IsEqual(currentWord, "Y"))
     {
         save();
+        printf("Game kamu berhasil disave. Sampai jumpa!\n");
     }
 
     printf("Game has ended\n");
