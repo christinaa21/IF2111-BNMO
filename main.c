@@ -9,7 +9,8 @@
 #include "./src/games/game_tambahan/game_tambahan.h"
 #include "./src/main_util/main_util.h"
 
-void displaybinomo(){
+void displaybinomo()
+{
     printf(" _______   ______  __    __   ______   __       __   ______\n");
     printf("/       \\ /      |/  \\  /  | /      \\ /  \\     /  | /      \\\n");
     printf("$$$$$$$  |$$$$$$/ $$  \\ $$ |/$$$$$$  |$$  \\   /$$ |/$$$$$$  |\n");
@@ -22,12 +23,14 @@ void displaybinomo(){
 int main()
 {
     displaybinomo();
+    printf("\n");
     ArrayOfGame ListGame;
+    MakeArrayOfGame(&ListGame);
     Queue QueueGame;
     boolean cek = false;
     while (!cek)
     {
-        printf("Masukkan Command: ");
+        printf("Masukkan Command (START / LOAD): ");
         STARTINPUTKATA();
         if (IsEqual(takeword(currentWord, 1), "LOAD"))
         {
@@ -37,6 +40,7 @@ int main()
         }
         else if (IsEqual(takeword(currentWord, 1), "START"))
         {
+            printf("Selamat datang di Binomo!\n");
             start(&ListGame);
             cek = true;
         }
@@ -46,6 +50,7 @@ int main()
         }
         while (cek)
         {
+            printf("\nKetik HELP untuk melihat list command yang dapat digunakan\n");
             printf("Masukkan Command: ");
             STARTINPUTKATA();
             if (IsEqual(currentWord, "CREATE GAME"))
@@ -68,7 +73,7 @@ int main()
             {
                 playGame(&QueueGame);
             }
-            else if (IsEqual(takeword(currentWord, 1), "SKIPGAME"))
+            else if (IsEqual(takeword(currentWord, 1), "SKIP GAME"))
             {
                 listGame(&ListGame);
             }
@@ -76,7 +81,9 @@ int main()
             {
                 help();
             }
+            printf("\n");
         }
+        printf("\n");
     }
     return 0;
 }

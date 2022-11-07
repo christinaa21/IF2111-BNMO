@@ -69,7 +69,7 @@
 # 	$(DEL) $(DEP)
 
 compile:
-	gcc ./main.c ./src/ADT/arrayOfGame/arrayOfGame.c ./src/ADT/mesinkata/mesinkata.c ./src/ADT/mesinkata/mesinkarakter.c ./src/ADT/prioQueue/prioQueue.c ./src/ADT/queue/queue.c ./src/game_util/game_util.c ./src/games/diner_dash/diner_dash.c ./src/games/game_tambahan/game_tambahan.c ./src/games/random_number_generator/random_number_generator.c ./src/main_util/main_util.c 
+	@gcc -o main ./main.c ./src/ADT/arrayOfGame/arrayOfGame.c ./src/ADT/mesinkata/mesinkata.c ./src/ADT/mesinkata/mesinkarakter.c ./src/ADT/prioQueue/prioQueue.c ./src/ADT/queue/queue.c ./src/game_util/game_util.c ./src/games/diner_dash/diner_dash.c ./src/games/game_tambahan/game_tambahan.c ./src/games/random_number_generator/random_number_generator.c ./src/main_util/main_util.c 
 
 compile2:
-	gcc .\main.c .\src\ADT\arrayOfGame\arrayOfGame.c .\src\ADT\mesinkata\mesinkata.c .\src\ADT\mesinkata\mesinkarakter.c .\src\ADT\prioQueue\prioQueue.c .\src\ADT\queue\queue.c .\src\game_util\game_util.c .\src\games\diner_dash\diner_dash.c .\src\games\game_tambahan\game_tambahan.c .\src\random_number_generator\random_number_generator.c .\src\main_util\main_util.c
+	@gcc -o main .\main.c .\src\ADT\arrayOfGame\arrayOfGame.c .\src\ADT\mesinkata\mesinkata.c .\src\ADT\mesinkata\mesinkarakter.c .\src\ADT\prioQueue\prioQueue.c .\src\ADT\queue\queue.c .\src\game_util\game_util.c .\src\games\diner_dash\diner_dash.c .\src\games\game_tambahan\game_tambahan.c .\src\random_number_generator\random_number_generator.c .\src\main_util\main_util.c
