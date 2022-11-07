@@ -37,7 +37,7 @@ int main()
         }
         else if (IsEqual(takeword(currentWord, 1), "START"))
         {
-            start();
+            start(&ListGame);
             cek = true;
         }
         else

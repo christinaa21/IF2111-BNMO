@@ -7,11 +7,12 @@
 #include "../ADT/mesinkata/mesinkata.h"
 // start, load, save, quit, help
 
-void start(char *configfile, ArrayOfGame *arr)
+void start(ArrayOfGame *arr)
 {
     int count;
     *arr = MakeArrayOfGame();
-    STARTWORD(configfile);
+    char *FILE = "config.txt";
+    STARTWORD(FILE);
     count = WordToInt(currentWord);
     for (int i = 0; i < count; i++)
     {
