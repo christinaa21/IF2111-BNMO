@@ -9,8 +9,19 @@
 #include "./src/games/game_tambahan/game_tambahan.h"
 #include "./src/main_util/main_util.h"
 
+void displaybinomo(){
+    printf(" _______   ______  __    __   ______   __       __   ______\n");
+    printf("/       \\ /      |/  \\  /  | /      \\ /  \\     /  | /      \\\n");
+    printf("$$$$$$$  |$$$$$$/ $$  \\ $$ |/$$$$$$  |$$  \\   /$$ |/$$$$$$  |\n");
+    printf("$$ |__$$ |  $$ |  $$$  \\$$ |$$ |  $$ |$$$  \\ /$$$ |$$ |  $$ |\n");
+    printf("$$    $$<   $$ |  $$$$  $$ |$$ |  $$ |$$$$  /$$$$ |$$ |  $$ | \n");
+    printf("$$ |__$$ | _$$ |_ $$ |$$$$ |$$ \\__$$ |$$ |$$$/ $$ |$$ \\__$$ |\n");
+    printf("$$    $$/ / $$   |$$ | $$$ |$$    $$/ $$ | $/  $$ |$$    $$/ \n");
+    printf("$$$$$$$/  $$$$$$/ $$/   $$/  $$$$$$/  $$/      $$/  $$$$$$/  \n");
+}
 int main()
 {
+    displaybinomo();
     ArrayOfGame ListGame;
     Queue QueueGame;
     boolean cek = false;
