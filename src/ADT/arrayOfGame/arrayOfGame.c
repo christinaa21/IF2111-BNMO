@@ -88,9 +88,16 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 	{
 		int newCapacity = capacity + InitialSize;
 		ElTypeArrayOfGame *arr = (ElTypeArrayOfGame *)malloc(newCapacity * sizeof(ElTypeArrayOfGame));
+		ElTypeArrayOfGame game;
 		for (j = 0; j < length; j++)
 		{
-			arr[j] = GetGame(*array, j);
+			game = GetGame(*array, j);
+			arr[j].Length = game.Length;
+			for (int k = 0; k < game.Length; k++)
+			{
+				arr[j].TabWord[k] = game.TabWord[k];
+			}
+			
 		}
 		free((*array).A);
 
@@ -100,10 +107,19 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 
 	for (j = length - 1; j >= i; j--)
 	{
-		(*array).A[j + 1] = (*array).A[j];
+		(*array).A[j + 1].Length = (*array).A[j].Length;
+		for (int k = 0; k < (*array).A[j].Length; k++)
+		{
+			(*array).A[j+1].TabWord[k] = (*array).A[j].TabWord[k];
+		}
 	}
 
-	(*array).A[i] = el;
+	(*array).A[i].Length = el.Length;
+	for (j = 0; j < el.Length; j++)
+	{
+		(*array).A[i].TabWord[j] = el.TabWord[j];
+	}
+	
 	(*array).Neff++;
 	// int temp = 0;
 
@@ -178,12 +194,17 @@ void DeleteGameFirst(ArrayOfGame *array)
  */
 void PrintArrayOfGame(ArrayOfGame array)
 {
+	Word w;
+	char *s;
 	printf("[");
 	int i;
 	for (i = 0; i < (array).Neff; i++)
 	{
-		printf("(%d,", (array).A[i].Length);
-		printf("%s)", (array).A[i].TabWord);
+		w = (array).A[i];
+		s = WordToString(w);
+		printf("(%d,", w.Length);
+		printf("%s)", s);
+		
 		if (i < array.Neff - 1)
 		{
 			printf(", ");
@@ -231,13 +252,26 @@ ArrayOfGame CopyArrayOfGame(ArrayOfGame array)
  */
 IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 {
-	int i;
-	for (i = 0; i < array.Neff; i++)
+	IdxTypeArrayOfGame i = 0;
+	boolean found = false;
+	char *s1, *s2;
+	while (i < array.Neff && !found)
 	{
-		if (array.A[i].TabWord == el.TabWord && array.A[i].Length == el.Length)
+		s1 = WordToString(array.A[i]);
+		s2 = WordToString(el);
+
+		if (s1 == s2)
 		{
-			return i;
+			found = true;
 		}
+		
 	}
-	return -1;
+
+	if (found)
+	{
+		return i;
+	} else {
+		return -1;
+	}
+	
 }
