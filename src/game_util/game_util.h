@@ -43,16 +43,16 @@ void deleteGame(ArrayOfGame *arr);
  */
 void queueGame(Queue *qGame, ArrayOfGame arr);
 
-void displayQueueGame();
+void displayQueueGame(Queue *qGame);
 // I.S. Program telah berjalan
 // F.S. Menampilkan antrian game pengguna.
 
-void playGame();
+void playGame(Queue *qGame);
 // I.S. Program telah berjalan
 // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
 //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 
-void skipGame(ArrayOfGame *arr, int n, Queue qGame);
+void skipGame(int n, Queue *qGame);
 // I.S. Program telah berjalan
 // F.S. Game dilewatkan sebanyak n, lalu game dimulai.
 

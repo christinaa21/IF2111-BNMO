@@ -76,7 +76,7 @@ int main()
             }
             else if (IsEqual(takeword(currentWord, 1), "SKIPGAME"))
             {
-                listGame(&ListGame);
+                skipGame(WordToInt(takeword(currentWord, 2)), &QueueGame);
             }
             else if (IsEqual(currentWord, "HELP"))
             {

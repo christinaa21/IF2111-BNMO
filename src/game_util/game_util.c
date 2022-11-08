@@ -66,7 +66,8 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
         printf("Nomor game yang akan ditambahkan ke antrian: ");
         STARTINPUTKATA();
     }
-    enqueue(qGame, currentWord);
+    enqueue(qGame, arr.A[WordToInt(currentWord) - 1]);
+    // enqueue(qGame, currentWord);
 }
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
@@ -77,17 +78,17 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
 
 void displayQueueGame(Queue *qGame)
 {
-    Queue q = copyQueue(*qGame);
-    ElTypeQueue val;
-    printf("Berikut adalah daftar antrian game-mu\n");
+    // printf("Berikut adalah daftar antrian game-mu\n");
     // printf("%d\n", length(*qGame));
     int j = 1, i = IDX_HEAD(*qGame);
-    while (i != IDX_TAIL(*qGame) + 1)
+    if (!isEmpty(*qGame))
     {
-        val = q.buffer[i];
-        printf("%d. %d\n", j, val);
-        j++;
-        i = (i + 1) % CAPACITY;
+        while (i != IDX_TAIL(*qGame) + 1)
+        {
+            printf("%d. %s\n", j, WordToString((*qGame).buffer[i]));
+            j++;
+            i = (i + 1) % CAPACITY;
+        }
     }
 }
 // I.S. Program telah berjalan
@@ -144,11 +145,12 @@ void playGame(Queue *qGame)
 // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
 //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 
-void skipGame(ArrayOfGame *arr, int n, Queue *qGame)
+void skipGame(int n, Queue *qGame)
 {
     // belum di cek lagi bentar gais
     // jujur masih bingung cara baca <n> nya
-    displayQueueGame(&qGame);
+    displayQueueGame(qGame);
+    printf("\n");
     if (n > length(*qGame))
     {
         printf("Tidak ada permainan lagi dalam daftar game-mu.");
@@ -164,7 +166,7 @@ void skipGame(ArrayOfGame *arr, int n, Queue *qGame)
         {
             dequeue(qGame, &skipped); // delete game yang ke n
         }
-        playGame(&qGame); 
+        playGame(qGame);
     }
 }
 // I.S. Program telah berjalan
