@@ -43,8 +43,7 @@ void deleteGame(ArrayOfGame *arr)
     {
         printf("Game tidak dapat dihapus");
     }
-    // case game ada pada queue
-    // else if () {}
+
     else
     {
         DeleteGameAt(arr, WordToInt(currentWord) - 1);
@@ -67,6 +66,9 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
         STARTINPUTKATA();
     }
     enqueue(qGame, arr.A[WordToInt(currentWord) - 1]);
+    printf("Game berhasil ditambahkan ke antrian\n");
+    printf("Sekarang ini adalah list game mu: \n");
+    displayQueueGame(qGame);
     // enqueue(qGame, currentWord);
 }
 // I.S. Program telah berjalan
@@ -97,7 +99,7 @@ void displayQueueGame(Queue *qGame)
 void playGame(Queue *qGame)
 {
     Word game;
-    printf("Berikut adalah daftar antrian game-mu\n");
+    printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(qGame);
     if (isEmpty(*qGame))
     {
@@ -150,6 +152,7 @@ void skipGame(int n, Queue *qGame)
 {
     // belum di cek lagi bentar gais
     // jujur masih bingung cara baca <n> nya
+    printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(qGame);
     printf("\n");
     if (n > length(*qGame))
