@@ -66,6 +66,9 @@ void displayQueue(Queue q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 
-Queue copyQueue(Queue q);
+void copyQueue(Queue *queueInput, Queue *queueOutput);
+/* Proses: Menyalin isi dari queueInput ke queueOutput */
+/* I.S. queueInput mungkin kosong, tabel penampung elemen queueInput TIDAK penuh */
+/* F.S. queueOutput memiliki isi queue yang sama */
 
 #endif

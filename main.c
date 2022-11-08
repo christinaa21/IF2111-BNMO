@@ -89,7 +89,7 @@ int main()
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
-                quit();
+                quit(ListGame);
             }
             else
             {
