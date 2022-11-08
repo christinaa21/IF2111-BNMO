@@ -11,7 +11,7 @@ void start(ArrayOfGame *arr)
 {
     int count;
     *arr = MakeArrayOfGame();
-    char *FILE = "config.txt";
+    char *FILE = "../config.txt";
     STARTWORD(FILE);
     count = WordToInt(currentWord);
     for (int i = 0; i < count; i++)
