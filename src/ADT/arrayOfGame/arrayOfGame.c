@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArrayOfGame.h"
+#include "arrayOfGame.h"
 
 /**
  * Konstruktor
@@ -264,7 +264,7 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 		{
 			found = true;
 		}
-		
+		i++;
 	}
 
 	if (found)
