@@ -4,13 +4,15 @@
 int main() {
     int val;
     Queue q1, q2;
+    char *pita = "../../../Data/gamelist.txt";
+    ElTypeQueue g1, g2, g3, g4, g5;
     CreateQueue(&q1);
 
-    enqueue(&q1, 5);
-    enqueue(&q1, 12);
-    enqueue(&q1, 0);
-    enqueue(&q1, 3);
-    enqueue(&q1, 20);
+    enqueue(&q1, g1);
+    enqueue(&q1, g2);
+    enqueue(&q1, g3);
+    enqueue(&q1, g4);
+    enqueue(&q1, g5);
     printf("q1 = ");
     displayQueue(q1);
 
