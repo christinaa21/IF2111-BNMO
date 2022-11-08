@@ -132,11 +132,11 @@ void playGame(Queue *qGame)
 // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
 //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 
-void skipGame(ArrayOfGame *arr, int n)
+void skipGame(ArrayOfGame *arr, int n, Queue qGame)
 {
     // belum di cek lagi bentar gais
     // jujur masih bingung cara baca <n> nya
-    displayQueueGame();
+    displayQueueGame(&qGame);
     if (n > LengthArrayOfGame(*arr))
     {
         printf("Tidak ada permainan lagi dalam daftar game-mu.");

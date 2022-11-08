@@ -40,8 +40,17 @@ void load(char *savefile, ArrayOfGame *arrGame)
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 
-void save()
-{
+void save(char *savefile, ArrayOfGame arrGame){
+    FILE *fp;
+    int i;
+    char * game;
+    fp = fopen(savefile, "w+");
+    fprintf(fp, "%d\n", LengthArrayOfGame(arrGame));
+    for (i=0;i<LengthArrayOfGame(arrGame);i++) {
+        game = WordToString((arrGame).A[i]);
+        fprintf(fp, "%s\n", game);
+    }
+    fclose(fp);
 }
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
@@ -64,7 +73,7 @@ void help()
 // I.S. Program telah berjalan
 // F.S. Menampilkan bantuan untuk penggunaan program
 
-void quit()
+void quit(ArrayOfGame arrGame)
 {
     // save();
     // DeallocateArrayDin(arr);
@@ -80,7 +89,11 @@ void quit()
 
     if (IsEqual(currentWord, "Y"))
     {
-        save();
+        char * savefile;
+        printf("Masukkan nama file penyimpanan: ");
+        STARTINPUTKATA();
+        savefile = WordToString(currentWord);
+        save(savefile, arrGame);
         printf("Game kamu berhasil disave. Sampai jumpa!\n");
     }
 
