@@ -16,7 +16,7 @@ void load(char* savefile, ArrayOfGame *arrGame);
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 
-void save();
+void save(char *savefile, ArrayOfGame arrGame);
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
 

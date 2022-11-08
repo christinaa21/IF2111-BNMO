@@ -40,8 +40,19 @@ void load(char *savefile, ArrayOfGame *arrGame)
 // I.S. Program telah berjalan
 // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
 
-void save()
+void save(char *savefile, ArrayOfGame arrGame)
 {
+    FILE *fp;
+    int i;
+    char *game;
+    fp = fopen(savefile, "w+");
+    fprintf(fp, "%d\n", LengthArrayOfGame(arrGame));
+    for (i = 0; i < LengthArrayOfGame(arrGame); i++)
+    {
+        game = WordToString((arrGame).A[i]);
+        fprintf(fp, "%s\n", game);
+    }
+    fclose(fp);
 }
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
@@ -52,19 +63,19 @@ void help()
     printf("Berikut adalah hal-hal yang bisa kamu lakukan :\n");
     // printf("01. START           : untuk memulai BNMO\n");
     // printf("02. LOAD <filename> : untuk membuka file yang berisi game\n");
-    printf("03. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
-    printf("04. CREATE GAME     : untuk menambahkan game baru pada daftar game\n");
-    printf("05. LIST GAME       : untuk menampilkan daftar game yang disediakan oleh sistem\n");
-    printf("06. DELETE GAME     : untuk menghapus sebuah game dari daftar game\n");
-    printf("07. QUEUE GAME      : untuk mendaftarkan permainan kedalam list\n");
-    printf("08. PLAY GAME       : ntuk memainkan sebuah permainan\n");
-    printf("09. QUIT            : untuk keluar dari program\n");
-    printf("10. HELP            : untuk melihat informasi dari command-command\n");
+    printf("01. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
+    printf("02. CREATE GAME     : untuk menambahkan game baru pada daftar game\n");
+    printf("03. LIST GAME       : untuk menampilkan daftar game yang disediakan oleh sistem\n");
+    printf("04. DELETE GAME     : untuk menghapus sebuah game dari daftar game\n");
+    printf("05. QUEUE GAME      : untuk mendaftarkan permainan kedalam list\n");
+    printf("06. PLAY GAME       : ntuk memainkan sebuah permainan\n");
+    printf("07. QUIT            : untuk keluar dari program\n");
+    printf("08. HELP            : untuk melihat informasi dari command-command\n");
 }
 // I.S. Program telah berjalan
 // F.S. Menampilkan bantuan untuk penggunaan program
 
-void quit()
+void quit(ArrayOfGame arrGame)
 {
     // save();
     // DeallocateArrayDin(arr);
@@ -80,7 +91,11 @@ void quit()
 
     if (IsEqual(currentWord, "Y"))
     {
-        save();
+        char *savefile;
+        printf("Masukkan nama file penyimpanan: ");
+        STARTINPUTKATA();
+        savefile = WordToString(currentWord);
+        save(savefile, arrGame);
         printf("Game kamu berhasil disave. Sampai jumpa!\n");
     }
 
