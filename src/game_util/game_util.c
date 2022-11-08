@@ -60,7 +60,13 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
     printf("\n");
     printf("Nomor game yang akan ditambahkan ke antrian: ");
     STARTINPUTKATA();
-    enqueue(qGame, WordToInt(currentWord));
+
+    while (WordToInt(currentWord) > LengthArrayOfGame(arr) || WordToInt(currentWord) < 1)
+    {
+        printf("Nomor game yang akan ditambahkan ke antrian: ");
+        STARTINPUTKATA();
+    }
+    enqueue(qGame, currentWord);
 }
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
@@ -74,11 +80,14 @@ void displayQueueGame(Queue *qGame)
     Queue q = copyQueue(*qGame);
     ElTypeQueue val;
     printf("Berikut adalah daftar antrian game-mu\n");
-    printf("%d\n", length(*qGame));
-    for (int i = 0; i < length(*qGame); i++)
+    // printf("%d\n", length(*qGame));
+    int j = 1, i = IDX_HEAD(*qGame);
+    while (i != IDX_TAIL(*qGame) + 1)
     {
         val = q.buffer[i];
-        printf("%d. %d\n", i + 1, val);
+        printf("%d. %d\n", j, val);
+        j++;
+        i = (i + 1) % CAPACITY;
     }
 }
 // I.S. Program telah berjalan
