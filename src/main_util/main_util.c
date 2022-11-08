@@ -27,7 +27,9 @@ void start(ArrayOfGame *arr)
 void load(char *savefile, ArrayOfGame *arrGame)
 {
     *arrGame = MakeArrayOfGame();
-    STARTWORD(savefile);
+    char* path = "../../../Data/";
+    char * newfile = ConcateChar(path, savefile);
+    STARTWORD(newfile);
     int count = WordToInt(currentWord);
     int i;
     for (i = 0; i < count; i++)
