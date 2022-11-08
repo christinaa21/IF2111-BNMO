@@ -170,7 +170,36 @@ void skipGame(int n, Queue *qGame)
         {
             dequeue(qGame, &skipped); // delete game yang ke n
         }
-        playGame(qGame);
+        
+        Word game; 
+        dequeue(qGame, &game);
+        if (IsEqual(game, "RNG"))
+        {
+            printf("Game yang dimainkan adalah RNG\n");
+            RNG();
+        }
+        else if (IsEqual(game, "DINER DASH"))
+        {
+            printf("Game yang dimainkan adalah Diner Dash\n");
+            DinerDash();
+        }
+        else if (IsEqual(game, "DINOSAUR IN EARTH"))
+        {
+            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+        }
+        else if (IsEqual(game, "RISEWOMAN"))
+        {
+            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+        }
+        else if (IsEqual(game, "EIFFEL TOWER"))
+        {
+            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+        }
+        else
+        {
+            printf("Game yang dimainkan adalah %s\n", WordToString(game));
+            gameTambahan();
+        }
     }
 }
 // I.S. Program telah berjalan
