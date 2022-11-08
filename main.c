@@ -82,9 +82,10 @@ int main()
             {
                 help();
             }
-            else if (IsEqual(currentWord, "SAVE"))
+            else if (IsEqual(takeword(currentWord, 1), "SAVE"))
             {
-                // save();
+                Word x = takeword(currentWord, 2);
+                save(WordToString(x), ListGame);
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
