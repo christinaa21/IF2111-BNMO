@@ -54,23 +54,23 @@ int main()
             printf("\nKetik HELP untuk melihat list command yang dapat digunakan\n");
             printf("Masukkan Command: ");
             STARTINPUTKATA();
-            if (IsEqual(currentWord, "CREATEGAME"))
+            if (IsEqual(currentWord, "CREATE GAME"))
             {
                 createGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "LISTGAME"))
+            else if (IsEqual(currentWord, "LIST GAME"))
             {
                 listGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "DELETEGAME"))
+            else if (IsEqual(currentWord, "DELETE GAME"))
             {
                 deleteGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "QUEUEGAME"))
+            else if (IsEqual(currentWord, "QUEUE GAME"))
             {
                 queueGame(&QueueGame, ListGame);
             }
-            else if (IsEqual(currentWord, "PLAYGAME"))
+            else if (IsEqual(currentWord, "PLAY GAME"))
             {
                 playGame(&QueueGame);
             }
