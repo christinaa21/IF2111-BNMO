@@ -57,6 +57,7 @@ void save(char *savefile, ArrayOfGame arrGame)
         fprintf(fp, "%s\n", game);
     }
     fclose(fp);
+    printf("Save file berhasil disimpan.\n");
 }
 // I.S. Program telah berjalan
 // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
