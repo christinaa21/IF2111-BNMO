@@ -6,7 +6,7 @@ int main() {
 	char* file = "file.txt";
     /* Tes Mesin Karakter */
     START(file);
-    while (!IsEOP()) {
+    while (!EOP) {
         printf("GetCC: %c\n", GetCC());
         ADV();
     }
@@ -24,7 +24,9 @@ int main() {
 	printf("%s\n", kata);
 	int kata_int = WordToInt(currentWord);
 	printf("%d\n", kata_int);
-	while (!IsEOP()) {
+	printf("%d\n", EOP);
+	printf("%d\n", !EOP);
+	while (!EOP) {
 		ADVWORD();
 		printf("WordLength: %d\n", currentWord.Length);
 		kata = WordToString(currentWord);

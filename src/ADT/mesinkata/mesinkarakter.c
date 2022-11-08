@@ -57,10 +57,10 @@ char GetCC()
 }
 /* Mengirimkan currentChar */
 
-boolean IsEOP()
-{
-   return (currentChar == MARK || feof(pita));
-}
+// boolean IsEOP()
+// {
+//    return (currentChar == MARK || feof(pita));
+// }
 /* Mengirimkan true jika currentChar = MARK */
 
 // int main() {

@@ -23,7 +23,7 @@ void STARTWORD(char *FILE)
 	START(FILE);
 	IgnoreBlanks();
 
-	if (IsEOP())
+	if (EOP)
 	{
 		EndWord = true;
 	}
@@ -56,7 +56,7 @@ void STARTINPUTKATA()
 void ADVWORD()
 {
 	IgnoreBlanks();
-	if (IsEOP())
+	if (EOP)
 	{
 		EndWord = true;
 	}
