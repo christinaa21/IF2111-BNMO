@@ -95,7 +95,7 @@ void displayQueueGame(Queue *qGame)
 
 void playGame(Queue *qGame)
 {
-    int game;
+    Word game;
     displayQueueGame(qGame);
     if (isEmpty(*qGame))
     {
@@ -111,28 +111,31 @@ void playGame(Queue *qGame)
                     4 = Risewoman
                     5 = Eiffel Tower */
         dequeue(qGame, &game);
-        if (game == 1)
+        if (IsEqual(game, "RNG"))
         {
+            printf("Game yang dimainkan adalah RNG\n");
             RNG();
         }
-        else if (game == 2)
+        else if (IsEqual(game, "DINER DASH"))
         {
+            printf("Game yang dimainkan adalah Diner Dash\n");
             DinerDash();
         }
-        else if (game == 3)
+        else if (IsEqual(game, "DINOSAUR IN EARTH"))
         {
             printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
-        else if (game == 4)
+        else if (IsEqual(game, "RISEWOMAN"))
         {
             printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
-        else if (game == 5)
+        else if (IsEqual(game, "EIFFEL TOWER"))
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
         else
         {
+            printf("Game yang dimainkan adalah %s\n", WordToString(game));
             gameTambahan();
         }
     }
