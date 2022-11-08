@@ -42,6 +42,12 @@ void deleteGame(ArrayOfGame *arr);
  *      Antrian game ini akan hilang ketika pemain menjalankan command quit.
  */
 void queueGame(Queue *qGame, ArrayOfGame arr);
+// I.S. Program telah berjalan
+// F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
+//      tersebut ditambahkan ke dalam antrian game pengguna.
+//      Jika nomor game yang dipilih tidak ada pada daftar game yang tersedia, maka
+//      ditampilkan pesan error pada layar.
+//      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
 void displayQueueGame(Queue *qGame);
 // I.S. Program telah berjalan

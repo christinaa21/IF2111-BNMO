@@ -26,8 +26,8 @@ void createFood(PQElType *food, int id)
 {
     srand(time(NULL));
     (*food).foodID = id;
-    (*food).cookDuration = rand() % 4 + 1;
-    (*food).stayDuration = (rand() * 5 + rand() * 2) % 4 + 1;
+    (*food).cookDuration = rand() % 5 + 1;
+    (*food).stayDuration = (rand() * 5 + rand() * 2) % 5 + 1;
     (*food).price = (rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100 + (rand() % 9) * 10 + (rand() % 9);
 }
 
@@ -53,7 +53,7 @@ void DinerDash()
     // Inisialisasi
     char cook[] = "COOK", serve[] = "SERVE";
 
-    PrioQueue cookingAndServingQ;
+    array cookingAndServingQ;
     CreateQueuePQ(&cookingAndServingQ);
 
     PrioQueue waitingQ;
@@ -146,7 +146,7 @@ void DinerDash()
         char command[6];
         char cookedFood[5];
         printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        scanf("%s %s", command, cookedFood);
+        // scanf("%s %s", command, cookedFood);
         // STARTINPUTKATA();
         // while (!IsEOP())
         // {
@@ -159,14 +159,14 @@ void DinerDash()
         while (!(compare(command, cook) || compare(command, serve)))
         {
             otherCommand();
-            printf("Masukkan command: ");
+            printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
             scanf("%s %s", command, cookedFood);
         }
 
-        while (!(compare(cookedFood, "M0") || compare(cookedFood, "M1") || compare(cookedFood, "M2") || compare(cookedFood, "M3") || compare(cookedFood, "M4") || compare(cookedFood, "M5") || compare(cookedFood, "M6") || compare(cookedFood, "M7") || compare(cookedFood, "M8") || compare(cookedFood, "M9")))
+        while (!((cookedFood, "M0") || compare(cookedFood, "M1") || compare(cookedFood, "M2") || compare(cookedFood, "M3") || compare(cookedFood, "M4") || compare(cookedFood, "M5") || compare(cookedFood, "M6") || compare(cookedFood, "M7") || compare(cookedFood, "M8") || compare(cookedFood, "M9")))
         {
             otherCommand();
-            printf("Masukkan command: ");
+            printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
             scanf("%s %s", command, cookedFood);
         }
 
@@ -235,7 +235,7 @@ void DinerDash()
 
         printf("=============================================================================================\n\n");
         delay(500);
-        if (len < 10)
+        if (successfulServe != 15)
         {
             createFood(&food.buffer[len], len);
             enqueuePQ(&food, food.buffer[len]);

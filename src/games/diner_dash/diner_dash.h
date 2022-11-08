@@ -9,6 +9,7 @@
 #include "../../main_util/main_util.h"
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/prioQueue/prioqueue.h"
+#include "../../ADT/list/list.h"
 
 boolean compare(char str1[], char str2[]);
 // mengembalikan true jika str1 sama dengan str2

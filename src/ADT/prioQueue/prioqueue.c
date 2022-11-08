@@ -1,4 +1,4 @@
-#include <stdio.h>
+// #include <stdio.h>
 #include "prioqueue.h"
 #include "boolean.h"
 
@@ -133,36 +133,31 @@ void dequeuePQ(PrioQueue *q, PQElType *val)
 	}
 }
 
-void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
-{
-	// printf("dequeue at idx %d\n", idx);
-	*val = (*q).buffer[idx];
-	// printf("food id %d\n", (*val).foodID);
-	// printf("cook duration %d\n", (*val).cookDuration);
-	// printf("stay duration %d\n", (*val).stayDuration);
-	// printf("price %d\n", (*val).price);
+// void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
+// {
+// 	// printf("dequeue at idx %d\n", idx);
+// 	*val = (*q).buffer[idx];
 
-	//
-	if (IDX_HEAD(*q) == IDX_TAIL(*q))
-	{
-		IDX_HEAD(*q) = IDX_UNDEF;
-		IDX_TAIL(*q) = IDX_UNDEF;
-	}
+// 	if (IDX_HEAD(*q) == IDX_TAIL(*q))
+// 	{
+// 		IDX_HEAD(*q) = IDX_UNDEF;
+// 		IDX_TAIL(*q) = IDX_UNDEF;
+// 	}
 
-	else
-	{
-		// printf("IDX_HEAD(*q) %d\n", IDX_HEAD(*q));
-		// printf("IDX_TAIL(*q) %d\n", IDX_TAIL(*q));
+// 	else
+// 	{
+// 		// printf("IDX_HEAD(*q) %d\n", IDX_HEAD(*q));
+// 		// printf("IDX_TAIL(*q) %d\n", IDX_TAIL(*q));
 
-		int i = IDX_HEAD(*q) + idx;
-		while (i != IDX_TAIL(*q) + 1)
-		{
-			(*q).buffer[i] = (*q).buffer[i + 1];
-			i = (i + 1) % PQCAPACITY;
-		}
-		IDX_TAIL(*q) = (IDX_TAIL(*q) - 1) % PQCAPACITY;
-	}
-}
+// 		int i = IDX_HEAD(*q) + idx;
+// 		while (i != IDX_TAIL(*q) + 1)
+// 		{
+// 			(*q).buffer[i] = (*q).buffer[i + 1];
+// 			i = (i + 1) % PQCAPACITY;
+// 		}
+// 		IDX_TAIL(*q) = (IDX_TAIL(*q) - 1) % PQCAPACITY;
+// 	}
+// }
 /* Proses: Menghapus val pada q  pada indeks idx */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen q pada indeks idx pd I.S., IDX_TAIL "mundur";

@@ -11,7 +11,7 @@ void start(ArrayOfGame *arr)
 {
     int count;
     *arr = MakeArrayOfGame();
-    char *FILE = "config.txt";
+    char *FILE = "./config.txt";
     STARTWORD(FILE);
     count = WordToInt(currentWord);
     for (int i = 0; i < count; i++)
@@ -27,8 +27,8 @@ void start(ArrayOfGame *arr)
 void load(char *savefile, ArrayOfGame *arrGame)
 {
     *arrGame = MakeArrayOfGame();
-    char* path = "Data/";
-    char * newfile = ConcateChar(path, savefile);
+    char *path = "Data/";
+    char *newfile = ConcateChar(path, savefile);
     STARTWORD(newfile);
     int count = WordToInt(currentWord);
     int i;
@@ -46,9 +46,9 @@ void save(char *savefile, ArrayOfGame arrGame)
 {
     FILE *fp;
     int i;
-    char * game;
-    char* path = "Data/";
-    char * newfile = ConcateChar(path, savefile);
+    char *game;
+    char *path = "Data/";
+    char *newfile = ConcateChar(path, savefile);
     fp = fopen(newfile, "w+");
     fprintf(fp, "%d\n", LengthArrayOfGame(arrGame));
     for (i = 0; i < LengthArrayOfGame(arrGame); i++)
