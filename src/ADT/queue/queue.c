@@ -152,7 +152,7 @@ void displayQueue(Queue q){
 				printf(",");
 			}
 		}
-		printf("%d]\n", WordToString(q.buffer[IDX_TAIL(q)]));
+		printf("%s]\n", WordToString(q.buffer[IDX_TAIL(q)]));
 
 	}
 }
