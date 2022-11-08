@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArrayOfGame.h"
+#include "arrayOfGame.h"
 
 /**
  * Konstruktor
