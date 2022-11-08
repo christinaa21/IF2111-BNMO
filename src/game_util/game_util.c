@@ -109,15 +109,15 @@ void playGame(Queue *qGame)
         {
             DinerDash();
         }
-        else if (game >= 3)
+        else if (game == 3)
         {
             printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
-        else if (game >= 4)
+        else if (game == 4)
         {
             printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
-        else if (game >= 5)
+        else if (game == 5)
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }

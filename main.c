@@ -84,7 +84,7 @@ int main()
             }
             else if (IsEqual(currentWord, "SAVE"))
             {
-                save();
+                // save();
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
