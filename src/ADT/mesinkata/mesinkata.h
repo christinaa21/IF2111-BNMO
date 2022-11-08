@@ -62,9 +62,17 @@ char * WordToString (Word word);
 /*Merubah tipe data dari word menjadi string 
 Mengembalikan nilai hasil convert dari word ke string*/
 
+Word StringtoWord (char*string);
+/* Merubah tipe data dari string menjadi word
+Mengembalikan nilai hasil convert dari string ke word. */
+
 Word takeword(Word command, int ke);
 /* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user 
 */
+
+char * ConcateChar(char * path, char * filename);
+/* Menggabungkan dua buah variabel bertipe char.
+Dalam program ini, kedua variabel tersebut adalah path dan filename */
 
 boolean IsEqual(Word w, char *c);
 /* Mengembalikan true jika kata w tersebut sama dengan string c

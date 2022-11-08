@@ -97,6 +97,7 @@ void displayQueueGame(Queue *qGame)
 void playGame(Queue *qGame)
 {
     Word game;
+    printf("Berikut adalah daftar antrian game-mu\n");
     displayQueueGame(qGame);
     if (isEmpty(*qGame))
     {

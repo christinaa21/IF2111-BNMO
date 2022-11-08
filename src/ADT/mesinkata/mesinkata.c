@@ -129,6 +129,20 @@ char *WordToString(Word word)
 /*Merubah tipe data dari word menjadi string
 Mengembalikan nilai hasil convert dari word ke string*/
 
+Word StringtoWord (char*string) {
+	Word kata;
+	int i = 0;
+	kata.Length = 0;
+	while (string[i] != '\0') {
+		kata.TabWord[i] = string[i];
+		kata.Length++;
+		i++;
+	}
+	return kata;
+}
+/* Merubah tipe data dari string menjadi word
+Mengembalikan nilai hasil convert dari string ke word. */
+
 Word takeword(Word command, int ke)
 {
 	Word w;
@@ -166,6 +180,23 @@ Word takeword(Word command, int ke)
 }
 /* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user
  */
+
+char * ConcateChar(char * path, char * filename) {
+	int i;
+	int j = 0;
+	Word dir = StringtoWord(path);
+	Word file = StringtoWord(filename);
+	int len = dir.Length+file.Length;
+	for (i=dir.Length;i<len;i++) {
+        dir.TabWord[i] = file.TabWord[j];
+        dir.Length++;
+        j++;
+    }
+	char* dir_file = WordToString(dir);
+	return dir_file;
+}
+/* Menggabungkan dua buah variabel bertipe char.
+Dalam program ini, kedua variabel tersebut adalah path dan filename */
 
 boolean IsEqual(Word w, char *c)
 {
