@@ -50,8 +50,8 @@ void help()
 {
     printf("Hai Hai Jangan Merasa Tersesat,\n");
     printf("Berikut adalah hal-hal yang bisa kamu lakukan :\n");
-    printf("01. START           : untuk memulai BNMO\n");
-    printf("02. LOAD <filename> : untuk membuka file yang berisi game\n");
+    // printf("01. START           : untuk memulai BNMO\n");
+    // printf("02. LOAD <filename> : untuk membuka file yang berisi game\n");
     printf("03. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
     printf("04. CREATE GAME     : untuk menambahkan game baru pada daftar game\n");
     printf("05. LIST GAME       : untuk menampilkan daftar game yang disediakan oleh sistem\n");

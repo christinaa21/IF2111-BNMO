@@ -27,6 +27,7 @@ int main()
     ArrayOfGame ListGame;
     MakeArrayOfGame(&ListGame);
     Queue QueueGame;
+    CreateQueue(&QueueGame);
     boolean cek = false;
     while (!cek)
     {
