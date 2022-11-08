@@ -29,7 +29,6 @@ int length(Queue q){
 	if (isEmpty(q)){
 		return 0;
 	}
-
 	else{
 		int i = IDX_HEAD(q);
 		int count = 1;
@@ -68,15 +67,22 @@ void enqueue(Queue *q, ElTypeQueue val){
 		// }
 		// IDX_TAIL(*q) ++;
 	}
-
-	TAIL(*q) = val;
+	TAIL(*q).Length = val.Length;
+	int i; 
+	for (i=0;i<val.Length;i++){
+		TAIL(*q).Tabword[i] = val.Tabword[i];
+	}
 }
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
 void dequeue(Queue *q, ElTypeQueue *val){
-	*val = HEAD(*q);
+	(*val).Length = HEAD(*q).Length;
+	int i;
+	for(i=0;i<(*val).Length;i++){
+		(*val).Tabword[i] = HEAD(*q).Tabword[i];
+	}
 
 	// 
 	if (IDX_HEAD(*q) == IDX_TAIL(*q)){
@@ -103,7 +109,7 @@ void dequeue(Queue *q, ElTypeQueue *val){
         q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(Queue q){
+/*void displayQueue(Queue q){
 	if (isEmpty(q)){	
 		printf("[]\n");
 	}
@@ -135,6 +141,7 @@ void displayQueue(Queue q){
 		
 	}
 }
+*/
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -143,7 +150,7 @@ void displayQueue(Queue q){
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 
-Queue copyQueue(Queue q){
+/*Queue copyQueue(Queue q){
 	Queue copy;
 	CreateQueue(&copy);
 	copy.idxHead = q.idxHead;
@@ -154,3 +161,4 @@ Queue copyQueue(Queue q){
 	}
 	return copy;
 }
+*/

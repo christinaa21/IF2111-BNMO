@@ -5,12 +5,13 @@
 #define QUEUE_H
 
 #include "boolean.h"
+#include "../mesinkata/mesinkata.h";
 
 #define IDX_UNDEF -1
-#define CAPACITY 5
+#define CAPACITY 20
 
 /* Definisi elemen dan address */
-typedef int ElTypeQueue;
+typedef Word ElTypeQueue;
 typedef struct
 {
         ElTypeQueue buffer[CAPACITY];
