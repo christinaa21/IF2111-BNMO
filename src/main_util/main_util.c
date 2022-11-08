@@ -46,11 +46,8 @@ void save(char *savefile, ArrayOfGame arrGame)
     int i;
     char * game;
     char* path = "../../../Data/";
-    int ctr = 0;
-    while (path[ctr] != '\0') {
-        ctr++;
-    }
-    fp = fopen(savefile, "w+");
+    char * newfile = ConcateChar(path, savefile);
+    fp = fopen(newfile, "w+");
     fprintf(fp, "%d\n", LengthArrayOfGame(arrGame));
     for (i = 0; i < LengthArrayOfGame(arrGame); i++)
     {
