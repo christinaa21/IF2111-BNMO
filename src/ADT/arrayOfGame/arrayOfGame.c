@@ -264,7 +264,7 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 		{
 			found = true;
 		}
-		
+		i++;
 	}
 
 	if (found)

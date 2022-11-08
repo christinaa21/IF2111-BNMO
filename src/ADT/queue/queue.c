@@ -124,60 +124,53 @@ void dequeue(Queue *q, ElTypeQueue *val)
 		q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(Queue q){
-	if (isEmpty(q)){
-		printf("[]\n");
-	}
-	else{
-		ElTypeQueue val;
-		// alt 3
-		// printf("[");
-
-		// while (!isEmpty(q)){
-		// 	dequeue(&q, &val);
-		// 	printf("%d", val);
-		// 	if (!isEmpty(q)){
-		// 		printf(",");
-		// 	}
-		// }
-		// printf("]\n");
-
-		// alt 2
-		int i;
-		printf("[");
-		for (i = IDX_HEAD(q); i < IDX_TAIL(q); i++){
-			printf("%s", WordToString(q.buffer[i]));
-			dequeue(&q, &val);
-			if (i != IDX_TAIL(q)){
-				printf(",");
-			}
-		}
-		printf("%s]\n", WordToString(q.buffer[IDX_TAIL(q)]));
-
-	}
+void displayQueue(Queue q) {
+    int i, temp1, temp2;
+    ElTypeQueue val;
+    if (isEmpty(q)) {
+        printf("[]");
+    } else {
+        temp1 = IDX_HEAD(q);
+        temp2 = IDX_TAIL(q);
+        printf("[");
+        while (IDX_HEAD(q) != IDX_UNDEF) {
+            dequeue(&q, &val);
+            if (IDX_HEAD(q) == IDX_UNDEF) {
+                printf("%d]", val);
+            } else {
+                printf("%d,", val);
+            }
+        }
+        IDX_HEAD(q) = temp1;
+        IDX_TAIL(q) = temp2;
+    }
+    printf("\n");
 }
-
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 
-Queue copyQueue(Queue q){
-	Queue copy;
-	CreateQueue(&copy);
-	copy.idxHead = q.idxHead;
-	copy.idxTail = q.idxTail;
-	for (int i = 0; i < length(q); i++)
-	{
-		copy.buffer[i].Length = q.buffer[i].Length;
-		for (int j = 0; j < q.buffer[i].Length; j++)
-		{
-			copy.buffer[i].TabWord[j] = q.buffer[i].TabWord[j];
-		}
-		
-	}
-	return copy;
+void copyQueue(Queue *queueInput, Queue *queueOutput) {
+	/* Proses: Menyalin isi dari queueInput ke queueOutput */
+	/* I.S. queueInput mungkin kosong, tabel penampung elemen queueInput TIDAK penuh */
+	/* F.S. queueOutput memiliki isi queue yang sama */
+	int i, len;
+	Queue q;
+    ElTypeQueue val;
+    CreateQueue(&q);
+    len = length(*queueInput);
+    for (i=0;i < len;i++) {
+        dequeue(queueInput, &val);
+        enqueue(queueOutput, val);
+        enqueue(&q, val);
+    }
+    len = length(q);
+    for (i=0;i < len;i++) {
+        dequeue(&q, &val);
+        enqueue(queueInput, val);
+    }
 }

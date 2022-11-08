@@ -35,9 +35,14 @@ int main()
         STARTINPUTKATA();
         if (IsEqual(takeword(currentWord, 1), "LOAD"))
         {
-            Word x = takeword(currentWord, 2);
-            load(WordToString(x), &ListGame);
-            cek = true;
+            if (currentWord.Length == 4){
+                printf("Tolong masukkan nama file!\n");
+            }
+            else {
+                Word x = takeword(currentWord, 2);
+                load(WordToString(x), &ListGame);
+                cek = true;
+            }
         }
         else if (IsEqual(takeword(currentWord, 1), "START"))
         {
@@ -54,23 +59,23 @@ int main()
             printf("\nKetik HELP untuk melihat list command yang dapat digunakan\n");
             printf("Masukkan Command: ");
             STARTINPUTKATA();
-            if (IsEqual(currentWord, "CREATEGAME"))
+            if (IsEqual(currentWord, "CREATE GAME"))
             {
                 createGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "LISTGAME"))
+            else if (IsEqual(currentWord, "LIST GAME"))
             {
                 listGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "DELETEGAME"))
+            else if (IsEqual(currentWord, "DELETE GAME"))
             {
                 deleteGame(&ListGame);
             }
-            else if (IsEqual(currentWord, "QUEUEGAME"))
+            else if (IsEqual(currentWord, "QUEUE GAME"))
             {
                 queueGame(&QueueGame, ListGame);
             }
-            else if (IsEqual(currentWord, "PLAYGAME"))
+            else if (IsEqual(currentWord, "PLAY GAME"))
             {
                 playGame(&QueueGame);
             }
@@ -84,12 +89,17 @@ int main()
             }
             else if (IsEqual(takeword(currentWord, 1), "SAVE"))
             {
+            if (currentWord.Length == 4){
+                printf("Tolong masukkan nama file!\n");
+            }
+            else {
                 Word x = takeword(currentWord, 2);
                 save(WordToString(x), ListGame);
             }
+            }
             else if (IsEqual(currentWord, "QUIT"))
             {
-                quit();
+                quit(ListGame);
             }
             else
             {

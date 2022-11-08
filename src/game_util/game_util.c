@@ -82,6 +82,8 @@ void displayQueueGame(Queue *qGame)
 {
     // printf("Berikut adalah daftar antrian game-mu\n");
     // printf("%d\n", length(*qGame));
+    Queue q;
+    copyQueue(qGame, &q);
     int j = 1, i = IDX_HEAD(*qGame);
     if (!isEmpty(*qGame))
     {
@@ -150,8 +152,6 @@ void playGame(Queue *qGame)
 
 void skipGame(int n, Queue *qGame)
 {
-    // belum di cek lagi bentar gais
-    // jujur masih bingung cara baca <n> nya
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(qGame);
     printf("\n");
@@ -170,7 +170,7 @@ void skipGame(int n, Queue *qGame)
         {
             dequeue(qGame, &skipped); // delete game yang ke n
         }
-        
+
         Word game; 
         dequeue(qGame, &game);
         if (IsEqual(game, "RNG"))
