@@ -30,13 +30,13 @@ Program dapat dijalankan di command prompt anda dengan memiliki package make
 
 Package make bisa didapatkan dengan menginstall chocolatey terlebih dahulu.
 Untuk langkah-langkah menginstall chocolatey dapat mengikuti link berikut:
-<link>https://chocolatey.org/install</link>
+https://chocolatey.org/install
 
 Jika chocolatey telah terinstall pada PATH dalam Environmental Variables Device anda, anda dapat melakukan prosedur berikut:
 1. Buka Windows powershell dalam device anda dan **run as administrator**
 
 2. Untuk menginstall package make
-```choco install make```
+<code>choco install make</code>
 
 Setelah package make terinstall, anda dapat mengompilasi program dengan menjalankan prosedur berikut:
 1. masuk ke folder IF2111-BNMO yang telah anda download / clone dari github repositorynya.
@@ -44,25 +44,25 @@ Setelah package make terinstall, anda dapat mengompilasi program dengan menjalan
 2. Buka windows terminal dalam folder tersebut.
 
 3. Untuk mengompilasi program ini, anda dapat mengetik 
-```make compile```
+<code>make compile</code>
 
 4. Setelah program selesai di-compile, anda dapat mengetik 
-```./main```
+<code>./main</code>
 
 5. Program telah berjalan dan silahkan nikmati perjalanan anda
 
 ## Kontributor
 Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok Al-Stroke-Dead)
 1. Rahmah Putri Azzahra `18219052`
-// kontrib
+<p>kontrib</p>
 2. Vincent Franstyo `18221100`
-// kontrib
+<p>kontrib</p>
 3. Karina Rahadiani `18221104`
-// kontrib
+<p>kontrib</p>
 4. Christina Wijaya `18221106`
-// kontrib
+<p>kontrib</p>
 5. Sultan Alta Alvaro Valencia `18221110`
-// kontrib
+<p>kontrib</p>
 
 dengan asisten : Jason Stanley Yoman
 
