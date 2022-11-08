@@ -74,10 +74,11 @@ void displayQueueGame(Queue *qGame)
     Queue q = copyQueue(*qGame);
     ElTypeQueue val;
     printf("Berikut adalah daftar antrian game-mu\n");
+    printf("%d\n", length(*qGame));
     for (int i = 0; i < length(*qGame); i++)
     {
         val = q.buffer[i];
-        printf("%d. %d\n", i, val);
+        printf("%d. %d\n", i + 1, val);
     }
 }
 // I.S. Program telah berjalan

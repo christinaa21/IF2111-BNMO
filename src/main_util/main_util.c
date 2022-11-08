@@ -64,11 +64,12 @@ void help()
     // printf("01. START           : untuk memulai BNMO\n");
     // printf("02. LOAD <filename> : untuk membuka file yang berisi game\n");
     printf("01. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
-    printf("02. CREATE GAME     : untuk menambahkan game baru pada daftar game\n");
-    printf("03. LIST GAME       : untuk menampilkan daftar game yang disediakan oleh sistem\n");
-    printf("04. DELETE GAME     : untuk menghapus sebuah game dari daftar game\n");
-    printf("05. QUEUE GAME      : untuk mendaftarkan permainan kedalam list\n");
-    printf("06. PLAY GAME       : ntuk memainkan sebuah permainan\n");
+    printf("02. CREATEGAME      : untuk menambahkan game baru pada daftar game\n");
+    printf("03. LISTGAME        : untuk menampilkan daftar game yang disediakan oleh sistem\n");
+    printf("04. DELETEGAME      : untuk menghapus sebuah game dari daftar game\n");
+    printf("05. QUEUEGAME       : untuk mendaftarkan permainan kedalam list\n");
+    printf("06. PLAYGAME        : ntuk memainkan sebuah permainan\n");
+    printf("07. SKIPGAME <n>    : untuk melewati n permainan yang ada di dalam list\n");
     printf("07. QUIT            : untuk keluar dari program\n");
     printf("08. HELP            : untuk melihat informasi dari command-command\n");
 }
@@ -108,7 +109,7 @@ void quit(ArrayOfGame arrGame)
 
 void otherCommand()
 {
-    printf("Command yang diberikan tidak sesuai yang diinginkan\n");
+    printf("Command yang diberikan tidak sesuai yang diinginkan\n Silahkan masukkan input yang valid.");
 }
 // I.S. Program sedang berjalan
 // F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid
