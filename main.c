@@ -35,9 +35,14 @@ int main()
         STARTINPUTKATA();
         if (IsEqual(takeword(currentWord, 1), "LOAD"))
         {
-            Word x = takeword(currentWord, 2);
-            load(WordToString(x), &ListGame);
-            cek = true;
+            if (currentWord.Length == 4){
+                printf("Tolong masukkan nama file!\n");
+            }
+            else {
+                Word x = takeword(currentWord, 2);
+                load(WordToString(x), &ListGame);
+                cek = true;
+            }
         }
         else if (IsEqual(takeword(currentWord, 1), "START"))
         {
@@ -84,8 +89,13 @@ int main()
             }
             else if (IsEqual(takeword(currentWord, 1), "SAVE"))
             {
+            if (currentWord.Length == 4){
+                printf("Tolong masukkan nama file!\n");
+            }
+            else {
                 Word x = takeword(currentWord, 2);
                 save(WordToString(x), ListGame);
+            }
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
