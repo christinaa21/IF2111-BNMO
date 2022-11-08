@@ -23,7 +23,7 @@ void listGame(ArrayOfGame *arr)
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
         game = arr->A[i];
-        printf("%d. ", i+1);
+        printf("%d. ", i + 1);
         printf("%s\n", WordToString(game));
     }
 }
@@ -47,7 +47,7 @@ void deleteGame(ArrayOfGame *arr)
     // else if () {}
     else
     {
-        DeleteGameAt(arr, WordToInt(currentWord)-1);
+        DeleteGameAt(arr, WordToInt(currentWord) - 1);
         printf("Game berhasil dihapus\n");
     }
 }
@@ -61,7 +61,6 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
     printf("Nomor game yang akan ditambahkan ke antrian: ");
     STARTINPUTKATA();
     enqueue(qGame, WordToInt(currentWord));
-    
 }
 // I.S. Program telah berjalan
 // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
@@ -75,7 +74,7 @@ void displayQueueGame(Queue *qGame)
     Queue q = copyQueue(*qGame);
     ElTypeQueue val;
     printf("Berikut adalah daftar antrian game-mu\n");
-    for (int i = 0; i < length(*qGame) ; i++)
+    for (int i = 0; i < length(*qGame); i++)
     {
         val = q.buffer[i];
         printf("%d. %d\n", i, val);
@@ -136,7 +135,7 @@ void skipGame(ArrayOfGame *arr, int n)
 {
     // belum di cek lagi bentar gais
     // jujur masih bingung cara baca <n> nya
-    displayQueueGame();
+    displayQueueGame(arr);
     if (n > LengthArrayOfGame(*arr))
     {
         printf("Tidak ada permainan lagi dalam daftar game-mu.");
