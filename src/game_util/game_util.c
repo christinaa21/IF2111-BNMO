@@ -28,7 +28,7 @@ void listGame(ArrayOfGame *arr)
     }
 }
 
-void deleteGame(ArrayOfGame *arr)
+void deleteGame(ArrayOfGame *arr, Queue qGame)
 {
     // I.S. Program telah berjalan
     // F.S. Game yang dipilih dari daftar game dihapus dengan aturan sebagai berikut:
@@ -39,12 +39,10 @@ void deleteGame(ArrayOfGame *arr)
     listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
-    if (WordToInt(currentWord) <= 5)
+    if ((WordToInt(currentWord) <= 5) || (isInQueue(qGame, currentWord)))
     {
         printf("Game tidak dapat dihapus");
-    }
-
-    else
+    } else
     {
         DeleteGameAt(arr, WordToInt(currentWord) - 1);
         printf("Game berhasil dihapus\n");
@@ -53,6 +51,7 @@ void deleteGame(ArrayOfGame *arr)
 
 void queueGame(Queue *qGame, ArrayOfGame arr)
 {
+    printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
     printf("\n");
     listGame(&arr);

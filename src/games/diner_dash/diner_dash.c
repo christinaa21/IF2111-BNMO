@@ -100,7 +100,8 @@ void DinerDash()
 
                     if (cookingAndServingQ.food[i].stayDuration == 0)
                     {
-                        dequeueAtIdx(&cookingAndServingQ, &brokenFood, i);
+                        brokenFood = GetListChar(cookingAndServingQ, i);
+                        DeleteAtList(&cookingAndServingQ, i);
                         printf("Makanan M%d telah rusak\n", brokenFood.foodID);
                     }
                 }
@@ -181,7 +182,7 @@ void DinerDash()
         // COOK
         if (compare(command, cook))
         {
-            enqueueCSQ(&cookingAndServingQ, food.buffer[id]);
+            InsertLastList(&cookingAndServingQ, food.buffer[id]);
             cookingAndServingQ.food[LastIdxList(cookingAndServingQ)].cookDuration++;
             printf("Makanan %s telah dimasukkan ke dalam antrian\n", cookedFood);
 
