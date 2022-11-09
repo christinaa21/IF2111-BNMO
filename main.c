@@ -69,7 +69,7 @@ int main()
             }
             else if (IsEqual(currentWord, "DELETE GAME"))
             {
-                deleteGame(&ListGame);
+                deleteGame(&ListGame, QueueGame);
             }
             else if (IsEqual(currentWord, "QUEUE GAME"))
             {

@@ -177,10 +177,13 @@ void copyQueue(Queue *queueInput, Queue *queueOutput) {
 
 boolean isInQueue(Queue q, ElTypeQueue x) {
 	ElTypeQueue val;
+	char* xchar = WordToString(x);
+	char* valchar;
 	boolean notfound = true;
 	while ((IDX_HEAD(q) != IDX_UNDEF) && notfound) {
 		dequeue(&q, &val);
-		if (val == x) {
+		valchar = WordToString(val);
+		if (valchar == xchar) {
 			notfound = false;
 		}
 	}

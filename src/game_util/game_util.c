@@ -39,13 +39,22 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
     listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
-    if ((WordToInt(currentWord) <= 5) || (isInQueue(qGame, currentWord)))
-    {
-        printf("Game tidak dapat dihapus");
-    } else
-    {
-        DeleteGameAt(arr, WordToInt(currentWord) - 1);
-        printf("Game berhasil dihapus\n");
+    int n = WordToInt(currentWord);
+    if (n > LengthArrayOfGame(*arr)) {
+        printf("Maaf, nomor yang Anda masukkan melebihi jumlah game yang ada.\n");
+    }
+    else if (n <= 0) {
+        printf("Maaf, nomor yang Anda masukkan tidak valid.\n");
+    } else {
+        ElTypeArrayOfGame game = GetGame((*arr), n-1);
+        if ((n <= 5) || (isInQueue(qGame, game)))
+        {
+            printf("Game tidak dapat dihapus\n");
+        } else
+        {
+            DeleteGameAt(arr, n - 1);
+            printf("Game berhasil dihapus\n");
+        }
     }
 }
 
