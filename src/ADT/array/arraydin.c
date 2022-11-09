@@ -73,6 +73,10 @@ int GetCapacity(ArrayDin array){
 	return ((array).Capacity);
 }
 
+void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
+	/* Mengeset x pada elemen array dengan indeks ke-i. */
+	(*array).A[i] = x;
+}
 
 /* ********** OPERASI-OPERASI ********** */
 /* Fungsi untuk menambahkan elemen baru di index ke-i.

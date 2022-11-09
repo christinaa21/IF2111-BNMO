@@ -9,7 +9,7 @@
 #define InitialSize 10
 
 typedef int IdxTypeArrayDin;
-typedef int ElTypeArrayDin;
+typedef char* ElTypeArrayDin;
 typedef struct {
     ElTypeArrayDin *A;
     int Capacity;
@@ -44,6 +44,9 @@ int Length(ArrayDin array);
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
 ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
+
+void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x);
+/* Mengeset x pada elemen array dengan indeks ke-i. */
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.

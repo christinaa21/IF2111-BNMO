@@ -214,3 +214,16 @@ boolean IsEqual(Word w, char *c)
 /* Mengembalikan true jika kata w tersebut sama dengan string c
 Mengembalikan false jika kata w tidak sama dengan string c
 */
+
+boolean IsInWord(char* dicari, Word sumber) {
+	boolean notfound = true;
+	int i = 0;
+	while ((notfound) && (i < sumber.Length)) {
+		if (sumber.TabWord[i] == dicari[0]) {
+			notfound = false;
+		} else {
+			i++;
+		}
+	}
+	return !notfound;
+}
