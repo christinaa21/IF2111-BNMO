@@ -1,24 +1,32 @@
-// create game, list game, queue game, delete game, play game, skip game
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "game_util.h"
 
+
+/* Prosedur untuk membuat game 
+ * I.S. Program telah berjalan
+ * F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
+*/ 
 void createGame(ArrayOfGame *arr)
 {
-    // I.S. Program telah berjalan
-    // F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUTKATA();
     InsertGameAt(arr, currentWord, (*arr).Neff);
     printf("Game berhasil ditambahkan\n");
 }
 
+/* Prosedur yang menampilkan daftar game 
+ * I.S. Program telah berjalan
+   F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
+*/ 
 void listGame(ArrayOfGame *arr)
 {
-    // I.S. Program telah berjalan
-    // F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
+    /*KAMUS LOKAL*/
     ElTypeArrayOfGame game;
+    /*ALGORITMA*/
     printf("Berikut adalah daftar game yang tersedia\n");
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
@@ -28,15 +36,19 @@ void listGame(ArrayOfGame *arr)
     }
 }
 
+/* Prosedur untuk menghapus game pada indeks ke-i dari arrayofgame
+ * I.S. Program telah berjalan
+ * F.S. Game yang dipilih dari daftar game dihapus dengan aturan sebagai berikut:
+        - Game yang dapat dihapus hanya game yang dibuat secara custom oleh pengguna.
+        - 5 game pertama pada file konfigurasi tidak dapat dihapus.
+        - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
+*/ 
 void deleteGame(ArrayOfGame *arr, Queue qGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Game yang dipilih dari daftar game dihapus dengan aturan sebagai berikut:
-    //      - Game yang dapat dihapus hanya game yang dibuat secara custom oleh pengguna.
-    //      - 5 game pertama pada file konfigurasi tidak dapat dihapus.
-    //      - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
+    /*KAMUS LOKAL*/
     IdxTypeArrayOfGame idx;
     listGame(arr);
+    /*ALGORITMA*/
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
     int n = WordToInt(currentWord);
@@ -60,14 +72,16 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
     }
 }
 
+/* Prosedur untuk memasukan game dalam antrian
+ * I.S: Program telah berjalan
+ * F.S: Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
+ *      tersebut ditambahkan ke dalam antrian game pengguna.
+ *      Jika nomor game yang dipilih tidak ada pada daftar game yang tersedia, maka
+ *      ditampilkan pesan error pada layar.
+ *      Antrian game ini akan hilang ketika pemain menjalankan command quit.
+*/
 void queueGame(Queue *qGame, ArrayOfGame arr)
 {
-    // I.S. Program telah berjalan
-    // F.S. Jika nomor game yang dipilih ada pada daftar game yang tersedia, maka game
-    //      tersebut ditambahkan ke dalam antrian game pengguna.
-    //      Jika nomor game yang dipilih tidak ada pada daftar game yang tersedia, maka
-    //      ditampilkan pesan error pada layar.
-    //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
     printf("\n");
