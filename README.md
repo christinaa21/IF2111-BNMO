@@ -8,7 +8,7 @@ Game ini menggunakan aplikasi abstract data type (ADT) dalam bahasa C
 
 ## Struktur Folder
 Berikut adalah struktur folder dari project BNMO kami:
-- Folder `bin` yang berisi ...
+- Folder `bin` yang berisi ***...***
 - Folder `Data` yang berisi data data pengguna
 - Folder `Docs` yang berisi dokumen-dokumen yang kami gunakan dan perlukan
 - Folder `src` yang berisi :
@@ -35,7 +35,7 @@ https://chocolatey.org/install
 Jika chocolatey telah terinstall pada PATH dalam Environmental Variables Device anda, anda dapat melakukan prosedur berikut:
 1. Buka Windows powershell dalam device anda dan ***run as administrator***
 
-2. Untuk menginstall package make
+2. Untuk menginstall package make : 
 ```
 choco install make
 ```
@@ -46,12 +46,12 @@ Setelah package make terinstall, anda dapat mengompilasi program dengan menjalan
 
 2. Buka windows terminal dalam folder tersebut.
 
-3. Untuk mengompilasi program ini, anda dapat mengetik 
+3. Untuk mengompilasi program ini, anda dapat mengetik  :
 ```
 make compile
 ```
 
-4. Setelah program selesai di-compile, anda dapat mengetik 
+4. Setelah program selesai di-compile, anda dapat mengetik :
 ```
 ./main
 ```
