@@ -71,4 +71,6 @@ void copyQueue(Queue *queueInput, Queue *queueOutput);
 /* I.S. queueInput mungkin kosong, tabel penampung elemen queueInput TIDAK penuh */
 /* F.S. queueOutput memiliki isi queue yang sama */
 
+boolean isInQueue(Queue q, ElTypeQueue x);
+
 #endif

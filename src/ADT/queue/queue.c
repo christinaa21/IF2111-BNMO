@@ -174,3 +174,15 @@ void copyQueue(Queue *queueInput, Queue *queueOutput) {
         enqueue(queueInput, val);
     }
 }
+
+boolean isInQueue(Queue q, ElTypeQueue x) {
+	ElTypeQueue val;
+	boolean notfound = true;
+	while ((IDX_HEAD(q) != IDX_UNDEF) && notfound) {
+		dequeue(&q, &val);
+		if (val == x) {
+			notfound = false;
+		}
+	}
+	return !notfound;
+}

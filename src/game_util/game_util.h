@@ -49,7 +49,7 @@ void queueGame(Queue *qGame, ArrayOfGame arr);
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
-void displayQueueGame(Queue *qGame);
+void displayQueueGame(Queue qGame);
 // I.S. Program telah berjalan
 // F.S. Menampilkan antrian game pengguna.
 
