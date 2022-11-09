@@ -36,7 +36,10 @@ Jika chocolatey telah terinstall pada PATH dalam Environmental Variables Device 
 1. Buka Windows powershell dalam device anda dan **run as administrator**
 
 2. Untuk menginstall package make
-<code>choco install make</code>
+```
+choco install make
+```
+3. Tunggu hingga package make selesai diinstall and you're good to go.
 
 Setelah package make terinstall, anda dapat mengompilasi program dengan menjalankan prosedur berikut:
 1. masuk ke folder IF2111-BNMO yang telah anda download / clone dari github repositorynya.
@@ -44,10 +47,14 @@ Setelah package make terinstall, anda dapat mengompilasi program dengan menjalan
 2. Buka windows terminal dalam folder tersebut.
 
 3. Untuk mengompilasi program ini, anda dapat mengetik 
-<code>make compile</code>
+```
+make compile
+```
 
 4. Setelah program selesai di-compile, anda dapat mengetik 
-<code>./main</code>
+```
+./main
+```
 
 5. Program telah berjalan dan silahkan nikmati perjalanan anda
 
