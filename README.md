@@ -33,7 +33,7 @@ Untuk langkah-langkah menginstall chocolatey dapat mengikuti link berikut:
 https://chocolatey.org/install
 
 Jika chocolatey telah terinstall pada PATH dalam Environmental Variables Device anda, anda dapat melakukan prosedur berikut:
-1. Buka Windows powershell dalam device anda dan **run as administrator**
+1. Buka Windows powershell dalam device anda dan ***run as administrator***
 
 2. Untuk menginstall package make
 ```
@@ -60,15 +60,15 @@ make compile
 
 ## Kontributor
 Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok Al-Stroke-Dead)
-1. Rahmah Putri Azzahra `18219052`
+1. Rahmah Putri Azzahra `18219052`<br>
     kontrib
-2. Vincent Franstyo `18221100`
+2. Vincent Franstyo `18221100`<br>
     kontrib
-3. Karina Rahadiani `18221104`
+3. Karina Rahadiani `18221104`<br>
     kontrib
-4. Christina Wijaya `18221106`
+4. Christina Wijaya `18221106`<br>
     kontrib
-5. Sultan Alta Alvaro Valencia `18221110`
+5. Sultan Alta Alvaro Valencia `18221110`<br>
     kontrib
 
 dengan asisten : Jason Stanley Yoman
