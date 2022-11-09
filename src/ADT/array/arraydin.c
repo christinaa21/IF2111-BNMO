@@ -186,20 +186,18 @@ void PrintArrayDin(ArrayDin array){
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
-	if (IsEmpty(array)){
-		printf("[]\n");
-	}
-	else{
-		printf("[");
-		int i;
-		for (i = 0; i < (array).Neff; i++){
-			printf("%d", (array).A[i]);
-			if (i < array.Neff - 1){
-				printf(", ");
+    int i;
+    if ((array).Neff == 0) {
+        printf("[]\n");
+    } else {
+        for (i=0;i<(array).Neff;i++) {
+			if (i == (array).Neff-1) {
+				printf("%s\n", (array).A[i]);
+			} else {
+				printf("%s", (array).A[i]);
 			}
-		}
-		printf("]\n");
-	}
+        }
+    }
 }
 
 /**

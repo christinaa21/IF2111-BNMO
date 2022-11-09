@@ -70,7 +70,7 @@ void hangMan() {
     int benar = 0;
     int score = 100;
 
-    printf("Hangman telah dimulai! Yuk kita menebak kata!\nDi game ini, kamu harus menebak kata yang berhubungan dengan kehidupan kuliah kita nih!\nBisa saja nama matkul, nama tempat, atau mungkin hal-hal yang kita kerjakan.\nYuk kita langsung mulai aja!\n\n");
+    printf("Hangman telah dimulai! Yuk kita menebak kata!\nDi game ini, kamu harus menebak kata yang berhubungan dengan kehidupan kuliah kita nih!\nBisa saja nama matkul, nama tempat, atau mungkin hal-hal yang kita kerjakan.\n\n");
     printf("Kata yang harus ditebak:\n");
     PrintArrayDin(ArrayBlank);
     printf("%s\n\n", Get(ArrayHangman, salah));
@@ -107,5 +107,6 @@ void hangMan() {
         score = 0;
         printf("Kata yang benar adalah %s\n", tebakan);
     }
-    printf("Kamu memperoleh score sebesar: %d poin!\n", score);
+    printf("Kamu memperoleh score sebesar: %d poin!\n\n", score);
+    printf("--- GAME OVER ---\n");
 }
