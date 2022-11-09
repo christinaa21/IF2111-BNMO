@@ -47,6 +47,8 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
         printf("Maaf, nomor yang Anda masukkan tidak valid.\n");
     } else {
         ElTypeArrayOfGame game = GetGame((*arr), n-1);
+        printf("game = %s\n", WordToString(game));
+        printf("%d\n", isInQueue(qGame, game));
         if ((n <= 5) || (isInQueue(qGame, game)))
         {
             printf("Game tidak dapat dihapus\n");
