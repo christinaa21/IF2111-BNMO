@@ -54,7 +54,7 @@ void DinerDash()
     char cook[] = "COOK", serve[] = "SERVE";
 
     List cookingAndServingQ;
-    CreateQueuePQ(&cookingAndServingQ);
+    cookingAndServingQ = MakeList();
 
     PrioQueue waitingQ;
     CreateQueuePQ(&waitingQ);

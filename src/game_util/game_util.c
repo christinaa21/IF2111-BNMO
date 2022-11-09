@@ -53,7 +53,7 @@ void deleteGame(ArrayOfGame *arr)
 
 void queueGame(Queue *qGame, ArrayOfGame arr)
 {
-    displayQueueGame(qGame);
+    displayQueueGame(*qGame);
     printf("\n");
     listGame(&arr);
     printf("\n");
@@ -68,7 +68,7 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
     enqueue(qGame, arr.A[WordToInt(currentWord) - 1]);
     printf("Game berhasil ditambahkan ke antrian\n");
     printf("Sekarang ini adalah list game mu: \n");
-    displayQueueGame(qGame);
+    displayQueueGame(*qGame);
     // enqueue(qGame, currentWord);
 }
 // I.S. Program telah berjalan
@@ -78,22 +78,21 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
 //      ditampilkan pesan error pada layar.
 //      Antrian game ini akan hilang ketika pemain menjalankan command quit.
 
-void displayQueueGame(Queue *qGame)
+void displayQueueGame(Queue qGame)
 {
-    // printf("Berikut adalah daftar antrian game-mu\n");
-    // printf("%d\n", length(*qGame));
-    Queue q;
-    copyQueue(qGame, &q);
-    int j = 1, i = IDX_HEAD(*qGame);
-    if (!isEmpty(*qGame))
+    int i, temp1, temp2;
+    i = 1;
+    ElTypeQueue val;
+    if (!isEmpty(qGame))
     {
-        while (i != IDX_TAIL(*qGame) + 1)
+        while (IDX_HEAD(qGame) != IDX_UNDEF)
         {
-            printf("%d. %s\n", j, WordToString((*qGame).buffer[i]));
-            j++;
-            i = (i + 1) % CAPACITY;
+            dequeue(&qGame, &val);
+            printf("%d. %s\n", i, WordToString(val));
+            i++;
         }
     }
+    printf("\n");
 }
 // I.S. Program telah berjalan
 // F.S. Menampilkan antrian game pengguna.
@@ -102,7 +101,7 @@ void playGame(Queue *qGame)
 {
     Word game;
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
-    displayQueueGame(qGame);
+    displayQueueGame(*qGame);
     if (isEmpty(*qGame))
     {
         printf("Maaf, antrian game-mu kosong. Silakan menambahkan game ke antrian terlebih dahulu dengan mengetik command: QUEUE GAME\n");
@@ -153,7 +152,7 @@ void playGame(Queue *qGame)
 void skipGame(int n, Queue *qGame)
 {
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
-    displayQueueGame(qGame);
+    displayQueueGame(*qGame);
     printf("\n");
     if (n > length(*qGame))
     {

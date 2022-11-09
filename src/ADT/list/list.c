@@ -30,7 +30,7 @@ boolean IsEmptyList(List L)
 /* Mengirimkan true jika list L kosong, mengirimkan false jika tidak */
 
 /* *** Menghasilkan sebuah elemen *** */
-PQElType GetList(List L, IdxType i)
+PQElType GetListChar(List L, IdxType i)
 {
 	return (L.food[i]);
 }
@@ -38,7 +38,7 @@ PQElType GetList(List L, IdxType i)
 /* Mengirimkan elemen list yang ke-i */
 
 /* *** Selektor SET : Mengubah nilai list dan elemen list *** */
-void SetList(List *L, IdxType i, PQElType v)
+void SetListChar(List *L, IdxType i, PQElType v)
 {
 	(*L).food[i] = v;
 }
@@ -70,7 +70,7 @@ IdxType FirstIdxList(List L)
 
 IdxType LastIdxList(List L)
 {
-	return (Length(L) - 1);
+	return (LengthList(L) - 1);
 }
 /* Prekondisi : list L tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
@@ -86,7 +86,7 @@ boolean IsIdxValidList(List L, IdxType i)
 
 boolean IsIdxEffList(List L, IdxType i)
 {
-	return ((i >= 0) && (i <= LastIdx(L)));
+	return ((i >= 0) && (i <= LastIdxList(L)));
 }
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
@@ -108,7 +108,7 @@ boolean SearchList(List L, PQElType X)
 
 void InsertFirstList(List *L, PQElType X)
 {
-	InsertAtList(L, X, FirstIdx(*L));
+	InsertAtList(L, X, FirstIdxList(*L));
 }
 /* I.S. L terdefinisi, mungkin kosong. */
 /* F.S. v menjadi elemen pertama L. */
@@ -116,7 +116,7 @@ void InsertFirstList(List *L, PQElType X)
 void InsertAtList(List *L, PQElType X, IdxType i)
 {
 	int j;
-	for (j = Length(*L); j >= i; j--)
+	for (j = LengthList(*L); j >= i; j--)
 	{
 		(*L).food[j] = (*L).food[j - 1];
 	}
@@ -146,14 +146,14 @@ void DeleteAtList(List *L, IdxType i)
 	{
 		(*L).food[j] = (*L).food[j + 1];
 	}
-	(*L).food[Length(*L) - 1].foodID = Mark;
+	(*L).food[LengthList(*L) - 1].foodID = Mark;
 }
 /* I.S. L terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di L. */
 /* F.S. Elemen L pada indeks ke-i dihapus dari L. */
 
 void DeleteLastList(List *L)
 {
-	DeleteAtList(L, LastIdx(*L));
+	DeleteAtList(L, LastIdxList(*L));
 }
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen terakhir L, elemen terakhir L dihapus dari L. */
@@ -162,7 +162,7 @@ List ConcatList(List L1, List L2)
 {
 	List L3 = MakeList();
 	int i;
-	if (Length(L1) + Length(L2) > MaxEl)
+	if (LengthList(L1) + LengthList(L2) > MaxEl)
 	{
 		L3.food[MaxEl + MaxEl];
 		for (i = MaxEl; i <= MaxEl * 2; i++)
@@ -179,7 +179,7 @@ List ConcatList(List L1, List L2)
 	i = 0;
 	while (L2.food[i].foodID != Mark)
 	{
-		L3.food[Length(L1) + i] = L2.food[i];
+		L3.food[LengthList(L1) + i] = L2.food[i];
 		i++;
 	}
 	return L3;
