@@ -95,5 +95,5 @@ void displayStayPQ(PrioQueue q);
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 
-boolean isMemberPQ(PrioQueue q, PQElType val);
+boolean isMemberPQ(PrioQueue q, int id);
 #endif

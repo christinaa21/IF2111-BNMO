@@ -35,10 +35,12 @@ int main()
         STARTINPUTKATA();
         if (IsEqual(takeword(currentWord, 1), "LOAD"))
         {
-            if (currentWord.Length == 4){
+            if (currentWord.Length == 4)
+            {
                 printf("Tolong masukkan nama file!\n");
             }
-            else {
+            else
+            {
                 Word x = takeword(currentWord, 2);
                 load(WordToString(x), &ListGame);
                 cek = true;
@@ -69,7 +71,7 @@ int main()
             }
             else if (IsEqual(currentWord, "DELETE GAME"))
             {
-                deleteGame(&ListGame);
+                deleteGame(&ListGame, QueueGame);
             }
             else if (IsEqual(currentWord, "QUEUE GAME"))
             {
@@ -89,13 +91,15 @@ int main()
             }
             else if (IsEqual(takeword(currentWord, 1), "SAVE"))
             {
-            if (currentWord.Length == 4){
-                printf("Tolong masukkan nama file!\n");
-            }
-            else {
-                Word x = takeword(currentWord, 2);
-                save(WordToString(x), ListGame);
-            }
+                if (currentWord.Length == 4)
+                {
+                    printf("Tolong masukkan nama file!\n");
+                }
+                else
+                {
+                    Word x = takeword(currentWord, 2);
+                    save(WordToString(x), ListGame);
+                }
             }
             else if (IsEqual(currentWord, "QUIT"))
             {

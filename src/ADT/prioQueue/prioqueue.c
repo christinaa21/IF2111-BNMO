@@ -176,7 +176,7 @@ void displayQueuePQ(PrioQueue q)
 	else
 	{
 		PrioQueue temp;
-		CreateEmptyPQ(&temp);
+		CreateQueuePQ(&temp);
 		temp = q;
 		PQElType val;
 		while (!isEmptyPQ(temp))
@@ -238,14 +238,14 @@ void displayStayPQ(PrioQueue q)
 	}
 }
 
-boolean isMemberPQ(PrioQueue q, PQElType val)
+boolean isMemberPQ(PrioQueue q, int id)
 {
 	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
 		while (i != IDX_TAIL(q) + 1)
 		{
-			if (q.buffer[i].foodID == val.foodID)
+			if (q.buffer[i].foodID == id)
 			{
 				return true;
 			}

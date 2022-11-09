@@ -2,23 +2,26 @@
 #include "mesinkarakter.h"
 #include "mesinkata.h"
 
-int main() {
-	char* file = "file.txt";
-    /* Tes Mesin Karakter */
-    START(file);
-    while (!EOP) {
-        printf("GetCC: %c\n", GetCC());
-        ADV();
-    }
-    STARTINPUT();
-    while (currentChar != '\n') {
-        printf("%c\n", GetCC());
-        ADV();
-    }
-    printf("---------------------------------\n");
-    /* Tes Mesin Kata */
+int main()
+{
+	char *file = "file.txt";
+	/* Tes Mesin Karakter */
+	START(file);
+	while (!EOP)
+	{
+		printf("GetCC: %c\n", GetCC());
+		ADV();
+	}
+	STARTINPUT();
+	while (currentChar != '\n')
+	{
+		printf("%c\n", GetCC());
+		ADV();
+	}
+	printf("---------------------------------\n");
+	/* Tes Mesin Kata */
 	STARTWORD(file);
-	char* kata;
+	char *kata;
 	printf("WordLength: %d\n", currentWord.Length);
 	kata = WordToString(currentWord);
 	printf("%s\n", kata);
@@ -26,7 +29,8 @@ int main() {
 	printf("%d\n", kata_int);
 	printf("%d\n", EOP);
 	printf("%d\n", !EOP);
-	while (!EOP) {
+	while (!EOP)
+	{
 		ADVWORD();
 		printf("WordLength: %d\n", currentWord.Length);
 		kata = WordToString(currentWord);
@@ -42,5 +46,5 @@ int main() {
 	printf("WordLength: %d\n", take2.Length);
 	kata = WordToString(take2);
 	printf("%s\n", kata);
-    return 0;
+	return 0;
 }
