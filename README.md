@@ -60,15 +60,15 @@ make compile
 
 ## Kontributor
 Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok Al-Stroke-Dead)
-1. Rahmah Putri Azzahra `18219052`<br>
+1. Rahmah Putri Azzahra `18219052`<br/>
     kontrib
-2. Vincent Franstyo `18221100`<br>
+2. Vincent Franstyo `18221100`<br/>
     kontrib
-3. Karina Rahadiani `18221104`<br>
+3. Karina Rahadiani `18221104`<br/>
     kontrib
-4. Christina Wijaya `18221106`<br>
+4. Christina Wijaya `18221106`<br/>
     kontrib
-5. Sultan Alta Alvaro Valencia `18221110`<br>
+5. Sultan Alta Alvaro Valencia `18221110`<br/>
     kontrib
 
 dengan asisten : Jason Stanley Yoman
