@@ -10,6 +10,7 @@
 #include "../games/diner_dash/diner_dash.h"
 #include "../games/random_number_generator/random_number_generator.h"
 #include "../games/game_tambahan/game_tambahan.h"
+#include "../games/hangman/hangman.h"
 
 void createGame(ArrayOfGame *arr);
 // I.S. Program telah berjalan

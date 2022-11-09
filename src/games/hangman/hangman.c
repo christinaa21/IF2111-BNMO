@@ -27,9 +27,19 @@ void hangMan() {
     InsertLast(&ArrayKata, "MATSTI");
     InsertLast(&ArrayKata, "EDUNEX");
     InsertLast(&ArrayKata, "SIX");
+    InsertLast(&ArrayKata, "ITB");
+    InsertLast(&ArrayKata, "STI");
+    InsertLast(&ArrayKata, "IF");
+    InsertLast(&ArrayKata, "HMIF");
+    InsertLast(&ArrayKata, "STEI");
+    InsertLast(&ArrayKata, "MULTIMEDIA");
+    InsertLast(&ArrayKata, "LABTEK");
+    InsertLast(&ArrayKata, "LABDAS");
+    InsertLast(&ArrayKata, "ASISTENSI");
+    InsertLast(&ArrayKata, "HOLOBIT");
 
     srand(time(NULL));
-    int X = rand() % 15;
+    int X = rand() % 25;
     char* tebakan = Get(ArrayKata, X);
     Word tertebak = StringtoWord(tebakan);
     Word tebakan1 = StringtoWord(tebakan);
@@ -60,6 +70,7 @@ void hangMan() {
     int benar = 0;
     int score = 100;
 
+    printf("Hangman telah dimulai! Yuk kita menebak kata!\nDi game ini, kamu harus menebak kata yang berhubungan dengan kehidupan kuliah kita nih!\nBisa saja nama matkul, nama tempat, atau mungkin hal-hal yang kita kerjakan.\nYuk kita langsung mulai aja!\n\n");
     printf("Kata yang harus ditebak:\n");
     PrintArrayDin(ArrayBlank);
     printf("%s\n\n", Get(ArrayHangman, salah));

@@ -158,6 +158,10 @@ void playGame(Queue *qGame)
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
+        else if (IsEqual(game, "HANGMAN")) {
+            printf("Game yang dimainkan adalah Hangman\n");
+            hangMan();
+        }
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
@@ -212,6 +216,10 @@ void skipGame(int n, Queue *qGame)
         else if (IsEqual(game, "EIFFEL TOWER"))
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+        }
+        else if (IsEqual(game, "HANGMAN")) {
+            printf("Game yang dimainkan adalah Hangman\n");
+            hangMan();
         }
         else
         {
