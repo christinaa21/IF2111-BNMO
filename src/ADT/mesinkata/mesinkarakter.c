@@ -57,23 +57,8 @@ char GetCC()
 }
 /* Mengirimkan currentChar */
 
-// boolean IsEOP()
-// {
-//    return (currentChar == MARK || feof(pita));
-// }
+boolean IsEOP()
+{
+   return (currentChar == MARK || feof(pita));
+}
 /* Mengirimkan true jika currentChar = MARK */
-
-// int main() {
-//    char* file = "file.txt";
-//    START(file);
-//    while (!IsEOP()) {
-//       printf("GetCC: %c\n", GetCC());
-//       ADV();
-//    }
-//    STARTINPUT();
-//    while (!IsEOP()) {
-//       printf("%c\n", GetCC());
-//       ADV();
-//    }
-//    printf("...");
-// }

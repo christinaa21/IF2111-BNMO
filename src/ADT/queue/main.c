@@ -16,7 +16,7 @@ int main() {
     printf("q1 = ");
     displayQueue(q1);
 
-    q2 = copyQueue(q1);
+    copyQueue(&q1, &q2);
     printf("q2 = ");
     displayQueue(q2);
 

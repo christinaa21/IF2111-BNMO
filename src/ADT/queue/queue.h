@@ -72,5 +72,6 @@ void copyQueue(Queue *queueInput, Queue *queueOutput);
 /* F.S. queueOutput memiliki isi queue yang sama */
 
 boolean isInQueue(Queue q, ElTypeQueue x);
+/* Mengembalikan true jika x merupakan elemen dari q */
 
 #endif
