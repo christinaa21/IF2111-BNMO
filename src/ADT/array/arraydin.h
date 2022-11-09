@@ -18,26 +18,26 @@ typedef struct {
 
 /**
  * Konstruktor
- * I.S. sembarang
- * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
+ * Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
  */
 ArrayDin MakeArrayDin();
 
 /**
  * Destruktor
- * I.S. ArrayDin terdefinisi
- * F.S. array->A terdealokasi
+ * I.S. ArrayDin terdefinisi.
+ * F.S. array->A terdealokasi.
  */
 void DeallocateArrayDin(ArrayDin *array);
+
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi. 
  */
 boolean IsEmpty(ArrayDin array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi. 
  */
 int Length(ArrayDin array);
 
@@ -49,71 +49,79 @@ ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi.
  */
 int GetCapacity(ArrayDin array);
 
 /**
- * Fungsi untuk menambahkan elemen baru di index ke-i
- * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ * Fungsi untuk menambahkan elemen baru di index ke-i.
+ * I.S : array terdefinisi, i di antara 0..Length(array).
+ * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1. 
  */
 void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
- * Prekondisi: array terdefinisi
+ * I.S : array terdefinisi. 
+ * F.S : elemen baru berhasil ditambahkan di akhir array. 
  */
 void InsertLast(ArrayDin *array, ElTypeArrayDin el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
- * Prekondisi: array terdefinisi
+ * I.S : array terdefinisi. 
+ * F.S : elemen baru berhasil ditambahkan di awal array. 
  */
 void InsertFirst(ArrayDin *array, ElTypeArrayDin el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
- * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ * I.S : array terdefinisi, i di antara 0..Length(array).
+ * F.S : elemen pada indeks ke-i berhasil dihapuskan dari array. 
  */
 void DeleteAt(ArrayDin *array, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayDin
- * Prekondisi: array tidak kosong
+ * I.S : array tidak kosong dan terdefinisi. 
+ * F.S : elemen terakhir pada array berhasil dihapuskan. 
  */
 void DeleteLast(ArrayDin *array);
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayDin
- * Prekondisi: array tidak kosong
+ * I.S : array tidak kosong dan array terdefinisi. 
+ * F.S : elemen pertama pada array berhasil dihapuskan. 
  */
 void DeleteFirst(ArrayDin *array);
 
 /**
  * Fungsi untuk melakukan print suatu ArrayDin.
- * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
- * dan diakhiri newline.
- * Prekondisi: array terdefinisi
+ * Proses 	: Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n] 
+ * 			  dan diakhiri newline.
+ * I.S 		: array terdefinisi. 
+ * F.S 		: array tertuliskan dilayar. 
  */
 void PrintArrayDin(ArrayDin array);
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayDin.
- * Prekondisi: array terdefinisi
+ * I.S : array terdefinisi. 
+ * F.S : array berhasil di-reverse. 
  */
 void ReverseArrayDin(ArrayDin *array);
 
 /**
  * Fungsi untuk melakukan copy suatu ArrayDin.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi. 
  */
 ArrayDin CopyArrayDin(ArrayDin array);
 
 /**
  * Fungsi untuk melakukan search suatu ArrayDin.
- * Index pertama yang ditemukan akan dikembalikan.
- * Jika tidak ditemukan, akan mengembalikan -1.
- * Prekondisi: array terdefinisi
+ * Proses 		: Index pertama yang ditemukan akan dikembalikan.
+ * 				  Jika tidak ditemukan, akan mengembalikan -1.
+ * Prekondisi	: array terdefinisi. 
  */
 IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el);
 
