@@ -5,7 +5,7 @@
 #define __PRIO_QUEUE_H
 
 #include "boolean.h"
-#include "../../games/diner_dash/diner_dash.h"
+// #include "../../games/diner_dash/diner_dash.h"
 
 #define IDX_UNDEF -1
 #define PQCAPACITY 100

@@ -193,7 +193,7 @@ boolean isInQueue(Queue q, ElTypeQueue x)
 	while ((IDX_HEAD(q) != IDX_UNDEF) && notfound)
 	{
 		dequeue(&q, &val);
-		if (IsEqual(val, WordtoString(x)))
+		if (IsEqual(val, WordToString(x)))
 		{
 			notfound = false;
 		}

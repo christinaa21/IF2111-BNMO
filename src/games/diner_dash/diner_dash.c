@@ -29,7 +29,7 @@ PQElType createFood(int id)
     (food).foodID = id;
     (food).cookDuration = rand() % 5 + 1;
     (food).stayDuration = (rand() * 5 + rand() * 2) % 5 + 1;
-    (food).price = (rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 10;
+    (food).price = (rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100;
     return food;
 }
 
@@ -67,7 +67,7 @@ void DinerDash()
     printf("\n");
     if (isEmptyPQ(waitingQ) && firstRound)
     {
-        int i = IDX_HEAD(waitingQ);
+        int i = IDX_HEAD(waitingQ) + 1;
         while (lengthPQ(waitingQ) < 3)
         {
             enqueuePQ(&waitingQ, createFood(i));
@@ -84,7 +84,7 @@ void DinerDash()
         printf("SALDO : %d\n\n", saldo);
         if (!IsEmptyList(cookingQ))
         {
-            for (int i = FirstIdxList(cookingQ); i != LastIdxList(cookingQ) + 1; i++)
+            for (int i = FirstIdxList(cookingQ); i < LengthList(cookingQ); i++)
             {
                 // pengurangan cookDuration
                 if (cookingQ.food[i].cookDuration > 0)
@@ -93,27 +93,41 @@ void DinerDash()
                 }
 
                 // pengurangan stayDuration
-                else if (cookingQ.food[i].cookDuration == 0)
+                if (cookingQ.food[i].cookDuration == 0)
                 {
                     InsertAtList(&servingQ, cookingQ.food[i], LastIdxList(servingQ) + 1);
+                    servingQ.food[LastIdxList(servingQ)].stayDuration++;
                     DeleteAtList(&cookingQ, i);
                 }
 
                 // cookDuration < 0
-                else
+                if (cookingQ.food[i].cookDuration < 0)
                 {
                     cookingQ.food[i].cookDuration = 0;
                 }
             }
         }
-        for (int i = FirstIdxList(servingQ); i != LastIdxList(servingQ); i++)
+        if (!IsEmptyList(servingQ))
         {
-            if (servingQ.food[i].stayDuration == 0)
+            for (int i = FirstIdxList(servingQ); i < LengthList(servingQ); i++)
             {
-                PQElType brokenFood;
-                brokenFood = GetListChar(servingQ, i);
-                DeleteAtList(&servingQ, i);
-                printf("Makanan M%d telah rusak\n", brokenFood.foodID);
+                if (servingQ.food[i].stayDuration > 0)
+                {
+                    servingQ.food[i].stayDuration--;
+                }
+
+                if (servingQ.food[i].stayDuration == 0)
+                {
+                    PQElType brokenFood;
+                    brokenFood = GetListChar(servingQ, i);
+                    DeleteAtList(&servingQ, i);
+                    printf("Makanan M%d telah rusak\n", brokenFood.foodID);
+                }
+
+                if (servingQ.food[i].stayDuration < 0)
+                {
+                    servingQ.food[i].stayDuration = 0;
+                }
             }
         }
 
@@ -125,11 +139,7 @@ void DinerDash()
 
         if (len > 0)
         {
-            for (int i = 0; i < len; i++)
-            {
-                displayQueuePQ(waitingQ);
-                // printf("M%d      | %d              | %d         | %d    \n", waitingQ.buffer[i].foodID, waitingQ.buffer[i].cookDuration, waitingQ.buffer[i].stayDuration, waitingQ.buffer[i].price);
-            }
+            displayQueuePQ(waitingQ);
         }
 
         delay(500);
@@ -149,61 +159,63 @@ void DinerDash()
         delay(500);
 
         // input command
-        printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        // scanf("%s %s", command, cookedFood);
+        printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan}) / 'SKIP': ", cook, serve);
         STARTINPUTKATA();
         while (!(IsEqual(takeword(currentWord, 1), "COOK") || IsEqual(takeword(currentWord, 1), "SERVE") || IsEqual(takeword(currentWord, 1), "SKIP")))
         {
             otherCommand();
-            printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
+            printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan}): ", cook, serve);
+
             STARTINPUTKATA();
         }
 
-        // M20 mau diambil 20nya
-        int i = 1;
         int id = 0;
-        while (takeword(currentWord, 2).TabWord[i] != '\0')
+        if (currentWord.Length > 4)
         {
-            id = id * 10 + (takeword(currentWord, 2).TabWord[i] - '0');
-            i++;
+            int i = 1;
+
+            while (WordToString(takeword(currentWord, 2))[i] != '\0')
+            {
+                id = id * 10 + (WordToString(takeword(currentWord, 2))[i] - '0');
+                i++;
+            }
+            printf("id : %d\n", id);
+
+            while (!isMemberPQ(waitingQ, id))
+            {
+                printf("Makanan tidak ada dalam daftar pesanan\n");
+                printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan}): ", cook, serve);
+                STARTINPUTKATA();
+
+                i = 1;
+                id = 0;
+                while (WordToString(takeword(currentWord, 2))[i] != '\0')
+                {
+                    id = id * 10 + (WordToString(takeword(currentWord, 2))[i] - '0');
+                    i++;
+                }
+                printf("id : %d\n", id);
+            }
+            printf("\n");
         }
-
-        while (!isMemberPQ(waitingQ, id))
-        {
-            printf("Makanan tidak ada dalam daftar pesanan\n");
-            printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-            STARTINPUTKATA();
-        }
-        printf("\n");
-
-        //  validasi input command
-        // while (!(compare(command, cook) || compare(command, serve)))
-        // {
-        //     otherCommand();
-        //     printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        //     scanf("%s %s", command, cookedFood);
-        // }
-
-        // while (!((cookedFood, "M0") || compare(cookedFood, "M1") || compare(cookedFood, "M2") || compare(cookedFood, "M3") || compare(cookedFood, "M4") || compare(cookedFood, "M5") || compare(cookedFood, "M6") || compare(cookedFood, "M7") || compare(cookedFood, "M8") || compare(cookedFood, "M9")))
-        // {
-        //     otherCommand();
-        //     printf("Masukkan permintaan ('%s / %s' + ' ' + M {0 - %d}): ", cook, serve, len - 1);
-        //     scanf("%s %s", command, cookedFood);
-        // }
-
-        // mengubah cookedFood menjadi int
-        // int id = 0;
-        // for (int i = 1; cookedFood[i] != '\0'; i++)
-        // {
-        //     id = id * 10 + (cookedFood[i] - '0');
-        // }
 
         delay(500);
         // COOK
         if (IsEqual(takeword(currentWord, 1), "COOK"))
         {
             InsertLastList(&cookingQ, waitingQ.buffer[id]);
-            cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
+            boolean first = true;
+            if (LastIdxList(cookingQ) == FirstIdxList(cookingQ) && first)
+            {
+                cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
+                first = false;
+            }
+
+            if (!(LastIdxList(cookingQ) == FirstIdxList(cookingQ)))
+            {
+                cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
+            }
+
             printf("Makanan M%d telah dimasukkan ke dalam antrian memasak\n", cookingQ.food[LastIdxList(cookingQ)].foodID);
             foodQueue++;
         }
@@ -235,6 +247,7 @@ void DinerDash()
                     {
                         // dequeueAtIdx(&cookingAndServingQ, &servableFood, i);
                         dequeuePQ(&waitingQ, &servableFood);
+                        DeleteAtList(&servingQ, id);
                         printf("Makanan M%d telah disajikan\n", servableFood.foodID);
                         saldo += servableFood.price;
                         successfulServe++; // increment successful serve
@@ -263,11 +276,19 @@ void DinerDash()
 
         printf("=============================================================================================\n\n");
         delay(500);
-        if (successfulServe != 15 && len < 7)
+        if (successfulServe != 15 && lengthPQ(waitingQ) < 7)
         {
-            enqueuePQ(&waitingQ, createFood(len));
+            enqueuePQ(&waitingQ, createFood(IDX_TAIL(waitingQ) + 1));
+        }
+
+        if (successfulServe == 15 || lengthPQ(waitingQ) == 8)
+        {
+            gameOver = true;
         }
     }
+
+    printf("Berikut hasil akhir daftar pesanan anda:\n");
+    displayQueuePQ(waitingQ);
 
     printf("Congratulation!\nYou've served %d food\n", successfulServe);
     printf("Game Over \n");
