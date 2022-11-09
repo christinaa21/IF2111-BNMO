@@ -85,16 +85,6 @@ void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 
 	(*array).A[i] = el;
 	(*array).Neff++;
-	// int temp = 0;
-
-	// (*array).Neff++;
-
-	// while (i <= (*array).Neff){
-	// 	temp = (*array).A[i];
-	// 	(*array).A[i] = el;
-	// 	(*array).A[i + 1] = temp;
-	// 	i++;
-	// }
 }
 
 /**
