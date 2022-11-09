@@ -4,8 +4,7 @@
 
 /**
  * Konstruktor
- * I.S. sembarang
- * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize5
+ * Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
  */
 ArrayDin MakeArrayDin(){
 	ArrayDin array;
@@ -17,8 +16,8 @@ ArrayDin MakeArrayDin(){
 
 /**
  * Destruktor
- * I.S. ArrayDin terdefinisi
- * F.S. array->A terdealokasi
+ * I.S. ArrayDin terdefinisi.
+ * F.S. array->A terdealokasi.
  */
 void DeallocateArrayDin(ArrayDin *array){
 	free((*array).A);
@@ -28,7 +27,7 @@ void DeallocateArrayDin(ArrayDin *array){
 
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi. 
  */
 boolean IsEmpty(ArrayDin array){
 	return ((array).Neff == 0);
@@ -36,7 +35,7 @@ boolean IsEmpty(ArrayDin array){
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi. 
  */
 int Length(ArrayDin array){
 	return (array).Neff;
@@ -52,15 +51,16 @@ ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i){
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
- * Prekondisi: array terdefinisi
+ * Prekondisi: array terdefinisi.
  */
 int GetCapacity(ArrayDin array){
 	return ((array).Capacity);
 }
 
 /**
- * Fungsi untuk menambahkan elemen baru di index ke-i
- * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ * Fungsi untuk menambahkan elemen baru di index ke-i.
+ * I.S : array terdefinisi, i di antara 0..Length(array).
+ * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1. 
  */
 void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 	int length = Length(*array);
@@ -89,7 +89,8 @@ void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
- * Prekondisi: array terdefinisi
+ * I.S : array terdefinisi. 
+ * F.S : elemen baru berhasil ditambahkan di akhir array. 
  */
 void InsertLast(ArrayDin *array, ElTypeArrayDin el){
 	int nums = Length(*array);
@@ -98,7 +99,8 @@ void InsertLast(ArrayDin *array, ElTypeArrayDin el){
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
- * Prekondisi: array terdefinisi
+ * I.S : array terdefinisi. 
+ * F.S : elemen baru berhasil ditambahkan di awal array. 
  */
 void InsertFirst(ArrayDin *array, ElTypeArrayDin el){
 	InsertAt(array, el, 0);
@@ -106,7 +108,8 @@ void InsertFirst(ArrayDin *array, ElTypeArrayDin el){
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
- * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ * I.S : array terdefinisi, i di antara 0..Length(array).
+ * F.S elemen pada indeks ke-i berhasil dihapuskan dari array. 
  */
 void DeleteAt(ArrayDin *array, IdxTypeArrayDin i){
 	int length = Length(*array);
