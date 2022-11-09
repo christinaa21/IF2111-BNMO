@@ -16,27 +16,25 @@ typedef struct {
     int Neff;
 } ArrayDin;
 
-/**
- * Konstruktor
- * Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
+/* ********** KONSTRUKTOR ********** */
+/* Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
  */
 ArrayDin MakeArrayDin();
 
-/**
- * Destruktor
- * I.S. ArrayDin terdefinisi.
+/* ********** DESTRUKTOR ********** */
+/* I.S. ArrayDin terdefinisi.
  * F.S. array->A terdealokasi.
  */
 void DeallocateArrayDin(ArrayDin *array);
 
-/**
- * Fungsi untuk mengetahui apakah suatu array kosong.
+/* ********** TEST KOSONG/PENUH ********** */
+/* Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi. 
  */
 boolean IsEmpty(ArrayDin array);
 
-/**
- * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
+/* ********** SELEKTOR ********** */
+/* Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi. 
  */
 int Length(ArrayDin array);
@@ -53,8 +51,8 @@ ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
  */
 int GetCapacity(ArrayDin array);
 
-/**
- * Fungsi untuk menambahkan elemen baru di index ke-i.
+/* ********** OPERASI-OPERASI ********** */
+/* Fungsi untuk menambahkan elemen baru di index ke-i.
  * I.S : array terdefinisi, i di antara 0..Length(array).
  * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1. 
  */

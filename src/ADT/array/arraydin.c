@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include "arraydin.h"
 
-/**
- * Konstruktor
- * Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
+
+/* ********** KONSTRUKTOR ********** */
+/* Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
  */
 ArrayDin MakeArrayDin(){
 	/*KAMUS LOKAL*/
@@ -16,9 +16,8 @@ ArrayDin MakeArrayDin(){
 	return array;
 }
 
-/**
- * Destruktor
- * I.S. ArrayDin terdefinisi.
+/* ********** DESTRUKTOR ********** */
+/* I.S. ArrayDin terdefinisi.
  * F.S. array->A terdealokasi.
  */
 void DeallocateArrayDin(ArrayDin *array){
@@ -30,8 +29,8 @@ void DeallocateArrayDin(ArrayDin *array){
 	(*array).Neff = 0;
 }
 
-/**
- * Fungsi untuk mengetahui apakah suatu array kosong.
+/* ********** TEST KOSONG/PENUH ********** */
+/* Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi. 
  */
 boolean IsEmpty(ArrayDin array){
@@ -41,8 +40,8 @@ boolean IsEmpty(ArrayDin array){
 	return ((array).Neff == 0);
 }
 
-/**
- * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
+/* ********** SELEKTOR ********** */
+/* Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi. 
  */
 int Length(ArrayDin array){
@@ -74,8 +73,9 @@ int GetCapacity(ArrayDin array){
 	return ((array).Capacity);
 }
 
-/**
- * Fungsi untuk menambahkan elemen baru di index ke-i.
+
+/* ********** OPERASI-OPERASI ********** */
+/* Fungsi untuk menambahkan elemen baru di index ke-i.
  * I.S : array terdefinisi, i di antara 0..Length(array).
  * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1. 
  */
