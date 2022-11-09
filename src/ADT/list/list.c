@@ -188,3 +188,25 @@ List ConcatList(List L1, List L2)
 /* Mengirimkan sebuah List yang merupakan gabungan dari L1 dan L2 */
 /* Urutan elemen terisi dari L1, lalu L2 */
 /* Contoh : L1 : [1, 2]; L2 : [3, 4]; Mengembalikan [1, 2, 3, 4] */
+
+void displayTime(List l)
+{
+	if (!IsEmptyList(l))
+	{
+		for (int i = FirstIdxList(l); i <= LastIdxList(l); i++)
+		{
+			printf("M%d      | %d              \n", l.food[i].foodID, l.food[i].cookDuration);
+		}
+	}
+}
+
+void displayStay(List l)
+{
+	if (!IsEmptyList(l))
+	{
+		for (int i = FirstIdxList(l); i <= LastIdxList(l); i++)
+		{
+			printf("M%d      | %d              \n", l.food[i].foodID, l.food[i].stayDuration);
+		}
+	}
+}

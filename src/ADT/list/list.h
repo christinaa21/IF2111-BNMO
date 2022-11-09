@@ -7,6 +7,7 @@
 
 #include "boolean.h"
 #include "../prioQueue/prioqueue.h"
+// #include "../../games/diner_dash/diner_dash.h"
 
 /* Kamus Umum */
 #define MaxEl 100
@@ -112,4 +113,10 @@ List ConcatList(List L1, List L2);
 /* Mengirimkan sebuah List yang merupakan gabungan dari L1 dan L2 */
 /* Urutan elemen terisi dari L1, lalu L2 */
 /* Contoh : L1 : [1, 2]; L2 : [3, 4]; Mengembalikan [1, 2, 3, 4] */
+
+void displayTime(List l);
+/* Menampilkan waktu yang tersisa */
+
+void displayStay(List l);
+/* Menampilkan waktu yang tersisa */
 #endif

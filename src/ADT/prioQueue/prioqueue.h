@@ -5,11 +5,13 @@
 #define __PRIO_QUEUE_H
 
 #include "boolean.h"
+#include "../../games/diner_dash/diner_dash.h"
 
 #define IDX_UNDEF -1
 #define PQCAPACITY 100
 
 /* Definisi elemen dan address */
+
 typedef struct
 {
         /* data */
@@ -18,7 +20,6 @@ typedef struct
         int stayDuration;
         int price;
 } PQElType;
-
 typedef struct
 {
         PQElType buffer[PQCAPACITY];
@@ -93,4 +94,6 @@ void displayStayPQ(PrioQueue q);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+
+boolean isMemberPQ(PrioQueue q, PQElType val);
 #endif
