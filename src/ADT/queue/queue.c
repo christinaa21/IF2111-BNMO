@@ -122,6 +122,7 @@ void displayQueue(Queue q)
 	/*KAMUS LOKAL*/
 	int i, temp1, temp2;
 	ElTypeQueue val;
+	char* valchar;
 	/*ALGORITMA*/
 	if (isEmpty(q))
 	{
@@ -135,13 +136,14 @@ void displayQueue(Queue q)
 		while (IDX_HEAD(q) != IDX_UNDEF)
 		{
 			dequeue(&q, &val);
+			valchar = WordToString(val);
 			if (IDX_HEAD(q) == IDX_UNDEF)
 			{
-				printf("%d]", val);
+				printf("%s]", valchar);
 			}
 			else
 			{
-				printf("%d,", val);
+				printf("%s,", valchar);
 			}
 		}
 		IDX_HEAD(q) = temp1;

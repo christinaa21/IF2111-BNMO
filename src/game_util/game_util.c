@@ -62,9 +62,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
     else
     {
         ElTypeArrayOfGame game = GetGame((*arr), n - 1);
-        printf("game = %s\n", WordToString(game));
-        // printf("%d\n", isInQueue(qGame, game));
-        if ((n <= 5) || (isInQueue(qGame, game)))
+        if ((n <= 7) || (isInQueue(qGame, game)))
         {
             printf("Game tidak dapat dihapus\n");
         }
@@ -178,7 +176,7 @@ void playGame(Queue *qGame)
             printf("Game yang dimainkan adalah HANGMAN\n");
             hangMan();
         }
-        else if (IsEqual(game, "Tic Tac Toe"))
+        else if (IsEqual(game, "TIC TAC TOE"))
         {
             printf("Game yang dimainkan adalah Tic Tac Toe\n");
             tictactoe();
@@ -256,7 +254,7 @@ void skipGame(int n, Queue *qGame)
             printf("Game yang dimainkan adalah HANGMAN\n");
             hangMan();
         }
-        else if (IsEqual(game, "Tic Tac Toe"))
+        else if (IsEqual(game, "TIC TAC TOE"))
         {
             printf("Game yang dimainkan adalah Tic Tac Toe\n");
             tictactoe();

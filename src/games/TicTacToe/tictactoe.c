@@ -1,5 +1,3 @@
-// #include "../../ADT/arrayOfGame/arrayOfGame.h"
-// #include "../../ADT/mesinkata/mesinkata.h"
 #include "tictactoe.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -187,7 +185,3 @@ void tictactoe()
         printf("=====Yahhh Anda kalah=====\n");
     }
 }
-
-/*int main(){
-    tictactoe();
-}*/

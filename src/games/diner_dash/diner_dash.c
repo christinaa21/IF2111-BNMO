@@ -214,19 +214,7 @@ void DinerDash()
         if (IsEqual(takeword(currentWord, 1), "COOK"))
         {
             InsertLastList(&cookingQ, waitingQ.buffer[id]);
-            // boolean first = true;
-            // if (LastIdxList(cookingQ) == FirstIdxList(cookingQ) && first)
-            // {
-            //     cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
-            //     first = false;
-            // }
             cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
-
-            // if (!(LastIdxList(cookingQ) == FirstIdxList(cookingQ)))
-            // {
-            //     cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
-            // }
-
             printf("Makanan M%d telah dimasukkan ke dalam antrian memasak\n", cookingQ.food[LastIdxList(cookingQ)].foodID);
             foodQueue++;
         }
@@ -279,10 +267,9 @@ void DinerDash()
 
         else if (IsEqual(takeword(currentWord, 1), "SKIP"))
         {
-            printf("Kamu telah skip ronde kali ini\n", id);
+            printf("Kamu telah skip ronde kali ini\n");
         }
 
-        // displayQueuePQ(cookingAndServingQ);
         printf("\n");
 
         printf("=============================================================================================\n\n");
