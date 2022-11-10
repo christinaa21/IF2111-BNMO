@@ -101,65 +101,79 @@ void dequeue(Queue *q, ElTypeQueue *val)
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q) {
-	/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
-	siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+void displayQueue(Queue q)
+{
+	/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
+	siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
 	karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 	/* I.S. q boleh kosong */
 	/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 	/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 	/* Jika Queue kosong : menulis [] */
-    int i, temp1, temp2;
-    ElTypeQueue val;
-    if (isEmpty(q)) {
-        printf("[]");
-    } else {
-        temp1 = IDX_HEAD(q);
-        temp2 = IDX_TAIL(q);
-        printf("[");
-        while (IDX_HEAD(q) != IDX_UNDEF) {
-            dequeue(&q, &val);
-            if (IDX_HEAD(q) == IDX_UNDEF) {
-                printf("%d]", val);
-            } else {
-                printf("%d,", val);
-            }
-        }
-        IDX_HEAD(q) = temp1;
-        IDX_TAIL(q) = temp2;
-    }
-    printf("\n");
+	int i, temp1, temp2;
+	ElTypeQueue val;
+	if (isEmpty(q))
+	{
+		printf("[]");
+	}
+	else
+	{
+		temp1 = IDX_HEAD(q);
+		temp2 = IDX_TAIL(q);
+		printf("[");
+		while (IDX_HEAD(q) != IDX_UNDEF)
+		{
+			dequeue(&q, &val);
+			if (IDX_HEAD(q) == IDX_UNDEF)
+			{
+				printf("%d]", val);
+			}
+			else
+			{
+				printf("%d,", val);
+			}
+		}
+		IDX_HEAD(q) = temp1;
+		IDX_TAIL(q) = temp2;
+	}
+	printf("\n");
 }
 
-void copyQueue(Queue *queueInput, Queue *queueOutput) {
+void copyQueue(Queue *queueInput, Queue *queueOutput)
+{
 	/* Proses: Menyalin isi dari queueInput ke queueOutput */
 	/* I.S. queueInput mungkin kosong, tabel penampung elemen queueInput TIDAK penuh */
 	/* F.S. queueOutput memiliki isi queue yang sama */
 	int i, len;
 	Queue q;
-    ElTypeQueue val;
-    CreateQueue(&q);
-    len = length(*queueInput);
-    for (i=0;i < len;i++) {
-        dequeue(queueInput, &val);
-        enqueue(queueOutput, val);
-        enqueue(&q, val);
-    }
-    len = length(q);
-    for (i=0;i < len;i++) {
-        dequeue(&q, &val);
-        enqueue(queueInput, val);
-    }
+	ElTypeQueue val;
+	CreateQueue(&q);
+	len = length(*queueInput);
+	for (i = 0; i < len; i++)
+	{
+		dequeue(queueInput, &val);
+		enqueue(queueOutput, val);
+		enqueue(&q, val);
+	}
+	len = length(q);
+	for (i = 0; i < len; i++)
+	{
+		dequeue(&q, &val);
+		enqueue(queueInput, val);
+	}
 }
 
-boolean isInQueue(Queue q, ElTypeQueue x) {
+boolean isInQueue(Queue q, ElTypeQueue x)
+{
 	/* Mengembalikan true jika x merupakan elemen dari q */
 	ElTypeQueue val;
-	char* xchar = WordToString(x);
+	char *xchar = WordToString(x);
 	boolean notfound = true;
-	while ((IDX_HEAD(q) != IDX_UNDEF) && notfound) {
+	while ((IDX_HEAD(q) != IDX_UNDEF) && notfound)
+	{
 		dequeue(&q, &val);
-		if (IsEqual(val, xchar)) {
+		if (IsEqual(val, xchar))
+		{
 			notfound = false;
 		}
 	}
