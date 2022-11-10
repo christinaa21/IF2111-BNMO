@@ -143,7 +143,7 @@ void dequeuePQ(PrioQueue *q, PQElType *val)
 	}
 }
 
-/* *** Display Queue *** */
+/* *** DISPLAY QUEUE *** */
 /* Proses : Menuliskan isi Queue dan infonya secara lengkap dengan traversal 
  * I.S : q boleh kosong 
  * F.S : Jika q tidak kosong akan ditampilkan daftar antrian
