@@ -2,34 +2,49 @@
 #include "prioqueue.h"
 #include "boolean.h"
 
-/* *** Kreator *** */
+/* *** KREATOR *** */
+/* Prosedur untuk membuat queue
+ * I.S : sembarang 
+ * F.S : Sebuah q kosong terbentuk dengan kondisi sbb: 
+ * 		 - Index head bernilai IDX_UNDEF 
+ * 		 - Index tail bernilai IDX_UNDEF 
+ * Proses : Melakukan alokasi, membuat sebuah q kosong */
 void CreateQueuePQ(PrioQueue *q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	IDX_HEAD(*q) = IDX_UNDEF;
 	IDX_TAIL(*q) = IDX_UNDEF;
 }
-/* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
-/* - Index head bernilai IDX_UNDEF */
-/* - Index tail bernilai IDX_UNDEF */
-/* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
-/* ********* Prototype ********* */
+
+/* ********* PROTOTYPE ********* */
+/*Fungsi yang mengirim true jika q kosong: lihat definisi di atas */
 boolean isEmptyPQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
-/* Mengirim true jika q kosong: lihat definisi di atas */
 
+/* Fungsi yang mengirim true jika tabel penampung elemen q sudah penuh
+ * yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 boolean isFullPQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	return (lengthPQ(q) == PQCAPACITY);
 }
-/* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
+/*Fungsi yang mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong.*/
 int lengthPQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (isEmptyPQ(q))
 	{
 		return 0;
@@ -47,11 +62,16 @@ int lengthPQ(PrioQueue q)
 		return count;
 	}
 }
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
-/* *** Primitif Add/Delete *** */
+/* *** OPERASI OPERASI *** */
+/* Proses: Menambahkan val pada q dengan aturan FIFO jika val belum ditemukan
+ * I.S : q mungkin kosong, tabel penampung elemen q TIDAK penuh 
+ * F.S : val menjadi TAIL yang baru jika val belum ditemukan, IDX_TAIL "mundur" dalam buffer melingkar. */
 void enqueuePQ(PrioQueue *q, PQElType val)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (isEmptyPQ(*q))
 	{
 		IDX_HEAD(*q) = 0;
@@ -77,27 +97,17 @@ void enqueuePQ(PrioQueue *q, PQElType val)
 			IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % PQCAPACITY;
 			(*q).buffer[IDX_TAIL(*q)] = val;
 		}
-		// int idx = IDX_HEAD(*q);
-		// while (((*q).buffer[IDX_HEAD(*q)].cookDuration > val.cookDuration) && (IDX_HEAD(*q) != (IDX_TAIL(*q))))
-		// {
-		// 	PQElType temp = (*q).buffer[IDX_HEAD(*q)];
-		// 	(*q).buffer[IDX_HEAD(*q)] = (*q).buffer[IDX_HEAD(*q) + 1];
-		// 	(*q).buffer[IDX_HEAD(*q) + 1] = temp;
-		// 	IDX_HEAD(*q)
-		// 	++;
-		// }
-
-		// IDX_HEAD(*q) = idx;
-
-		// (*q).buffer[IDX_HEAD(*q)] = val;
 	}
 }
-/* Proses: Menambahkan val pada q dengan aturan FIFO jika val belum ditemukan*/
-/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru jika val belum ditemukan, IDX_TAIL "mundur" dalam buffer melingkar. */
 
+/* Proses: Menambahkan val pada q dengan aturan FIFO 
+ * I.S : q mungkin kosong, tabel penampung elemen q TIDAK penuh
+ * F.S : val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 void enqueueCSQ(PrioQueue *q, PQElType val)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (isEmptyPQ(*q))
 	{
 		IDX_HEAD(*q) = 0;
@@ -112,15 +122,15 @@ void enqueueCSQ(PrioQueue *q, PQElType val)
 	}
 }
 
-/* Proses: Menambahkan val pada q dengan aturan FIFO */
-/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
-
+/* Proses: Menghapus val pada q  pada indeks idx 
+ * I.S : q tidak mungkin kosong 
+ * F.S : val = nilai elemen q pada indeks idx pd I.S., IDX_TAIL "mundur";
+		q mungkin kosong */
 void dequeuePQ(PrioQueue *q, PQElType *val)
 {
+	/*KAMUS LOKAL*/
 	*val = HEAD(*q);
-
-	//
+	/*ALGORITMA*/
 	if (IDX_HEAD(*q) == IDX_TAIL(*q))
 	{
 		IDX_HEAD(*q) = IDX_UNDEF;
@@ -133,46 +143,20 @@ void dequeuePQ(PrioQueue *q, PQElType *val)
 	}
 }
 
-// void dequeueAtIdx(PrioQueue *q, PQElType *val, int idx)
-// {
-// 	// printf("dequeue at idx %d\n", idx);
-// 	*val = (*q).buffer[idx];
-
-// 	if (IDX_HEAD(*q) == IDX_TAIL(*q))
-// 	{
-// 		IDX_HEAD(*q) = IDX_UNDEF;
-// 		IDX_TAIL(*q) = IDX_UNDEF;
-// 	}
-
-// 	else
-// 	{
-// 		// printf("IDX_HEAD(*q) %d\n", IDX_HEAD(*q));
-// 		// printf("IDX_TAIL(*q) %d\n", IDX_TAIL(*q));
-
-// 		int i = IDX_HEAD(*q) + idx;
-// 		while (i != IDX_TAIL(*q) + 1)
-// 		{
-// 			(*q).buffer[i] = (*q).buffer[i + 1];
-// 			i = (i + 1) % PQCAPACITY;
-// 		}
-// 		IDX_TAIL(*q) = (IDX_TAIL(*q) - 1) % PQCAPACITY;
-// 	}
-// }
-/* Proses: Menghapus val pada q  pada indeks idx */
-/* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen q pada indeks idx pd I.S., IDX_TAIL "mundur";
-		q mungkin kosong */
-
 /* *** Display Queue *** */
-
+/* Proses : Menuliskan isi Queue dan infonya secara lengkap dengan traversal 
+ * I.S : q boleh kosong 
+ * F.S : Jika q tidak kosong akan ditampilkan daftar antrian
+    	 Jika Queue kosong : Queue is empty */
 void displayQueuePQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
 
+	/*ALGORITMA */
 	if (isEmptyPQ(q))
 	{
 		printf("Queue is empty");
 	}
-
 	else
 	{
 		PrioQueue temp;
@@ -183,24 +167,19 @@ void displayQueuePQ(PrioQueue q)
 		{
 			dequeuePQ(&temp, &val);
 			printf("M%d      | %d              | %d         | %d    \n", val.foodID, val.cookDuration, val.stayDuration, val.price);
-			// printf("food id : %d\n", val.foodID);
-			// printf("cook duration : %d\n", val.cookDuration);
-			// printf("stay duration : %d\n", val.stayDuration);
-			// printf("price : %d\n", val.price);
 		}
-		// int i = IDX_HEAD(q);
-		// while (i != IDX_TAIL(q) + 1)
-		// {
-		// 	printf("food id : %d\n", q.buffer[i].foodID);
-		// 	printf("cook duration : %d\n", q.buffer[i].cookDuration);
-		// 	printf("stay duration: %d\n", q.buffer[i].stayDuration);
-		// 	printf("price: %d\n", q.buffer[i].price);
-		// 	i = (i + 1) % PQCAPACITY;
-		// }
 	}
 }
+
+/* Proses : Menuliskan isi Queue makanan dan durasi masaknya dengan traversal 
+ * I.S : q boleh kosong 
+ * F.S : Jika q tidak kosong akan ditampilkan daftar antrian dan waktunya
+    	 Jika Queue kosong tidak diproses */
 void displayTimePQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
@@ -214,16 +193,16 @@ void displayTimePQ(PrioQueue q)
 		}
 	}
 }
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. q boleh kosong */
-/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
 
+/* Proses : Menuliskan isi Queue makanan dan durasi menunggu dengan traversal 
+ * I.S : q boleh kosong 
+ * F.S : Jika q tidak kosong akan ditampilkan daftar antrian dan waktunya
+ *  	 Jika Queue kosong tidak diproses */
 void displayStayPQ(PrioQueue q)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
@@ -238,8 +217,12 @@ void displayStayPQ(PrioQueue q)
 	}
 }
 
+/* Fungsi yang akan mengeluarkan nilai kebenaran jika sebuah makanan ada di daftar secara transversal*/
 boolean isMemberPQ(PrioQueue q, int id)
 {
+	/*KAMUS LOKAL*/
+
+	/*ALGORITMA */
 	if (!isEmptyPQ(q))
 	{
 		int i = IDX_HEAD(q);
