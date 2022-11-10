@@ -1,25 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 #include "./diner_dash.h"
 
 /*Fungsi yang mengembalikan true jika str1 sama dengan str2*/
-boolean compare(char str1[], char str2[])
-{
-    /*KAMUS LOKAL*/
-    boolean found = false, i = 0;
-    /*ALGORITMA*/
-    while ((str1[i] != '\0' || str2[i] != '\0') && !found)
-    {
-        if (str1[i] != str2[i])
-        {
-            found = true;
-        }
-        i++;
-    }
-
-    return !found;
-}
 
 /*Fungsi untuk membuat makanan*/
 PQElType createFood(int id)
@@ -29,14 +14,26 @@ PQElType createFood(int id)
     srand(time(NULL));
     /*ALGORITMA*/
     (food).foodID = id;
-    (food).cookDuration = rand() % 5 + 1;
-    (food).stayDuration = (rand() * 5 + rand() * 2) % 5 + 1;
-    (food).price = (rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100;
+    (food).cookDuration = abs(rand() % 5 + 1);
+    while (food.cookDuration == 0)
+    {
+        food.cookDuration = abs(rand() % 5 + 1);
+    }
+    (food).stayDuration = abs((rand() * 5 + rand() * 2) % 5 + 1);
+    while (food.stayDuration == 0)
+    {
+        food.stayDuration = abs((rand() * 5 + rand() * 2) % 5 + 1);
+    }
+    (food).price = abs((rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100);
+    while (food.price == 0)
+    {
+        food.price = abs((rand() % 4 + 1) * 10000 + rand() % 9 * 1000 + (rand() % 9) * 100);
+    }
     return food;
 }
 
-/* Prosedur transversal hingga mencapai waktu yang dibutuhkan 
- * I.S : terdefinisi 
+/* Prosedur transversal hingga mencapai waktu yang dibutuhkan
+ * I.S : terdefinisi
  * F.S : waktu telah mencapai yang dibutuhkan kemudian looping terselesaikan */
 void delay(int number_of_milliseconds)
 {
@@ -62,7 +59,7 @@ void delay(int number_of_milliseconds)
  * -	Pada setiap putaran, seluruh durasi dari makanan yang sedang dimasak akan berkurang 1. Ketika durasi makanan mencapai 0, maka makanan sudah dapat di SERVE.
  * -	Ketika makanan sudah di SERVE, maka makanan dapat diantar kepada pelanggan dan pelanggan dapat meninggalkan antrian. Setelah pelanggan meninggalkan antrian, maka pemain akan menerima uang
  * -	SERVE hanya dapat digunakan untuk pesanan yang berada di paling depan.
- * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */ 
+ * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */
 void DinerDash()
 {
     /*KAMUS LOKAL*/
@@ -110,19 +107,12 @@ void DinerDash()
                 {
                     cookingQ.food[i].cookDuration--;
                 }
-
-                // pengurangan stayDuration
-
-                // cookDuration < 0
-                // if (cookingQ.food[i].cookDuration < 0)
-                // {
-                //     cookingQ.food[i].cookDuration = 0;
-                // }
             }
             int i = FirstIdxList(cookingQ);
-            while (i != LastIdxList(cookingQ) + 1 )
+            while (i != LastIdxList(cookingQ) + 1)
             {
-                if (cookingQ.food[i].cookDuration == 0) {
+                if (cookingQ.food[i].cookDuration == 0)
+                {
                     InsertAtList(&servingQ, cookingQ.food[i], LastIdxList(servingQ) + 1);
                     servingQ.food[LastIdxList(servingQ)].stayDuration++;
                     DeleteAtList(&cookingQ, i);
@@ -139,15 +129,12 @@ void DinerDash()
                 {
                     servingQ.food[i].stayDuration--;
                 }
-
-                // if (servingQ.food[i].stayDuration < 0)
-                // {
-                //     servingQ.food[i].stayDuration = 0;
-                // }
             }
             int i = FirstIdxList(servingQ);
-            while (i != LastIdxList(servingQ) + 1) {
-                if (servingQ.food[i].stayDuration == 0){
+            while (i != LastIdxList(servingQ) + 1)
+            {
+                if (servingQ.food[i].stayDuration == 0)
+                {
                     PQElType brokenFood;
                     brokenFood = GetListChar(servingQ, i);
                     DeleteAtList(&servingQ, i);
