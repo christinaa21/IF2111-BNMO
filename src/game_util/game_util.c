@@ -20,7 +20,7 @@ void createGame(ArrayOfGame *arr)
 
 /* Prosedur yang menampilkan daftar game 
  * I.S. Program telah berjalan
-   F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
+ * F.S. Daftar game yang disediakan oleh sistem tertampil di layar.
 */ 
 void listGame(ArrayOfGame *arr)
 {
@@ -179,8 +179,9 @@ void playGame(Queue *qGame)
 }
 
 /* Prosedur untuk melewatkan game dari daftar antrian sebayak n game. 
- * I.S : Program telah berjalan
- * F.S : Game dilewatkan sebanyak n, lalu game dimulai.
+ * I.S : Program telah berjalan. 
+ * F.S : Menampilkan antrian game.
+ *       Game dilewatkan sebanyak n, lalu game dimulai.
 */
 void skipGame(int n, Queue *qGame)
 {
