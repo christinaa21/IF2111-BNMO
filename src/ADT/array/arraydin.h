@@ -45,8 +45,11 @@ int Length(ArrayDin array);
  */
 ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
 
+/**
+ * Fungsi untuk mengeset x pada elemen array dengan indeks ke-i.
+ * Prekondisi: array, i, dan x terdefinisi.
+*/
 void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x);
-/* Mengeset x pada elemen array dengan indeks ke-i. */
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.

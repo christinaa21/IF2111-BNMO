@@ -125,4 +125,8 @@ void hangMan()
     }
     printf("Kamu memperoleh score sebesar: %d poin!\n\n", score);
     printf("--- GAME OVER ---\n");
+    
+    DeallocateArrayDin(&ArrayHangman);
+    DeallocateArrayDin(&ArrayKata);
+    DeallocateArrayDin(&ArrayBlank);
 }
