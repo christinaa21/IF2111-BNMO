@@ -202,7 +202,7 @@ void skipGame(int n, Queue *qGame)
     printf("\n");
     if (n > length(*qGame))
     {
-        if (IsEmpty(*qGame))
+        if (isEmpty(*qGame))
         {
             printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         }
