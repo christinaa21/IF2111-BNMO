@@ -35,7 +35,9 @@ PQElType createFood(int id)
     return food;
 }
 
-/* Prosedur transversal hingga mencapai waktu yang dibutuhkan */
+/* Prosedur transversal hingga mencapai waktu yang dibutuhkan 
+ * I.S : terdefinisi 
+ * F.S : waktu telah mencapai yang dibutuhkan kemudian looping terselesaikan */
 void delay(int number_of_milliseconds)
 {
     // Converting time into milli_seconds
