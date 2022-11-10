@@ -11,6 +11,7 @@
 #include "../games/random_number_generator/random_number_generator.h"
 #include "../games/game_tambahan/game_tambahan.h"
 #include "../games/hangman/hangman.h"
+#include "../games/TicTacToe/tictactoe.h"
 
 /* Prosedur untuk membuat game
  * I.S. Program telah berjalan

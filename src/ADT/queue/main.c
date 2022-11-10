@@ -2,7 +2,7 @@
 #include "queue.h"
 
 int main() {
-    int val;
+    Word val;
     Queue q1, q2;
     char *pita = "../../../Data/gamelist.txt";
     ElTypeQueue g1, g2, g3, g4, g5;

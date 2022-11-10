@@ -178,6 +178,10 @@ void playGame(Queue *qGame)
             printf("Game yang dimainkan adalah HANGMAN\n");
             hangMan();
         }
+        else if(IsEqual(game,"Tic Tac Toe")){
+            printf("Game yang dimainkan adalah Tic Tac Toe\n");
+            tictactoe();
+        }
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
@@ -251,6 +255,10 @@ void skipGame(int n, Queue *qGame)
             printf("Game yang dimainkan adalah HANGMAN\n");
             hangMan();
         }
+        else if(IsEqual(game,"Tic Tac Toe")){
+            printf("Game yang dimainkan adalah Tic Tac Toe\n");
+            tictactoe();
+        }       
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
