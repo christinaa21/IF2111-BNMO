@@ -5,13 +5,16 @@
 #include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "./main_util.h"
 #include "../ADT/mesinkata/mesinkata.h"
-// start, load, save, quit, help
 
+/* Prosedur untuk menjalankan program 
+ * I.S : Sembarang.
+ * F.S : menjalankan program dengan melakukan load terhadap konfigurasi.
+*/
 void start(ArrayOfGame *arr)
 {
-    // I.S. Sembarang
-    // F.S. menjalankan program dengan melakukan load terhadap konfigurasi
+    /*KAMUS LOKAL*/
     int count;
+    /*ALGORITMA*/
     *arr = MakeArrayOfGame();
     char *FILE = "./config.txt";
     STARTWORD(FILE);
@@ -24,10 +27,15 @@ void start(ArrayOfGame *arr)
     printf("File Konfigurasi sistem berhasi dibaca. BNMO berhasil dijalankan\n");
 }
 
+/* Prosedur untuk menjalankan file yang tersimpan dari history program 
+ * I.S. Program telah berjalan.
+ * F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal.
+*/
 void load(char *savefile, ArrayOfGame *arrGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     *arrGame = MakeArrayOfGame();
     char *path = "Data/";
     char *newfile = ConcateChar(path, savefile);
@@ -42,14 +50,18 @@ void load(char *savefile, ArrayOfGame *arrGame)
     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
 
+/* Prosedur untuk menyimpan file program yang telah dijalankan 
+ * I.S : Program telah berjalan.
+ * F.S : Menyimpan file yang telah dijalankan ke dalam file eksternal
+ *  */
 void save(char *savefile, ArrayOfGame arrGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Menyimpan file yang telah dijalankan ke dalam file eksternal
+    /*KAMUS LOKAL*/
     FILE *fp;
     int i;
     char *game;
     char *path = "Data/";
+    /*ALGORITMA*/
     char *newfile = ConcateChar(path, savefile);
     fp = fopen(newfile, "w+");
     fprintf(fp, "%d\n", LengthArrayOfGame(arrGame));
@@ -62,10 +74,15 @@ void save(char *savefile, ArrayOfGame arrGame)
     printf("Save file berhasil disimpan.\n");
 }
 
+/* Prosedur untuk menampilkan command yang bisa dimasukan user 
+ * I.S : Program telah berjalan
+ * F.S : Menampilkan bantuan untuk penggunaan program
+*/
 void help()
 {
-    // I.S. Program telah berjalan
-    // F.S. Menampilkan bantuan untuk penggunaan program
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Hai Hai Jangan Merasa Tersesat,\n");
     printf("Berikut adalah hal-hal yang bisa kamu lakukan :\n");
     printf("01. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
@@ -79,10 +96,15 @@ void help()
     printf("08. HELP            : untuk melihat informasi dari command-command\n");
 }
 
+/* Prosedur untuk berhenti dari program 
+ * I.S : Program sedang berjalan
+ * F.S : Keluar dari program dengan array telah didealokasikan
+  */
 void quit(ArrayOfGame arrGame)
 {
-    // I.S. Program sedang berjalan
-    // F.S. Keluar dari program dengan array telah didealokasikan
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Apakah kamu ingin save game kamu? (Y/N)\n");
     STARTINPUTKATA();
     while (!(IsEqual(currentWord, "Y") || IsEqual(currentWord, "N")))
@@ -106,9 +128,14 @@ void quit(ArrayOfGame arrGame)
     exit(0);
 }
 
+/* Prosedur untuk menampilkan pesan kesalahan input user 
+ * I.S : Program sedang berjalan
+ * F.S : F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid
+*/
 void otherCommand()
 {
-    // I.S. Program sedang berjalan
-    // F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Command yang diberikan tidak sesuai yang diinginkan\n Silahkan masukkan input yang valid.");
 }
