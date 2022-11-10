@@ -291,18 +291,16 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 	/*KAMUS LOKAL*/
 	IdxTypeArrayOfGame i = 0;
 	boolean found = false;
-	char *s1, *s2;
+	char *x;
 	/*ALGORITMA*/
+	x = WordToString(el);
 	while (i < array.Neff && !found)
 	{
-		s1 = WordToString(array.A[i]);
-		s2 = WordToString(el);
-
-		if (s1 == s2)
-		{
+		if(IsEqual(array.A[i], x)) {
 			found = true;
+		} else {
+			i++;
 		}
-		i++;
 	}
 
 	if (found)
@@ -311,5 +309,4 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 	} else {
 		return -1;
 	}
-	
 }
