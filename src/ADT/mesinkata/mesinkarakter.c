@@ -3,6 +3,7 @@
 #include "mesinkarakter.h"
 #include "boolean.h"
 
+/*KAMUS*/
 char currentChar;
 boolean EOP;
 static FILE *pita;
