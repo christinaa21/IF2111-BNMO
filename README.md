@@ -3,9 +3,9 @@
 ### IF2111 ALGORITMA DAN STRUKTUR DATA
 
 BNMO adalah sebuah sistem game yang diakses melalui command-line interface. Program ini memiliki empat fungsi utama yaitu memainkan game, menambahkan game, menghapus game, dan mengurutkan game yang akan dimainkan sesuai antrian yang dimasukan. Jadi user bisa menyunting game mereka juga memainkannya dalam program BNMO ini. 
-<br>
+<br/>
 Pada pemenuhan tugas besar kali ini, pembuatan program BNMO juga diikuti oleh pemenuhan pembuatan dua game utama yaitu Diner Dash dan Random Number Generator. Diner Dash adalah game yang diadaptasi dari sistem pelayanan pada restoran, dimana user yang memainkan game ini harus bisa mengatur sistem antrian pelayanan kepada pelanggan restorannya. Sedangkan dalam game Random Number Generator user diminta menebak sebuah angka acak yang dibuat oleh mesin dengan clue tebakan apakah lebih besar atau lebih kecil. Selain game-game di atas, ada dua game bonus yang berhasil ditambahkan yaitu Tic Tac Toe yang diadaptasi dari permainan Tic Tac Toe pada umumnya dan Hangman yang di dalamnya terdapat kata-kata yang harus ditebak dan masih bernuansa topik sehari-hari dari mahasiswa STI. 
-<br>
+<br/>
 
 Game ini menggunakan aplikasi abstract data type (ADT) dalam bahasa C
 

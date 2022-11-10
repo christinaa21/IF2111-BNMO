@@ -8,6 +8,7 @@
 #include "./src/games/random_number_generator/random_number_generator.h"
 #include "./src/games/game_tambahan/game_tambahan.h"
 #include "./src/games/hangman/hangman.h"
+#include "./src/games/TicTacToe/tictactoe.h"
 #include "./src/main_util/main_util.h"
 
 void displaybinomo()

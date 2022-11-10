@@ -1,4 +1,4 @@
-#include "../../ADT/arrayOfGame/arrayOfgame.h"
+#include "../../ADT/arrayOfGame/arrayOfGame.h"
 #include "../../ADT/mesinkata/mesinkata.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,4 +10,3 @@ void board(ArrayOfGame arr);
 int cekwin(ArrayOfGame arr);
 
 void tictactoe();
-

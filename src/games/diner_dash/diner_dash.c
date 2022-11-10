@@ -39,11 +39,7 @@ void delay(int number_of_milliseconds)
 {
     // Converting time into milli_seconds
     int milli_seconds = number_of_milliseconds;
-
-    // Stroing start time
     clock_t start_time = clock();
-
-    // looping till required time is not achieved
     while (clock() < start_time + milli_seconds)
         ;
 }
@@ -87,7 +83,7 @@ void DinerDash()
         while (lengthPQ(waitingQ) < 3)
         {
             enqueuePQ(&waitingQ, createFood(i));
-            delay(1000);
+            sleep(1);
             i = (i + 1) % PQCAPACITY;
         }
         firstRound = false;
