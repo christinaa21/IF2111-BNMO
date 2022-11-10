@@ -1,15 +1,14 @@
-// rng, diner dash, and other games
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-// #include <math.h>
-
 #include "./diner_dash.h"
 
+/*Fungsi yang mengembalikan true jika str1 sama dengan str2*/
 boolean compare(char str1[], char str2[])
 {
+    /*KAMUS LOKAL*/
     boolean found = false, i = 0;
+    /*ALGORITMA*/
     while ((str1[i] != '\0' || str2[i] != '\0') && !found)
     {
         if (str1[i] != str2[i])
@@ -22,10 +21,13 @@ boolean compare(char str1[], char str2[])
     return !found;
 }
 
+/*Fungsi untuk membuat makanan*/
 PQElType createFood(int id)
 {
+    /*KAMUS LOKAL*/
     PQElType food;
     srand(time(NULL));
+    /*ALGORITMA*/
     (food).foodID = id;
     (food).cookDuration = rand() % 5 + 1;
     (food).stayDuration = (rand() * 5 + rand() * 2) % 5 + 1;
@@ -33,6 +35,7 @@ PQElType createFood(int id)
     return food;
 }
 
+/* Prosedur transversal hingga mencapai waktu yang dibutuhkan */
 void delay(int number_of_milliseconds)
 {
     // Converting time into milli_seconds
@@ -46,8 +49,21 @@ void delay(int number_of_milliseconds)
         ;
 }
 
+/*** Penjelasan Permainan **\
+ * -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
+ * -	COOK merupakan command yang bertujuan untuk memasak makanan
+ * -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
+ * -	Permainan akan dimulai dengan 3 pelanggan. Setiap pelanggan hanya dapat memesan satu makanan. Untuk setiap makanan, terdapat informasi tentang ID makanan yang dihasilkan secara increment (M01, M02, M03, dst), durasi memasak, harga makanan, serta ketahanan makanan. Semua informasi tersebut akan didapatkan secara random dengan menggunakan random number generator. Durasi dan ketahanan makanan akan berkisar diantara 1-5. Sedangkan, harga makanan akan berkisar diantara 10000 - 50000.
+ * -	Kapasitas dari pemain adalah memasak 5 makanan dalam waktu yang sama. Pelanggan yang dilayani adalah pelanggan yang duluan memasuki antrian.
+ * -	Permainan selesai apabila antrian melebihi 7 pelanggan atau jumlah pelanggan yang sudah dilayani mencapai 15 pelanggan.
+ * -	Pada setiap putaran, akan terdapat 1 pelanggan baru.
+ * -	Pada setiap putaran, seluruh durasi dari makanan yang sedang dimasak akan berkurang 1. Ketika durasi makanan mencapai 0, maka makanan sudah dapat di SERVE.
+ * -	Ketika makanan sudah di SERVE, maka makanan dapat diantar kepada pelanggan dan pelanggan dapat meninggalkan antrian. Setelah pelanggan meninggalkan antrian, maka pemain akan menerima uang
+ * -	SERVE hanya dapat digunakan untuk pesanan yang berada di paling depan.
+ * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */ 
 void DinerDash()
 {
+    /*KAMUS LOKAL*/
     char cook[] = "COOK", serve[] = "SERVE";
 
     List cookingQ, servingQ;
@@ -62,6 +78,7 @@ void DinerDash()
     int saldo = 0;
     boolean firstRound = true;
 
+    /*ALGORTIMA*/
     printf("Selamat datang di Diner Dash\n");
 
     printf("\n");
@@ -304,15 +321,3 @@ void DinerDash()
     printf("Congratulation!\nYou've served %d food\n", successfulServe);
     printf("Game Over \n");
 }
-
-// -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
-// -	COOK merupakan command yang bertujuan untuk memasak makanan
-// -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
-// -	Permainan akan dimulai dengan 3 pelanggan. Setiap pelanggan hanya dapat memesan satu makanan. Untuk setiap makanan, terdapat informasi tentang ID makanan yang dihasilkan secara increment (M01, M02, M03, dst), durasi memasak, harga makanan, serta ketahanan makanan. Semua informasi tersebut akan didapatkan secara random dengan menggunakan random number generator. Durasi dan ketahanan makanan akan berkisar diantara 1-5. Sedangkan, harga makanan akan berkisar diantara 10000 - 50000.
-// -	Kapasitas dari pemain adalah memasak 5 makanan dalam waktu yang sama. Pelanggan yang dilayani adalah pelanggan yang duluan memasuki antrian.
-// -	Permainan selesai apabila antrian melebihi 7 pelanggan atau jumlah pelanggan yang sudah dilayani mencapai 15 pelanggan.
-// -	Pada setiap putaran, akan terdapat 1 pelanggan baru.
-// -	Pada setiap putaran, seluruh durasi dari makanan yang sedang dimasak akan berkurang 1. Ketika durasi makanan mencapai 0, maka makanan sudah dapat di SERVE.
-// -	Ketika makanan sudah di SERVE, maka makanan dapat diantar kepada pelanggan dan pelanggan dapat meninggalkan antrian. Setelah pelanggan meninggalkan antrian, maka pemain akan menerima uang
-// -	SERVE hanya dapat digunakan untuk pesanan yang berada di paling depan.
-// -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain.
