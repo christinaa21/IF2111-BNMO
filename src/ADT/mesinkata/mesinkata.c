@@ -215,23 +215,15 @@ boolean IsEqual(Word w, char *c)
 Mengembalikan false jika kata w tidak sama dengan string c
 */
 
-// int main() {
-// 	char* file = "file.txt";
-// 	STARTWORD(file);
-// 	char* kata;
-// 	printf("WordLength: %d\n", currentWord.Length);
-// 	kata = WordToString(currentWord);
-// 	printf("%s\n", kata);
-// 	int kata_int = WordToInt(currentWord);
-// 	printf("%d\n", kata_int);
-// 	while (!IsEOP()) {
-// 		ADVWORD();
-// 		printf("WordLength: %d\n", currentWord.Length);
-// 		kata = WordToString(currentWord);
-// 		printf("%s\n", kata);
-// 	}
-// 	STARTINPUTKATA();
-// 	printf("WordLength: %d\n", currentWord.Length);
-// 	kata = WordToString(currentWord);
-// 	printf("%s\n", kata);
-// }
+boolean IsInWord(char* dicari, Word sumber) {
+	boolean notfound = true;
+	int i = 0;
+	while ((notfound) && (i < sumber.Length)) {
+		if (sumber.TabWord[i] == dicari[0]) {
+			notfound = false;
+		} else {
+			i++;
+		}
+	}
+	return !notfound;
+}

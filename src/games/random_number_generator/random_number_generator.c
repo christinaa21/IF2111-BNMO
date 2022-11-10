@@ -19,7 +19,8 @@ void RNG(){
         printf("Tebakan: ");
         STARTINPUTKATA();
     }
-    printf("Ya, X adalah %d", X);
+    printf("\nYa, X adalah %d\n\n", X);
+    printf("--- GAME OVER ---\n");
 }
 
 // -	Permainan dimulai dengan menyediakan sebuah number random dari sistem

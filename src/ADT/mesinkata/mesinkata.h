@@ -79,5 +79,6 @@ boolean IsEqual(Word w, char *c);
 Mengembalikan false jika kata w tidak sama dengan string c
 */
 
+boolean IsInWord(char* dicari, Word sumber);
 
 #endif
