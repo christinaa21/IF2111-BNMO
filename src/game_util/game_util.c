@@ -130,7 +130,6 @@ void displayQueueGame(Queue qGame)
             i++;
         }
     }
-    printf("\n");
 }
 
 /* Prosedur untuk memainkan game yang ada dalam daftar permainan.
