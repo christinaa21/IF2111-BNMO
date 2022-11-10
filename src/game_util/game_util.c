@@ -82,6 +82,9 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
 */
 void queueGame(Queue *qGame, ArrayOfGame arr)
 {
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
     printf("\n");
@@ -96,19 +99,24 @@ void queueGame(Queue *qGame, ArrayOfGame arr)
         printf("Nomor game yang akan ditambahkan ke antrian: ");
         STARTINPUTKATA();
     }
+    
     enqueue(qGame, arr.A[WordToInt(currentWord) - 1]);
     printf("Game berhasil ditambahkan ke antrian\n");
     printf("Sekarang ini adalah list game mu: \n");
     displayQueueGame(*qGame);
 }
 
+/* Prosedur untuk menampilkan antrian game yang sudah dimasukan dalam prosedur queuegame 
+ * I.S : Program telah berjalan.
+ * F.S : Menampilkan antrian game pengguna.
+ */
 void displayQueueGame(Queue qGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Menampilkan antrian game pengguna.
+    /*KAMUS LOKAL*/
     int i, temp1, temp2;
     i = 1;
     ElTypeQueue val;
+    /*ALGORITMA*/
     if (!isEmpty(qGame))
     {
         while (IDX_HEAD(qGame) != IDX_UNDEF)
@@ -121,12 +129,16 @@ void displayQueueGame(Queue qGame)
     printf("\n");
 }
 
+/* Prosedur untuk memainkan game yang ada dalam daftar permainan. 
+ * I.S : Program telah berjalan. 
+ * F.S : Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
+         Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
+*/
 void playGame(Queue *qGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
-    //      Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
+    /*KAMUS LOKAL*/
     Word game;
+    /*ALOGRITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
     if (isEmpty(*qGame))
@@ -158,10 +170,6 @@ void playGame(Queue *qGame)
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
         }
-        else if (IsEqual(game, "HANGMAN")) {
-            printf("Game yang dimainkan adalah Hangman\n");
-            hangMan();
-        }
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
@@ -170,10 +178,15 @@ void playGame(Queue *qGame)
     }
 }
 
+/* Prosedur untuk melewatkan game dari daftar antrian sebayak n game. 
+ * I.S : Program telah berjalan
+ * F.S : Game dilewatkan sebanyak n, lalu game dimulai.
+*/
 void skipGame(int n, Queue *qGame)
 {
-    // I.S. Program telah berjalan
-    // F.S. Game dilewatkan sebanyak n, lalu game dimulai.
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
     printf("\n");
@@ -216,10 +229,6 @@ void skipGame(int n, Queue *qGame)
         else if (IsEqual(game, "EIFFEL TOWER"))
         {
             printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "HANGMAN")) {
-            printf("Game yang dimainkan adalah Hangman\n");
-            hangMan();
         }
         else
         {
