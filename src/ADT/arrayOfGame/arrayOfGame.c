@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include "arrayOfGame.h"
 
-/**
- * Konstruktor
- * Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize. 
+/* ********** KONSTRUKTOR ********** */
+/* Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize. 
  */
 ArrayOfGame MakeArrayOfGame()
 {
@@ -17,9 +16,8 @@ ArrayOfGame MakeArrayOfGame()
 	return array;
 }
 
-/**
- * Destruktor
- * I.S. ArrayOfGame terdefinisi
+/* ********** DESTRUKTOR ********** */
+/* I.S. ArrayOfGame terdefinisi
  * F.S. array->A terdealokasi
  */
 void DeallocateArrayOfGame(ArrayOfGame *array)
@@ -32,8 +30,8 @@ void DeallocateArrayOfGame(ArrayOfGame *array)
 	(*array).Neff = 0;
 }
 
-/**
- * Fungsi untuk mengetahui apakah suatu array kosong.
+/* ********** TEST KOSONG/PENUH ********** */
+/* Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
 boolean IsEmptyArrayOfGame(ArrayOfGame array)
@@ -56,8 +54,8 @@ boolean IsFullArrayOfGame(ArrayOfGame array)
 	return ((array).Neff == InitialSize);
 }
 
-/**
- * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
+/* ********** SELEKTOR ********** */
+/* Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
 int LengthArrayOfGame(ArrayOfGame array)
@@ -92,8 +90,8 @@ int GetCapacityArrayOfGame(ArrayOfGame array)
 	return ((array).Capacity);
 }
 
-/**
- * Fungsi untuk menambahkan elemen baru di index ke-i
+/* ********** OPERASI-OPERASI ********** */
+/* Fungsi untuk menambahkan elemen baru di index ke-i
  * I.S	: array terdefinisi, i di antara 0..Length(array).
  * F.S 	: game baru berhasil ditambahkan di game pada indeks ke-i. 
  */

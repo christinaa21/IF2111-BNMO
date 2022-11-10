@@ -22,7 +22,6 @@ List MakeList()
 }
 
 /* ********** TEST KOSONG/PENUH ********** */
-
 /* Fungsi yang true jika list L kosong, mengirimkan false jika tidak 
  * prekonsisi : list terdefinisi
  */ 
