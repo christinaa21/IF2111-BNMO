@@ -210,3 +210,15 @@ void displayStay(List l)
 		}
 	}
 }
+
+IdxType minList(List l) {
+	int min = l.food[0].foodID;
+	int idxmin = 0;
+	for (int i = 0; i<LengthList(l);i++) {
+		if (l.food[i].foodID < min) {
+			min = l.food[i].foodID;
+			idxmin = i;
+		}
+	}
+	return idxmin;
+}

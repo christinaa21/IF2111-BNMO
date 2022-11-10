@@ -119,4 +119,7 @@ void displayTime(List l);
 
 void displayStay(List l);
 /* Menampilkan waktu yang tersisa */
+
+IdxType minList(List l);
+/* Mengambil index dari FooID paling kecil dalam list l. */
 #endif
