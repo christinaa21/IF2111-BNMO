@@ -21,6 +21,7 @@ void displaybinomo()
     printf("$$    $$/ / $$   |$$ | $$$ |$$    $$/ $$ | $/  $$ |$$    $$/ \n");
     printf("$$$$$$$/  $$$$$$/ $$/   $$/  $$$$$$/  $$/      $$/  $$$$$$/  \n");
 }
+
 int main()
 {
     displaybinomo();
@@ -118,4 +119,3 @@ int main()
     }
     return 0;
 }
-// main file
