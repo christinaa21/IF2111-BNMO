@@ -93,5 +93,7 @@ dengan asisten : Jason Stanley Yoman
 |12     |Command Lain   | 🗸        |
 |13     |RNG            | 🗸        |
 |14     |Diner Dash     | 🗸        |
+|15     |Game Tambahan  | 🗸        |
+
 
 
