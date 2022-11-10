@@ -10,11 +10,11 @@
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/prioQueue/prioqueue.h"
 
-
+/*** Penjelasan Permainan ***\
+ * -	Permainan dimulai dengan menyediakan sebuah number random dari sistem
+ * -    User akan memasukan sebuah angka untuk menebak
+ * -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
+ * -    User akan terus memasukan input nomor hingga berhasil tertebak */
 void RNG();
-// -	Permainan dimulai dengan menyediakan sebuah number random dari sistem
-// -    User akan memasukan sebuah angka untuk menebak
-// -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
-// -    User akan terus memasukan input nomor hingga berhasil tertebak
 
 #endif

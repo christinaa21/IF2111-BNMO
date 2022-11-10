@@ -51,7 +51,7 @@ void delay(int number_of_milliseconds)
         ;
 }
 
-/*** Penjelasan Permainan **\
+/*** Penjelasan Permainan ***\
  * -	Terdapat 2 command yang dapat dilakukan pada game, yaitu COOK dan SERVE
  * -	COOK merupakan command yang bertujuan untuk memasak makanan
  * -	SERVE merupakan command yang bertujuan untuk menyajikan makanan kepada pelanggan.
