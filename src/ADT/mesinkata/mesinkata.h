@@ -20,65 +20,77 @@ typedef struct
 extern boolean EndWord;
 extern Word currentWord;
 
+/* ********** KONSTRUKTOR ********** */
+/* Prosedur untuk mengabaikan satu atau beberapa BLANK
+ * I.S : currentChar sembarang
+ * F.S : currentChar ≠ BLANK atau currentChar = MARK */
 void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
+/* Prosedur untuk memulai pemrosesan kata
+ * I.S : currentChar sembarang
+ * F.S : EndWord = true, dan currentChar = MARK;
+		  atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
+		  currentChar karakter pertama sesudah karakter terakhir kata */
 void STARTWORD(char * FILE);
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
 
+/* Prosedur untuk membaca input kata dari user 
+ * I.S : currentChar sembarang
+ * F.S : EndWord = true, dan currentChar = MARK;
+ *	     atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
+ *       currentChar karakter pertama sesudah karakter terakhir kata */
 void STARTINPUTKATA();
-/* Start input
-*/
 
+/* Prosedur untuk memajukan kata yang akan diproses
+ * I.S : currentChar adalah karakter pertama kata yang akan diakuisisi
+ * F.S : currentWord adalah kata terakhir yang sudah diakuisisi,
+ *		 currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
+ *		 Jika currentChar = MARK, EndWord = true.
+ * Proses : Akuisisi kata menggunakan procedure SalinWord */
 void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
 
+/* Prosedur untuk mengakuisisi kata, menyimpan dalam currentWord
+ * I.S : currentChar adalah karakter pertama dari kata
+ * F.S : currentWord berisi kata yang sudah diakuisisi;
+		 currentChar = BLANK atau currentChar = MARK;
+		 currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+		 Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
+/* ********** KONVERTER ********** */
+/* Fungsi untuk merubah tipe data dari word menjadi integer. 
+ * Mengembalikan nilai hasil convert dari word ke integer.
+ * Prekondisi : pemrosesan telah berjalan */
 int WordToInt(Word word);
-/* Merubah tipe data dari word menjadi integer 
-Mengembalikan nilai hasil convert dari word ke integer*/
 
-int WordToInt(Word word);
-/* Merubah tipe data dari word menjadi integer 
-Mengembalikan nilai hasil convert dari word ke integer*/
-
+/* Fungsi untuk Merubah tipe data dari word menjadi string. 
+ * Mengembalikan nilai hasil convert dari word ke string. 
+ * Prekondisi : pemrosesan telah berjalan */
 char * WordToString (Word word);
-/*Merubah tipe data dari word menjadi string 
-Mengembalikan nilai hasil convert dari word ke string*/
 
+/* Fungsi untuk merubah tipe data dari string menjadi word. 
+ * Mengembalikan nilai hasil convert dari string ke word.
+ * Prekondisi : pemrosesan telah berjalan */
 Word StringtoWord (char*string);
-/* Merubah tipe data dari string menjadi word
-Mengembalikan nilai hasil convert dari string ke word. */
 
+/* ********** SELEKTOR ********** */
+/* Fungsi untuk mengambil kata ke - {ke} dari suatu kalimat hasil input dari user. 
+ * Prekondisi : pemrosesan telah berjalan */
 Word takeword(Word command, int ke);
-/* Mengambil kata ke - {ke} dari suatu kalimat hasil input dari user 
-*/
 
+/* ********** OPERASI OPERASI ********** */
+/* Fungsi untuk menggabungkan dua buah variabel bertipe char.
+ * Dalam program ini, kedua variabel tersebut adalah path dan filename
+ * Prekondisi : pemrosesan telah berjalan */
 char * ConcateChar(char * path, char * filename);
-/* Menggabungkan dua buah variabel bertipe char.
-Dalam program ini, kedua variabel tersebut adalah path dan filename */
 
+/* ********** TEST KEBENARAN ********** */
+/* Fungsi untuk mengembalikan true jika kata w tersebut sama dengan string c. 
+ * Mengembalikan false jika kata w tidak sama dengan string c.
+ * Prekondisi : pemrosesan telah berjalan */
 boolean IsEqual(Word w, char *c);
-/* Mengembalikan true jika kata w tersebut sama dengan string c
-Mengembalikan false jika kata w tidak sama dengan string c
-*/
 
+/* Fungsi yang mengembalikan nilai kebenaran jika ada word yang dicari dalam mesin kata 
+ * Prekondisi : pemrosesan telah berjalan */
 boolean IsInWord(char* dicari, Word sumber);
 
 #endif
