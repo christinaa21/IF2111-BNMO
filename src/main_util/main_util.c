@@ -53,7 +53,7 @@ void load(char *savefile, ArrayOfGame *arrGame)
 /* Prosedur untuk menyimpan file program yang telah dijalankan 
  * I.S : Program telah berjalan.
  * F.S : Menyimpan file yang telah dijalankan ke dalam file eksternal
- *  */
+*/
 void save(char *savefile, ArrayOfGame arrGame)
 {
     /*KAMUS LOKAL*/
@@ -130,7 +130,7 @@ void quit(ArrayOfGame arrGame)
 
 /* Prosedur untuk menampilkan pesan kesalahan input user 
  * I.S : Program sedang berjalan
- * F.S : F.S. Menampilkan pesan bahwa command yang dimasukkan tidak valid
+ * F.S : Menampilkan pesan bahwa command yang dimasukkan tidak valid
 */
 void otherCommand()
 {
