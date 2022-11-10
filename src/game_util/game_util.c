@@ -177,7 +177,7 @@ void playGame(Queue *qGame)
         else if (IsEqual(game, "HANGMAN"))
         {
             printf("Game yang dimainkan adalah HANGMAN\n");
-            Hangman();
+            hangMan();
         }
         else
         {
@@ -202,7 +202,14 @@ void skipGame(int n, Queue *qGame)
     printf("\n");
     if (n > length(*qGame))
     {
-        printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
+        if (IsEmpty(*qGame))
+        {
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
+        }
+        else
+        {
+            printf("Maaf, jumlah game yang ingin dilewati melebihi jumlah game yang ada di antrian. Silakan coba lagi.\n");
+        }
     }
     else if (n < 1)
     {
@@ -243,7 +250,7 @@ void skipGame(int n, Queue *qGame)
         else if (IsEqual(game, "HANGMAN"))
         {
             printf("Game yang dimainkan adalah HANGMAN\n");
-            Hangman();
+            hangMan();
         }
         else
         {
@@ -251,4 +258,6 @@ void skipGame(int n, Queue *qGame)
             gameTambahan();
         }
     }
+    printf("Sekarang antrian game-mu adalah : \n");
+    displayQueueGame(*qGame);
 }
