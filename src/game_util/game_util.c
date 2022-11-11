@@ -233,43 +233,48 @@ void skipGame(int n, Queue *qGame)
         }
 
         Word game;
-        dequeue(qGame, &game);
-        if (IsEqual(game, "RNG"))
-        {
-            printf("Game yang dimainkan adalah RNG\n");
-            RNG();
+        if(!isEmpty(*qGame)){
+            dequeue(qGame, &game);
+            if (IsEqual(game, "RNG"))
+            {
+                printf("Game yang dimainkan adalah RNG\n");
+                RNG();
+            }
+            else if (IsEqual(game, "DINER DASH"))
+            {
+                printf("Game yang dimainkan adalah Diner Dash\n");
+                DinerDash();
+            }
+            else if (IsEqual(game, "DINOSAUR IN EARTH"))
+            {
+                printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+            }
+            else if (IsEqual(game, "RISEWOMAN"))
+            {
+                printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+            }
+            else if (IsEqual(game, "EIFFEL TOWER"))
+            {
+                printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
+            }
+            else if (IsEqual(game, "HANGMAN"))
+            {
+                printf("Game yang dimainkan adalah HANGMAN\n");
+                hangMan();
+            }
+            else if (IsEqual(game, "TIC TAC TOE"))
+            {
+                printf("Game yang dimainkan adalah Tic Tac Toe\n");
+                tictactoe();
+            }
+            else
+            {
+                printf("Game yang dimainkan adalah %s\n", WordToString(game));
+                gameTambahan();
+            }
         }
-        else if (IsEqual(game, "DINER DASH"))
-        {
-            printf("Game yang dimainkan adalah Diner Dash\n");
-            DinerDash();
-        }
-        else if (IsEqual(game, "DINOSAUR IN EARTH"))
-        {
-            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "RISEWOMAN"))
-        {
-            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "EIFFEL TOWER"))
-        {
-            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "HANGMAN"))
-        {
-            printf("Game yang dimainkan adalah HANGMAN\n");
-            hangMan();
-        }
-        else if (IsEqual(game, "TIC TAC TOE"))
-        {
-            printf("Game yang dimainkan adalah Tic Tac Toe\n");
-            tictactoe();
-        }
-        else
-        {
-            printf("Game yang dimainkan adalah %s\n", WordToString(game));
-            gameTambahan();
+        else {
+            printf("Antrian game mu sudah habis\n");
         }
     }
     printf("Sekarang antrian game-mu adalah : \n");
