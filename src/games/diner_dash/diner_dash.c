@@ -190,7 +190,7 @@ void DinerDash()
                 id = id * 10 + (WordToString(takeword(currentWord, 2))[i] - '0');
                 i++;
             }
-            printf("id : %d\n", id);
+            // printf("id : %d\n", id);
 
             while (!isMemberPQ(waitingQ, id))
             {
@@ -205,7 +205,7 @@ void DinerDash()
                     id = id * 10 + (WordToString(takeword(currentWord, 2))[i] - '0');
                     i++;
                 }
-                printf("id : %d\n", id);
+                // printf("id : %d\n", id);
             }
             printf("\n");
         }
