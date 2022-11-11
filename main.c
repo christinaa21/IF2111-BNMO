@@ -44,7 +44,6 @@ int main()
             }
             else
             {
-                boolean cekfile = false;
                 Word x = takeword(currentWord, 2);
                 char *path = "Data/";
                 char *newfile = ConcateChar(path, WordToString(x));
