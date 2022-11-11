@@ -32,7 +32,7 @@ int main()
     printf("validList : %d\n", IsIdxValidList(l, 0));
     printf("effList : %d\n", IsIdxEffList(l, 0));
 
-    printf("found : %d", SearchList(l, foody));
+    printf("found : %d\n", SearchList(l, foody));
 
     PQElType foodies;
     foodies.foodID = 5;
@@ -43,25 +43,33 @@ int main()
     // InsertAtList(&l, foodies, 3);
     InsertLastList(&l, foodies);
 
+    displayTime(l);
+    printf("\n");
     // PQElType foodiesOut;
     DeleteFirstList(&l);
     DeleteLastList(&l);
 
-    List l2;
-    for (int i = 4; i < 6; i++)
+    displayTime(l);
+
+    printf("\n");
+    List l2 = MakeList();
+    for (int i = 0; i < 6; i++)
     {
-        l.food[i].foodID = i;
-        l.food[i].cookDuration = i;
-        l.food[i].stayDuration = i;
-        l.food[i].price = i * 10000;
+        l2.food[i].foodID = i;
+        l2.food[i].cookDuration = i;
+        l2.food[i].stayDuration = i;
+        l2.food[i].price = i * 10000;
     }
+    displayTime(l2);
 
     List l3 = ConcatList(l, l2);
 
     printf("%d\n", minList(l3));
+    printf("\n");
 
     displayTime(l3);
+    printf("\n");
     displayStay(l3);
-
+    printf("\n");
     return 0;
 }
