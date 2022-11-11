@@ -83,7 +83,7 @@ void DinerDash()
         while (lengthPQ(waitingQ) < 3)
         {
             enqueuePQ(&waitingQ, createFood(i));
-            sleep(1);
+            //sleep(1);
             i = (i + 1) % PQCAPACITY;
         }
         firstRound = false;

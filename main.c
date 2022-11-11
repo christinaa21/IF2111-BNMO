@@ -44,9 +44,20 @@ int main()
             }
             else
             {
+                boolean cekfile = false;
                 Word x = takeword(currentWord, 2);
-                load(WordToString(x), &ListGame);
-                cek = true;
+                char *path = "Data/";
+                char *newfile = ConcateChar(path, WordToString(x));
+                FILE *p;
+                p = fopen(newfile,"r");
+                if (p == NULL){
+                    printf("Masukkan file dengan benar\n");
+                }
+                else {
+                    load(WordToString(x), &ListGame);
+                    cek = true;
+                    fclose(p);
+                }
             }
         }
         else if (IsEqual(takeword(currentWord, 1), "START"))
