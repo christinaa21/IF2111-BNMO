@@ -13,10 +13,13 @@ void createGame(ArrayOfGame *arr)
     /*ALGORITMA*/
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUTKATA();
-    if (SearchArrayOfGame((*arr), currentWord) == -1) {
+    if (SearchArrayOfGame((*arr), currentWord) == -1)
+    {
         InsertGameAt(arr, currentWord, (*arr).Neff);
         printf("Game berhasil ditambahkan\n");
-    } else {
+    }
+    else
+    {
         printf("Nama game tersebut sudah ada dalam list. Game gagal ditambahkan.\n");
     }
 }
@@ -265,8 +268,15 @@ void skipGame(int n, Queue *qGame)
         }
         else
         {
-            printf("Game yang dimainkan adalah %s\n", WordToString(game));
-            gameTambahan();
+            if (isEmpty(*qGame))
+            {
+                printf("Game kamu sudah habis\n");
+            }
+            else
+            {
+                printf("Game yang dimainkan adalah %s\n", WordToString(game));
+                gameTambahan();
+            }
         }
     }
     printf("Sekarang antrian game-mu adalah : \n");

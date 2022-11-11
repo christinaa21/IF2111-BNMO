@@ -99,9 +99,12 @@ int main()
             else if ((IsEqual(takeword(currentWord, 1), "SKIP")) && (IsEqual(takeword(currentWord, 2), "GAME")))
             {
                 skipGame(WordToInt(takeword(currentWord, 3)), &QueueGame);
-                if (takeword(currentWord, 2).Length == 0)
+                if (!isEmpty(QueueGame))
                 {
-                    printf("Tolong masukkan nomor game yang ingin di skip dengan format 'SKIPGAME <n>'!\n");
+                    if (takeword(currentWord, 3).Length == 0)
+                    {
+                        printf("Tolong masukkan nomor game yang ingin di skip dengan format 'SKIP GAME <n>'!\n");
+                    }
                 }
             }
             else if (IsEqual(currentWord, "HELP"))
