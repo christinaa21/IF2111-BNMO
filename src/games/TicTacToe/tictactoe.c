@@ -179,6 +179,8 @@ void tictactoe()
     else if (won == 1)
     {
         printf("=====Selamat Anda menang=====\n");
+        int skor = 20 - (count/2);
+        printf("Skor yang Anda peroleh adalah: %d\n", skor);
     }
     else if (won == 2)
     {
