@@ -3,7 +3,7 @@
 
 int main()
 {
-    int val;
+    PQElType val;
     PrioQueue q;
     CreateQueuePQ(&q);
 
@@ -11,15 +11,17 @@ int main()
 
     for (int i = 0; i < 3; i++)
     {
-        q.buffer[i].foodID = i;
-        q.buffer[i].cookDuration = i;
-        q.buffer[i].stayDuration = i;
-        q.buffer[i].price = i * 10000;
+        val.foodID = i;
+        val.cookDuration = i;
+        val.stayDuration = i;
+        val.price = i * 10000;
+        enqueuePQ(&q, val);
     }
+    displayQueuePQ(q);
+    printf("\n");
 
     printf("isFull: %d\n", isFullPQ(q));
     printf("length : %d\n", lengthPQ(q));
-    displayQueuePQ(q);
 
     printf("\n");
     // printf("\n");
