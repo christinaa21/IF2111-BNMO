@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <unistd.h>
 #include "./diner_dash.h"
 
 /*Fungsi yang mengembalikan true jika str1 sama dengan str2*/

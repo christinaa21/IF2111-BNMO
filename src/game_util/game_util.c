@@ -13,8 +13,12 @@ void createGame(ArrayOfGame *arr)
     /*ALGORITMA*/
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUTKATA();
-    InsertGameAt(arr, currentWord, (*arr).Neff);
-    printf("Game berhasil ditambahkan\n");
+    if (SearchArrayOfGame((*arr), currentWord) == -1) {
+        InsertGameAt(arr, currentWord, (*arr).Neff);
+        printf("Game berhasil ditambahkan\n");
+    } else {
+        printf("Nama game tersebut sudah ada dalam list. Game gagal ditambahkan.\n");
+    }
 }
 
 /* Prosedur yang menampilkan daftar game

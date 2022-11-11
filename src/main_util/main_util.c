@@ -137,5 +137,5 @@ void otherCommand()
     /*KAMUS LOKAL*/
 
     /*ALGORITMA*/
-    printf("Command yang diberikan tidak sesuai yang diinginkan.\nSilahkan masukkan input yang valid.");
+    printf("Command yang diberikan tidak sesuai yang diinginkan.\nSilahkan masukkan input yang valid.\n");
 }
