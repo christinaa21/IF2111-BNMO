@@ -48,18 +48,20 @@ int main()
                 char *path = "Data/";
                 char *newfile = ConcateChar(path, WordToString(x));
                 FILE *p;
-                p = fopen(newfile,"r");
-                if (p == NULL){
+                p = fopen(newfile, "r");
+                if (p == NULL)
+                {
                     printf("Masukkan file dengan benar\n");
                 }
-                else {
+                else
+                {
                     load(WordToString(x), &ListGame);
                     cek = true;
                     fclose(p);
                 }
             }
         }
-        else if (IsEqual(takeword(currentWord, 1), "START"))
+        else if (IsEqual(currentWord, "START"))
         {
             printf("Selamat datang di Binomo!\n");
             start(&ListGame);
