@@ -268,15 +268,8 @@ void skipGame(int n, Queue *qGame)
         }
         else
         {
-            if (isEmpty(*qGame))
-            {
-                printf("Game kamu sudah habis\n");
-            }
-            else
-            {
-                printf("Game yang dimainkan adalah %s\n", WordToString(game));
-                gameTambahan();
-            }
+            printf("Game yang dimainkan adalah %s\n", WordToString(game));
+            gameTambahan();
         }
     }
     printf("Sekarang antrian game-mu adalah : \n");
