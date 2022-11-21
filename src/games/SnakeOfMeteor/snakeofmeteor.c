@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "../../ADT/LinkedList/listdp.h"
-#include "../../ADT/mesinkata/mesinkata.h"
-#include "../../ADT/mesinkata/mesinkarakter.h"
-#include "../../ADT/Point/point.h"
+#include "snakeofmeteor.h"
 
 void printmap(List L, POINT M, POINT F){
     int i,j;
@@ -165,10 +162,6 @@ void FirstRandSnake (List *L){
             }
         }
     }
-}
-
-boolean KO (List L, POINT M){
-    return (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y);
 }
 
 void SnakeOfMeteor(){
