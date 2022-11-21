@@ -81,20 +81,20 @@ void UserMove(List L, char input, boolean *GameOver){
     *GameOver = false;
     POINT Temp;
     if (input == 'w'){
-        Temp.x = Pos(P).x;
-        Temp.y = Pos(P).y - 1;
+        Temp.x = Pos(P).x % 5;
+        Temp.y = (Pos(P).y + 4) % 5;
     }
     else if(input == 'a'){
-        Temp.x = Pos(P).x - 1;
-        Temp.y = Pos(P).y;
+        Temp.x = (Pos(P).x + 4) % 5;
+        Temp.y = Pos(P).y % 5;
     }
     else if(input == 's'){
-        Temp.x = Pos(P).x;
-        Temp.y = Pos(P).y + 1;
+        Temp.x = Pos(P).x % 5;
+        Temp.y = (Pos(P).y + 1) % 5;
     }
     else if(input == 'd'){
-        Temp.x = Pos(P).x + 1;
-        Temp.y = Pos(P).y;
+        Temp.x = (Pos(P).x + 1) % 5;
+        Temp.y = Pos(P).y % 5;
     }
     if(Search(L,Temp)!=Nil){
         *GameOver = true;
@@ -111,7 +111,6 @@ void UserMove(List L, char input, boolean *GameOver){
         Pos(P).x = Temp.x;
         Pos(P).y = Temp.y;
     }
-
 }
 
 void FirstRandSnake (List *L){
