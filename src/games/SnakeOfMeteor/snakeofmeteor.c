@@ -208,6 +208,7 @@ void SnakeOfMeteor(){
         } 
         turn++;
     }
+    printf("===== GAME OVER =====\n");
 }
 
 int main(){
