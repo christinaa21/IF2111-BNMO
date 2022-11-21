@@ -175,7 +175,7 @@ void DinerDash()
         while (!(IsEqual(takeword(currentWord, 1), "COOK") || IsEqual(takeword(currentWord, 1), "SERVE") || IsEqual(takeword(currentWord, 1), "SKIP")))
         {
             otherCommand();
-            printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan}): ", cook, serve);
+            printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan} / 'SKIP'): ", cook, serve);
 
             STARTINPUTKATA();
         }
@@ -195,7 +195,7 @@ void DinerDash()
             while (!isMemberPQ(waitingQ, id))
             {
                 printf("Makanan tidak ada dalam daftar pesanan\n");
-                printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan}): ", cook, serve);
+                printf("Masukkan permintaan ('%s / %s' + ' ' + M {indeks yang ada pada daftar pesanan} / 'SKIP'): ", cook, serve);
                 STARTINPUTKATA();
 
                 i = 1;
@@ -214,14 +214,27 @@ void DinerDash()
         // COOK
         if (IsEqual(takeword(currentWord, 1), "COOK"))
         {
-            InsertLastList(&cookingQ, waitingQ.buffer[id]);
-            cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
-            printf("Makanan M%d telah dimasukkan ke dalam antrian memasak\n", cookingQ.food[LastIdxList(cookingQ)].foodID);
-            foodQueue++;
+            if (LengthList(cookingQ) <= 5)
+            {
+                InsertLastList(&cookingQ, waitingQ.buffer[id]);
+                cookingQ.food[LastIdxList(cookingQ)].cookDuration++;
+                printf("Makanan M%d telah dimasukkan ke dalam antrian memasak\n", cookingQ.food[LastIdxList(cookingQ)].foodID);
+                foodQueue++;
+            }
+
+            else
+            {
+                printf("Antrian memasak penuh\n");
+                while (IsEqual(takeword(currentWord, 1), "COOK"))
+                {
+                    printf("Masukkan permintaan ('%s' + ' ' + M {indeks yang ada pada daftar pesanan} / 'SKIP'): ", serve);
+                    STARTINPUTKATA();
+                }
+            }
         }
 
         // SERVE
-        else if (IsEqual(takeword(currentWord, 1), "SERVE"))
+        if (IsEqual(takeword(currentWord, 1), "SERVE"))
         {
             PQElType servableFood;
             PQElType currentFood;
@@ -266,7 +279,7 @@ void DinerDash()
             }
         }
 
-        else if (IsEqual(takeword(currentWord, 1), "SKIP"))
+        if (IsEqual(takeword(currentWord, 1), "SKIP"))
         {
             printf("Kamu telah skip ronde kali ini\n");
         }
