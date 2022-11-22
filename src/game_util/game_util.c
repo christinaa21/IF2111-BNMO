@@ -217,6 +217,11 @@ void skipGame(int n, Queue *qGame)
         }
         else
         {
+            Word skipped;
+            for (int i = 0; i <= length(*qGame); i++)
+            {
+            dequeue(qGame, &skipped); // delete game yang ke n
+            }
             printf("Maaf, jumlah game yang ingin dilewati melebihi jumlah game yang ada di antrian. Silakan coba lagi.\n");
         }
     }
