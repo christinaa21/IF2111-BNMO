@@ -15,7 +15,7 @@ void start();
  * I.S. Program telah berjalan.
  * F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal.
 */
-void load(char* savefile, ArrayOfGame *arrGame);
+void load(char* savefile, ArrayOfGame *arrGame, ArrayOfGame *hist);
 
 /* Prosedur untuk menyimpan file program yang telah dijalankan 
  * I.S : Program telah berjalan.
