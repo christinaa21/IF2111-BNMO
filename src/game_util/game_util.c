@@ -286,12 +286,14 @@ void skipGame(int n, Queue *qGame)
     displayQueueGame(*qGame);
 }
 
-void scoreboard() {
-    List ToH, DD, SoM, RnG, HM;
-    ToH = MakeList(); // List Tower of Hanoi 
-    DD = MakeList();  // List Diner Dash
-    SoM = MakeList(); // List Snake on Meteor
-    RnG = MakeList(); // List RNG
-    HM = MakeList();  // List HangMan 
-
+void scoreboard(ArrayOfGame *arr) {
+    ElTypeArrayOfGame game;
+    for (int i = 0; i < LengthArrayOfGame(*arr); i++)
+    {
+        game = arr->A[i];
+        WordToString(game) = MakeList(); //bikin list untuk masing masing game
+        // gais pusing ya gais brb 
+        }
+    
+    // print list masing masing 
 }
