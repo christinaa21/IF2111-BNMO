@@ -32,6 +32,7 @@ int main()
     Queue QueueGame;
     CreateQueue(&QueueGame);
     boolean cek = false;
+    int score;
     while (!cek)
     {
         printf("Masukkan Command (START / LOAD <file_name>): ");
