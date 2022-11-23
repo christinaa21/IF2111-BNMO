@@ -291,7 +291,7 @@ void scoreboard(ArrayOfGame *arr) {
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
         game = arr->A[i];
-        WordToString(game) = MakeList(); //bikin list untuk masing masing game
+        WordToString(game) = CreateEmptyMap(); //bikin list untuk masing masing game
         // gais pusing ya gais brb 
         }
     
