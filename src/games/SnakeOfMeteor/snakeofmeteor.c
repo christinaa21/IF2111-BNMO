@@ -139,23 +139,23 @@ void FirstRandSnake (List *L){
             }
         }
         else if (P.x == 0){
-            if(P.y <= 2){
-                P.y += 1;
+            if(P.y >= 2){
+                P.y -= 1;
                 InsVLast(L,'1',P);
-                P.y += 1;
+                P.y -= 1;
                 InsVLast(L,'2',P);
             }
             else {
-                if (P.y == 3){
+                if (P.y == 1){
                     P.y += 1;
                     InsVLast(L,'1',P);
-                    P.x += 1;
+                    P.y += 1;
                     InsVLast(L,'2',P);
                 }
                 else {
-                    P.x += 1;
+                    P.y += 1;
                     InsVLast(L,'1',P);
-                    P.x += 1;
+                    P.y += 1;
                     InsVLast(L,'2',P);
                 }
             }
