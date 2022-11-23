@@ -13,8 +13,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define MaxEl 10
 #define Undefined -999
 
-// typedef int bool;
-typedef int keytype;
+typedef char keytype;
 typedef int valuetype;
 typedef int address;
 
@@ -27,6 +26,7 @@ typedef struct {
 	infotype Elements[MaxEl];
 	address Count;
 } Map;
+
 
 /* Definisi Map M kosong : M.Count = Nil */
 /* M.Count = jumlah element Map */
