@@ -340,7 +340,6 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
     }
     printf("\n");
 }
-
 void inputTower(Word *tiangAwal, Word *tiangTujuan)
 {
     printf("Tiang Asal: ");
@@ -350,7 +349,6 @@ void inputTower(Word *tiangAwal, Word *tiangTujuan)
     STARTINPUTKATA();
     *tiangTujuan = currentWord;
 }
-
 boolean IsFullTower(Stack S, int n)
 {
     return Top(S) == n - 1;
@@ -510,8 +508,8 @@ void TowerOfHanoi(int *score)
             gameDone = true;
         }
 
-        printf("currentScore: %d\n", currentScore);
-        printf("move: %d\n", move);
+        printf("currentScore: %d\n\n", currentScore);
+        printf("move: %d\n\n", move);
     }
     printf("Score kamu adalah %d\n", currentScore);
     *score = currentScore;
