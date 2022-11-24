@@ -13,7 +13,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define MaxEl 10
 #define Undefined -999
 
-typedef char keytype;
+typedef char* keytype;
 typedef int valuetype;
 typedef int address;
 
@@ -66,7 +66,10 @@ void DeleteMap(Map *M, keytype k);
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 
+void DeleteAllMap(Map *M);
+
 boolean IsMemberMap(Map M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
+void displayMap (Map M); 
 #endif

@@ -87,6 +87,10 @@ void DeleteMap(Map *M, keytype k){
         }
         (*M).Count -= 1;
         }}
+    
+void DeleteAllMap(Map *M){
+    (*M).Count = 0;
+}
 
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
@@ -109,3 +113,15 @@ boolean IsMemberMap(Map M, keytype k){
     return found; 
 }
 /* Mengembalikan true jika k adalah member dari M */
+
+void displayMap (Map M){
+    printf("**** SCOREBOARD %c ****\n", M); 
+    printf("| NAMA       | SKOR      |\n"); 
+    printf("|------------------------|\n"); 
+    if IsEmptyMap(M){
+        printf("-----SCOREBOARD KOSONG-----\n");
+    } else {
+        for(int i =0; i < MaxEl; i++){
+            printf("| %s        | %d        |\n", M.Elements[i].Key, M.Elements[i].Value);
+    }}
+}

@@ -22,4 +22,9 @@ void createListMap(ListMap *L);
 
 void insertToList(ListMap *L, Map M);
 
+void deleteAllList(ListMap *L); 
+
+void deleteAtMap(ListMap *L, int n);
+
+void printAllList(ListMap L);
 #endif

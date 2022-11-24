@@ -6,7 +6,8 @@
 
 #include "../ADT/queue/queue.h"
 #include "../ADT/array/arraydin.h"
-#include "../ADT/Map/map.h"
+#include "../ADT/map/map.h"
+#include "../ADT/map/listMap.h"
 #include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "../games/diner_dash/diner_dash.h"
 #include "../games/random_number_generator/random_number_generator.h"

@@ -6,7 +6,7 @@
  * I.S. Program telah berjalan
  * F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
  */
-void createGame(ArrayOfGame *arr)
+void createGame(ArrayOfGame *arr, ListMap *L, Map M) //masi bingung pointeer mapnya
 {
     /*KAMUS LOKAL*/
 
@@ -16,6 +16,8 @@ void createGame(ArrayOfGame *arr)
     if (SearchArrayOfGame((*arr), currentWord) == -1)
     {
         InsertGameAt(arr, currentWord, (*arr).Neff);
+        CreateEmptyMap(&M); //membuat map kosong untuk scoreboard
+        insertToList(L,M); //menambahkan map ke list scoreboard
         printf("Game berhasil ditambahkan\n");
     }
     else
@@ -54,6 +56,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
     /*KAMUS LOKAL*/
     IdxTypeArrayOfGame idx;
     listGame(arr);
+    ListMap L;
     /*ALGORITMA*/
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
@@ -76,6 +79,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
         else
         {
             DeleteGameAt(arr, n - 1);
+            deleteAtMap(&L,n);
             printf("Game berhasil dihapus\n");
         }
     }
@@ -286,14 +290,6 @@ void skipGame(int n, Queue *qGame)
     displayQueueGame(*qGame);
 }
 
-void scoreboard(ArrayOfGame *arr) {
-    ElTypeArrayOfGame game;
-    for (int i = 0; i < LengthArrayOfGame(*arr); i++)
-    {
-        game = arr->A[i];
-        WordToString(game) = CreateEmptyMap(); //bikin list untuk masing masing game
-        // gais pusing ya gais brb 
-        }
-    
-    // print list masing masing 
+void scoreboard(ListMap L ) {
+    printAllList(L); 
 }

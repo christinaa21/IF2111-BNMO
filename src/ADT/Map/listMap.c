@@ -4,7 +4,13 @@
 
 
 void createListMap(ListMap *L){
-    (*L).Neff = 0;
+    (*L).Neff = 5;
+    Map MapRNG, MapDD, MapDiE, MapRW, MapET;
+    CreateEmptyMap(&MapRNG); 
+    CreateEmptyMap(&MapDD); 
+    CreateEmptyMap(&MapDiE);
+    CreateEmptyMap(&MapRW); 
+    CreateEmptyMap(&MapET);
 }
 
 void insertToList(ListMap *L, Map M){
@@ -12,18 +18,24 @@ void insertToList(ListMap *L, Map M){
     (*L).Neff++;
 }
 
-void displayListMap (ListMap *L, Map M){
-    printf("**** SCOREBOARD %c ****\n", *L); 
-    printf("| NAMA       | SKOR      |\n"); 
-    printf("|------------------------|\n"); 
-    for(int i =0; i<=(*L).Neff; i++){
-        printf("| %c        | %d        |\n", (*L).peta[i].Key, (*L).peta[i].Value);
+void deleteAllList(ListMap *L){
+    (*L).Neff = Nil;
+}
+
+void deleteAtMap(ListMap *L, int n){
+    for(int i =0; i<=n; i++){
+        if (i == n) {
+            Map M;
+            DeleteAllMap(&M);
+        } else {
+            i++;
+        }
     }
 }
 
-void deleteAllList(ListMap *L){
-    for (int i =0; i<=(*L).Neff; i++){
-        (*L).peta[i] = Nil; 
-        (*L).Neff --; 
+void printAllList(ListMap L){
+    for (int i=0; i<L.Neff;i++){
+        displayMap(L.peta[i]);
+        printf("\n");
     }
 }
