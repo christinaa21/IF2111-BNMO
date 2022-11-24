@@ -10,6 +10,15 @@ void capsLock(char *huruf)
 }
 /* Membuat semua huruf menjadi uppercase */
 
+void lowerCase(char *huruf)
+{
+    if ((huruf[0] >= 65) && (huruf[0] <= 90))
+    {
+        huruf[0] += 32;
+    }
+}
+/* Membuat semua huruf menjadi uppercase */
+
 void hangMan()
 {
     // Game bonus
@@ -49,6 +58,8 @@ void hangMan()
 
     ArrayDin ArrayHangman;
     ArrayHangman = MakeArrayDin();
+    InsertLast(&ArrayHangman, "\n\n\n\n\n\n");
+    InsertLast(&ArrayHangman, "\n|         \n|         \n|         \n|         \n|         \n|");
     InsertLast(&ArrayHangman, "_________\n|         \n|         \n|         \n|         \n|         \n|");
     InsertLast(&ArrayHangman, "_________\n|        | \n|         \n|         \n|         \n|         \n|");
     InsertLast(&ArrayHangman, "_________\n|        | \n|        O \n|         \n|         \n|         \n|");
@@ -70,16 +81,24 @@ void hangMan()
     }
     ctr = i;
 
+    // ArrayDin LetterHistory;
+    // LetterHistory = MakeArrayDin();
+
+    ArrayDin Letter;
+    Letter = MakeArrayDin();
+
     int salah = 0;
     int benar = 0;
     int score = 100;
 
     printf("Hangman telah dimulai! Yuk kita menebak kata!\nDi game ini, kamu harus menebak kata yang berhubungan dengan kehidupan kuliah kita nih!\nBisa saja nama matkul, nama tempat, atau mungkin hal-hal yang kita kerjakan.\n\n");
+    printf("Tebakan sebelumnya: -\n");
     printf("Kata yang harus ditebak:\n");
     PrintArrayDin(ArrayBlank);
     printf("%s\n\n", Get(ArrayHangman, salah));
-    while ((salah < 8) && (benar < ctr))
+    while ((salah < 10) && (benar < ctr))
     {
+        printf("Masukkan tebakan: ");
         STARTINPUTKATA();
         if (currentWord.Length != 1)
         {
@@ -89,8 +108,18 @@ void hangMan()
         {
             char *huruf = WordToString(currentWord);
             capsLock(huruf);
+            printf("huruf: %s\n", huruf);
+            // InsertLast(&Letter, huruf);
+            printf("Letter: %s\n", Letter.A[0]);
+            // printf("LetterHistory: %s\n", LetterHistory.A[0]);
+            // printf("LetterHistory == huruf: %d\n", LetterHistory.A[0] == huruf);
+            // printf("LetterHistory == Letter: %d\n", LetterHistory.A[0] == Letter.A[0]);
+            printf("Letter == huruf: %d\n", Letter.A[0] == huruf);
+            // printf("SearchArrayDin: %d\n", SearchArrayDin(LetterHistory, Letter.A[0]));
+            // DeleteLast(&Letter);
             if (IsInWord(huruf, tertebak))
             {
+                InsertLast(&Letter, huruf);
                 for (int i = 0; i < ctr; i++)
                 {
                     if (huruf[0] == tebakan[i])
@@ -102,23 +131,32 @@ void hangMan()
                 }
                 printf("\nYey! Kamu benar! :D\n");
             }
-            else if ((!IsInWord(huruf, tertebak)) && IsInWord(huruf, tebakan1))
+            // else if ((!IsInWord(huruf, tertebak)) && IsInWord(huruf, tebakan1))
+            // {
+            //     printf("\nHuruf sudah ditebak.\n");
+            // }
+            else
             {
-                printf("\nHuruf sudah ditebak.\n");
-            }
-            else if (!IsInWord(huruf, tertebak))
-            {
-                salah++;
-                printf("\nYahh, kamu salah :(\n");
-                printf("Sisa kesempatan menebak: %d\n", (8 - salah));
+                if (SearchArrayDin(Letter, huruf) != -1) {
+                    printf("\nHuruf sudah ditebak.\n");
+                }
+                else
+                {
+                    InsertLast(&Letter, huruf);
+                    salah++;
+                    printf("\nYahh, kamu salah :(\n");
+                }
             }
         }
-        printf("\nKata yang harus ditebak:\n");
+        printf("\nTebakan sebelumnya: ");
+        PrintArrayDin(Letter);
+        printf("Kata yang harus ditebak:\n");
         PrintArrayDin(ArrayBlank);
-        printf("%s\n\n", Get(ArrayHangman, salah));
+        printf("%s\n", Get(ArrayHangman, salah));
+        printf("Sisa kesempatan menebak: %d\n\n", (10 - salah));
     }
     score = score - (salah * salah);
-    if (salah == 8)
+    if (salah == 10)
     {
         score = 0;
         printf("Kata yang benar adalah %s\n", tebakan);
@@ -129,4 +167,9 @@ void hangMan()
     DeallocateArrayDin(&ArrayHangman);
     DeallocateArrayDin(&ArrayKata);
     DeallocateArrayDin(&ArrayBlank);
+}
+
+int main() {
+    hangMan();
+    return 0;
 }

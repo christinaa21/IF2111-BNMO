@@ -12,6 +12,9 @@
 void capsLock(char* huruf);
 /* Membuat semua huruf menjadi uppercase */
 
+void lowerCase(char* huruf);
+/* Membuat semua huruf menjadi lowercase */
+
 void hangMan();
 // Game bonus
 
