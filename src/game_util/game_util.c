@@ -163,43 +163,43 @@ void playGame(Queue *qGame, ArrayOfGame *hist)
         if (IsEqual(game, "RNG"))
         {
             printf("Game yang dimainkan adalah RNG\n");
-            InsertFirst(hist, "RNG");
+            PushStackChar(hist, "RNG");
             RNG();
         }
         else if (IsEqual(game, "DINER DASH"))
         {
             printf("Game yang dimainkan adalah DINER DASH\n");
-            InsertFirst(hist, "DINER DASH");
+            PushStackChar(hist, "DINER DASH");
             DinerDash();
         }
         else if (IsEqual(game, "HANGMAN"))
         {
             printf("Game yang dimainkan adalah HANGMAN\n");
-            InsertFirst(hist, "HANGMAN");
+            PushStackChar(hist, "HANGMAN");
             hangMan();
         }
         else if (IsEqual(game, "TOWER OF HANOI"))
         {
             printf("Game yang dimainkan adalah TOWER OF HANOI\n");
-            InsertFirst(hist, "TOWER OF HANOI");
+            PushStackChar(hist, "TOWER OF HANOI");
             TowerOfHanoi();
         }
         else if (IsEqual(game, "SNAKE ON METEOR"))
         {
             printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
-            InsertFirst(hist, "SNAKE ON METEOR");
+            PushStackChar(hist, "SNAKE ON METEOR");
             SnakeOfMeteor();
         }
         else if (IsEqual(game, "TIC TAC TOE"))
         {
             printf("Game yang dimainkan adalah TIC TAC TOE\n");
-            InsertFirst(hist, "TIC TAC TOE");
+            PushStackChar(hist, "TIC TAC TOE");
             tictactoe();
         }
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
-            InsertFirst(hist, WordToString(game));
+            PushStackChar(hist, WordToString(game));
             gameTambahan();
         }
     }
@@ -252,43 +252,43 @@ void skipGame(int n, Queue *qGame, ArrayOfGame *hist)
             if (IsEqual(game, "RNG"))
             {
                 printf("Game yang dimainkan adalah RNG\n");
-                InsertFirst(hist, "RNG");
+                PushStackChar(hist, "RNG");
                 RNG();
             }
             else if (IsEqual(game, "DINER DASH"))
             {
                 printf("Game yang dimainkan adalah DINER DASH\n");
-                InsertFirst(hist, "DINER DASH");
+                PushStackChar(hist, "DINER DASH");
                 DinerDash();
             }
             else if (IsEqual(game, "HANGMAN"))
             {
                 printf("Game yang dimainkan adalah HANGMAN\n");
-                InsertFirst(hist, "HANGMAN");
+                PushStackChar(hist, "HANGMAN");
                 hangMan();
             }
             else if (IsEqual(game, "TOWER OF HANOI"))
             {
                 printf("Game yang dimainkan adalah TOWER OF HANOI\n");
-                InsertFirst(hist, "TOWER OF HANOI");
+                PushStackChar(hist, "TOWER OF HANOI");
                 TowerOfHanoi();
             }
             else if (IsEqual(game, "SNAKE ON METEOR"))
             {
                 printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
-                InsertFirst(hist, "SNAKE ON METEOR");
+                PushStackChar(hist, "SNAKE ON METEOR");
                 SnakeOfMeteor();
             }
             else if (IsEqual(game, "TIC TAC TOE"))
             {
                 printf("Game yang dimainkan adalah TIC TAC TOE\n");
-                InsertFirst(hist, "TIC TAC TOE");
+                PushStackChar(hist, "TIC TAC TOE");
                 tictactoe();
             }
             else
             {
                 printf("Game yang dimainkan adalah %s\n", WordToString(game));
-                InsertFirst(hist, WordToString(game));
+                PushStackChar(hist, WordToString(game));
                 gameTambahan();
             }
         }
