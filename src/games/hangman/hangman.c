@@ -27,10 +27,10 @@ void lowerCase(char *huruf)
 }
 /* Membuat semua huruf menjadi uppercase */
 
-void hangMan()
+void hangMan(int* score)
 {
     int salah = 0;
-    int score = 0;
+    (*score) = 0;
     char *huruf;
     char* tebakan;
     char* katasudah;
@@ -200,14 +200,14 @@ void hangMan()
         if (benar == ctr) {
             printf("\n--- Berhasil menebak kata %s! Kamu mendapatkan %d poin! ---\n", tebakan, benar);
         }
-        score += benar;
+        (*score) += benar;
         DeallocateArrayDin(&ArrayBlank);
     }
     printf("%s\n", GetArrayDin(ArrayHangman, gambar));
     printf("Kesempatan: %d\n", (10 - salah));
     printf("Kata yang benar adalah %s\n\n", tebakan);
     printf("Kesempatan menebakmu telah habis! Permainan berakhir...\n");
-    printf("Kamu memperoleh total poin sebesar: %d poin!\n\n", score);
+    printf("Kamu memperoleh total poin sebesar: %d poin!\n\n", (*score));
     printf("--- GAME OVER ---\n");
     
     FILE *f;

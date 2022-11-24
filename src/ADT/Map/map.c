@@ -118,7 +118,7 @@ void displayMap (Map M){
     printf("**** SCOREBOARD %c ****\n", M); 
     printf("| NAMA       | SKOR      |\n"); 
     printf("|------------------------|\n"); 
-    if IsEmptyMap(M){
+    if (IsEmptyMap(M)){
         printf("-----SCOREBOARD KOSONG-----\n");
     } else {
         for(int i =0; i < MaxEl; i++){
