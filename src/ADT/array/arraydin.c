@@ -91,28 +91,37 @@ void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
  */
 void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 	/*KAMUS LOKAL*/
-	int length = Length(*array);
-	int capacity = GetCapacity(*array);
+	// int length = Length(*array);
+	// int capacity = GetCapacity(*array);
 	int j;
 	/*ALGORITMA*/
-	if (length == capacity){
-		int newCapacity = capacity + InitialSize;
-		ElTypeArrayDin *arr = (ElTypeArrayDin *) malloc(newCapacity * sizeof(ElTypeArrayDin));
-		for (j = 0; j < length; j++){
-			arr[j] = Get(*array, j);
-		}
-		free((*array).A);
+	// if (length == capacity){
+	// 	int newCapacity = capacity + InitialSize;
+	// 	ElTypeArrayDin *arr = (ElTypeArrayDin *) malloc(newCapacity * sizeof(ElTypeArrayDin));
+	// 	for (j = 0; j < length; j++){
+	// 		arr[j] = Get(*array, j);
+	// 	}
+	// 	free((*array).A);
 
-		(*array).A = arr;
-		(*array).Capacity = newCapacity;
-	}
+	// 	(*array).A = arr;
+	// 	(*array).Capacity = newCapacity;
+	// }
 
-	for (j = length - 1; j >= i; j--){
-		(*array).A[j+1] = (*array).A[j];
-	}
+	// for (j = length - 1; j >= i; j--){
+	// 	(*array).A[j+1] = (*array).A[j];
+	// }
 
-	(*array).A[i] = el;
-	(*array).Neff++;
+	// (*array).A[i] = el;
+	// (*array).Neff++;
+    if ((*array).Neff == (*array).Capacity) {
+        (*array).A = (ElTypeArrayDin*) realloc((*array).A, (InitialSize*2) * sizeof(ElTypeArrayDin));
+        (*array).Capacity = InitialSize*2;
+    }
+    for (j=(*array).Neff-1; j>=i; j--) {
+            (*array).A[j+1] = (*array).A[j];
+        }
+    (*array).A[i] = el;
+    (*array).Neff += 1;
 }
 
 /**
@@ -122,10 +131,16 @@ void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
  */
 void InsertLast(ArrayDin *array, ElTypeArrayDin el){
 	/*KAMUS LOKAL*/
-
+	int j;
 	/*ALGORITMA*/
-	int nums = Length(*array);
-	InsertAt(array, el, nums);
+    if ((*array).Neff == (*array).Capacity) {
+        (*array).A = (ElTypeArrayDin*) realloc((*array).A, (InitialSize*2) * sizeof(ElTypeArrayDin));
+        (*array).Capacity = InitialSize*2;
+    }
+    (*array).A[(*array).Neff] = el;
+    (*array).Neff += 1;
+	// int nums = Length(*array);
+	// InsertAt(array, el, nums);
 }
 
 /**
