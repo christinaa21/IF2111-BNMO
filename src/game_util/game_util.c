@@ -146,7 +146,7 @@ void displayQueueGame(Queue qGame)
  * F.S : Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
          Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 */
-void playGame(Queue *qGame)
+void playGame(Queue *qGame, ArrayOfGame *hist)
 {
     /*KAMUS LOKAL*/
     Word game;
@@ -163,36 +163,43 @@ void playGame(Queue *qGame)
         if (IsEqual(game, "RNG"))
         {
             printf("Game yang dimainkan adalah RNG\n");
+            InsertFirst(hist, "RNG");
             RNG();
         }
         else if (IsEqual(game, "DINER DASH"))
         {
-            printf("Game yang dimainkan adalah Diner Dash\n");
+            printf("Game yang dimainkan adalah DINER DASH\n");
+            InsertFirst(hist, "DINER DASH");
             DinerDash();
         }
         else if (IsEqual(game, "HANGMAN"))
         {
             printf("Game yang dimainkan adalah HANGMAN\n");
+            InsertFirst(hist, "HANGMAN");
             hangMan();
         }
         else if (IsEqual(game, "TOWER OF HANOI"))
         {
             printf("Game yang dimainkan adalah TOWER OF HANOI\n");
+            InsertFirst(hist, "TOWER OF HANOI");
             TowerOfHanoi();
         }
         else if (IsEqual(game, "SNAKE ON METEOR"))
         {
             printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
+            InsertFirst(hist, "SNAKE ON METEOR");
             SnakeOfMeteor();
         }
         else if (IsEqual(game, "TIC TAC TOE"))
         {
-            printf("Game yang dimainkan adalah Tic Tac Toe\n");
+            printf("Game yang dimainkan adalah TIC TAC TOE\n");
+            InsertFirst(hist, "TIC TAC TOE");
             tictactoe();
         }
         else
         {
             printf("Game yang dimainkan adalah %s\n", WordToString(game));
+            InsertFirst(hist, WordToString(game));
             gameTambahan();
         }
     }
@@ -203,7 +210,7 @@ void playGame(Queue *qGame)
  * F.S : Menampilkan antrian game.
  *       Game dilewatkan sebanyak n, lalu game dimulai.
  */
-void skipGame(int n, Queue *qGame)
+void skipGame(int n, Queue *qGame, ArrayOfGame *hist)
 {
     /*KAMUS LOKAL*/
 
@@ -245,36 +252,43 @@ void skipGame(int n, Queue *qGame)
             if (IsEqual(game, "RNG"))
             {
                 printf("Game yang dimainkan adalah RNG\n");
+                InsertFirst(hist, "RNG");
                 RNG();
             }
             else if (IsEqual(game, "DINER DASH"))
             {
-                printf("Game yang dimainkan adalah Diner Dash\n");
+                printf("Game yang dimainkan adalah DINER DASH\n");
+                InsertFirst(hist, "DINER DASH");
                 DinerDash();
             }
             else if (IsEqual(game, "HANGMAN"))
             {
                 printf("Game yang dimainkan adalah HANGMAN\n");
+                InsertFirst(hist, "HANGMAN");
                 hangMan();
             }
             else if (IsEqual(game, "TOWER OF HANOI"))
             {
                 printf("Game yang dimainkan adalah TOWER OF HANOI\n");
+                InsertFirst(hist, "TOWER OF HANOI");
                 TowerOfHanoi();
             }
             else if (IsEqual(game, "SNAKE ON METEOR"))
             {
                 printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
+                InsertFirst(hist, "SNAKE ON METEOR");
                 SnakeOfMeteor();
             }
             else if (IsEqual(game, "TIC TAC TOE"))
             {
-                printf("Game yang dimainkan adalah Tic Tac Toe\n");
+                printf("Game yang dimainkan adalah TIC TAC TOE\n");
+                InsertFirst(hist, "TIC TAC TOE");
                 tictactoe();
             }
             else
             {
                 printf("Game yang dimainkan adalah %s\n", WordToString(game));
+                InsertFirst(hist, WordToString(game));
                 gameTambahan();
             }
         }
@@ -288,4 +302,44 @@ void skipGame(int n, Queue *qGame)
 
 void scoreboard(ListMap L ) {
     printAllList(L); 
+}
+
+/* Prosedur untuk menampilkan permainan apa saja yang telah dimainkan
+dari data yang sudah ada dari file konfigurasi (jika load) dan dari mulai
+Start Game juga, dengan n adalah jumlah permainan yang telah dimainkan yang ingin ditampilkan.
+Urutan teratas merupakan permainan terakhir yang dimainkan.
+Jika n lebih besar dari jumlah permainan yang telah dimainkan, akan menampilkan seluruh
+permainan yang telah dimainkan.
+I.S.: Program telah berjalan. 
+F.S.: Menampilkan daftar game yang telah dimainkan. */
+void history(int n, Stackchar hist) {
+    char* X;
+    if (n < 1) {
+        printf("Mohon masukkan angka yang benar, yaitu lebih dari 0.\n");
+    } else {
+        printf("Berikut adalah daftar Game yang telah dimainkan\n");
+        if (n > Top(hist)) {
+            n = Top(hist);
+        }
+        for (int i=0; i < n; i++) {
+            PopStack(&hist, &X);
+            printf("%d. %s\n", (i+1), X);
+        }
+    }
+}
+
+/* Prosedur untuk menghapus semua history permainan yang dimainkan. 
+I.S.: Program telah berjalan.
+F.S.: Menghapus daftar game yang telah dimainkan. */
+void resetHistory(Stackchar *hist) {
+    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+    STARTINPUT();
+    if (IsEqual(currentWord, "YA")) {
+        CreateEmptyStackChar(hist);
+    } else if (IsEqual(currentWord, "TIDAK")) {
+        printf("History tidak jadi di-reset. ");
+        history(Top(*hist), (*hist));
+    } else {
+        printf("Mohon masukkan jawaban yang benar.\n");
+    }
 }

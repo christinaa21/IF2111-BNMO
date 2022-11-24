@@ -8,6 +8,7 @@
 #include "../ADT/array/arraydin.h"
 #include "../ADT/map/map.h"
 #include "../ADT/map/listMap.h"
+#include "../ADT/stackchar/stackchar.h"
 #include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "../games/diner_dash/diner_dash.h"
 #include "../games/random_number_generator/random_number_generator.h"
@@ -57,13 +58,28 @@ void displayQueueGame(Queue qGame);
  * F.S : Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
          Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 */
-void playGame(Queue *qGame);
+void playGame(Queue *qGame, ArrayOfGame *hist);
 
 /* Prosedur untuk melewatkan game dari daftar antrian sebayak n game.
  * I.S : Program telah berjalan.
  * F.S : Menampilkan antrian game.
  *       Game dilewatkan sebanyak n, lalu game dimulai.
  */
-void skipGame(int n, Queue *qGame);
+void skipGame(int n, Queue *qGame, ArrayOfGame *hist);
+
+/* Prosedur untuk menampilkan permainan apa saja yang telah dimainkan
+dari data yang sudah ada dari file konfigurasi (jika load) dan dari mulai
+Start Game juga, dengan n adalah jumlah permainan yang telah dimainkan yang ingin ditampilkan.
+Urutan teratas merupakan permainan terakhir yang dimainkan.
+Jika n lebih besar dari jumlah permainan yang telah dimainkan, akan menampilkan seluruh
+permainan yang telah dimainkan.
+I.S.: Program telah berjalan. 
+F.S.: Menampilkan daftar game yang telah dimainkan. */
+void history(int n, Stackchar hist);
+
+/* Prosedur untuk menghapus semua history permainan yang dimainkan. 
+I.S.: Program telah berjalan.
+F.S.: Menghapus daftar game yang telah dimainkan. */
+void resetHistory(Stackchar *hist);
 
 #endif
