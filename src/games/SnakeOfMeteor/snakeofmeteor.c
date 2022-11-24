@@ -210,7 +210,3 @@ void SnakeOfMeteor(){
     }
     printf("===== GAME OVER =====\n");
 }
-
-int main(){
-   SnakeOfMeteor();
-}

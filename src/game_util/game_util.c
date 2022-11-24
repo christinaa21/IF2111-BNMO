@@ -170,22 +170,20 @@ void playGame(Queue *qGame)
             printf("Game yang dimainkan adalah Diner Dash\n");
             DinerDash();
         }
-        else if (IsEqual(game, "DINOSAUR IN EARTH"))
-        {
-            printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "RISEWOMAN"))
-        {
-            printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
-        else if (IsEqual(game, "EIFFEL TOWER"))
-        {
-            printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-        }
         else if (IsEqual(game, "HANGMAN"))
         {
             printf("Game yang dimainkan adalah HANGMAN\n");
             hangMan();
+        }
+        else if (IsEqual(game, "TOWER OF HANOI"))
+        {
+            printf("Game yang dimainkan adalah TOWER OF HANOI\n");
+            TowerOfHanoi();
+        }
+        else if (IsEqual(game, "SNAKE ON METEOR"))
+        {
+            printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
+            SnakeOfMeteor();
         }
         else if (IsEqual(game, "TIC TAC TOE"))
         {
@@ -254,22 +252,20 @@ void skipGame(int n, Queue *qGame)
                 printf("Game yang dimainkan adalah Diner Dash\n");
                 DinerDash();
             }
-            else if (IsEqual(game, "DINOSAUR IN EARTH"))
-            {
-                printf("Game DINOSAUR IN EARTH masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-            }
-            else if (IsEqual(game, "RISEWOMAN"))
-            {
-                printf("Game RISEWOMAN masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-            }
-            else if (IsEqual(game, "EIFFEL TOWER"))
-            {
-                printf("Game EIFFEL TOWER masih dalam maintenance, belum dapat dimainkan. Silakan pilih game lain.\n");
-            }
             else if (IsEqual(game, "HANGMAN"))
             {
                 printf("Game yang dimainkan adalah HANGMAN\n");
                 hangMan();
+            }
+            else if (IsEqual(game, "TOWER OF HANOI"))
+            {
+                printf("Game yang dimainkan adalah TOWER OF HANOI\n");
+                TowerOfHanoi();
+            }
+            else if (IsEqual(game, "SNAKE ON METEOR"))
+            {
+                printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
+                SnakeOfMeteor();
             }
             else if (IsEqual(game, "TIC TAC TOE"))
             {
