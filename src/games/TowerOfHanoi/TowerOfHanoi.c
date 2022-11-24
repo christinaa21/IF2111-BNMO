@@ -1,72 +1,94 @@
 #include "TowerOfHanoi.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "time.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 
-void printStack(Stack tiangA, Stack tiangB, Stack tiangC, int n)
+void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
 {
     for (int i = n - 1; i >= 0; i--)
     {
         // Tiang A
-        if (tiangA.T[i] == Nil)
+        if (IsEmptyStack(tiangA))
         {
-            // print spaces
-            for (int j = 0; j < 1; j++)
-            {
-                printf(" ");
-            }
-            printf("|");
+            printf(" | ");
         }
         else
         {
             // print spaces
-            for (int j = 0; j < n - tiangA.T[i]; j++)
+            if (Top(tiangA) < n - 1)
             {
-                printf(" ");
+                for (int j = 0; j < tiangA.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                printf("|");
+                for (int j = 0; j < tiangA.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                Top(tiangA)++;
             }
-            for (int j = 0; j < 2 * tiangA.T[i] - 1; j++)
+            else
             {
-                printf("*");
-            }
-            // print spaces
-            for (int j = 0; j < n - tiangA.T[i]; j++)
-            {
-                printf(" ");
+                for (int j = 0; j < n - tiangA.T[i]; j++)
+                {
+                    printf(" ");
+                }
+                for (int j = 0; j < 2 * tiangA.T[i] - 1; j++)
+                {
+                    printf("*");
+                }
+                // print spaces
+                for (int j = 0; j < n - tiangA.T[i]; j++)
+                {
+                    printf(" ");
+                }
             }
         }
         printf("\t");
 
         // Tiang B
-        if (tiangB.T[i] == Nil)
+        if (IsEmptyStack(tiangB))
         {
-            // print spaces
-            for (int j = 0; j < 1; j++)
-            {
-                printf(" ");
-            }
-            printf("|");
+            printf(" | ");
         }
         else
         {
-            // print spaces
-            for (int j = 0; j < n - tiangB.T[i]; j++)
+            if (Top(tiangB) < n - 1)
             {
-                printf(" ");
+                for (int j = 0; j < tiangB.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                printf("|");
+                for (int j = 0; j < tiangB.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                Top(tiangB)++;
             }
-            for (int j = 0; j < 2 * tiangB.T[i] - 1; j++)
+            else
             {
-                printf("*");
-            }
-            // print spaces
-            for (int j = 0; j < n - tiangB.T[i]; j++)
-            {
-                printf(" ");
+                for (int j = 0; j < n - tiangB.T[i]; j++)
+                {
+                    printf(" ");
+                }
+                for (int j = 0; j < 2 * tiangB.T[i] - 1; j++)
+                {
+                    printf("*");
+                }
+                // print spaces
+                for (int j = 0; j < n - tiangB.T[i]; j++)
+                {
+                    printf(" ");
+                }
             }
         }
         printf("\t");
 
         // Tiang C
-        if (tiangC.T[i] == Nil)
+        if (IsEmptyStack(tiangC))
         {
             // print spaces
             for (int j = 0; j < 1; j++)
@@ -77,164 +99,223 @@ void printStack(Stack tiangA, Stack tiangB, Stack tiangC, int n)
         }
         else
         {
-            // print spaces
-            for (int j = 0; j < n - tiangC.T[i]; j++)
+            if (Top(tiangC) < n - 1)
             {
-                printf(" ");
+                for (int j = 0; j < tiangC.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                printf("|");
+                for (int j = 0; j < tiangC.T[0] - 1; j++)
+                {
+                    printf(" ");
+                }
+                Top(tiangC)++;
             }
-            for (int j = 0; j < 2 * tiangC.T[i] - 1; j++)
+            else
             {
-                printf("*");
-            }
-            // print spaces
-            for (int j = 0; j < n - tiangC.T[i]; j++)
-            {
-                printf(" ");
+                for (int j = 0; j < n - tiangC.T[i]; j++)
+                {
+                    printf(" ");
+                }
+                for (int j = 0; j < 2 * tiangC.T[i] - 1; j++)
+                {
+                    printf("*");
+                }
+                // print spaces
+                for (int j = 0; j < n - tiangC.T[i]; j++)
+                {
+                    printf(" ");
+                }
             }
         }
         printf("\n");
     }
 
-    // print base
-    // tiang A
-    if (tiangA.T[0] != Nil)
-    {
-        // print spaces
-        for (int j = 0; j < n - (tiangA.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        for (int j = 0; j < 2 * tiangA.T[0] - 3; j++)
-        {
-            printf("-");
-        }
-        // print spaces
-        for (int j = 0; j < n - (tiangA.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            printf("-");
-        }
-    }
-    printf("\t");
+    // // print base
+    // // tiang A
+    // if (!IsEmptyStack(tiangA))
+    // {
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangA.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     for (int j = 0; j < 2 * tiangA.T[0] - 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangA.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     for (int j = 0; j < 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    // }
+    // printf("\t");
 
-    // tiang B
-    if (tiangB.T[0] != Nil)
-    {
-        // print spaces
-        for (int j = 0; j < n - (tiangB.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        for (int j = 0; j < 2 * tiangB.T[0] - 3; j++)
-        {
-            printf("-");
-        }
-        // print spaces
-        for (int j = 0; j < n - (tiangB.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            printf("-");
-        }
-    }
-    printf("\t");
+    // // tiang B
+    // if (!IsEmptyStack(tiangB))
+    // {
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangB.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     for (int j = 0; j < 2 * tiangB.T[0] - 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangB.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     for (int j = 0; j < 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    // }
+    // printf("\t");
 
-    // tiang C
-    if (tiangC.T[0] != Nil)
-    {
-        // print spaces
-        for (int j = 0; j < n - (tiangC.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        for (int j = 0; j < 2 * tiangC.T[0] - 3; j++)
-        {
-            printf("-");
-        }
-        // print spaces
-        for (int j = 0; j < n - (tiangC.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            printf("-");
-        }
-    }
-    printf("\n");
+    // // tiang C
+    // if (!IsEmptyStack(tiangC))
+    // {
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangC.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     for (int j = 0; j < 2 * tiangC.T[0] - 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    //     // print spaces
+    //     for (int j = 0; j < n - (tiangC.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     for (int j = 0; j < 3; j++)
+    //     {
+    //         printf("-");
+    //     }
+    // }
+    // printf("\n");
 
-    // huruf A
-    if (tiangA.T[0] != Nil)
-    {
-        for (int j = 0; j < (tiangA.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        printf("A");
-        for (int j = 0; j < (tiangA.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        printf(" A");
-    }
-    printf("\t");
+    // // huruf A
+    // if (!IsEmptyStack(tiangA))
+    // {
+    //     for (int j = 0; j < (tiangA.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     printf("A");
+    //     for (int j = 0; j < (tiangA.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     printf(" A");
+    // }
+    // printf("\t");
 
-    // huruf B
-    if (tiangB.T[0] != Nil)
-    {
-        for (int j = 0; j < (tiangB.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        printf("B");
-        for (int j = 0; j < (tiangB.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        printf(" B");
-    }
-    printf("\t");
+    // // huruf B
+    // if (!IsEmptyStack(tiangB))
+    // {
+    //     for (int j = 0; j < (tiangB.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     printf("B");
+    //     for (int j = 0; j < (tiangB.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     printf(" B");
+    // }
+    // printf("\t");
 
-    // huruf C
-    if (tiangC.T[0] != Nil)
-    {
-        for (int j = 0; j < (tiangC.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-        printf("C");
-        for (int j = 0; j < (tiangC.T[0] - 1); j++)
-        {
-            printf(" ");
-        }
-    }
-    else
-    {
-        printf(" C");
-    }
-    printf("\n");
+    // // huruf C
+    // if (!IsEmptyStack(tiangC))
+    // {
+    //     for (int j = 0; j < (tiangC.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    //     printf("C");
+    //     for (int j = 0; j < (tiangC.T[0] - 1); j++)
+    //     {
+    //         printf(" ");
+    //     }
+    // }
+    // else
+    // {
+    //     printf(" C");
+    // }
+    // printf("\n");
 }
 
+void inputTower(Word *tiangAwal, Word *tiangTujuan)
+{
+    printf("Tiang Asal: ");
+    STARTINPUTKATA();
+    *tiangAwal = currentWord;
+    printf("Tiang Tujuan: ");
+    STARTINPUTKATA();
+    *tiangTujuan = currentWord;
+}
+
+boolean IsFullTower(Stack S, int n)
+{
+    return Top(S) == n - 1;
+}
+void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move)
+{
+    int disc;
+
+    if (IsEmptyStack(*tiangAwal))
+    {
+        printf("Tower awal kosong\n");
+    }
+
+    else if (InfoTop(*tiangAwal) > InfoTop(*tiangTujuan))
+    {
+        if (IsEmptyStack(*tiangTujuan))
+        {
+            PopStack(tiangAwal, &disc);
+            PushStack(tiangTujuan, disc);
+            *move += 1;
+        }
+        else
+        {
+            printf("Disc pada Tower tujuan tidak boleh lebih kecil dari Tower awal\n");
+        }
+    }
+
+    else
+    {
+        PopStack(tiangAwal, &disc);
+        PushStack(tiangTujuan, disc);
+        *move++;
+    }
+}
 void TowerOfHanoi(int *score)
 {
     int n;
@@ -243,27 +324,19 @@ void TowerOfHanoi(int *score)
     printf("Masukkan jumlah disk yang ingin dimainkan: ");
     STARTINPUTKATA();
     n = WordToInt(currentWord);
+    int minMove = pow(2, n) - 1;
+    int currentScore = 10;
     printf("Anda memilih %d disk\n", n);
     printf("\n");
 
-    Stack TiangA, TiangB, TiangC;
-    CreateEmptyStack(&TiangA);
-    CreateEmptyStack(&TiangB);
-    CreateEmptyStack(&TiangC);
+    Stack TowerA, TowerB, TowerC;
+    CreateEmptyStack(&TowerA);
+    CreateEmptyStack(&TowerB);
+    CreateEmptyStack(&TowerC);
 
     for (int i = n - 1; i >= 0; i--)
     {
-        PushStack(&TiangA, i + 1);
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        PushStack(&TiangB, Nil);
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        PushStack(&TiangC, Nil);
+        PushStack(&TowerA, i + 1);
     }
 
     printf("Untuk memainkan permainan ini, silahkan ikuti instruksi berikut:\n");
@@ -275,48 +348,97 @@ void TowerOfHanoi(int *score)
 
     int move = 0;
     Word tiangAwal, tiangTujuan;
-    while (!IsEqual(tiangTujuan, "EXIT"))
+    boolean gameDone = false;
+    printf("currentScore: %d\n", currentScore);
+    printf("maxMove: %d\n", minMove);
+    while (!IsEqual(tiangTujuan, "EXIT") && !gameDone)
     {
         printf("\n");
-        printStack(TiangA, TiangB, TiangC, n);
+        PrintStack(TowerA);
+        PrintStack(TowerB);
+        PrintStack(TowerC);
+        printTower(TowerA, TowerB, TowerC, n);
         printf("\n");
-        printf("Tiang Asal: ");
-        STARTINPUTKATA();
-        tiangAwal = currentWord;
-        printf("Tiang Tujuan: ");
-        STARTINPUTKATA();
-        tiangTujuan = currentWord;
+        inputTower(&tiangAwal, &tiangTujuan);
 
         while (!IsEqual(tiangAwal, "A") && !IsEqual(tiangAwal, "B") && !IsEqual(tiangAwal, "C"))
         {
             printf("Tiang Asal tidak valid!\n");
-            printf("Tiang Asal: ");
-            STARTINPUTKATA();
-            tiangAwal = currentWord;
-            printf("Tiang Tujuan: ");
-            STARTINPUTKATA();
-            tiangTujuan = currentWord;
+            inputTower(&tiangAwal, &tiangTujuan);
         }
 
         while (!IsEqual(tiangTujuan, "A") && !IsEqual(tiangTujuan, "B") && !IsEqual(tiangTujuan, "C") && !IsEqual(tiangTujuan, "EXIT"))
         {
             printf("Tiang Tujuan tidak valid!\n");
-            printf("Tiang Asal: ");
-            STARTINPUTKATA();
-            tiangAwal = currentWord;
-            printf("Tiang Tujuan: ");
-            STARTINPUTKATA();
-            tiangTujuan = currentWord;
+            inputTower(&tiangAwal, &tiangTujuan);
         }
         while (IsEqual(tiangAwal, WordToString(tiangTujuan)))
         {
             printf("Tiang Asal dan Tiang Tujuan tidak boleh sama!\n");
-            printf("Tiang Asal: ");
-            STARTINPUTKATA();
-            tiangAwal = currentWord;
-            printf("Tiang Tujuan: ");
-            STARTINPUTKATA();
-            tiangTujuan = currentWord;
+            inputTower(&tiangAwal, &tiangTujuan);
+        }
+
+        if (IsEqual(tiangAwal, "A") && IsEqual(tiangTujuan, "B"))
+        {
+            moveDisc(&TowerA, &TowerB, &move);
+            printf("Memindahkan piringan ke B...\n");
+        }
+
+        else if (IsEqual(tiangAwal, "A") && IsEqual(tiangTujuan, "C"))
+        {
+            moveDisc(&TowerA, &TowerC, &move);
+            printf("Memindahkan piringan ke C...\n");
+        }
+
+        else if (IsEqual(tiangAwal, "B") && IsEqual(tiangTujuan, "C"))
+        {
+            moveDisc(&TowerB, &TowerC, &move);
+            printf("Memindahkan piringan ke C...\n");
+        }
+
+        else if (IsEqual(tiangAwal, "B") && IsEqual(tiangTujuan, "A"))
+        {
+            moveDisc(&TowerB, &TowerA, &move);
+            printf("Memindahkan piringan ke A...\n");
+        }
+
+        else if (IsEqual(tiangAwal, "C") && IsEqual(tiangTujuan, "A"))
+        {
+            moveDisc(&TowerC, &TowerA, &move);
+            printf("Memindahkan piringan ke A...\n");
+        }
+
+        else if (IsEqual(tiangAwal, "C") && IsEqual(tiangTujuan, "B"))
+        {
+            moveDisc(&TowerC, &TowerB, &move);
+            printf("Memindahkan piringan ke B...\n");
+        }
+
+        if (move >= minMove)
+        {
+            printf("Anda memiliki sisa %d langkah\n", currentScore);
+            currentScore--;
+        }
+
+        if (currentScore == 0)
+        {
+            printf("Kamu kalah!\n");
+            printf("Skor kamu adalah %d\n", currentScore);
+            gameDone = true;
+        }
+
+        if (IsEqual(tiangTujuan, "EXIT"))
+        {
+            printf("Kamu menyerah!\n");
+            printf("Skor kamu adalah %d\n", currentScore);
+            gameDone = true;
+        }
+
+        if (IsFullTower(TowerC, n) && IsEmptyStack(TowerA) && IsEmptyStack(TowerB))
+        {
+            printf("Selamat! Anda berhasil menyelesaikan permainan ini!\n");
+            printf("Skor kamu adalah %d\n", currentScore);
+            gameDone = true;
         }
     }
 }

@@ -57,4 +57,9 @@ void PopStack(Stack *S, infotype *X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
+void PrintStack(Stack S);
+/* I.S. S mungkin kosong */
+/* F.S. Jika S tidak kosong, semua elemen S diprint */
+/* Jika S kosong, hanya menuliskan "Stack kosong" */
+
 #endif

@@ -43,3 +43,21 @@ void PopStack(Stack *S, infotype *X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+
+void PrintStack(Stack S)
+{
+	int i;
+	if (!IsEmptyStack(S))
+	{
+		for (i = Top(S); i >= 0; i--)
+		{
+			printf("%d\n", S.T[i]);
+		}
+	}
+	else
+	{
+		printf("Stack kosong");
+	}
+
+	printf("\n");
+}
