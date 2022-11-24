@@ -43,13 +43,13 @@ int Length(ArrayDin array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i);
+ElTypeArrayDin GetArrayDin(ArrayDin array, IdxTypeArrayDin i);
 
 /**
  * Fungsi untuk mengeset x pada elemen array dengan indeks ke-i.
  * Prekondisi: array, i, dan x terdefinisi.
 */
-void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x);
+void SetArrayDin(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.

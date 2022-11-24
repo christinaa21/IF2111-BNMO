@@ -52,7 +52,7 @@ void hangMan()
 
     srand(time(NULL));
     int X = rand() % 25;
-    char *tebakan = Get(ArrayKata, X);
+    char *tebakan = GetArrayDin(ArrayKata, X);
     Word tertebak = StringtoWord(tebakan);
     Word tebakan1 = StringtoWord(tebakan);
 
@@ -81,21 +81,20 @@ void hangMan()
     }
     ctr = i;
 
-    // ArrayDin LetterHistory;
-    // LetterHistory = MakeArrayDin();
-
-    ArrayDin Letter;
-    Letter = MakeArrayDin();
+    Word LetterHistory;
+    LetterHistory.Length = 0;
+    LetterHistory.TabWord[0] = '-';
 
     int salah = 0;
     int benar = 0;
     int score = 100;
+    char *huruf;
 
     printf("Hangman telah dimulai! Yuk kita menebak kata!\nDi game ini, kamu harus menebak kata yang berhubungan dengan kehidupan kuliah kita nih!\nBisa saja nama matkul, nama tempat, atau mungkin hal-hal yang kita kerjakan.\n\n");
-    printf("Tebakan sebelumnya: -\n");
+    printf("Tebakan sebelumnya: %c\n", LetterHistory.TabWord[0]);
     printf("Kata yang harus ditebak:\n");
     PrintArrayDin(ArrayBlank);
-    printf("%s\n\n", Get(ArrayHangman, salah));
+    printf("%s\n\n", GetArrayDin(ArrayHangman, salah));
     while ((salah < 10) && (benar < ctr))
     {
         printf("Masukkan tebakan: ");
@@ -106,54 +105,43 @@ void hangMan()
         }
         else
         {
-            char *huruf = WordToString(currentWord);
+            huruf = WordToString(currentWord);
             capsLock(huruf);
-            printf("huruf: %s\n", huruf);
-            // InsertLast(&Letter, huruf);
-            printf("Letter: %s\n", Letter.A[0]);
-            // printf("LetterHistory: %s\n", LetterHistory.A[0]);
-            // printf("LetterHistory == huruf: %d\n", LetterHistory.A[0] == huruf);
-            // printf("LetterHistory == Letter: %d\n", LetterHistory.A[0] == Letter.A[0]);
-            printf("Letter == huruf: %d\n", Letter.A[0] == huruf);
-            // printf("SearchArrayDin: %d\n", SearchArrayDin(LetterHistory, Letter.A[0]));
-            // DeleteLast(&Letter);
             if (IsInWord(huruf, tertebak))
             {
-                InsertLast(&Letter, huruf);
                 for (int i = 0; i < ctr; i++)
                 {
                     if (huruf[0] == tebakan[i])
                     {
-                        Set(&ArrayBlank, i, huruf);
+                        SetArrayDin(&ArrayBlank, i, huruf);
                         tertebak.TabWord[i] = '$';
                         benar++;
                     }
                 }
-                printf("\nYey! Kamu benar! :D\n");
+                LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
+                LetterHistory.Length++;
+                printf("\n******* Yey! Kamu benar! :D *******\n");
             }
-            // else if ((!IsInWord(huruf, tertebak)) && IsInWord(huruf, tebakan1))
-            // {
-            //     printf("\nHuruf sudah ditebak.\n");
-            // }
             else
             {
-                if (SearchArrayDin(Letter, huruf) != -1) {
-                    printf("\nHuruf sudah ditebak.\n");
+                if (IsInWord(huruf, LetterHistory)) {
+                    printf("\n******* Huruf sudah ditebak. *******\n");
                 }
                 else
                 {
-                    InsertLast(&Letter, huruf);
+                    LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
+                    LetterHistory.Length++;
                     salah++;
-                    printf("\nYahh, kamu salah :(\n");
+                    printf("\n******* Yahh, kamu salah :( *******\n");
                 }
             }
         }
-        printf("\nTebakan sebelumnya: ");
-        PrintArrayDin(Letter);
-        printf("Kata yang harus ditebak:\n");
+        char* katasudah = WordToString(LetterHistory);
+        printf("\nTebakan sebelumnya: %s\n", katasudah);
+        printf("Kata yang harus ditebak: ");
         PrintArrayDin(ArrayBlank);
-        printf("%s\n", Get(ArrayHangman, salah));
-        printf("Sisa kesempatan menebak: %d\n\n", (10 - salah));
+        printf("%s\n", GetArrayDin(ArrayHangman, salah));
+        printf("Kesempatan: %d\n", (10 - salah));
     }
     score = score - (salah * salah);
     if (salah == 10)

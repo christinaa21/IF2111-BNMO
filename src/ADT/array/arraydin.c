@@ -55,7 +55,7 @@ int Length(ArrayDin array){
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayDin Get(ArrayDin array, IdxTypeArrayDin i){
+ElTypeArrayDin GetArrayDin(ArrayDin array, IdxTypeArrayDin i){
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -77,7 +77,7 @@ int GetCapacity(ArrayDin array){
  * Fungsi untuk mengeset x pada elemen array dengan indeks ke-i.
  * Prekondisi: array, i, dan x terdefinisi.
 */
-void Set(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
+void SetArrayDin(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
 	/*KAMUS LOKAL*/
 	
 	/*ALGORITMA*/
@@ -95,24 +95,6 @@ void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
 	// int capacity = GetCapacity(*array);
 	int j;
 	/*ALGORITMA*/
-	// if (length == capacity){
-	// 	int newCapacity = capacity + InitialSize;
-	// 	ElTypeArrayDin *arr = (ElTypeArrayDin *) malloc(newCapacity * sizeof(ElTypeArrayDin));
-	// 	for (j = 0; j < length; j++){
-	// 		arr[j] = Get(*array, j);
-	// 	}
-	// 	free((*array).A);
-
-	// 	(*array).A = arr;
-	// 	(*array).Capacity = newCapacity;
-	// }
-
-	// for (j = length - 1; j >= i; j--){
-	// 	(*array).A[j+1] = (*array).A[j];
-	// }
-
-	// (*array).A[i] = el;
-	// (*array).Neff++;
     if ((*array).Neff == (*array).Capacity) {
         (*array).A = (ElTypeArrayDin*) realloc((*array).A, (InitialSize*2) * sizeof(ElTypeArrayDin));
         (*array).Capacity = InitialSize*2;
@@ -139,8 +121,6 @@ void InsertLast(ArrayDin *array, ElTypeArrayDin el){
     }
     (*array).A[(*array).Neff] = el;
     (*array).Neff += 1;
-	// int nums = Length(*array);
-	// InsertAt(array, el, nums);
 }
 
 /**
