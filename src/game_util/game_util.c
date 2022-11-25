@@ -171,7 +171,7 @@ void playGame(Queue *qGame, Stackchar *hist, ListMap *L)
             printf("Nama: ");
             STARTINPUTKATA();
             nama = WordToString(currentWord);
-            InsertMap((L).peta[0], nama, score);
+            InsertMap(&(*L).peta[0], nama, score);
         }
         else if (IsEqual(game, "DINER DASH"))
         {
