@@ -44,10 +44,15 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
     STARTWORD(newfile);
     int count = WordToInt(currentWord);
     int i;
+    Map Temp;
     for (i = 0; i < count; i++)
     {
         ADVWORD();
         InsertGameLast(arrGame, currentWord);
+        if (i > 5){
+            CreateEmptyMap(&Temp);
+            insertToList(L,Temp);
+        }
     }
     ADVWORD();
     count = WordToInt(currentWord);
