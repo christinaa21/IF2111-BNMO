@@ -43,7 +43,7 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
     char *newfile = ConcateChar(path, savefile);
     STARTWORD(newfile);
     int count = WordToInt(currentWord);
-    int i;
+    int i,j;
     Map Temp;
     for (i = 0; i < count; i++)
     {
@@ -59,6 +59,14 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
     for (i = 0; i < count; i++){
         ADVWORD();
         PushStackChar(Hist,WordtoString(currentWord));
+    }
+    for (j = 0 ; j<(*L).Neff ; j++){
+        ADVWORD();
+        count = WordToInt(currentWord);
+        for (i = 0; i<count ; i++){
+            ADVWORD();
+            InsertMap(&(*L).peta[j], WordToString(takeword(currentWord, 1)), WordToInt(takeword(currentWord,2)));
+        }
     }
     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
