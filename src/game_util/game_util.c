@@ -337,7 +337,7 @@ void history(int n, Stackchar hist) {
             n = Top(hist);
         }
         for (int i=0; i < n; i++) {
-            PopStack(&hist, &X);
+            PopStackChar(&hist, &X);
             printf("%d. %s\n", (i+1), X);
         }
     }

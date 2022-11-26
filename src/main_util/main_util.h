@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "../ADT/mesinkata/mesinkata.h"
+#include "../ADT/Map/listMap.h"
+#include "../ADT/stackchar/stackchar.h"
+#include "../ADT/Map/map.h"
 
 /* Prosedur untuk menjalankan program 
  * I.S : Sembarang.
@@ -21,7 +24,7 @@ void load(char* savefile, ArrayOfGame *arrGame, ArrayOfGame *hist);
  * I.S : Program telah berjalan.
  * F.S : Menyimpan file yang telah dijalankan ke dalam file eksternal
 */
-void save(char *savefile, ArrayOfGame arrGame);
+void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L);
 
 /* Prosedur untuk menampilkan command yang bisa dimasukan user 
  * I.S : Program telah berjalan
@@ -33,7 +36,7 @@ void help();
  * I.S : Program sedang berjalan
  * F.S : Keluar dari program dengan array telah didealokasikan
 */
-void quit();
+void quit(ArrayOfGame arrGame, Stackchar hist, ListMap L);
 
 /* Prosedur untuk menampilkan pesan kesalahan input user 
  * I.S : Program sedang berjalan

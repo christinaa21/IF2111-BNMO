@@ -61,11 +61,12 @@ void load(char *savefile, ArrayOfGame *arrGame, ArrayOfGame *Hist)
  * I.S : Program telah berjalan.
  * F.S : Menyimpan file yang telah dijalankan ke dalam file eksternal
  */
-void save(char *savefile, ArrayOfGame arrGame)
+void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
 {
     /*KAMUS LOKAL*/
     FILE *fp;
     int i;
+    char* x;
     char *game;
     char *path = "Data/";
     /*ALGORITMA*/
@@ -76,6 +77,17 @@ void save(char *savefile, ArrayOfGame arrGame)
     {
         game = WordToString((arrGame).A[i]);
         fprintf(fp, "%s\n", game);
+    }
+    fprintf(fp, "%d\n", Top(hist));
+    while (!IsEmptyStackChar(hist)) {
+        PopStackChar(&hist, &x);
+        fprintf(fp, "%s\n", x);
+    }
+    for (i = 0; i<L.Neff; i++) {
+        fprintf(fp, "%d\n", L.peta[i].Count);
+        for (int j=0; i<L.peta[i].Count; i++) {
+            fprintf(fp, "%s %d\n", L.peta[i].Elements[j].Key, L.peta[i].Elements[j].Value);
+        }
     }
     fclose(fp);
     printf("Save file berhasil disimpan.\n");
@@ -107,7 +119,7 @@ void help()
  * I.S : Program sedang berjalan
  * F.S : Keluar dari program dengan array telah didealokasikan
  */
-void quit(ArrayOfGame arrGame)
+void quit(ArrayOfGame arrGame, Stackchar hist, ListMap L)
 {
     /*KAMUS LOKAL*/
 
@@ -126,7 +138,7 @@ void quit(ArrayOfGame arrGame)
         printf("Masukkan nama file penyimpanan: ");
         STARTINPUTKATA();
         savefile = WordToString(currentWord);
-        save(savefile, arrGame);
+        save(savefile, arrGame, hist, L);
         printf("Game kamu berhasil disave. Sampai jumpa!\n");
     }
 
