@@ -93,4 +93,10 @@ boolean IsEqual(Word w, char *c);
  * Prekondisi : pemrosesan telah berjalan */
 boolean IsInWord(char* dicari, Word sumber);
 
+void capsLock(char* huruf);
+/* Membuat semua huruf menjadi uppercase */
+
+void lowerCase(char* huruf);
+/* Membuat semua huruf menjadi lowercase */
+
 #endif

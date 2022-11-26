@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "map.h"
-#include "boolean.h"
 
 void CreateEmptyMap(Map *M){
     (*M).Count = Nil; 
@@ -48,13 +46,13 @@ valuetype ValueMap(Map M, keytype k){
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */
 
 void InsertMap(Map *M, keytype k, valuetype v){
-    if(IsEmpty(*M)){
+    if(IsEmptyMap(*M)){
         (*M).Count = 1;
         (*M).Elements[0].Key = k;
         (*M).Elements[0].Value = v;
     }
     else{
-        if(!IsMember(*M,k)){
+        if(!IsMemberMap(*M,k)){
             (*M).Elements[(*M).Count].Key = k;
             (*M).Elements[(*M).Count].Value = v;
             (*M).Count ++;
@@ -72,7 +70,7 @@ void DeleteMap(Map *M, keytype k){
     boolean found = false;
 
     /*ALGORITMA*/
-    if(IsMember(*M,k)){
+    if(IsMemberMap(*M,k)){
         while (i<(*M).Count && found == false){
             if ((*M).Elements[i].Key == k){
                 found = true;
@@ -103,7 +101,9 @@ boolean IsMemberMap(Map M, keytype k){
     boolean found = false; 
 
     /*ALGORITMA*/
+    capsLock(k);
     while ((i<M.Count) && (found == false)) {
+        capsLock(M.Elements[i].Key);
         if (M.Elements[i].Key == k){
             found = true;
         } else {
@@ -115,7 +115,7 @@ boolean IsMemberMap(Map M, keytype k){
 /* Mengembalikan true jika k adalah member dari M */
 
 void displayMap (Map M){
-    printf("**** SCOREBOARD %c ****\n", M); 
+    printf("**** SCOREBOARD %s ****\n", M); 
     printf("| NAMA       | SKOR      |\n"); 
     printf("|------------------------|\n"); 
     if (IsEmptyMap(M)){

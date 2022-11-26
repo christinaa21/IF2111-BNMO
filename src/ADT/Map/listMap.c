@@ -4,13 +4,20 @@
 
 
 void createListMap(ListMap *L){
-    (*L).Neff = 5;
-    Map MapRNG, MapDD, MapDiE, MapRW, MapET;
+    (*L).Neff = 6;
+    Map MapRNG, MapDD, MapH, MapToH, MapSoM, MapTTT;
     CreateEmptyMap(&MapRNG); 
     CreateEmptyMap(&MapDD); 
-    CreateEmptyMap(&MapDiE);
-    CreateEmptyMap(&MapRW); 
-    CreateEmptyMap(&MapET);
+    CreateEmptyMap(&MapH);
+    CreateEmptyMap(&MapToH); 
+    CreateEmptyMap(&MapSoM);
+    CreateEmptyMap(&MapTTT);
+    (*L).peta[0] = MapRNG;
+    (*L).peta[1] = MapDD;
+    (*L).peta[2] = MapH;
+    (*L).peta[3] = MapToH;
+    (*L).peta[4] = MapSoM;
+    (*L).peta[5] = MapTTT;
 }
 
 void insertToList(ListMap *L, Map M){

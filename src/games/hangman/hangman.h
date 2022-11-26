@@ -9,12 +9,6 @@
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/array/arraydin.h"
 
-void capsLock(char* huruf);
-/* Membuat semua huruf menjadi uppercase */
-
-void lowerCase(char* huruf);
-/* Membuat semua huruf menjadi lowercase */
-
 void hangMan(int* score);
 // Game bonus
 

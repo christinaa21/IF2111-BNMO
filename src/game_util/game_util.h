@@ -58,14 +58,14 @@ void displayQueueGame(Queue qGame);
  * F.S : Game yang dipilih dimulai jika game tersebut sesuai dengan spesifikasi game.
          Game selain yang dispesifikasikan pada panduan tugas besar akan menampilkan pesan error.
 */
-void playGame(Queue *qGame, Stackchar *hist, ListMap *L);
+void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L);
 
 /* Prosedur untuk melewatkan game dari daftar antrian sebayak n game.
  * I.S : Program telah berjalan.
  * F.S : Menampilkan antrian game.
  *       Game dilewatkan sebanyak n, lalu game dimulai.
  */
-void skipGame(int n, Queue *qGame, Stackchar *hist);
+void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L);
 
 /* Prosedur untuk menampilkan permainan apa saja yang telah dimainkan
 dari data yang sudah ada dari file konfigurasi (jika load) dan dari mulai

@@ -1,32 +1,6 @@
 #include <stdio.h>
 #include "hangman.h"
 
-void capsLock(char *huruf)
-{
-    int i = 0;
-    while (huruf[i] != '\0') {
-        if ((huruf[i] >= 97) && (huruf[i] <= 122))
-        {
-            huruf[i] -= 32;
-        }
-        i++;
-    }
-}
-/* Membuat semua huruf menjadi uppercase */
-
-void lowerCase(char *huruf)
-{
-    int i = 0;
-    while (huruf[i] != '\0') {
-        if ((huruf[i] >= 65) && (huruf[i] <= 90))
-        {
-            huruf[i] += 32;
-        }
-        i++;
-    }
-}
-/* Membuat semua huruf menjadi uppercase */
-
 void hangMan(int* score)
 {
     int salah = 0;
