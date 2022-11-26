@@ -28,7 +28,13 @@ int main()
     displaybinomo();
     printf("\n");
     ArrayOfGame ListGame;
+    Stackchar History;
+    ListMap Scoreboard;
+    Map Temp;
     MakeArrayOfGame(&ListGame);
+    CreateEmptyStackChar(&History);
+    createListMap(&Scoreboard);
+    CreateEmptyMap(&Temp);
     Queue QueueGame;
     CreateQueue(&QueueGame);
     boolean cek = false;
@@ -56,7 +62,7 @@ int main()
                 }
                 else
                 {
-                    load(WordToString(x), &ListGame);
+                    load(WordToString(x), &ListGame, &History, &Scoreboard);
                     cek = true;
                     fclose(p);
                 }
@@ -79,7 +85,7 @@ int main()
             STARTINPUTKATA();
             if (IsEqual(currentWord, "CREATE GAME"))
             {
-                createGame(&ListGame);
+                createGame(&ListGame, &Scoreboard, &Temp);
             }
             else if (IsEqual(currentWord, "LIST GAME"))
             {
@@ -95,11 +101,11 @@ int main()
             }
             else if (IsEqual(currentWord, "PLAY GAME"))
             {
-                playGame(&QueueGame);
+                playGame(ListGame, &QueueGame, &History, &Scoreboard);
             }
             else if ((IsEqual(takeword(currentWord, 1), "SKIP")) && (IsEqual(takeword(currentWord, 2), "GAME")))
             {
-                skipGame(WordToInt(takeword(currentWord, 3)), &QueueGame);
+                skipGame(WordToInt(takeword(currentWord, 3)), ListGame, &QueueGame, &History, &Scoreboard);
                 if (!isEmpty(QueueGame))
                 {
                     if (takeword(currentWord, 3).Length == 0)
@@ -121,12 +127,12 @@ int main()
                 else
                 {
                     Word x = takeword(currentWord, 2);
-                    save(WordToString(x), ListGame);
+                    save(WordToString(x), ListGame, History, Scoreboard);
                 }
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
-                quit(ListGame);
+                quit(ListGame, History, Scoreboard);
             }
             else
             {

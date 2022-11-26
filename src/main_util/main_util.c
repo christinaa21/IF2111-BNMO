@@ -6,6 +6,7 @@
 #include "./main_util.h"
 #include "../ADT/mesinkata/mesinkata.h"
 
+
 /* Prosedur untuk menjalankan program
  * I.S : Sembarang.
  * F.S : menjalankan program dengan melakukan load terhadap konfigurasi.
@@ -31,13 +32,13 @@ void start(ArrayOfGame *arr)
  * I.S. Program telah berjalan.
  * F.S. Menjalankan file yang telah tersimpan sebelumnya dari file eksternal.
  */
-void load(char *savefile, ArrayOfGame *arrGame, ArrayOfGame *Hist)
+void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
 {
     /*KAMUS LOKAL*/
 
     /*ALGORITMA*/
     *arrGame = MakeArrayOfGame();
-    *Hist = MakeArrayOfGame();
+    CreateEmptyStackChar(Hist);
     char *path = "Data/";
     char *newfile = ConcateChar(path, savefile);
     STARTWORD(newfile);
@@ -52,7 +53,7 @@ void load(char *savefile, ArrayOfGame *arrGame, ArrayOfGame *Hist)
     count = WordToInt(currentWord);
     for (i = 0; i < count; i++){
         ADVWORD();
-        InsertGameLast(Hist,currentWord);
+        PushStackChar(Hist,WordtoString(currentWord));
     }
     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
 }

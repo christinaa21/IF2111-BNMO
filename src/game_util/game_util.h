@@ -20,7 +20,7 @@
  * I.S. Program telah berjalan
  * F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
  */
-void createGame(ArrayOfGame *arr, ListMap *L, Map M);
+void createGame(ArrayOfGame *arr, ListMap *L, Map *M);
 
 /* Prosedur yang menampilkan daftar game
  * I.S. Program telah berjalan
