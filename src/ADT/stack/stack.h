@@ -62,4 +62,7 @@ void PrintStack(Stack S);
 /* F.S. Jika S tidak kosong, semua elemen S diprint */
 /* Jika S kosong, hanya menuliskan "Stack kosong" */
 
+Stack InverseStack(Stack S);
+/*S mungkin kosong, menghasilkan stack baru dengan isi stack yang telah di inverse */
+
 #endif

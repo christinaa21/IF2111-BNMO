@@ -20,7 +20,7 @@ boolean IsEmptyStack(Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsFullStack(Stack S)
 {
-	return Top(S) == MaxEl - 1;
+	return Top(S) == MaxElStack - 1;
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
@@ -60,4 +60,17 @@ void PrintStack(Stack S)
 	}
 
 	printf("\n");
+}
+
+Stack InverseStack(Stack S)
+{
+	Stack S1;
+	CreateEmptyStack(&S1);
+	infotype X;
+	while (!IsEmptyStack(S))
+	{
+		PopStack(&S, &X);
+		PushStack(&S1, X);
+	}
+	return S1;
 }
