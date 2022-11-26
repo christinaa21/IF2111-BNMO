@@ -57,7 +57,7 @@ void delay(int number_of_milliseconds)
  * -	Ketika makanan sudah di SERVE, maka makanan dapat diantar kepada pelanggan dan pelanggan dapat meninggalkan antrian. Setelah pelanggan meninggalkan antrian, maka pemain akan menerima uang
  * -	SERVE hanya dapat digunakan untuk pesanan yang berada di paling depan.
  * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */
-void DinerDash()
+void DinerDash(int *score)
 {
     /*KAMUS LOKAL*/
     char cook[] = "COOK", serve[] = "SERVE";
@@ -306,4 +306,6 @@ void DinerDash()
 
     printf("Congratulation!\nYou've served %d food\n", successfulServe);
     printf("Game Over \n");
+    printf("Your final balance is %d\n", saldo);
+    (*score) = saldo;
 }

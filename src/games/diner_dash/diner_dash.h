@@ -25,7 +25,7 @@ boolean compare(char str1[], char str2[]);
  * -	Pada setiap putaran, seluruh durasi dari makanan yang sedang dimasak akan berkurang 1. Ketika durasi makanan mencapai 0, maka makanan sudah dapat di SERVE.
  * -	Ketika makanan sudah di SERVE, maka makanan dapat diantar kepada pelanggan dan pelanggan dapat meninggalkan antrian. Setelah pelanggan meninggalkan antrian, maka pemain akan menerima uang
  * -	SERVE hanya dapat digunakan untuk pesanan yang berada di paling depan.
- * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */ 
-void DinerDash();
+ * -	Skor akhir dari pemain adalah total uang yang diterima oleh pemain. */
+void DinerDash(int *score);
 
 #endif

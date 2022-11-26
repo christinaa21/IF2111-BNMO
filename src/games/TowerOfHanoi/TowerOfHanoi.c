@@ -9,7 +9,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
     Stack newTiangA = tiangA;
     Stack newTiangB = tiangB;
     Stack newTiangC = tiangC;
-    infotype newTop;
+    infotypeStack newTop;
     for (int i = n - 1; i >= 0; i--)
     {
         // Tiang A
@@ -483,9 +483,9 @@ void TowerOfHanoi(int *score)
     printf("Masukkan jumlah disk yang ingin dimainkan: ");
     STARTINPUTKATA();
     n = WordToIntStack(currentWord);
-    while (n > 100 || n < 1)
+    while (n > 31 || n < 1)
     {
-        printf("Jumlah disk tidak boleh lebih dari 100 dan harus lebih besar dari 0\n");
+        printf("Jumlah disk tidak boleh lebih dari 31 dan harus lebih besar dari 0\n");
         printf("Masukkan jumlah disk yang ingin dimainkan: ");
         STARTINPUTKATA();
         n = WordToIntStack(currentWord);
@@ -511,14 +511,23 @@ void TowerOfHanoi(int *score)
     printf("3. Nama tiang awal dan tiang tujuan tidak boleh sama\n");
     printf("4. Disk hanya dapat dipindahkan ke tiang yang memiliki disk teratas yang lebih besar dari disk yang dipindahkan\n");
     printf("5. Ketik 'EXIT' pada 'tiang tujuan' untuk keluar dari permainan atau saat anda telah menyerah\n");
+    printf("6. Setiap disk yang dipindahkan akan dihitung sebagai 1 langkah\n");
+    printf("7. Akan disediakan minimum move yang perlu dilakukan untuk menyelesaikan permainan ini\n");
+    printf("8. Setiap langkap yang melebihi minimum move akan mengurangi score anda sebanyak 1\n");
+    printf("9. Minimum Move yang ada bergantung pada jumlah disk yang dimainkan\n");
+    printf("10. Jika anda menyerah, maka skor yang didapat adalah 0\n");
+    printf("11. Jika anda menyelesaikan permainan, maka skor yang didapat adalah 1/3 dari langkah minimum yang dibutuhkan\n");
+
+    printf("\n");
 
     int move = 0;
     Word tiangAwal, tiangTujuan;
     boolean gameDone = false;
     printf("your current score: %d\n", currentScore);
-    printf("minimum Move: %d\n", minMove);
+    printf("The minimum move you have to make: %d\n\n", minMove);
     while (!IsEqual(tiangTujuan, "EXIT") && !gameDone)
     {
+        printf("TURN %d\n", move + 1);
         printf("\n");
         printTower(TowerA, TowerB, TowerC, n);
         printf("\n");
@@ -543,37 +552,37 @@ void TowerOfHanoi(int *score)
 
         if (IsEqual(tiangAwal, "A") && IsEqual(tiangTujuan, "B"))
         {
-            printf("Memindahkan piringan ke B...\n");
+            printf("Memindahkan piringan ke B...\n\n");
             moveDisc(&TowerA, &TowerB, &move);
         }
 
         else if (IsEqual(tiangAwal, "A") && IsEqual(tiangTujuan, "C"))
         {
-            printf("Memindahkan piringan ke C...\n");
+            printf("Memindahkan piringan ke C...\n\n");
             moveDisc(&TowerA, &TowerC, &move);
         }
 
         else if (IsEqual(tiangAwal, "B") && IsEqual(tiangTujuan, "C"))
         {
-            printf("Memindahkan piringan ke C...\n");
+            printf("Memindahkan piringan ke C...\n\n");
             moveDisc(&TowerB, &TowerC, &move);
         }
 
         else if (IsEqual(tiangAwal, "B") && IsEqual(tiangTujuan, "A"))
         {
-            printf("Memindahkan piringan ke A...\n");
+            printf("Memindahkan piringan ke A...\n\n");
             moveDisc(&TowerB, &TowerA, &move);
         }
 
         else if (IsEqual(tiangAwal, "C") && IsEqual(tiangTujuan, "A"))
         {
-            printf("Memindahkan piringan ke A...\n");
+            printf("Memindahkan piringan ke A...\n\n");
             moveDisc(&TowerC, &TowerA, &move);
         }
 
         else if (IsEqual(tiangAwal, "C") && IsEqual(tiangTujuan, "B"))
         {
-            printf("Memindahkan piringan ke B...\n");
+            printf("Memindahkan piringan ke B...\n\n");
             moveDisc(&TowerC, &TowerB, &move);
         }
 
@@ -606,9 +615,6 @@ void TowerOfHanoi(int *score)
             printf("Selamat! Anda berhasil menyelesaikan permainan ini!\n");
             gameDone = true;
         }
-
-        printf("currentScore: %d\n\n", currentScore);
-        printf("move: %d\n\n", move);
     }
     printf("Score kamu adalah %d\n", currentScore);
     *score = currentScore;
