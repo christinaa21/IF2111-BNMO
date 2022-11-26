@@ -315,9 +315,6 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     displayQueueGame(*qGame);
 }
 
-void scoreboard(ListMap L ) {
-    printAllList(L); 
-}
 
 /* Prosedur untuk menampilkan permainan apa saja yang telah dimainkan
 dari data yang sudah ada dari file konfigurasi (jika load) dan dari mulai
@@ -357,4 +354,15 @@ void resetHistory(Stackchar *hist) {
     } else {
         printf("Mohon masukkan jawaban yang benar.\n");
     }
+}
+
+void scoreboard(ListMap L){
+    for (int i=0; i<L.Neff;i++){
+        displayMap(L.peta[i]);
+        printf("\n");
+    }
+}
+
+void resetScoreboard (ListMap *L, ArrayOfGame *arr){
+    
 }
