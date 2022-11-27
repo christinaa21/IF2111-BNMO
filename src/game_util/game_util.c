@@ -360,12 +360,13 @@ void resetHistory(Stackchar *hist) {
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
  I.S : Program telah berjalan. 
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
-void scoreboard(ListMap L, Map M){
+void scoreboard(ListMap L, Map M, ArrayOfGame arr){
     /*KAMUS LOKAL*/
-
+    ElTypeArrayOfGame game;
     /*ALGORITMA*/
     for (int i=0; i<L.Neff;i++){
-        printf("**** SCOREBOARD %s ****\n", L.peta[i]); 
+        game = arr.A[i];
+        printf("**** SCOREBOARD %s ****\n", WordToString(game)); // bingung deh klo dia hapus scoreboard tapi gamenya tetep gimana ya
         printf("| NAMA       | SKOR      |\n"); 
         printf("|------------------------|\n"); 
         if (IsEmptyMap(M)){
@@ -407,7 +408,8 @@ void resetScoreboard (ListMap *L, ArrayOfGame *arr){
             printf("Scoreboard tidak jadi di-reset.\n");
         }
     } else if (WordToInt(currentWord) < LengthArrayOfGame(*arr)){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", &(*L).peta[WordToInt(currentWord)-1]); //belum dimasukin nama game
+        game = arr->A[WordToInt(currentWord)-1];
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game)); //klo scoreboard urutannya ga sama kek list game gimana
         printf("(YA/TIDAK)?"); 
         if (IsEqual(currentWord,"YA")){
             deleteAtMap(L, WordToInt(currentWord)); 
