@@ -356,7 +356,14 @@ void resetHistory(Stackchar *hist) {
     }
 }
 
+/* Prosedur untuk menampilkan scoreboard dari masing-masing game.
+ * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
+ I.S : Program telah berjalan. 
+ F.S : Menampilkan daftar scoreboard dari masing-masing game. */
 void scoreboard(ListMap L, Map M){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     for (int i=0; i<L.Neff;i++){
         printf("**** SCOREBOARD %s ****\n", L.peta[i]); 
         printf("| NAMA       | SKOR      |\n"); 
@@ -371,8 +378,13 @@ void scoreboard(ListMap L, Map M){
     }
 }
 
+/* Prosedur untuk menghapus semua atau sebagian scoreboard.
+I.S : Program telah berjalan
+F.S : Menghapus semua, sebagian, atau tidak sama sekali scoreboard sesuai dengan input user*/
 void resetScoreboard (ListMap *L, ArrayOfGame *arr){
+    /*KAMUS LOKAL*/
     ElTypeArrayOfGame game;
+    /*ALGORITMA*/
     printf("DAFTAR SCOREBOARD :\n");
     printf("0. ALL\n"); 
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
