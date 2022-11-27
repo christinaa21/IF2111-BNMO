@@ -356,10 +356,18 @@ void resetHistory(Stackchar *hist) {
     }
 }
 
-void scoreboard(ListMap L){
+void scoreboard(ListMap L, Map M){
     for (int i=0; i<L.Neff;i++){
-        displayMap(L.peta[i]); //belum dimasukin nama game
-        printf("\n");
+        printf("**** SCOREBOARD %s ****\n", L.peta[i]); 
+        printf("| NAMA       | SKOR      |\n"); 
+        printf("|------------------------|\n"); 
+        if (IsEmptyMap(M)){
+            printf("-----SCOREBOARD KOSONG-----\n");
+        } else {
+            for(int i =0; i < MaxEl; i++){
+                printf("| %s       | %d       |\n", M.Elements[i].Key, M.Elements[i].Value);
+            }
+        }
     }
 }
 
@@ -387,7 +395,7 @@ void resetScoreboard (ListMap *L, ArrayOfGame *arr){
             printf("Scoreboard tidak jadi di-reset.\n");
         }
     } else if (WordToInt(currentWord) < LengthArrayOfGame(*arr)){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD, \n"); //belum dimasukin nama game
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", &(*L).peta[WordToInt(currentWord)-1]); //belum dimasukin nama game
         printf("(YA/TIDAK)?"); 
         if (IsEqual(currentWord,"YA")){
             deleteAtMap(L, WordToInt(currentWord)); 
