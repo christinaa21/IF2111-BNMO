@@ -2,10 +2,14 @@
 #include "listMap.h"
 #include "map.h"
 
-
+/* Prosedur untuk membuat list of map yang secara otomatis sudah terdiri dari 7 game.
+ I.S. : terdefinisi
+ F.S. : list of map terbuat */
 void createListMap(ListMap *L){
-    (*L).Neff = 6;
+    /*KAMUS LOKAL*/
     Map MapRNG, MapDD, MapH, MapToH, MapSoM, MapTTT;
+    /*ALGORITMA*/
+    (*L).Neff = 6;
     CreateEmptyMap(&MapRNG); 
     CreateEmptyMap(&MapDD); 
     CreateEmptyMap(&MapH);
@@ -20,29 +24,49 @@ void createListMap(ListMap *L){
     (*L).peta[5] = MapTTT;
 }
 
+/* Prosedur untuk memasukan map scoreboard game baru.
+ I.S. : game baru dibuat user
+ F.S. : scoreboard terbentuk */
 void insertToList(ListMap *L, Map M){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     (*L).peta[(*L).Neff] = M;
     (*L).Neff++;
 }
 
-void deleteAllList(ListMap *L){
-    (*L).Neff = Nil;
+/* Prosedur untuk menghapus semua data scoreboard di semua game.
+ I.S. : terdefinsisi
+ F.S. : semua scoreboard direset */
+void resetAllMap(ListMap *L){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
+    for (int i = 0; i<(*L).Neff; i++){
+        CreateEmptyMap(&(*L).peta[i]);
+    }
 }
 
-void deleteAtMap(ListMap *L, int n){
+/* Prosedur untuk menghapus semua data scoreboard di sebuah game.
+ I.S. : terdefinisi
+ F.S. : scoreboard game direset */
+void resetAtMap(ListMap *L, int n, Map *M){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     for(int i =0; i<=n; i++){
         if (i == n) {
-            Map M;
-            DeleteAllMap(&M);
+            CreateEmptyMap(&(*L).peta[i]);
         } else {
             i++;
         }
     }
 }
 
+/*
 void printAllList(ListMap L){
     for (int i=0; i<L.Neff;i++){
         displayMap(L.peta[i]);
         printf("\n");
     }
-}
+} */
