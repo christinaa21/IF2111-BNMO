@@ -329,9 +329,9 @@ void SnakeOfMeteor(int* score)
                 } else {
                     DelP(&L, M);
                     idk--;
-                    printf("Anda terkena meteor!\n");
-                    // printf("Berikut merupakan peta permainan sekarang:\n");
-                    // printmap(L, M, F, O);
+                    printf("\nAnda terkena meteor!\n");
+                    printf("Berikut merupakan peta permainan sekarang:\n");
+                    printmap(L, M, F, O);
                     printf("Silakan lanjutkan permainan.\n");
                 }
             } else {

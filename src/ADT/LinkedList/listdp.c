@@ -99,8 +99,6 @@ void DelP (List *L, POINT X){
             while(Q != P){
                 R = Prev(Q);
                 Info(Q) = Info(R);
-                Pos(Q).x = Pos(R).x;
-                Pos(Q).y = Pos(R).y;
                 Q = Prev(Q);
             }
             Next(Prev(P)) = Next(P);
