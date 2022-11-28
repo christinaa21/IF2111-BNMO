@@ -38,4 +38,6 @@ void resetAllMap(ListMap *L);
  F.S. : scoreboard game direset */
 void resetAtMap(ListMap *L, int n);
 
+void printAllList(ListMap L);
+
 #endif

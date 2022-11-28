@@ -63,10 +63,10 @@ void resetAtMap(ListMap *L, int n){
     }
 }
 
-/*
+
 void printAllList(ListMap L){
     for (int i=0; i<L.Neff;i++){
         displayMap(L.peta[i]);
         printf("\n");
     }
-} */
+} 
