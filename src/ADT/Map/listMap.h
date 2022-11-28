@@ -36,6 +36,6 @@ void resetAllMap(ListMap *L);
 /* Prosedur untuk menghapus semua data scoreboard di sebuah game.
  I.S. : terdefinisi
  F.S. : scoreboard game direset */
-void resetAtMap(ListMap *L, int n, Map *M);
+void resetAtMap(ListMap *L, int n);
 
 #endif
