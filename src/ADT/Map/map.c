@@ -101,9 +101,9 @@ boolean IsMemberMap(Map M, keytype k){
     boolean found = false; 
 
     /*ALGORITMA*/
-    capsLock(k);
+    //capsLock(k);
     while ((i<M.Count) && (found == false)) {
-        capsLock(M.Elements[i].Key);
+        //capsLock(M.Elements[i].Key);
         if (M.Elements[i].Key == k){
             found = true;
         } else {
@@ -115,7 +115,7 @@ boolean IsMemberMap(Map M, keytype k){
 /* Mengembalikan true jika k adalah member dari M */
 
 void displayMap (Map M){
-    printf("**** SCOREBOARD %s ****\n", M); 
+    printf("**** SCOREBOARD ****\n"); 
     printf("| NAMA       | SKOR      |\n"); 
     printf("|------------------------|\n"); 
     if (IsEmptyMap(M)){
