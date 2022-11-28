@@ -18,13 +18,24 @@ typedef struct {
     int Neff;
 } ListMap;
 
+/* Prosedur untuk membuat list of map yang secara otomatis sudah terdiri dari 7 game.
+ I.S. : terdefinisi
+ F.S. : list of map terbuat */
 void createListMap(ListMap *L);
 
+/* Prosedur untuk memasukan map scoreboard game baru.
+ I.S. : game baru dibuat user
+ F.S. : scoreboard terbentuk */
 void insertToList(ListMap *L, Map M);
 
-void deleteAllList(ListMap *L); 
+/* Prosedur untuk menghapus semua data scoreboard di semua game.
+ I.S. : terdefinsisi
+ F.S. : semua scoreboard direset */
+void resetAllMap(ListMap *L); 
 
-void deleteAtMap(ListMap *L, int n);
+/* Prosedur untuk menghapus semua data scoreboard di sebuah game.
+ I.S. : terdefinisi
+ F.S. : scoreboard game direset */
+void resetAtMap(ListMap *L, int n, Map *M);
 
-void printAllList(ListMap L);
 #endif

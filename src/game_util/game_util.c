@@ -366,7 +366,7 @@ void scoreboard(ListMap L, Map M, ArrayOfGame arr){
     /*ALGORITMA*/
     for (int i=0; i<L.Neff;i++){
         game = arr.A[i];
-        printf("**** SCOREBOARD %s ****\n", WordToString(game)); // bingung deh klo dia hapus scoreboard tapi gamenya tetep gimana ya
+        printf("**** SCOREBOARD %s ****\n", WordToString(game)); 
         printf("| NAMA       | SKOR      |\n"); 
         printf("|------------------------|\n"); 
         if (IsEmptyMap(M)){
@@ -402,17 +402,17 @@ void resetScoreboard (ListMap *L, ArrayOfGame *arr){
         printf("(YA/TIDAK)?");
         STARTINPUTKATA();
         if (IsEqual(currentWord,"YA")){
-            deleteAllList(L); 
+            resetAllMap(L); 
             printf("Scoreboard berhasil di-reset.\n");
         } else if (IsEqual(currentWord, "TIDAK")) {
             printf("Scoreboard tidak jadi di-reset.\n");
         }
     } else if (WordToInt(currentWord) < LengthArrayOfGame(*arr)){
         game = arr->A[WordToInt(currentWord)-1];
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game)); //klo scoreboard urutannya ga sama kek list game gimana
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game)); 
         printf("(YA/TIDAK)?"); 
         if (IsEqual(currentWord,"YA")){
-            deleteAtMap(L, WordToInt(currentWord)); 
+            resetAtMap(L, WordToInt(currentWord)); 
             printf("Scoreboard berhasil di-reset.\n");
         } else if (IsEqual(currentWord, "TIDAK")) {
             printf("Scoreboard tidak jadi di-reset.\n");
