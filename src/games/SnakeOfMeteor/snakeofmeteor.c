@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "snakeofmeteor.h"
 
-void printmap(List L, POINT M, POINT F)
+void printmap(List L, POINT M, POINT F, POINT O)
 {
     int i, j;
     POINT S;
@@ -38,6 +38,10 @@ void printmap(List L, POINT M, POINT F)
                         {
                             printf(" m ");
                         }
+                        else if (O.x == S.x && O.y == S.y)
+                        {
+                            printf(" # ");
+                        }
                         else
                         {
                             printf(" %c ", Search(L, S)->info);
@@ -53,6 +57,10 @@ void printmap(List L, POINT M, POINT F)
                         {
                             printf(" m ");
                         }
+                        else if (O.x == S.x && O.y == S.y)
+                        {
+                            printf(" # ");
+                        }
                         else
                         {
                             printf("   ");
@@ -65,13 +73,26 @@ void printmap(List L, POINT M, POINT F)
     }
 }
 
-POINT Food(List L)
+POINT Obstacle(List L) {
+    POINT O;
+    srand(time(NULL));
+    O.x = rand() % 5;
+    O.y = rand() % 5;
+    while (Search(L, O) != Nil)
+    {
+        O.x = rand() % 5;
+        O.y = rand() % 5;
+    }
+    return O;
+}
+
+POINT Food(List L, POINT Obstacle)
 {
     POINT P;
     srand(time(NULL));
     P.x = rand() % 5;
     P.y = rand() % 5;
-    while (Search(L, P) != Nil)
+    while ((Search(L, P) != Nil) || (P.x == Obstacle.x && P.y == Obstacle.y))
     {
         P.x = rand() % 5;
         P.y = rand() % 5;
@@ -79,13 +100,13 @@ POINT Food(List L)
     return P;
 }
 
-POINT Meteor(POINT Food)
+POINT Meteor(POINT Food, POINT Obstacle)
 {
     POINT P;
     srand(time(NULL));
     P.x = rand() % 5;
     P.y = rand() % 5;
-    while (P.x == Food.x && P.y == Food.y)
+    while ((P.x == Food.x && P.y == Food.y) || (P.x == Obstacle.x && P.y == Obstacle.y))
     {
         P.x = rand() % 5;
         P.y = rand() % 5;
@@ -93,10 +114,10 @@ POINT Meteor(POINT Food)
     return P;
 }
 
-void UserMove(List L, char input, boolean *GameOver)
+void UserMove(List L, char input, boolean *illegal_move)
 {
     address P = First(L);
-    *GameOver = false;
+    *illegal_move = false;
     POINT Temp;
     if (input == 'w')
     {
@@ -120,7 +141,8 @@ void UserMove(List L, char input, boolean *GameOver)
     }
     if (Search(L, Temp) != Nil)
     {
-        *GameOver = true;
+        (*illegal_move) = true;
+        printf("\nAnda tidak dapat bergerak ke tubuh Anda sendiri!\nSilakan input command yang lain\n\n");
     }
     else
     {
@@ -199,62 +221,103 @@ void FirstRandSnake(List *L)
     }
 }
 
-void SnakeOfMeteor()
+void SnakeOfMeteor(int* score)
 {
     List L;
     CreateEmpty(&L);
     FirstRandSnake(&L);
     POINT temp;
-    POINT F = Food(L);
+    POINT O = Obstacle(L);
+    POINT F = Food(L, O);
+    printf("Food: <%d,%d>\n", F.x, F.y);
+    printf("Obstacle: <%d,%d>\n", O.x, O.y);
     POINT M = MakePOINT(5, 5);
-    printmap(L, M, F);
+    printf("Selamat datang di Snake on Meteor!\n");
+    printf("Mengenerate peta, snake, makanan, dan obstacle ...\n");
+    printf("Berhasil digenerate!\n\n");
+    printf("Berikut merupakan peta permainan\n");
+    printmap(L, M, F, O);
     int idk = 3;
     int turn = 1;
+    (*score) = 0;
     char A[] = "a";
     char W[] = "w";
     char S[] = "s";
     char D[] = "d";
     boolean GameOver = false;
+    boolean illegal_move = false;
     while (!GameOver)
     {
-        printf("TURN %d\n", turn);
-        printf("Silahkan masukkan command anda: ");
-        STARTINPUTKATA();
-        printf("\n");
-        while (!IsEqual(currentWord, A) && !IsEqual(currentWord, W) && !IsEqual(currentWord, S) && !IsEqual(currentWord, D))
-        {
-            printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
-            printf("Silahkan masukkan command anda: ");
+        do {
+            printf("TURN %d:\n", turn);
+            printf("Silahkan masukkan command Anda: ");
             STARTINPUTKATA();
             printf("\n");
-        }
+            while (!IsEqual(currentWord, A) && !IsEqual(currentWord, W) && !IsEqual(currentWord, S) && !IsEqual(currentWord, D))
+            {
+                printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
+                printf("Silahkan masukkan command Anda: ");
+                STARTINPUTKATA();
+                printf("\n");
+            }
+            temp = GetLastPos(L);
+            UserMove(L, currentWord.TabWord[0], &illegal_move);
+        } while (illegal_move);
+        printf("Berhasil bergerak!\nBerikut merupakan peta permainan\n");
 
-        temp = GetLastPos(L);
-        UserMove(L, currentWord.TabWord[0], &GameOver);
         if (Pos(First(L)).x == F.x && Pos(First(L)).y == F.y)
         {
             InsVLast(&L, idk + '0', temp);
             idk++;
-            F = Food(L);
+            F = Food(L, O);
         }
-        M = Meteor(F);
-        printmap(L, M, F);
-        if (Search(L, M) != Nil)
+        M = Meteor(F, O);
+        printmap(L, M, F, O);
+        if (Pos(First(L)).x == O.x && Pos(First(L)).y == O.y)
         {
-            if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
-            {
-                GameOver = true;
+            address p = First(L);
+            while (p != Nil) {
+                (*score)++;
+                p = Next(p);
             }
-            DelP(&L, M);
-            idk--;
+            (*score) *= 2;
+            printf("Kepala snake menabrak obstacle!\n");
+            GameOver = true;
+        }
+        if (!GameOver) {
+            if (Search(L, M) != Nil)
+            {
+                if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
+                {
+                    address p = First(L);
+                    while (p != Last(L)) {
+                        (*score)++;
+                        p = Next(p);
+                    }
+                    (*score) *= 2;
+                    printf("Kepala snake terkena meteor!\n");
+                    GameOver = true;
+                } else {
+                    DelP(&L, M);
+                    idk--;
+                    printf("\nAnda terkena meteor!\n");
+                    // printf("Berikut merupakan peta permainan sekarang:\n");
+                    // printmap(L, M, F, O);
+                    printf("Silakan lanjutkan permainan.\n");
+                }
+            } else {
+                printf("Anda beruntung tidak terkena meteor! Silakan lanjutkan permainan.\n\n");
+            }
         }
         turn++;
     }
+    printf("Game berakhir. Skor %d\n\n", (*score));
     printf("===== GAME OVER =====\n");
 }
 
 int main()
 {
-    SnakeOfMeteor();
+    int score;
+    SnakeOfMeteor(&score);
     return 0;
 }

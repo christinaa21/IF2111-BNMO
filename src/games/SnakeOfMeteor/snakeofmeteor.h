@@ -7,17 +7,19 @@
 #include "../../ADT/Point/point.h"
 #include "../../../boolean.h"
 
-void printmap(List L, POINT M, POINT F);
+void printmap(List L, POINT M, POINT F, POINT O);
 
-POINT Food(List L);
+POINT Obstacle(List L);
 
-POINT Meteor(POINT Food);
+POINT Food(List L, POINT Obstacle);
 
-void UserMove(List L, char input, boolean *GameOver);
+POINT Meteor(POINT Food, POINT Obstacle);
+
+void UserMove(List L, char input, boolean *illegal_move);
 
 void FirstRandSnake (List *L);
 
-void SnakeOfMeteor();
+void SnakeOfMeteor(int* score);
 
 
 #endif
