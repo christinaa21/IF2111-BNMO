@@ -17,7 +17,7 @@ POINT Food(List L, POINT Obstacle);
 
 POINT Meteor(POINT Food, POINT Obstacle);
 
-void UserMove(List L, char input, boolean *illegal_move);
+void UserMove(List L, char input, boolean *illegal_move, POINT Meteor);
 
 void FirstRandSnake (List *L);
 

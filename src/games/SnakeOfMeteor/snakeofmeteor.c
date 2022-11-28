@@ -138,7 +138,7 @@ POINT Meteor(POINT Food, POINT Obstacle)
     return P;
 }
 
-void UserMove(List L, char input, boolean *illegal_move)
+void UserMove(List L, char input, boolean *illegal_move, POINT Meteor)
 {
     address P = First(L);
     *illegal_move = false;
@@ -166,7 +166,12 @@ void UserMove(List L, char input, boolean *illegal_move)
     if (Search(L, Temp) != Nil)
     {
         (*illegal_move) = true;
-        printf("\nAnda tidak dapat bergerak ke tubuh Anda sendiri!\nSilakan input command yang lain\n\n");
+        printf("Anda tidak dapat bergerak ke tubuh Anda sendiri!\nSilahkan masukkan command yang lain\n\n");
+    }
+    else if (Temp.x == Meteor.x && Temp.y == Meteor.y)
+    {
+        (*illegal_move) = true;
+        printf("Meteor masih panas! Anda belum dapat kembali ke titik tersebut\nSilakan masukkan command yang lain\n\n");
     }
     else
     {
@@ -284,7 +289,7 @@ void SnakeOfMeteor(int* score)
                 printf("\n");
             }
             temp = GetLastPos(L);
-            UserMove(L, currentWord.TabWord[0], &illegal_move);
+            UserMove(L, currentWord.TabWord[0], &illegal_move, M);
         } while (illegal_move);
         printf("Berhasil bergerak!\nBerikut merupakan peta permainan\n");
 
@@ -324,7 +329,7 @@ void SnakeOfMeteor(int* score)
                 } else {
                     DelP(&L, M);
                     idk--;
-                    printf("\nAnda terkena meteor!\n");
+                    printf("Anda terkena meteor!\n");
                     // printf("Berikut merupakan peta permainan sekarang:\n");
                     // printmap(L, M, F, O);
                     printf("Silakan lanjutkan permainan.\n");
