@@ -7,6 +7,8 @@
 #include "../../ADT/Point/point.h"
 #include "../../../boolean.h"
 
+char* IntToString(int x);
+
 void printmap(List L, POINT M, POINT F, POINT O);
 
 POINT Obstacle(List L);

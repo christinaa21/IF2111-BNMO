@@ -3,6 +3,30 @@
 #include <stdlib.h>
 #include "snakeofmeteor.h"
 
+char* IntToString(int x)
+{
+    int i, x_copy, digit;
+    int len = 0;
+    x_copy = x;
+    while (x_copy != 0)
+    {
+        len++;
+        x_copy /= 10;
+    }
+    char* str = malloc(len*sizeof(char));
+    while (str == NULL) {
+        str = malloc(len*sizeof(char));
+    }
+    for (i = 0; i < len; i++)
+    {
+        digit = x % 10;
+        x = x / 10;
+        str[len - (i + 1)] = digit + '0';
+    }
+    str[len] = '\0';
+    return str;
+}
+
 void printmap(List L, POINT M, POINT F, POINT O)
 {
     int i, j;
@@ -44,7 +68,7 @@ void printmap(List L, POINT M, POINT F, POINT O)
                         }
                         else
                         {
-                            printf(" %c ", Search(L, S)->info);
+                            printf(" %s ", Search(L, S)->info);
                         }
                     }
                     else
@@ -166,29 +190,29 @@ void FirstRandSnake(List *L)
     srand(time(NULL));
     P.x = rand() % 5;
     P.y = rand() % 5;
-    InsVLast(L, 'H', P);
+    InsVLast(L, "H", P);
     if (P.x >= 2)
     {
         P.x -= 1;
-        InsVLast(L, '1', P);
+        InsVLast(L, "1", P);
         P.x -= 1;
-        InsVLast(L, '2', P);
+        InsVLast(L, "2", P);
     }
     else
     {
         if (P.x == 1)
         {
             P.x -= 1;
-            InsVLast(L, '1', P);
+            InsVLast(L, "1", P);
             if (P.y == 0)
             {
                 P.y += 1;
-                InsVLast(L, '2', P);
+                InsVLast(L, "2", P);
             }
             else
             {
                 P.y -= 1;
-                InsVLast(L, '2', P);
+                InsVLast(L, "2", P);
             }
         }
         else if (P.x == 0)
@@ -196,25 +220,25 @@ void FirstRandSnake(List *L)
             if (P.y >= 2)
             {
                 P.y -= 1;
-                InsVLast(L, '1', P);
+                InsVLast(L, "1", P);
                 P.y -= 1;
-                InsVLast(L, '2', P);
+                InsVLast(L, "2", P);
             }
             else
             {
                 if (P.y == 1)
                 {
                     P.y += 1;
-                    InsVLast(L, '1', P);
+                    InsVLast(L, "1", P);
                     P.y += 1;
-                    InsVLast(L, '2', P);
+                    InsVLast(L, "2", P);
                 }
                 else
                 {
                     P.y += 1;
-                    InsVLast(L, '1', P);
+                    InsVLast(L, "1", P);
                     P.y += 1;
-                    InsVLast(L, '2', P);
+                    InsVLast(L, "2", P);
                 }
             }
         }
@@ -229,8 +253,6 @@ void SnakeOfMeteor(int* score)
     POINT temp;
     POINT O = Obstacle(L);
     POINT F = Food(L, O);
-    printf("Food: <%d,%d>\n", F.x, F.y);
-    printf("Obstacle: <%d,%d>\n", O.x, O.y);
     POINT M = MakePOINT(5, 5);
     printf("Selamat datang di Snake on Meteor!\n");
     printf("Mengenerate peta, snake, makanan, dan obstacle ...\n");
@@ -238,6 +260,7 @@ void SnakeOfMeteor(int* score)
     printf("Berikut merupakan peta permainan\n");
     printmap(L, M, F, O);
     int idk = 3;
+    char* idk_char;
     int turn = 1;
     (*score) = 0;
     char A[] = "a";
@@ -267,7 +290,8 @@ void SnakeOfMeteor(int* score)
 
         if (Pos(First(L)).x == F.x && Pos(First(L)).y == F.y)
         {
-            InsVLast(&L, idk + '0', temp);
+            idk_char = IntToString(idk);
+            InsVLast(&L, idk_char, temp);
             idk++;
             F = Food(L, O);
         }

@@ -12,7 +12,7 @@
 #define Nil NULL
 
 /* Definisi Type Data */
-typedef char infotype;
+typedef char* infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist { 
 	infotype info;
