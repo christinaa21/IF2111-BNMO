@@ -15,6 +15,8 @@
 #include "../games/game_tambahan/game_tambahan.h"
 #include "../games/hangman/hangman.h"
 #include "../games/TicTacToe/tictactoe.h"
+#include "../games/SnakeOfMeteor/snakeofmeteor.h"
+#include "../games/TowerOfHanoi/TowerOfHanoi.h"
 
 /* Prosedur untuk membuat game
  * I.S. Program telah berjalan
@@ -86,7 +88,7 @@ void resetHistory(Stackchar *hist);
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
  I.S : Program telah berjalan. 
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
-void scoreboard(ListMap L, Map M, ArrayOfGame arr);
+void scoreboard(ListMap L, ArrayOfGame arr);
 
 /* Prosedur untuk menghapus semua atau sebagian scoreboard.
 I.S : Program telah berjalan

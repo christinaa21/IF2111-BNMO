@@ -11,6 +11,8 @@ int main (){
 
     printf("insertmap, value map, display map, isfull, ismember\n");
     InsertMap(&M, "lala", 11);
+    InsertMap(&M, "zilla", 11); 
+    InsertMap(&M, "mommy", 11); 
     ValueMap(M, "lala");
     displayMap(M); 
     printf("IsFull= %d\n", IsFullMap(M));
