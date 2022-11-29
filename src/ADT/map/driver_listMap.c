@@ -5,8 +5,7 @@
 
 int main() {
     ListMap L;
-    Map M;
-
+    Map M; 
     printf("bikin list map -> print\n");
     createListMap(&L);
     printAllList(L);
