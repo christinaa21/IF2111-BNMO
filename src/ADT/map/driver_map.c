@@ -19,14 +19,5 @@ int main (){
     printf("delete map\n"); 
     DeleteMap(&M, "lala"); 
     displayMap(M); 
-
-    printf("delete all map\n");
-    InsertMap(&M, "yaya", 11);
-    InsertMap(&M, "gatot", 9);
-    printf("before:\n");
-    displayMap(M); 
-    printf("after:\n");
-    DeleteAllMap(&M); 
-    displayMap(M); 
 }
 

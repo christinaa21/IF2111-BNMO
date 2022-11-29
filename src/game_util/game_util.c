@@ -360,7 +360,7 @@ void resetHistory(Stackchar *hist) {
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
  I.S : Program telah berjalan. 
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
-void scoreboard(ListMap L, Map M, ArrayOfGame arr){
+void scoreboard(ListMap L, ArrayOfGame arr){
     /*KAMUS LOKAL*/
     ElTypeArrayOfGame game;
     /*ALGORITMA*/
@@ -369,15 +369,14 @@ void scoreboard(ListMap L, Map M, ArrayOfGame arr){
         printf("**** SCOREBOARD %s ****\n", WordToString(game)); 
         printf("| NAMA       | SKOR      |\n"); 
         printf("|------------------------|\n"); 
-        if (IsEmptyMap(M)){
+        if (IsEmptyMap((L).peta[i])){
             printf("-----SCOREBOARD KOSONG-----\n");
         } else {
-            for(int i =0; i < MaxEl; i++){
-                printf("| %s       | %d       |\n", M.Elements[i].Key, M.Elements[i].Value);
-            }
+            displayMap((L).peta[i]);
         }
     }
 }
+
 
 /* Prosedur untuk menghapus semua atau sebagian scoreboard.
 I.S : Program telah berjalan
@@ -412,7 +411,7 @@ void resetScoreboard (ListMap *L, ArrayOfGame *arr){
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game)); 
         printf("(YA/TIDAK)?"); 
         if (IsEqual(currentWord,"YA")){
-            resetAtMap(L, WordToInt(currentWord)); 
+            resetAtMap(L, WordToInt(currentWord)-1); 
             printf("Scoreboard berhasil di-reset.\n");
         } else if (IsEqual(currentWord, "TIDAK")) {
             printf("Scoreboard tidak jadi di-reset.\n");
