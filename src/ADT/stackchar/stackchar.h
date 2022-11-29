@@ -42,7 +42,7 @@ void CreateEmptyStackChar(Stackchar *S);
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmptyStackChar(Stackchar S);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullStack(Stackchar S);
+boolean IsFullStackChar(Stackchar S);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
