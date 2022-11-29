@@ -58,7 +58,7 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
     count = WordToInt(currentWord);
     for (i = 0; i < count; i++){
         ADVWORD();
-        PushStackChar(Hist,WordtoString(currentWord));
+        PushStackChar(Hist,WordToString(currentWord));
     }
     for (j = 0 ; j<(*L).Neff ; j++){
         ADVWORD();
