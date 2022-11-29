@@ -15,6 +15,7 @@ void hangMan(int *score)
     ArrayDin ArrayBlank;
     ArrayDin ArrayKata;
     boolean tidakvalid = true;
+    boolean startgame = false;
 
     ArrayKata = MakeArrayDin();
     STARTWORD("./src/games/hangman/listkata.txt");
@@ -100,11 +101,12 @@ void hangMan(int *score)
                         if (IsEqual(currentWord, "Tidak"))
                         {
                             ingintambah = false;
-                            notvalid = false;
+                            tidakvalid = false;
+                            startgame = true;
                         }
                         else if (IsEqual(currentWord, "Ya"))
                         {
-                            notvalid = false;
+                            tidakvalid = false;
                         }
                         else
                         {
@@ -114,116 +116,119 @@ void hangMan(int *score)
                 }
             }
             else {
-                
+                tidakvalid = false;
+                startgame = true;
             }
         }
     }
-    while (salah < 10)
-    {
-        srand(time(NULL));
-        X = rand() % 25;
-        tebakan = GetArrayDin(ArrayKata, X);
-        tertebak = StringtoWord(tebakan);
-        tebakan1 = StringtoWord(tebakan);
-
-        ArrayBlank = MakeArrayDin();
-        i = 0;
-        ctr = 0;
-        while (tebakan[i] != '\0')
+    if (startgame) {
+        while (salah < 10)
         {
-            InsertLast(&ArrayBlank, "_ ");
-            i++;
-        }
-        ctr = i;
+            srand(time(NULL));
+            X = rand() % 25;
+            tebakan = GetArrayDin(ArrayKata, X);
+            tertebak = StringtoWord(tebakan);
+            tebakan1 = StringtoWord(tebakan);
 
-        Word LetterHistory;
-        LetterHistory.Length = 0;
-        LetterHistory.TabWord[0] = '-';
+            ArrayBlank = MakeArrayDin();
+            i = 0;
+            ctr = 0;
+            while (tebakan[i] != '\0')
+            {
+                InsertLast(&ArrayBlank, "_ ");
+                i++;
+            }
+            ctr = i;
 
-        benar = 0;
-        gambar = 0;
+            Word LetterHistory;
+            LetterHistory.Length = 0;
+            LetterHistory.TabWord[0] = '-';
 
-        while ((salah < 10) && (benar < ctr))
-        {
-            if (LetterHistory.Length == 0)
+            benar = 0;
+            gambar = 0;
+
+            while ((salah < 10) && (benar < ctr))
             {
-                printf("\nTebakan sebelumnya: %c\n", LetterHistory.TabWord[0]);
-            }
-            else
-            {
-                katasudah = WordToString(LetterHistory);
-                lowerCase(katasudah);
-                printf("\nTebakan sebelumnya: %s\n", katasudah);
-            }
-            printf("Kata: ");
-            PrintArrayDin(ArrayBlank);
-            printf("%s\n", GetArrayDin(ArrayHangman, gambar));
-            printf("Kesempatan: %d\n", (10 - salah));
-            printf("Masukkan tebakan: ");
-            STARTINPUTKATA();
-            if (currentWord.Length != 1)
-            {
-                printf("Maaf, Anda hanya diperbolehkan untuk memasukkan 1 huruf saja.\n");
-            }
-            else
-            {
-                huruf = WordToString(currentWord);
-                capsLock(huruf);
-                if (IsInWord(huruf, tertebak))
+                if (LetterHistory.Length == 0)
                 {
-                    for (i = 0; i < ctr; i++)
-                    {
-                        if (huruf[0] == tebakan[i])
-                        {
-                            SetArrayDin(&ArrayBlank, i, huruf);
-                            tertebak.TabWord[i] = '$';
-                            benar++;
-                        }
-                    }
-                    LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
-                    LetterHistory.Length++;
-                    printf("\n******* Yey! Kamu benar! :D *******\n");
+                    printf("\nTebakan sebelumnya: %c\n", LetterHistory.TabWord[0]);
                 }
                 else
                 {
-                    if (IsInWord(huruf, LetterHistory))
+                    katasudah = WordToString(LetterHistory);
+                    lowerCase(katasudah);
+                    printf("\nTebakan sebelumnya: %s\n", katasudah);
+                }
+                printf("Kata: ");
+                PrintArrayDin(ArrayBlank);
+                printf("%s\n", GetArrayDin(ArrayHangman, gambar));
+                printf("Kesempatan: %d\n", (10 - salah));
+                printf("Masukkan tebakan: ");
+                STARTINPUTKATA();
+                if (currentWord.Length != 1)
+                {
+                    printf("Maaf, Anda hanya diperbolehkan untuk memasukkan 1 huruf saja.\n");
+                }
+                else
+                {
+                    huruf = WordToString(currentWord);
+                    capsLock(huruf);
+                    if (IsInWord(huruf, tertebak))
                     {
-                        printf("\n******* Huruf sudah ditebak. *******\n");
+                        for (i = 0; i < ctr; i++)
+                        {
+                            if (huruf[0] == tebakan[i])
+                            {
+                                SetArrayDin(&ArrayBlank, i, huruf);
+                                tertebak.TabWord[i] = '$';
+                                benar++;
+                            }
+                        }
+                        LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
+                        LetterHistory.Length++;
+                        printf("\n******* Yey! Kamu benar! :D *******\n");
                     }
                     else
                     {
-                        LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
-                        LetterHistory.Length++;
-                        salah++;
-                        gambar++;
-                        printf("\n******* Yahh, kamu salah :( *******\n");
+                        if (IsInWord(huruf, LetterHistory))
+                        {
+                            printf("\n******* Huruf sudah ditebak. *******\n");
+                        }
+                        else
+                        {
+                            LetterHistory.TabWord[LetterHistory.Length] = huruf[0];
+                            LetterHistory.Length++;
+                            salah++;
+                            gambar++;
+                            printf("\n******* Yahh, kamu salah :( *******\n");
+                        }
                     }
                 }
             }
+            if (benar == ctr)
+            {
+                printf("\n--- Berhasil menebak kata %s! Kamu mendapatkan %d poin! ---\n", tebakan, benar);
+            }
+            (*score) += benar;
+            DeallocateArrayDin(&ArrayBlank);
         }
-        if (benar == ctr)
+        printf("%s\n", GetArrayDin(ArrayHangman, gambar));
+        printf("Kesempatan: %d\n", (10 - salah));
+        printf("Kata yang benar adalah %s\n\n", tebakan);
+        printf("Kesempatan menebakmu telah habis! Permainan berakhir...\n");
+        printf("Kamu memperoleh total poin sebesar: %d poin!\n\n", (*score));
+        printf("--- GAME OVER ---\n");
+
+        FILE *f;
+        f = fopen("listkata.txt", "w+");
+        fprintf(f, "%d\n", Length(ArrayKata));
+        for (i = 0; i < Length(ArrayKata); i++)
         {
-            printf("\n--- Berhasil menebak kata %s! Kamu mendapatkan %d poin! ---\n", tebakan, benar);
+            fprintf(f, "%s\n", GetArrayDin(ArrayKata, i));
         }
-        (*score) += benar;
-        DeallocateArrayDin(&ArrayBlank);
-    }
-    printf("%s\n", GetArrayDin(ArrayHangman, gambar));
-    printf("Kesempatan: %d\n", (10 - salah));
-    printf("Kata yang benar adalah %s\n\n", tebakan);
-    printf("Kesempatan menebakmu telah habis! Permainan berakhir...\n");
-    printf("Kamu memperoleh total poin sebesar: %d poin!\n\n", (*score));
-    printf("--- GAME OVER ---\n");
+        fclose(f);
 
-    FILE *f;
-    f = fopen("listkata.txt", "w+");
-    fprintf(f, "%d\n", Length(ArrayKata));
-    for (i = 0; i < Length(ArrayKata); i++)
-    {
-        fprintf(f, "%s\n", GetArrayDin(ArrayKata, i));
+        DeallocateArrayDin(&ArrayHangman);
+        DeallocateArrayDin(&ArrayKata);
     }
-    fclose(f);
-
-    DeallocateArrayDin(&ArrayHangman);
-    DeallocateArrayDin(&ArrayKata);
 }

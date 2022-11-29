@@ -95,7 +95,7 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
         game = WordToString((arrGame).A[i]);
         fprintf(fp, "%s\n", game);
     }
-    fprintf(fp, "%d\n", TopStackchar(hist));
+    fprintf(fp, "%d\n", TopStackchar(hist)+1);
     while (!IsEmptyStackChar(hist))
     {
         PopStackChar(&hist, &x);
@@ -104,7 +104,7 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
     for (i = 0; i < L.Neff; i++)
     {
         fprintf(fp, "%d\n", L.peta[i].CountMap);
-        for (int j = 0; i < L.peta[i].CountMap; i++)
+        for (int j = 0; j < L.peta[i].CountMap; j++)
         {
             fprintf(fp, "%s %d\n", L.peta[i].Elements[j].Key, L.peta[i].Elements[j].Value);
         }

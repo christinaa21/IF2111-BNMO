@@ -341,7 +341,7 @@ void history(int n, Stackchar hist)
             printf("Berikut adalah daftar Game yang telah dimainkan\n");
             if (n > TopStackchar(hist))
             {
-                n = TopStackchar(hist);
+                n = TopStackchar(hist)+1;
             }
             for (int i = 0; i < n; i++)
             {
