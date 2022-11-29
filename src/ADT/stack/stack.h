@@ -7,7 +7,7 @@
 
 #include "boolean.h"
 
-#define Nil -1
+#define NilStack -1
 #define MaxElStack 100
 /* Nil adalah stack dengan elemen kosong . */
 
@@ -19,7 +19,7 @@ typedef int address; /* indeks tabel */
 typedef struct
 {
   infotypeStack T[MaxElStack]; /* tabel penyimpan elemen */
-  address TOP;                 /* alamat TOP: elemen puncak */
+  address TOPSTACK;            /* alamat TOP: elemen puncak */
 } Stack;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxElStack-1] */
@@ -28,8 +28,8 @@ typedef struct
 /* S.TOP adalah alamat elemen TOP */
 
 /* Definisi akses dengan Selektor : Set dan Get */
-#define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
+#define TopStack(S) (S).TOPSTACK
+#define InfoTopStack(S) (S).T[(S).TOPSTACK]
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */

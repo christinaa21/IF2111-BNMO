@@ -78,6 +78,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L)
         else
         {
             DeleteGameAt(arr, n - 1);
+            deleteListMapAt(L, n);
             printf("Game berhasil dihapus\n");
         }
     }
@@ -333,9 +334,9 @@ void history(int n, Stackchar hist)
     else
     {
         printf("Berikut adalah daftar Game yang telah dimainkan\n");
-        if (n > Top(hist))
+        if (n > TopStackchar(hist))
         {
-            n = Top(hist);
+            n = TopStackchar(hist);
         }
         for (int i = 0; i < n; i++)
         {
@@ -359,7 +360,7 @@ void resetHistory(Stackchar *hist)
     else if (IsEqual(currentWord, "TIDAK"))
     {
         printf("History tidak jadi di-reset. ");
-        history(Top(*hist), (*hist));
+        history(TopStackchar(*hist), (*hist));
     }
     else
     {
@@ -380,10 +381,9 @@ void scoreboard(ListMap L, ArrayOfGame arr)
     {
         game = arr.A[i];
         printf("**** SCOREBOARD %s ****\n", WordToString(game));
-        printf("| NAMA       | SKOR      |\n");
+        printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
         printf("|------------------------|\n");
-        if (IsEmptyMap((L).peta[i]))
-        {
+        if (IsEmptyMap((L).peta[i])){
             printf("-----SCOREBOARD KOSONG-----\n");
         }
         else
