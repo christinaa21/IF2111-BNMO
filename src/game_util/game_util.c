@@ -388,9 +388,9 @@ void scoreboard(ListMap L, ArrayOfGame arr)
         game = arr.A[i];
         printf("**** SCOREBOARD %s ****\n", WordToString(game));
         printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
-        printf("|------------------------|\n");
+        printf("|-----------------------------------------------|\n");
         if (IsEmptyMap((L).peta[i])){
-            printf("-----SCOREBOARD KOSONG-----\n");
+            printf("--------------- SCOREBOARD KOSONG ---------------\n");
         }
         else
         {
