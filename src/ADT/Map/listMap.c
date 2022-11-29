@@ -47,9 +47,9 @@ void resetAllMap(ListMap *L){
     }
 }
 
-/* Prosedur untuk menghapus semua data scoreboard di sebuah game.
+/* Prosedur untuk menghapus semua map di sebuah list.
  I.S. : terdefinisi
- F.S. : scoreboard game direset */
+ F.S. : data pada list berhasil di reset */
 void resetAtMap(ListMap *L, int n){
     /*KAMUS LOKAL*/
 
@@ -63,7 +63,13 @@ void resetAtMap(ListMap *L, int n){
     }
 }
 
+/* Prosedur untuk menghapus list map ke n. 
+ I.S. : terdefinisi 
+ F.S. : list berhasil dihapus */
 void deleteListMapAt(ListMap *L, int n){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     CreateEmptyMap(&(*L).peta[n-1]);
     for (int i = n-1; i<L->Neff; i++){
         (*L).peta[i] = (*L).peta[i+1];
@@ -71,10 +77,13 @@ void deleteListMapAt(ListMap *L, int n){
     (*L).Neff = (*L).Neff-1;
 }
 
-/* Prosedur untuk print semua scoreboard. 
- I.S. : scoreboard terdefinisi
- F.S. : semua scoreboard berhasil diprint*/
+/* Prosedur untuk print semua list map. 
+ I.S. : terdefinisi
+ F.S. : semua list map berhasil diprint*/
 void printAllList(ListMap L){
+    /*KAMUS LOKAL*/
+
+    /*ALGORITMA*/
     for (int i=0; i<L.Neff;i++){
         displayMap(L.peta[i]);
         printf("\n");
