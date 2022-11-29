@@ -51,12 +51,11 @@ void listGame(ArrayOfGame *arr)
         - 5 game pertama pada file konfigurasi tidak dapat dihapus.
         - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
 */
-void deleteGame(ArrayOfGame *arr, Queue qGame)
+void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L)
 {
     /*KAMUS LOKAL*/
     IdxTypeArrayOfGame idx;
     listGame(arr);
-    ListMap L;
     /*ALGORITMA*/
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
@@ -72,14 +71,13 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
     else
     {
         ElTypeArrayOfGame game = GetGame((*arr), n - 1);
-        if ((n <= 7) || (isInQueue(qGame, game)))
+        if ((n <= 6) || (isInQueue(qGame, game)))
         {
             printf("Game tidak dapat dihapus\n");
         }
         else
         {
             DeleteGameAt(arr, n - 1);
-            deleteAtMap(&L,n-1);
             printf("Game berhasil dihapus\n");
         }
     }
