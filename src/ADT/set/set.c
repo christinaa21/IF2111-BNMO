@@ -29,15 +29,19 @@ boolean IsFullSet(Set S)
 /* Ciri Set penuh : count bernilai MaxElSet */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt){
-    if (IsEmptySet(*S)) {
-        (*S).Count = 1; 
-        (*S).Elements[0] = Elmt; 
-    } 
-    else {
-        if (!IsMemberSet(*S,Elmt)){
-            (*S).Elements[(*S).Count] = Elmt; 
-            (*S).Count ++; 
+void InsertSet(Set *S, infotypeSet Elmt)
+{
+    if (IsEmptySet(*S))
+    {
+        (*S).Count = 1;
+        (*S).Elements[0] = Elmt;
+    }
+    else
+    {
+        if (!IsMemberSet(*S, Elmt))
+        {
+            (*S).Elements[(*S).Count] = Elmt;
+            (*S).Count++;
         }
     }
 }
@@ -46,15 +50,17 @@ void InsertSet(Set *S, infotype Elmt){
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 
-void DeleteSet(Set *S, infotype Elmt)
+void DeleteSet(Set *S, infotypeSet Elmt)
 {
     /*KAMUS LOKAL*/
     int i = 0;
     boolean found = false;
     /*ALGORITMA*/
-    while ((i<(*S).Count) && (found == false)){
-        if (IsMemberSet(*S,Elmt)) {
-            found = true; 
+    while ((i < (*S).Count) && (found == false))
+    {
+        if (IsMemberSet(*S, Elmt))
+        {
+            found = true;
         }
         i++;
     }
@@ -72,7 +78,7 @@ void DeleteSet(Set *S, infotype Elmt)
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 
-boolean IsMemberSet(Set S, infotype Elmt)
+boolean IsMemberSet(Set S, infotypeSet Elmt)
 {
     /*KAMUS LOKAL*/
     int i = 0;
@@ -91,8 +97,10 @@ boolean IsMemberSet(Set S, infotype Elmt)
 }
 /* Mengembalikan true jika Elmt adalah member dari S */
 
-void displaySet(Set S){
-    for (int i = 0; i<S.Count; i++){
+void displaySet(Set S)
+{
+    for (int i = 0; i < S.Count; i++)
+    {
         printf("%d\n", S.Elements[i]);
         printf("\n");
     }
