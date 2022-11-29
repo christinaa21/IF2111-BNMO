@@ -362,10 +362,11 @@ void resetHistory(Stackchar *hist)
     if (IsEqual(currentWord, "YA"))
     {
         CreateEmptyStackChar(hist);
+        printf("History berhasil di-reset.\n");
     }
     else if (IsEqual(currentWord, "TIDAK"))
     {
-        printf("History tidak jadi di-reset. ");
+        printf("History tidak jadi di-reset.\n");
         history(TopStackchar(*hist), (*hist));
     }
     else
@@ -390,7 +391,7 @@ void scoreboard(ListMap L, ArrayOfGame arr)
         printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
         printf("|-----------------------------------------------|\n");
         if (IsEmptyMap((L).peta[i])){
-            printf("--------------- SCOREBOARD KOSONG ---------------\n");
+            printf("--------------- SCOREBOARD KOSONG ---------------\n\n");
         }
         else
         {
@@ -432,20 +433,30 @@ void resetScoreboard(ListMap *L, ArrayOfGame *arr)
         {
             printf("Scoreboard tidak jadi di-reset.\n");
         }
+        else
+        {
+            printf("Mohon masukkan jawaban yang benar.\n");
+        }
     }
     else if (WordToInt(currentWord) < LengthArrayOfGame(*arr))
     {
         game = arr->A[WordToInt(currentWord) - 1];
+        Word game_idx = currentWord;
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game));
         printf("(YA/TIDAK)?");
+        STARTINPUTKATA();
         if (IsEqual(currentWord, "YA"))
         {
-            resetAtMap(L, WordToInt(currentWord) - 1);
+            resetAtMap(L, WordToInt(game_idx) - 1);
             printf("Scoreboard berhasil di-reset.\n");
         }
         else if (IsEqual(currentWord, "TIDAK"))
         {
             printf("Scoreboard tidak jadi di-reset.\n");
+        }
+        else
+        {
+            printf("Mohon masukkan jawaban yang benar.\n");
         }
     }
     else
