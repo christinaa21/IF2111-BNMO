@@ -86,7 +86,7 @@ void resetHistory(Stackchar *hist);
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
  I.S : Program telah berjalan. 
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
-void scoreboard(ListMap L, Map M, ArrayOfGame arr);
+void scoreboard(ListMap L, ArrayOfGame arr);
 
 /* Prosedur untuk menghapus semua atau sebagian scoreboard.
 I.S : Program telah berjalan
