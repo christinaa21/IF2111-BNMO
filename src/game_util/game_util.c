@@ -396,6 +396,8 @@ void scoreboard(ListMap L, ArrayOfGame arr)
         else
         {
             displayMap((L).peta[i]);
+            printf("\n"); 
+            printf("\n"); 
         }
     }
 }
