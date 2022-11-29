@@ -6,7 +6,6 @@
 #include "./main_util.h"
 #include "../ADT/mesinkata/mesinkata.h"
 
-
 /* Prosedur untuk menjalankan program
  * I.S : Sembarang.
  * F.S : menjalankan program dengan melakukan load terhadap konfigurasi.
@@ -43,29 +42,33 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
     char *newfile = ConcateChar(path, savefile);
     STARTWORD(newfile);
     int count = WordToInt(currentWord);
-    int i,j;
+    int i, j;
     Map Temp;
     for (i = 0; i < count; i++)
     {
         ADVWORD();
         InsertGameLast(arrGame, currentWord);
-        if (i > 5){
+        if (i > 5)
+        {
             CreateEmptyMap(&Temp);
-            insertToList(L,Temp);
+            insertToList(L, Temp);
         }
     }
     ADVWORD();
     count = WordToInt(currentWord);
-    for (i = 0; i < count; i++){
+    for (i = 0; i < count; i++)
+    {
         ADVWORD();
-        PushStackChar(Hist,WordToString(currentWord));
+        PushStackChar(Hist, WordToString(currentWord));
     }
-    for (j = 0 ; j<(*L).Neff ; j++){
+    for (j = 0; j < (*L).Neff; j++)
+    {
         ADVWORD();
         count = WordToInt(currentWord);
-        for (i = 0; i<count ; i++){
+        for (i = 0; i < count; i++)
+        {
             ADVWORD();
-            InsertMap(&(*L).peta[j], WordToString(takeword(currentWord, 1)), WordToInt(takeword(currentWord,2)));
+            InsertMap(&(*L).peta[j], WordToString(takeword(currentWord, 1)), WordToInt(takeword(currentWord, 2)));
         }
     }
     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
@@ -80,7 +83,7 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
     /*KAMUS LOKAL*/
     FILE *fp;
     int i;
-    char* x;
+    char *x;
     char *game;
     char *path = "Data/";
     /*ALGORITMA*/
@@ -92,14 +95,17 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
         game = WordToString((arrGame).A[i]);
         fprintf(fp, "%s\n", game);
     }
-    fprintf(fp, "%d\n", Top(hist));
-    while (!IsEmptyStackChar(hist)) {
+    fprintf(fp, "%d\n", TopStackchar(hist));
+    while (!IsEmptyStackChar(hist))
+    {
         PopStackChar(&hist, &x);
         fprintf(fp, "%s\n", x);
     }
-    for (i = 0; i<L.Neff; i++) {
+    for (i = 0; i < L.Neff; i++)
+    {
         fprintf(fp, "%d\n", L.peta[i].Count);
-        for (int j=0; i<L.peta[i].Count; i++) {
+        for (int j = 0; i < L.peta[i].Count; i++)
+        {
             fprintf(fp, "%s %d\n", L.peta[i].Elements[j].Key, L.peta[i].Elements[j].Value);
         }
     }
@@ -126,8 +132,8 @@ void help()
     printf("06. PLAY GAME        : ntuk memainkan sebuah permainan\n");
     printf("07. SKIPGAME <n>     : untuk melewati n permainan yang ada di dalam list\n");
     printf("08. SCOREBOARD       : untuk menampilkan scoreboard dari semua game\n");
-    printf("09. RESET SCOREBOARD : untuk menghapus riwayat scoreboard baik semua ataupun satu game\n"); 
-    printf("10. HISTORY <n>      : untuk melihat permainan apa saja yang telah dimainkan\n"); 
+    printf("09. RESET SCOREBOARD : untuk menghapus riwayat scoreboard baik semua ataupun satu game\n");
+    printf("10. HISTORY <n>      : untuk melihat permainan apa saja yang telah dimainkan\n");
     printf("11. RESET HISTORY    : untuk menghapus semua history permainan yang dimainkan\n");
     printf("12. QUIT             : untuk keluar dari program\n");
     printf("13. HELP             : untuk melihat informasi dari command-command\n");
