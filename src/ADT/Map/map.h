@@ -10,44 +10,45 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // #define false 0
 // #define true 1
-#define Nil 0
-#define MaxEl 10
+#define NilMap 0
+#define MaxElMap 10
 #define Undefined -999
 
-typedef char* keytype;
+typedef char *keytype;
 typedef int valuetype;
 typedef int address;
 
-typedef struct {
+typedef struct
+{
 	keytype Key;
 	valuetype Value;
 } infotype;
 
-typedef struct {
-	infotype Elements[MaxEl];
-	address Count;
+typedef struct
+{
+	infotype Elements[MaxElMap];
+	address CountMap;
 } Map;
 
-
-/* Definisi Map M kosong : M.Count = Nil */
-/* M.Count = jumlah element Map */
+/* Definisi Map M kosong : M.CountMap = Nil */
+/* M.CountMap = jumlah element Map */
 /* M.Elements = tempat penyimpanan element Map */
 
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
-/* Ciri Map kosong : count bernilai Nil */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
+/* Ciri Map kosong : CountMap bernilai Nil */
 void CreateEmptyMap(Map *M);
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 /* Mengirim true jika Map M kosong*/
-/* Ciri Map kosong : count bernilai Nil */
+/* Ciri Map kosong : CountMap bernilai Nil */
 boolean IsEmptyMap(Map M);
 
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
+/* Ciri Map penuh : CountMap bernilai MaxElMap */
 boolean IsFullMap(Map M);
 
 /* ********** Operator Dasar Map ********* */
@@ -57,13 +58,13 @@ valuetype ValueMap(Map M, keytype k);
 
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
-        M mungkin sudah beranggotakan v dengan key k */
+		M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 void InsertMap(Map *M, keytype k, valuetype v);
 
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
-        element dengan key k mungkin anggota / bukan anggota dari M */
+		element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 void DeleteMap(Map *M, keytype k);
 
@@ -73,5 +74,5 @@ boolean IsMemberMap(Map M, keytype k);
 /* Prosedur untuk menampilkan semua daftar map untuk scoreboard
  I.S. : scoreboard terdefinisi
  F.S> : semua map berhasil di print*/
-void displayMap (Map M); 
+void displayMap(Map M);
 #endif

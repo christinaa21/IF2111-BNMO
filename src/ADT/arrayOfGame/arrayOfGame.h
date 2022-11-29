@@ -21,7 +21,7 @@ typedef struct
 
 /**
  * Konstruktor
- * Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize. 
+ * Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize.
  */
 ArrayOfGame MakeArrayOfGame();
 
@@ -65,42 +65,42 @@ int GetCapacityArrayOfGame(ArrayOfGame array);
 /**
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * I.S	: array terdefinisi, i di antara 0..Length(array).
- * F.S 	: game baru berhasil ditambahkan di game pada indeks ke-i. 
+ * F.S 	: game baru berhasil ditambahkan di game pada indeks ke-i.
  */
 void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * I.S 	: array terdefinisi.
- * F.S	: game berhasil ditambahkan di akhir array. 
+ * F.S	: game berhasil ditambahkan di akhir array.
  */
 void InsertGameLast(ArrayOfGame *array, ElTypeArrayOfGame el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * I.S 	: array terdefinisi.
- * F.S	: game berhasil ditambahkan di awal array. 
+ * F.S	: game berhasil ditambahkan di awal array.
  */
 void InsertGameFirst(ArrayOfGame *array, ElTypeArrayOfGame el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayOfGame
  * I.S : array terdefinisi, i di antara 0..Length(array).
- * F.S : game berhasil dihapus pada indeks ke-i. 
+ * F.S : game berhasil dihapus pada indeks ke-i.
  */
 void DeleteGameAt(ArrayOfGame *array, IdxTypeArrayOfGame i);
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayOfGame
- * I.S : array tidak kosong dan array terdefinsi. 
- * F.S : game di akhir array berhasil dihapus.   
+ * I.S : array tidak kosong dan array terdefinsi.
+ * F.S : game di akhir array berhasil dihapus.
  */
 void DeleteGameLast(ArrayOfGame *array);
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayOfGame
- * I.S : array tidak kosong dan array terdefinisi. 
- * F.S : game di awal array berhasil dihapus.  
+ * I.S : array tidak kosong dan array terdefinisi.
+ * F.S : game di awal array berhasil dihapus.
  */
 void DeleteGameFirst(ArrayOfGame *array);
 
@@ -108,15 +108,15 @@ void DeleteGameFirst(ArrayOfGame *array);
  * Fungsi untuk melakukan print suatu ArrayOfGame.
  * Proses 	: Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * 			  dengan setiap elemen (length,TabWord) dan diakhiri newline.
- * I.S 		: array terdefinisi. 
- * F.S 		: array tertuliskan dilayar. 
+ * I.S 		: array terdefinisi.
+ * F.S 		: array tertuliskan dilayar.
  */
 void PrintArrayOfGame(ArrayOfGame array);
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayOfGame.
  * I.S : array terdefinisi
- * F.S : array berhasil di-reverse. 
+ * F.S : array berhasil di-reverse.
  */
 void ReverseArrayOfGame(ArrayOfGame *array);
 
