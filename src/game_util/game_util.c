@@ -333,9 +333,9 @@ void history(int n, Stackchar hist)
     else
     {
         printf("Berikut adalah daftar Game yang telah dimainkan\n");
-        if (n > Top(hist))
+        if (n > TopStackchar(hist))
         {
-            n = Top(hist);
+            n = TopStackchar(hist);
         }
         for (int i = 0; i < n; i++)
         {
@@ -359,7 +359,7 @@ void resetHistory(Stackchar *hist)
     else if (IsEqual(currentWord, "TIDAK"))
     {
         printf("History tidak jadi di-reset. ");
-        history(Top(*hist), (*hist));
+        history(TopStackchar(*hist), (*hist));
     }
     else
     {

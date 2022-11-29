@@ -9,7 +9,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
     Stack newTiangA = tiangA;
     Stack newTiangB = tiangB;
     Stack newTiangC = tiangC;
-    infotypeStack newTop;
+    infotypeStack newTopStack;
     for (int i = n - 1; i >= 0; i--)
     {
         // Tiang A
@@ -28,7 +28,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
         else
         {
             // print spaces
-            if (Top(tiangA) < n - 1)
+            if (TopStack(tiangA) < n - 1)
             {
                 if (n == 1)
                 {
@@ -47,7 +47,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
                 {
                     printf(" ");
                 }
-                Top(tiangA)++;
+                TopStack(tiangA)++;
             }
             else
             {
@@ -59,17 +59,17 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
                 {
                     printf(" ");
                 }
-                PopStack(&newTiangA, &newTop);
-                for (int j = 0; j < n - newTop; j++)
+                PopStack(&newTiangA, &newTopStack);
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
-                for (int j = 0; j < 2 * newTop - 1; j++)
+                for (int j = 0; j < 2 * newTopStack - 1; j++)
                 {
                     printf("*");
                 }
                 // print spaces
-                for (int j = 0; j < n - newTop; j++)
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
@@ -92,7 +92,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
         }
         else
         {
-            if (Top(tiangB) < n - 1)
+            if (TopStack(tiangB) < n - 1)
             {
                 if (n == 2)
                 {
@@ -107,7 +107,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
                 {
                     printf(" ");
                 }
-                Top(tiangB)++;
+                TopStack(tiangB)++;
             }
             else
             {
@@ -119,17 +119,17 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
                 {
                     printf("  ");
                 }
-                PopStack(&newTiangB, &newTop);
-                for (int j = 0; j < n - newTop; j++)
+                PopStack(&newTiangB, &newTopStack);
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
-                for (int j = 0; j < 2 * newTop - 1; j++)
+                for (int j = 0; j < 2 * newTopStack - 1; j++)
                 {
                     printf("*");
                 }
                 // print spaces
-                for (int j = 0; j < n - newTop; j++)
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
@@ -157,7 +157,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
             {
                 printf(" ");
             }
-            if (Top(tiangC) < n - 1)
+            if (TopStack(tiangC) < n - 1)
             {
                 for (int j = 0; j < n - 1; j++)
                 {
@@ -168,21 +168,21 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
                 {
                     printf(" ");
                 }
-                Top(tiangC)++;
+                TopStack(tiangC)++;
             }
             else
             {
-                PopStack(&newTiangC, &newTop);
-                for (int j = 0; j < n - newTop; j++)
+                PopStack(&newTiangC, &newTopStack);
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
-                for (int j = 0; j < 2 * newTop - 1; j++)
+                for (int j = 0; j < 2 * newTopStack - 1; j++)
                 {
                     printf("*");
                 }
                 // print spaces
-                for (int j = 0; j < n - newTop; j++)
+                for (int j = 0; j < n - newTopStack; j++)
                 {
                     printf(" ");
                 }
@@ -426,7 +426,7 @@ void inputTower(Word *tiangAwal, Word *tiangTujuan)
 }
 boolean IsFullTower(Stack S, int n)
 {
-    return Top(S) == n - 1;
+    return TopStack(S) == n - 1;
 }
 void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move)
 {
@@ -437,7 +437,7 @@ void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move)
         printf("Tower awal kosong\n");
     }
 
-    else if (InfoTop(*tiangAwal) > InfoTop(*tiangTujuan))
+    else if (InfoTopStack(*tiangAwal) > InfoTopStack(*tiangTujuan))
     {
         if (IsEmptyStack(*tiangTujuan))
         {

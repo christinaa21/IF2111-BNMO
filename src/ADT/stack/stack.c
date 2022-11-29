@@ -5,7 +5,7 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyStack(Stack *S)
 {
-	Top(*S) = Nil;
+	TopStack(*S) = NilStack;
 }
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
@@ -15,20 +15,20 @@ void CreateEmptyStack(Stack *S)
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmptyStack(Stack S)
 {
-	return Top(S) == Nil;
+	return TopStack(S) == NilStack;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsFullStack(Stack S)
 {
-	return Top(S) == MaxElStack - 1;
+	return TopStack(S) == MaxElStack - 1;
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void PushStack(Stack *S, infotypeStack X)
 {
-	Top(*S)++;
-	InfoTop(*S) = X;
+	TopStack(*S)++;
+	InfoTopStack(*S) = X;
 }
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
@@ -37,8 +37,8 @@ void PushStack(Stack *S, infotypeStack X)
 /* ************ Menghapus sebuah elemen Stack ************ */
 void PopStack(Stack *S, infotypeStack *X)
 {
-	(*X) = InfoTop(*S);
-	Top(*S)--;
+	(*X) = InfoTopStack(*S);
+	TopStack(*S)--;
 }
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
@@ -49,7 +49,7 @@ void PrintStack(Stack S)
 	int i;
 	if (!IsEmptyStack(S))
 	{
-		for (i = Top(S); i >= 0; i--)
+		for (i = TopStack(S); i >= 0; i--)
 		{
 			printf("%d\n", S.T[i]);
 		}
