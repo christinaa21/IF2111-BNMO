@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "SnakeOnMeteor.h"
+#include "snakeonmeteor.h"
 
 char* IntToString(int x)
 {

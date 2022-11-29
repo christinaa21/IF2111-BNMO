@@ -15,7 +15,7 @@
 #include "../games/game_tambahan/game_tambahan.h"
 #include "../games/hangman/hangman.h"
 #include "../games/TicTacToe/tictactoe.h"
-#include "../games/SnakeOfMeteor/snakeofmeteor.h"
+#include "../games/SnakeOnMeteor/snakeonmeteor.h"
 #include "../games/TowerOfHanoi/TowerOfHanoi.h"
 
 /* Prosedur untuk membuat game
