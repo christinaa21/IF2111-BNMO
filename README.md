@@ -62,7 +62,7 @@ make compile
 5. Program telah berjalan dan silahkan nikmati perjalanan anda
 
 ## Kontributor
-Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok **Al-Stroke-Dead** *(atau isi nama lain)*)
+Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok **Al-Stroke-Dead**])
 1. Rahmah Putri Azzahra `18219052`<br/>
     kontrib
 2. Vincent Franstyo `18221100`<br/>
@@ -94,6 +94,12 @@ dengan asisten : Jason Stanley Yoman
 |13     |RNG            | 🗸        |
 |14     |Diner Dash     | 🗸        |
 |15     |Game Tambahan  | 🗸        |
+|16     |Scoreboard     | 🗸        |
+|17     |Reset Scoreboard| 🗸       |
+|18     |History        | 🗸        |
+|19     |Reset History  | 🗸        |
+|20     |Tower Of Hanoi | 🗸        |
+|21     |Snake On Meteor| 🗸        |
 
 
 

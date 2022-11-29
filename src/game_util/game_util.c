@@ -79,7 +79,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame)
         else
         {
             DeleteGameAt(arr, n - 1);
-            deleteAtMap(&L,n);
+            deleteAtMap(&L,n-1);
             printf("Game berhasil dihapus\n");
         }
     }
