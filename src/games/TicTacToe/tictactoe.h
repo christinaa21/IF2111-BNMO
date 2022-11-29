@@ -13,6 +13,6 @@ void board(ArrayOfGame arr);
 
 int cekwin(ArrayOfGame arr);
 
-void tictactoe();
+void tictactoe(int *score);
 
 #endif

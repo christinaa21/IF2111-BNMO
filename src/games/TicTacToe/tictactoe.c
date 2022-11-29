@@ -116,7 +116,7 @@ int cekwin(ArrayOfGame arr)
     return win;
 }
 
-void tictactoe()
+void tictactoe(int *score)
 {
     printf("\n\n======== WELCOME TO TIC TAC TOE ========\n\n");
     ArrayOfGame TBoard = MakeArrayOfGame();
@@ -175,15 +175,19 @@ void tictactoe()
     if (won == 0)
     {
         printf("=====Tidak ada yang menang=====\n");
+        *score = 1;
+        printf("Skor yang Anda peroleh adalah: %d\n", *score);
     }
     else if (won == 1)
     {
         printf("=====Selamat Anda menang=====\n");
-        int skor = 20 - (count/2);
-        printf("Skor yang Anda peroleh adalah: %d\n", skor);
+        *score = 20 - (count/2);
+        printf("Skor yang Anda peroleh adalah: %d\n", *score);
     }
     else if (won == 2)
     {
         printf("=====Yahhh Anda kalah=====\n");
+        *score = 0;
+        printf("Skor yang Anda peroleh adalah: %d\n", *score);
     }
 }
