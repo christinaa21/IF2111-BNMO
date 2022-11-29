@@ -17,7 +17,7 @@ void hangMan(int *score)
     boolean tidakvalid = true;
 
     ArrayKata = MakeArrayDin();
-    STARTWORD("listkata.txt");
+    STARTWORD("./src/games/hangman/listkata.txt");
     count = WordToInt(currentWord);
     for (i = 0; i < count; i++)
     {
@@ -55,11 +55,12 @@ void hangMan(int *score)
         }
         else
         {
-            if ((currentWord.TabWord[0] != 49) && (currentWord.TabWord[0] != 50))
+            int pilihan = WordToInt(currentWord);
+            if ((pilihan != 1) && (pilihan != 2))
             {
                 printf("Harap masukkan angka 1 atau 2\n\n");
             }
-            else if (currentWord.TabWord[0] == 50)
+            else if (pilihan == 2)
             {
                 tidakvalid = false;
                 boolean ingintambah = true;
@@ -111,6 +112,9 @@ void hangMan(int *score)
                         }
                     }
                 }
+            }
+            else {
+                
             }
         }
     }
