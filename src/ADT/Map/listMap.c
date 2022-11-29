@@ -63,7 +63,17 @@ void resetAtMap(ListMap *L, int n){
     }
 }
 
+void deleteListMapAt(ListMap *L, int n){
+    CreateEmptyMap(&(*L).peta[n-1]);
+    for (int i = n-1; i<L->Neff; i++){
+        (*L).peta[i] = (*L).peta[i+1];
+    }
+    (*L).Neff = (*L).Neff-1;
+}
 
+/* Prosedur untuk print semua scoreboard. 
+ I.S. : scoreboard terdefinisi
+ F.S. : semua scoreboard berhasil diprint*/
 void printAllList(ListMap L){
     for (int i=0; i<L.Neff;i++){
         displayMap(L.peta[i]);

@@ -38,6 +38,7 @@ void resetAllMap(ListMap *L);
  F.S. : scoreboard game direset */
 void resetAtMap(ListMap *L, int n);
 
+void deleteListMapAt(ListMap *L, int n);
 /* Prosedur untuk print semua scoreboard. 
  I.S. : scoreboard terdefinisi
  F.S. : semua scoreboard berhasil diprint*/
