@@ -152,3 +152,27 @@ void displayMap(Map M)
         //}
     }
 }
+
+/* Mengembalikan true jika k adalah member unik dari M */
+boolean IsMemberMapUnique(Map M, keytype k)
+{
+    /*KAMUS LOKAL*/
+    int i = 0;
+    boolean found = false;
+
+    /*ALGORITMA*/
+    capsLock(k);
+    while ((i < M.CountMap) && (found == false))
+    {
+        capsLock(M.Elements[i].Key);
+        if (M.Elements[i].Key == k)
+        {
+            found = true;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    return found;
+}

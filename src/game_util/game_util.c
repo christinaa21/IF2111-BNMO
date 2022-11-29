@@ -151,6 +151,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     Word game;
     int score, idx;
     char *nama;
+    boolean invalid = true;
     /*ALOGRITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
@@ -204,11 +205,21 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             gameTambahan(&score);
         }
         printf("Skor akhir: %d\n", score);
-        printf("Nama: ");
-        STARTINPUTKATA();
-        nama = WordToString(currentWord);
-        idx = SearchArrayOfGame(arr, game);
-        InsertMap(&(*L).peta[idx], nama, score);
+        while (invalid) {
+            printf("Nama: ");
+            STARTINPUTKATA();
+            nama = WordToString(currentWord);
+            idx = SearchArrayOfGame(arr, game);
+            invalid = IsMemberMapUnique((*L).peta[idx], nama);
+            if (invalid)
+            {
+                printf("Nama pengguna tersebut sudah ada di scoreboard. Silakan input nama yang berbeda!\n");
+            }
+            else
+            {
+                InsertMap(&(*L).peta[idx], nama, score);
+            }
+        }
     }
 }
 

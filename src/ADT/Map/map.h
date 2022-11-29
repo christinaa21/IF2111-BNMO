@@ -75,4 +75,7 @@ boolean IsMemberMap(Map M, keytype k);
  I.S. : scoreboard terdefinisi
  F.S> : semua map berhasil di print*/
 void displayMap(Map M);
+
+/* Mengembalikan true jika k adalah member unik dari M */
+boolean IsMemberMapUnique(Map M, keytype k);
 #endif
