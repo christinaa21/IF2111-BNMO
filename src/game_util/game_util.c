@@ -78,6 +78,7 @@ void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L)
         else
         {
             DeleteGameAt(arr, n - 1);
+            deleteListMapAt(L, n);
             printf("Game berhasil dihapus\n");
         }
     }
@@ -379,18 +380,10 @@ void scoreboard(ListMap L, ArrayOfGame arr)
     for (int i = 0; i < L.Neff; i++)
     {
         game = arr.A[i];
-<<<<<<< Updated upstream
         printf("**** SCOREBOARD %s ****\n", WordToString(game));
-        printf("| NAMA       | SKOR      |\n");
+        printf("| NAMA\t| SKOR\t|\n");
         printf("|------------------------|\n");
-        if (IsEmptyMap((L).peta[i]))
-        {
-=======
-        printf("**** SCOREBOARD %s ****\n", WordToString(game)); 
-        printf("| NAMA\t| SKOR\t|\n"); 
-        printf("|------------------------|\n"); 
         if (IsEmptyMap((L).peta[i])){
->>>>>>> Stashed changes
             printf("-----SCOREBOARD KOSONG-----\n");
         }
         else
