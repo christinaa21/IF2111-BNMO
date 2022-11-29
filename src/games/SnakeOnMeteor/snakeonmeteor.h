@@ -9,17 +9,17 @@
 
 char* IntToString(int x);
 
-void printmap(List L, POINT M, POINT F, POINT O);
+void printmap(Listdp L, POINT M, POINT F, POINT O);
 
-POINT Obstacle(List L);
+POINT Obstacle(Listdp L);
 
-POINT Food(List L, POINT Obstacle);
+POINT Food(Listdp L, POINT Obstacle);
 
 POINT Meteor(POINT Food, POINT Obstacle);
 
-void UserMove(List L, char input, boolean *illegal_move, POINT Meteor);
+void UserMove(Listdp L, char input, boolean *illegal_move, POINT Meteor);
 
-void FirstRandSnake (List *L);
+void FirstRandSnake (Listdp *L);
 
 void SnakeOnMeteor(int* score);
 
