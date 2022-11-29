@@ -1,5 +1,5 @@
-#ifndef SNAKEOFMETEOR_H
-#define SNAKEOFMETEOR_H
+#ifndef SNAKEONMETEOR_H
+#define SNAKEONMETEOR_H
 
 #include "../../ADT/LinkedList/listdp.h"
 #include "../../ADT/mesinkata/mesinkata.h"
@@ -21,7 +21,7 @@ void UserMove(List L, char input, boolean *illegal_move, POINT Meteor);
 
 void FirstRandSnake (List *L);
 
-void SnakeOfMeteor(int* score);
+void SnakeOnMeteor(int* score);
 
 
 #endif

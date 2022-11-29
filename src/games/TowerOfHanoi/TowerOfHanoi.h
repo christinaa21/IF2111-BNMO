@@ -1,3 +1,6 @@
+#ifndef __TOWER_OF_HANOI_H__
+#define __TOWER_OF_HANOI_H__
+
 #include "../../ADT/stack/stack.h"
 #include "../../ADT/mesinkata/mesinkata.h"
 #include "../../ADT/mesinkata/mesinkarakter.h"
@@ -9,3 +12,5 @@ boolean IsFullTower(Stack S, int n);
 void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move);
 int WordToIntStack(Word W);
 void TowerOfHanoi(int *score);
+
+#endif

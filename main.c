@@ -10,7 +10,7 @@
 #include "./src/games/hangman/hangman.h"
 #include "./src/games/TicTacToe/tictactoe.h"
 #include "./src/main_util/main_util.h"
-#include "./src/games/SnakeOfMeteor/snakeofmeteor.h"
+#include "./src/games/SnakeOnMeteor/snakeonmeteor.h"
 #include "./src/games/TowerOfHanoi/TowerOfHanoi.h"
 
 void displaybinomo()
