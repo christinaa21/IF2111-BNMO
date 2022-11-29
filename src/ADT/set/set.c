@@ -27,12 +27,12 @@ boolean IsFullSet(Set S){
 
 /* ********** Operator Dasar Set ********* */
 void InsertSet(Set *S, infotype Elmt){
-    if (IsEmpty(*S)) {
+    if (IsEmptySet(*S)) {
         (*S).Count = 1; 
         (*S).Elements[0] = Elmt; 
     } 
     else {
-        if (!IsMember(*S,Elmt)){
+        if (!IsMemberSet(*S,Elmt)){
             (*S).Elements[(*S).Count] = Elmt; 
             (*S).Count ++; 
         }
@@ -50,7 +50,7 @@ void DeleteSet(Set *S, infotype Elmt){
     boolean found = false; 
     /*ALGORITMA*/
     while ((i<(*S).Count) && (found == false)){
-        if (IsMember(*S,Elmt)) {
+        if (IsMemberSet(*S,Elmt)) {
             found = true; 
         }
         i++;
@@ -89,7 +89,7 @@ boolean IsMemberSet(Set S, infotype Elmt){
 
 void displaySet(Set S){
     for (int i = 0; i<S.Count; i++){
-        printf(S.Elements[i]);
+        printf("%d\n", S.Elements[i]);
         printf("\n");
     }
 }
