@@ -10,6 +10,8 @@
 #include "./src/games/hangman/hangman.h"
 #include "./src/games/TicTacToe/tictactoe.h"
 #include "./src/main_util/main_util.h"
+#include "./src/games/SnakeOfMeteor/snakeofmeteor.h"
+#include "./src/games/TowerOfHanoi/TowerOfHanoi.h"
 
 void displaybinomo()
 {
@@ -129,6 +131,29 @@ int main()
                     Word x = takeword(currentWord, 2);
                     save(WordToString(x), ListGame, History, Scoreboard);
                 }
+            }
+            else if (IsEqual(currentWord, "SCOREBOARD"))
+            {
+                scoreboard(Scoreboard, ListGame);
+            }
+            else if (IsEqual(currentWord, "RESET SCOREBOARD"))
+            {
+                resetScoreboard(&Scoreboard, &ListGame);
+            }
+            else if (IsEqual(takeword(currentWord, 1), "HISTORY"))
+            {
+                history(WordToInt(takeword(currentWord, 2)), History);
+                if (!isEmpty(QueueGame))
+                {
+                    if (takeword(currentWord, 3).Length == 0)
+                    {
+                        printf("Tolong masukkan jumlah history game yang ingin ditampilkan dengan format 'HISTORY <n>'!\n");
+                    }
+                }
+            }
+            else if (IsEqual(currentWord, "RESET HISTORY"))
+            {
+                resetHistory(&History);
             }
             else if (IsEqual(currentWord, "QUIT"))
             {
