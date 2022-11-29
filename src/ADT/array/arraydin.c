@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include "arraydin.h"
 
-
 /* ********** KONSTRUKTOR ********** */
 /* Proses Pembentukan ArrayDin kosong dengan ukuran InitialSize.
  */
-ArrayDin MakeArrayDin(){
+ArrayDin MakeArrayDin()
+{
 	/*KAMUS LOKAL*/
 	ArrayDin array;
 	/*ALGORITMA*/
-	(array).A = (ElTypeArrayDin*) malloc (InitialSize * sizeof(ElTypeArrayDin));
+	(array).A = (ElTypeArrayDin *)malloc(InitialSize * sizeof(ElTypeArrayDin));
 	(array).Capacity = InitialSize;
 	(array).Neff = 0;
 	return array;
@@ -20,7 +20,8 @@ ArrayDin MakeArrayDin(){
 /* I.S. ArrayDin terdefinisi.
  * F.S. array->A terdealokasi.
  */
-void DeallocateArrayDin(ArrayDin *array){
+void DeallocateArrayDin(ArrayDin *array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -31,9 +32,10 @@ void DeallocateArrayDin(ArrayDin *array){
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* Fungsi untuk mengetahui apakah suatu array kosong.
- * Prekondisi: array terdefinisi. 
+ * Prekondisi: array terdefinisi.
  */
-boolean IsEmpty(ArrayDin array){
+boolean IsEmpty(ArrayDin array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -42,9 +44,10 @@ boolean IsEmpty(ArrayDin array){
 
 /* ********** SELEKTOR ********** */
 /* Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
- * Prekondisi: array terdefinisi. 
+ * Prekondisi: array terdefinisi.
  */
-int Length(ArrayDin array){
+int Length(ArrayDin array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -55,7 +58,8 @@ int Length(ArrayDin array){
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElTypeArrayDin GetArrayDin(ArrayDin array, IdxTypeArrayDin i){
+ElTypeArrayDin GetArrayDin(ArrayDin array, IdxTypeArrayDin i)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -66,7 +70,8 @@ ElTypeArrayDin GetArrayDin(ArrayDin array, IdxTypeArrayDin i){
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi.
  */
-int GetCapacity(ArrayDin array){
+int GetCapacity(ArrayDin array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORTIMA*/
@@ -76,10 +81,11 @@ int GetCapacity(ArrayDin array){
 /**
  * Fungsi untuk mengeset x pada elemen array dengan indeks ke-i.
  * Prekondisi: array, i, dan x terdefinisi.
-*/
-void SetArrayDin(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
+ */
+void SetArrayDin(ArrayDin *array, IdxTypeArrayDin i, ElTypeArrayDin x)
+{
 	/*KAMUS LOKAL*/
-	
+
 	/*ALGORITMA*/
 	(*array).A[i] = x;
 }
@@ -87,48 +93,54 @@ void SetArrayDin(ArrayDin* array, IdxTypeArrayDin i, ElTypeArrayDin x) {
 /* ********** OPERASI-OPERASI ********** */
 /* Fungsi untuk menambahkan elemen baru di index ke-i.
  * I.S : array terdefinisi, i di antara 0..Length(array).
- * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1. 
+ * F.S : sebuah elemen berhasil ditambahkan pada indeks ke-1.
  */
-void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i){
+void InsertAt(ArrayDin *array, ElTypeArrayDin el, IdxTypeArrayDin i)
+{
 	/*KAMUS LOKAL*/
 	// int length = Length(*array);
 	// int capacity = GetCapacity(*array);
 	int j;
 	/*ALGORITMA*/
-    if ((*array).Neff == (*array).Capacity) {
-        (*array).A = (ElTypeArrayDin*) realloc((*array).A, (InitialSize*2) * sizeof(ElTypeArrayDin));
-        (*array).Capacity = InitialSize*2;
-    }
-    for (j=(*array).Neff-1; j>=i; j--) {
-            (*array).A[j+1] = (*array).A[j];
-        }
-    (*array).A[i] = el;
-    (*array).Neff += 1;
+	if ((*array).Neff == (*array).Capacity)
+	{
+		(*array).A = (ElTypeArrayDin *)realloc((*array).A, (InitialSize * 2) * sizeof(ElTypeArrayDin));
+		(*array).Capacity = InitialSize * 2;
+	}
+	for (j = (*array).Neff - 1; j >= i; j--)
+	{
+		(*array).A[j + 1] = (*array).A[j];
+	}
+	(*array).A[i] = el;
+	(*array).Neff += 1;
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
- * I.S : array terdefinisi. 
- * F.S : elemen baru berhasil ditambahkan di akhir array. 
+ * I.S : array terdefinisi.
+ * F.S : elemen baru berhasil ditambahkan di akhir array.
  */
-void InsertLast(ArrayDin *array, ElTypeArrayDin el){
+void InsertLast(ArrayDin *array, ElTypeArrayDin el)
+{
 	/*KAMUS LOKAL*/
 	int j;
 	/*ALGORITMA*/
-    if ((*array).Neff == (*array).Capacity) {
-        (*array).A = (ElTypeArrayDin*) realloc((*array).A, (InitialSize*2) * sizeof(ElTypeArrayDin));
-        (*array).Capacity = InitialSize*2;
-    }
-    (*array).A[(*array).Neff] = el;
-    (*array).Neff += 1;
+	if ((*array).Neff == (*array).Capacity)
+	{
+		(*array).A = (ElTypeArrayDin *)realloc((*array).A, (InitialSize * 2) * sizeof(ElTypeArrayDin));
+		(*array).Capacity = InitialSize * 2;
+	}
+	(*array).A[(*array).Neff] = el;
+	(*array).Neff += 1;
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
- * I.S : array terdefinisi. 
- * F.S : elemen baru berhasil ditambahkan di awal array. 
+ * I.S : array terdefinisi.
+ * F.S : elemen baru berhasil ditambahkan di awal array.
  */
-void InsertFirst(ArrayDin *array, ElTypeArrayDin el){
+void InsertFirst(ArrayDin *array, ElTypeArrayDin el)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -138,14 +150,16 @@ void InsertFirst(ArrayDin *array, ElTypeArrayDin el){
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * I.S : array terdefinisi, i di antara 0..Length(array).
- * F.S : elemen pada indeks ke-i berhasil dihapuskan dari array. 
+ * F.S : elemen pada indeks ke-i berhasil dihapuskan dari array.
  */
-void DeleteAt(ArrayDin *array, IdxTypeArrayDin i){
+void DeleteAt(ArrayDin *array, IdxTypeArrayDin i)
+{
 	/*KAMUS LOKAL*/
 	int j;
 	/*ALGORITMA*/
 	int length = Length(*array);
-	for (j = i; j < length - 1; j ++){
+	for (j = i; j < length - 1; j++)
+	{
 		(*array).A[j] = (*array).A[j + 1];
 	}
 	(*array).Neff--;
@@ -153,12 +167,13 @@ void DeleteAt(ArrayDin *array, IdxTypeArrayDin i){
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayDin
- * I.S : array tidak kosong dan terdefinisi. 
- * F.S : elemen terakhir pada array berhasil dihapuskan. 
+ * I.S : array tidak kosong dan terdefinisi.
+ * F.S : elemen terakhir pada array berhasil dihapuskan.
  */
-void DeleteLast(ArrayDin *array){
+void DeleteLast(ArrayDin *array)
+{
 	/*KAMUS LOKAL*/
-	
+
 	/*ALGORITMA*/
 	int nums = Length(*array);
 	DeleteAt(array, nums);
@@ -166,10 +181,11 @@ void DeleteLast(ArrayDin *array){
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayDin
- * I.S : array tidak kosong dan array terdefinisi. 
- * F.S : elemen pertama pada array berhasil dihapuskan. 
+ * I.S : array tidak kosong dan array terdefinisi.
+ * F.S : elemen pertama pada array berhasil dihapuskan.
  */
-void DeleteFirst(ArrayDin *array){
+void DeleteFirst(ArrayDin *array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
@@ -178,56 +194,68 @@ void DeleteFirst(ArrayDin *array){
 
 /**
  * Fungsi untuk melakukan print suatu ArrayDin.
- * Proses 	: Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n] 
+ * Proses 	: Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * 			  dan diakhiri newline.
- * I.S 		: array terdefinisi. 
- * F.S 		: array tertuliskan dilayar. 
+ * I.S 		: array terdefinisi.
+ * F.S 		: array tertuliskan dilayar.
  */
-void PrintArrayDin(ArrayDin array){
+void PrintArrayDin(ArrayDin array)
+{
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
-    int i;
-    if ((array).Neff == 0) {
-        printf("[]\n");
-    } else {
-        for (i=0;i<(array).Neff;i++) {
-			if (i == (array).Neff-1) {
+	int i;
+	if ((array).Neff == 0)
+	{
+		printf("[]\n");
+	}
+	else
+	{
+		for (i = 0; i < (array).Neff; i++)
+		{
+			if (i == (array).Neff - 1)
+			{
 				printf("%s\n", (array).A[i]);
-			} else {
+			}
+			else
+			{
 				printf("%s", (array).A[i]);
 			}
-        }
-    }
+		}
+	}
 }
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayDin.
- * I.S : array terdefinisi. 
- * F.S : array berhasil di-reverse. 
+ * I.S : array terdefinisi.
+ * F.S : array berhasil di-reverse.
  */
-void ReverseArrayDin(ArrayDin *array){
+void ReverseArrayDin(ArrayDin *array)
+{
 	/*KAMUS LOKAL*/
 	int i;
 	/*ALGORITMA*/
 	int length = Length(*array);
-	for (i = 0; i < length/2; i ++){
+	for (i = 0; i < length / 2; i++)
+	{
 		ElTypeArrayDin temp = (*array).A[i];
-		(*array).A[i] = (*array).A[length - i -1];
+		(*array).A[i] = (*array).A[length - i - 1];
 		(*array).A[length - i - 1] = temp;
 	}
 }
 
 /**
  * Fungsi untuk melakukan copy suatu ArrayDin.
- * Prekondisi: array terdefinisi. 
+ * Prekondisi: array terdefinisi.
  */
-ArrayDin CopyArrayDin(ArrayDin array){
+ArrayDin CopyArrayDin(ArrayDin array)
+{
 	/*KAMUS LOKAL*/
 	ArrayDin newArr = MakeArrayDin();
 	int i;
 	/*ALGORITMA*/
-	for (i = 0; i < array.Neff; i ++){
+	for (i = 0; i < array.Neff; i++)
+	{
 		InsertLast(&newArr, array.A[i]);
 	}
 	return newArr;
@@ -237,14 +265,17 @@ ArrayDin CopyArrayDin(ArrayDin array){
  * Fungsi untuk melakukan search suatu ArrayDin.
  * Proses 		: Index pertama yang ditemukan akan dikembalikan.
  * 				  Jika tidak ditemukan, akan mengembalikan -1.
- * Prekondisi	: array terdefinisi. 
+ * Prekondisi	: array terdefinisi.
  */
-IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el){
+IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el)
+{
 	/*KAMUS LOKAL*/
 	int i;
 	/*ALGORITMA*/
-	for (i = 0; i < array.Neff; i++){
-		if (array.A[i] == el){
+	for (i = 0; i < array.Neff; i++)
+	{
+		if (array.A[i] == el)
+		{
 			return i;
 		}
 	}
