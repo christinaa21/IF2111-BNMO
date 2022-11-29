@@ -103,8 +103,8 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
     }
     for (i = 0; i < L.Neff; i++)
     {
-        fprintf(fp, "%d\n", L.peta[i].Count);
-        for (int j = 0; i < L.peta[i].Count; i++)
+        fprintf(fp, "%d\n", L.peta[i].CountMap);
+        for (int j = 0; i < L.peta[i].CountMap; i++)
         {
             fprintf(fp, "%s %d\n", L.peta[i].Elements[j].Key, L.peta[i].Elements[j].Value);
         }

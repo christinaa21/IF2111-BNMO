@@ -146,7 +146,7 @@ void displayMap(Map M)
     //     if (IsEmptyMap(M)){
     //         printf("-----SCOREBOARD KOSONG-----\n");
     //     } else {
-    for (int i = 0; i < M.Count; i++)
+    for (int i = 0; i < M.CountMap; i++)
     {
         printf("| %s\t\t\t| %d\t\t\t|\n", M.Elements[i].Key, M.Elements[i].Value);
         //}

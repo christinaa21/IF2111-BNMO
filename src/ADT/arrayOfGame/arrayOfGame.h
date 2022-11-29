@@ -8,7 +8,7 @@
 #define true 1
 #define false 0
 
-#define InitialSize 10
+#define InitialSizeArrayOfGame 10
 
 typedef int IdxTypeArrayOfGame;
 typedef Word ElTypeArrayOfGame;
@@ -21,7 +21,7 @@ typedef struct
 
 /**
  * Konstruktor
- * Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize.
+ * Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSizeArrayOfGame.
  */
 ArrayOfGame MakeArrayOfGame();
 

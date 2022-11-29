@@ -3,15 +3,15 @@
 #include "arrayOfGame.h"
 
 /* ********** KONSTRUKTOR ********** */
-/* Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSize. 
+/* Proses pembentukan ArrayOfGame yang berisi game default dengan ukuran InitialSizeArrayOfGame.
  */
 ArrayOfGame MakeArrayOfGame()
 {
 	/*KAMUS LOKAL*/
 	ArrayOfGame array;
 	/*ALGORITMA*/
-	(array).A = (ElTypeArrayOfGame *)malloc(InitialSize * sizeof(ElTypeArrayOfGame));
-	(array).Capacity = InitialSize;
+	(array).A = (ElTypeArrayOfGame *)malloc(InitialSizeArrayOfGame * sizeof(ElTypeArrayOfGame));
+	(array).Capacity = InitialSizeArrayOfGame;
 	(array).Neff = 0;
 	return array;
 }
@@ -51,7 +51,7 @@ boolean IsFullArrayOfGame(ArrayOfGame array)
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
-	return ((array).Neff == InitialSize);
+	return ((array).Neff == InitialSizeArrayOfGame);
 }
 
 /* ********** SELEKTOR ********** */
@@ -93,7 +93,7 @@ int GetCapacityArrayOfGame(ArrayOfGame array)
 /* ********** OPERASI-OPERASI ********** */
 /* Fungsi untuk menambahkan elemen baru di index ke-i
  * I.S	: array terdefinisi, i di antara 0..Length(array).
- * F.S 	: game baru berhasil ditambahkan di game pada indeks ke-i. 
+ * F.S 	: game baru berhasil ditambahkan di game pada indeks ke-i.
  */
 void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i)
 {
@@ -105,7 +105,7 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 	/*ALGORITMA*/
 	if (length == capacity)
 	{
-		int newCapacity = capacity + InitialSize;
+		int newCapacity = capacity + InitialSizeArrayOfGame;
 		ElTypeArrayOfGame *arr = (ElTypeArrayOfGame *)malloc(newCapacity * sizeof(ElTypeArrayOfGame));
 		ElTypeArrayOfGame game;
 		for (j = 0; j < length; j++)
@@ -116,7 +116,6 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 			{
 				arr[j].TabWord[k] = game.TabWord[k];
 			}
-			
 		}
 		free((*array).A);
 
@@ -129,7 +128,7 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 		(*array).A[j + 1].Length = (*array).A[j].Length;
 		for (int k = 0; k < (*array).A[j].Length; k++)
 		{
-			(*array).A[j+1].TabWord[k] = (*array).A[j].TabWord[k];
+			(*array).A[j + 1].TabWord[k] = (*array).A[j].TabWord[k];
 		}
 	}
 
@@ -138,14 +137,14 @@ void InsertGameAt(ArrayOfGame *array, ElTypeArrayOfGame el, IdxTypeArrayOfGame i
 	{
 		(*array).A[i].TabWord[j] = el.TabWord[j];
 	}
-	
+
 	(*array).Neff++;
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * I.S 	: array terdefinisi.
- * F.S	: game berhasil ditambahkan di akhir array. 
+ * F.S	: game berhasil ditambahkan di akhir array.
  */
 void InsertGameLast(ArrayOfGame *array, ElTypeArrayOfGame el)
 {
@@ -159,7 +158,7 @@ void InsertGameLast(ArrayOfGame *array, ElTypeArrayOfGame el)
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * I.S 	: array terdefinisi.
- * F.S	: game berhasil ditambahkan di awal array. 
+ * F.S	: game berhasil ditambahkan di awal array.
  */
 void InsertGameFirst(ArrayOfGame *array, ElTypeArrayOfGame el)
 {
@@ -172,7 +171,7 @@ void InsertGameFirst(ArrayOfGame *array, ElTypeArrayOfGame el)
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayOfGame
  * I.S : array terdefinisi, i di antara 0..Length(array).
- * F.S : game berhasil dihapus pada indeks ke-i. 
+ * F.S : game berhasil dihapus pada indeks ke-i.
  */
 void DeleteGameAt(ArrayOfGame *array, IdxTypeArrayOfGame i)
 {
@@ -189,8 +188,8 @@ void DeleteGameAt(ArrayOfGame *array, IdxTypeArrayOfGame i)
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayOfGame
- * I.S : array tidak kosong dan array terdefinsi. 
- * F.S : game di akhir array berhasil dihapus.   
+ * I.S : array tidak kosong dan array terdefinsi.
+ * F.S : game di akhir array berhasil dihapus.
  */
 void DeleteGameLast(ArrayOfGame *array)
 {
@@ -203,8 +202,8 @@ void DeleteGameLast(ArrayOfGame *array)
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayOfGame
- * I.S : array tidak kosong dan array terdefinisi. 
- * F.S : game di awal array berhasil dihapus.  
+ * I.S : array tidak kosong dan array terdefinisi.
+ * F.S : game di awal array berhasil dihapus.
  */
 void DeleteGameFirst(ArrayOfGame *array)
 {
@@ -218,15 +217,15 @@ void DeleteGameFirst(ArrayOfGame *array)
  * Fungsi untuk melakukan print suatu ArrayOfGame.
  * Proses 	: Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * 			  dengan setiap elemen (length,TabWord) dan diakhiri newline.
- * I.S 		: array terdefinisi. 
- * F.S 		: array tertuliskan dilayar. 
+ * I.S 		: array terdefinisi.
+ * F.S 		: array tertuliskan dilayar.
  */
 void PrintArrayOfGame(ArrayOfGame array)
 {
 	/*KAMUS LOKAL*/
 	Word w;
 	char *s;
-	int i; 
+	int i;
 	/*ALGORTIMA*/
 	printf("[");
 	for (i = 0; i < (array).Neff; i++)
@@ -235,7 +234,7 @@ void PrintArrayOfGame(ArrayOfGame array)
 		s = WordToString(w);
 		printf("(%d,", w.Length);
 		printf("%s)", s);
-		
+
 		if (i < array.Neff - 1)
 		{
 			printf(", ");
@@ -247,7 +246,7 @@ void PrintArrayOfGame(ArrayOfGame array)
 /**
  * Fungsi untuk melakukan reverse suatu ArrayOfGame.
  * I.S : array terdefinisi
- * F.S : array berhasil di-reverse. 
+ * F.S : array berhasil di-reverse.
  */
 void ReverseArrayOfGame(ArrayOfGame *array)
 {
@@ -296,9 +295,12 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 	x = WordToString(el);
 	while (i < array.Neff && !found)
 	{
-		if(IsEqual(array.A[i], x)) {
+		if (IsEqual(array.A[i], x))
+		{
 			found = true;
-		} else {
+		}
+		else
+		{
 			i++;
 		}
 	}
@@ -306,7 +308,9 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 	if (found)
 	{
 		return i;
-	} else {
+	}
+	else
+	{
 		return -1;
 	}
 }
