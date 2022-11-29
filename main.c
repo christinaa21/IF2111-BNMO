@@ -107,13 +107,12 @@ int main()
             }
             else if ((IsEqual(takeword(currentWord, 1), "SKIP")) && (IsEqual(takeword(currentWord, 2), "GAME")))
             {
-                skipGame(WordToInt(takeword(currentWord, 3)), ListGame, &QueueGame, &History, &Scoreboard);
-                if (!isEmpty(QueueGame))
+                if (takeword(currentWord, 3).Length == 0)
                 {
-                    if (takeword(currentWord, 3).Length == 0)
-                    {
-                        printf("Tolong masukkan nomor game yang ingin di skip dengan format 'SKIP GAME <n>'!\n");
-                    }
+                    printf("Tolong masukkan nomor game yang ingin di skip dengan format 'SKIP GAME <n>'!\n");
+                }
+                else {
+                    skipGame(WordToInt(takeword(currentWord, 3)), ListGame, &QueueGame, &History, &Scoreboard);
                 }
             }
             else if (IsEqual(currentWord, "HELP"))
@@ -142,13 +141,12 @@ int main()
             }
             else if (IsEqual(takeword(currentWord, 1), "HISTORY"))
             {
-                history(WordToInt(takeword(currentWord, 2)), History);
-                if (!isEmpty(QueueGame))
+                if (takeword(currentWord, 2).Length == 0)
                 {
-                    if (takeword(currentWord, 3).Length == 0)
-                    {
-                        printf("Tolong masukkan jumlah history game yang ingin ditampilkan dengan format 'HISTORY <n>'!\n");
-                    }
+                    printf("Tolong masukkan jumlah history game yang ingin ditampilkan dengan format 'HISTORY <n>'!\n");
+                }
+                else{
+                    history(WordToInt(takeword(currentWord, 2)), History);
                 }
             }
             else if (IsEqual(currentWord, "RESET HISTORY"))
