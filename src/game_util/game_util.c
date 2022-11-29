@@ -367,7 +367,7 @@ void resetHistory(Stackchar *hist)
     else if (IsEqual(currentWord, "TIDAK"))
     {
         printf("History tidak jadi di-reset.\n");
-        history(TopStackchar(*hist), (*hist));
+        history((TopStackchar(*hist) + 1), (*hist));
     }
     else
     {
