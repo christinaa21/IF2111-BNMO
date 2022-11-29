@@ -94,6 +94,12 @@ dengan asisten : Jason Stanley Yoman
 |13     |RNG            | 🗸        |
 |14     |Diner Dash     | 🗸        |
 |15     |Game Tambahan  | 🗸        |
+|16     |Scoreboard     | 🗸        |
+|17     |Reset Scoreboard| 🗸       |
+|18     |History        | 🗸        |
+|19     |Reset History  | 🗸        |
+|20     |Tower Of Hanoi | 🗸        |
+|21     |Snake On Meteor| 🗸        |
 
 
 
