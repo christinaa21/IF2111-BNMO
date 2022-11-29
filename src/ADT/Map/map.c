@@ -119,7 +119,7 @@ void displayMap (Map M){
     //if (IsEmptyMap(M)){
     //    printf("-----SCOREBOARD KOSONG-----\n");
     //} else {
-    for(int i =0; i < MaxEl; i++){
-        printf("| %s        | %d        |\n", M.Elements[i].Key, M.Elements[i].Value);
+    for(int i =0; i < M.Count; i++){
+        printf("| %s\t| %d\t|\n", M.Elements[i].Key, M.Elements[i].Value);
     }
 }
