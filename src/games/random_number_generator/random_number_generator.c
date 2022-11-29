@@ -28,7 +28,7 @@ void RNG(int *score){
     }
     printf("\nYa, X adalah %d\n\n", X);
     printf("--- GAME OVER ---\n");
-    *score = 100 - count;
+    *score = 50 - count;
     printf("Skor yang Anda peroleh adalah: %d\n", *score);
 }
 
