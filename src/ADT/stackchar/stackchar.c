@@ -3,7 +3,7 @@
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyStackchar(Stackchar *S)
+void CreateEmptyStackChar(Stackchar *S)
 {
 	Top(*S) = Nil;
 }
@@ -11,21 +11,20 @@ void CreateEmptyStackchar(Stackchar *S)
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStackchar */
 /* jadi indeksnya antara 0.. MaxElStackchar */
 /* Ciri stack kosong : TOP bernilai Nil */
-
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptyStackchar(Stackchar S)
+boolean IsEmptyStackChar(Stackchar S)
 {
 	return Top(S) == Nil;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullStackchar(Stackchar S)
+boolean IsFullStackChar(Stackchar S)
 {
 	return Top(S) == MaxElStackchar - 1;
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void PushStackchar(Stackchar *S, infotypeStackchar X)
+void PushStackChar(Stackchar *S, infotypeStackchar X)
 {
 	Top(*S)++;
 	InfoTop(*S) = X;
@@ -35,7 +34,7 @@ void PushStackchar(Stackchar *S, infotypeStackchar X)
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void PopStackchar(Stackchar *S, infotypeStackchar *X)
+void PopStackChar(Stackchar *S, infotypeStackchar *X)
 {
 	(*X) = InfoTop(*S);
 	Top(*S)--;
@@ -44,10 +43,10 @@ void PopStackchar(Stackchar *S, infotypeStackchar *X)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-void PrintStackchar(Stackchar S)
+void PrintStackChar(Stackchar S)
 {
 	int i;
-	if (!IsEmptyStackchar(S))
+	if (!IsEmptyStackChar(S))
 	{
 		for (i = Top(S); i >= 0; i--)
 		{
