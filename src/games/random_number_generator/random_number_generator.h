@@ -15,6 +15,6 @@
  * -    User akan memasukan sebuah angka untuk menebak
  * -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
  * -    User akan terus memasukan input nomor hingga berhasil tertebak */
-void RNG();
+void RNG(int *score);
 
 #endif

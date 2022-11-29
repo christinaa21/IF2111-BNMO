@@ -8,15 +8,15 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define NilSet 0
-#define MaxEl 100
+#define MaxElSet 100
 
 typedef int infotype;
 typedef int address;
 
 typedef struct
 {
-    infotype Elements[MaxEl];
-    address Count;
+        infotype Elements[MaxElSet];
+        address Count;
 } Set;
 
 /* Definisi Set S kosong : S.Count = Nil */

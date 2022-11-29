@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "snakeofmeteor.h"
+#include "SnakeOnMeteor.h"
 
 char* IntToString(int x)
 {
@@ -250,7 +250,7 @@ void FirstRandSnake(List *L)
     }
 }
 
-void SnakeOfMeteor(int* score)
+void SnakeOnMeteor(int* score)
 {
     List L;
     CreateEmpty(&L);
@@ -347,6 +347,6 @@ void SnakeOfMeteor(int* score)
 int main()
 {
     int score;
-    SnakeOfMeteor(&score);
+    SnakeOnMeteor(&score);
     return 0;
 }

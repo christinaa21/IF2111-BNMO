@@ -6,7 +6,7 @@
  * I.S. Program telah berjalan
  * F.S. Game baru yang dicreate oleh user berhasil ditambahkan pada daftar game.
  */
-void createGame(ArrayOfGame *arr, ListMap *L, Map *M) //masi bingung pointeer mapnya
+void createGame(ArrayOfGame *arr, ListMap *L, Map *M) // masi bingung pointeer mapnya
 {
     /*KAMUS LOKAL*/
 
@@ -16,8 +16,8 @@ void createGame(ArrayOfGame *arr, ListMap *L, Map *M) //masi bingung pointeer ma
     if (SearchArrayOfGame((*arr), currentWord) == -1)
     {
         InsertGameAt(arr, currentWord, (*arr).Neff);
-        CreateEmptyMap(M); //membuat map kosong untuk scoreboard
-        insertToList(L,*M); //menambahkan map ke list scoreboard
+        CreateEmptyMap(M);   // membuat map kosong untuk scoreboard
+        insertToList(L, *M); // menambahkan map ke list scoreboard
         printf("Game berhasil ditambahkan\n");
     }
     else
@@ -149,7 +149,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     /*KAMUS LOKAL*/
     Word game;
     int score, idx;
-    char* nama;
+    char *nama;
     /*ALOGRITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
@@ -188,7 +188,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
         {
             printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
             PushStackChar(hist, "SNAKE ON METEOR");
-            SnakeOfMeteor(&score);
+            SnakeOnMeteor(&score);
         }
         else if (IsEqual(game, "TIC TAC TOE"))
         {
@@ -220,7 +220,7 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
 {
     /*KAMUS LOKAL*/
     int score, idx;
-    char* nama;
+    char *nama;
     /*ALGORITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
@@ -236,7 +236,7 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             Word skipped;
             for (int i = 0; i <= length(*qGame); i++)
             {
-            dequeue(qGame, &skipped); // delete game yang ke n
+                dequeue(qGame, &skipped); // delete game yang ke n
             }
             printf("Maaf, jumlah game yang ingin dilewati melebihi jumlah game yang ada di antrian. Silakan coba lagi.\n");
         }
@@ -254,7 +254,8 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
         }
 
         Word game;
-        if(!isEmpty(*qGame)){
+        if (!isEmpty(*qGame))
+        {
             dequeue(qGame, &game);
             if (IsEqual(game, "RNG"))
             {
@@ -284,7 +285,7 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             {
                 printf("Game yang dimainkan adalah SNAKE ON METEOR\n");
                 PushStackChar(hist, "SNAKE ON METEOR");
-                SnakeOfMeteor(&score);
+                SnakeOnMeteor(&score);
             }
             else if (IsEqual(game, "TIC TAC TOE"))
             {
@@ -305,7 +306,8 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             idx = SearchArrayOfGame(arr, game);
             InsertMap(&(*L).peta[idx], nama, score);
         }
-        else {
+        else
+        {
             printf("Antrian game mu sudah habis\n");
         }
     }
@@ -313,78 +315,94 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     displayQueueGame(*qGame);
 }
 
-
 /* Prosedur untuk menampilkan permainan apa saja yang telah dimainkan
 dari data yang sudah ada dari file konfigurasi (jika load) dan dari mulai
 Start Game juga, dengan n adalah jumlah permainan yang telah dimainkan yang ingin ditampilkan.
 Urutan teratas merupakan permainan terakhir yang dimainkan.
 Jika n lebih besar dari jumlah permainan yang telah dimainkan, akan menampilkan seluruh
 permainan yang telah dimainkan.
-I.S.: Program telah berjalan. 
+I.S.: Program telah berjalan.
 F.S.: Menampilkan daftar game yang telah dimainkan. */
-void history(int n, Stackchar hist) {
-    char* X;
-    if (n < 1) {
+void history(int n, Stackchar hist)
+{
+    char *X;
+    if (n < 1)
+    {
         printf("Mohon masukkan angka yang benar, yaitu lebih dari 0.\n");
-    } else {
+    }
+    else
+    {
         printf("Berikut adalah daftar Game yang telah dimainkan\n");
-        if (n > Top(hist)) {
+        if (n > Top(hist))
+        {
             n = Top(hist);
         }
-        for (int i=0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             PopStackChar(&hist, &X);
-            printf("%d. %s\n", (i+1), X);
+            printf("%d. %s\n", (i + 1), X);
         }
     }
 }
 
-/* Prosedur untuk menghapus semua history permainan yang dimainkan. 
+/* Prosedur untuk menghapus semua history permainan yang dimainkan.
 I.S.: Program telah berjalan.
 F.S.: Menghapus daftar game yang telah dimainkan. */
-void resetHistory(Stackchar *hist) {
+void resetHistory(Stackchar *hist)
+{
     printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
     STARTINPUT();
-    if (IsEqual(currentWord, "YA")) {
+    if (IsEqual(currentWord, "YA"))
+    {
         CreateEmptyStackChar(hist);
-    } else if (IsEqual(currentWord, "TIDAK")) {
+    }
+    else if (IsEqual(currentWord, "TIDAK"))
+    {
         printf("History tidak jadi di-reset. ");
         history(Top(*hist), (*hist));
-    } else {
+    }
+    else
+    {
         printf("Mohon masukkan jawaban yang benar.\n");
     }
 }
 
 /* Prosedur untuk menampilkan scoreboard dari masing-masing game.
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
- I.S : Program telah berjalan. 
+ I.S : Program telah berjalan.
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
-void scoreboard(ListMap L, ArrayOfGame arr){
+void scoreboard(ListMap L, ArrayOfGame arr)
+{
     /*KAMUS LOKAL*/
     ElTypeArrayOfGame game;
     /*ALGORITMA*/
-    for (int i=0; i<L.Neff;i++){
+    for (int i = 0; i < L.Neff; i++)
+    {
         game = arr.A[i];
-        printf("**** SCOREBOARD %s ****\n", WordToString(game)); 
-        printf("| NAMA       | SKOR      |\n"); 
-        printf("|------------------------|\n"); 
-        if (IsEmptyMap((L).peta[i])){
+        printf("**** SCOREBOARD %s ****\n", WordToString(game));
+        printf("| NAMA       | SKOR      |\n");
+        printf("|------------------------|\n");
+        if (IsEmptyMap((L).peta[i]))
+        {
             printf("-----SCOREBOARD KOSONG-----\n");
-        } else {
+        }
+        else
+        {
             displayMap((L).peta[i]);
         }
     }
 }
 
-
 /* Prosedur untuk menghapus semua atau sebagian scoreboard.
 I.S : Program telah berjalan
 F.S : Menghapus semua, sebagian, atau tidak sama sekali scoreboard sesuai dengan input user*/
-void resetScoreboard (ListMap *L, ArrayOfGame *arr){
+void resetScoreboard(ListMap *L, ArrayOfGame *arr)
+{
     /*KAMUS LOKAL*/
     ElTypeArrayOfGame game;
     /*ALGORITMA*/
     printf("DAFTAR SCOREBOARD :\n");
-    printf("0. ALL\n"); 
+    printf("0. ALL\n");
     for (int i = 0; i < LengthArrayOfGame(*arr); i++)
     {
         game = arr->A[i];
@@ -394,28 +412,38 @@ void resetScoreboard (ListMap *L, ArrayOfGame *arr){
     printf("SCOREBOARD YANG INGIN DIHAPUS :");
     STARTINPUTKATA();
 
-    if (WordToInt(currentWord) == 0){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL\n"); 
+    if (WordToInt(currentWord) == 0)
+    {
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL\n");
         printf("(YA/TIDAK)?");
         STARTINPUTKATA();
-        if (IsEqual(currentWord,"YA")){
-            resetAllMap(L); 
+        if (IsEqual(currentWord, "YA"))
+        {
+            resetAllMap(L);
             printf("Scoreboard berhasil di-reset.\n");
-        } else if (IsEqual(currentWord, "TIDAK")) {
+        }
+        else if (IsEqual(currentWord, "TIDAK"))
+        {
             printf("Scoreboard tidak jadi di-reset.\n");
         }
-    } else if (WordToInt(currentWord) < LengthArrayOfGame(*arr)){
-        game = arr->A[WordToInt(currentWord)-1];
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game)); 
-        printf("(YA/TIDAK)?"); 
-        if (IsEqual(currentWord,"YA")){
-            resetAtMap(L, WordToInt(currentWord)-1); 
+    }
+    else if (WordToInt(currentWord) < LengthArrayOfGame(*arr))
+    {
+        game = arr->A[WordToInt(currentWord) - 1];
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s \n", WordToString(game));
+        printf("(YA/TIDAK)?");
+        if (IsEqual(currentWord, "YA"))
+        {
+            resetAtMap(L, WordToInt(currentWord) - 1);
             printf("Scoreboard berhasil di-reset.\n");
-        } else if (IsEqual(currentWord, "TIDAK")) {
+        }
+        else if (IsEqual(currentWord, "TIDAK"))
+        {
             printf("Scoreboard tidak jadi di-reset.\n");
         }
-    } else {
-        printf("Mohon masukkan jawaban yang benar.\n"); 
     }
-
+    else
+    {
+        printf("Mohon masukkan jawaban yang benar.\n");
     }
+}
