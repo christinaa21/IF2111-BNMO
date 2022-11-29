@@ -331,17 +331,23 @@ void history(int n, Stackchar hist)
     {
         printf("Mohon masukkan angka yang benar, yaitu lebih dari 0.\n");
     }
-    else
-    {
-        printf("Berikut adalah daftar Game yang telah dimainkan\n");
-        if (n > TopStackchar(hist))
+    else {
+        if (IsEmptyStackChar(hist))
         {
-            n = TopStackchar(hist);
+            printf("-----History Kosong-----\n");
         }
-        for (int i = 0; i < n; i++)
+        else
         {
-            PopStackChar(&hist, &X);
-            printf("%d. %s\n", (i + 1), X);
+            printf("Berikut adalah daftar Game yang telah dimainkan\n");
+            if (n > TopStackchar(hist))
+            {
+                n = TopStackchar(hist);
+            }
+            for (int i = 0; i < n; i++)
+            {
+                PopStackChar(&hist, &X);
+                printf("%d. %s\n", (i + 1), X);
+            }
         }
     }
 }
@@ -352,7 +358,7 @@ F.S.: Menghapus daftar game yang telah dimainkan. */
 void resetHistory(Stackchar *hist)
 {
     printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
-    STARTINPUT();
+    STARTINPUTKATA();
     if (IsEqual(currentWord, "YA"))
     {
         CreateEmptyStackChar(hist);
