@@ -235,11 +235,11 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
         else
         {
             Word skipped;
-            for (int i = 0; i <= length(*qGame); i++)
+            for (int i = 0; i < length(*qGame); i++)
             {
                 dequeue(qGame, &skipped); // delete game yang ke n
             }
-            printf("Maaf, jumlah game yang ingin dilewati melebihi jumlah game yang ada di antrian. Silakan coba lagi.\n");
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         }
     }
     else if (n < 1)
@@ -381,7 +381,7 @@ void scoreboard(ListMap L, ArrayOfGame arr)
     {
         game = arr.A[i];
         printf("**** SCOREBOARD %s ****\n", WordToString(game));
-        printf("| NAMA\t| SKOR\t|\n");
+        printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
         printf("|------------------------|\n");
         if (IsEmptyMap((L).peta[i])){
             printf("-----SCOREBOARD KOSONG-----\n");

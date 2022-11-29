@@ -619,11 +619,3 @@ void TowerOfHanoi(int *score)
     printf("Score kamu adalah %d\n", currentScore);
     *score = currentScore;
 }
-
-int main()
-{
-    int score = 0;
-    TowerOfHanoi(&score);
-    printf("Score: %d\n", score);
-    return 0;
-}

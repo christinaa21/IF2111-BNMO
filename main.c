@@ -95,7 +95,7 @@ int main()
             }
             else if (IsEqual(currentWord, "DELETE GAME"))
             {
-                deleteGame(&ListGame, QueueGame);
+                deleteGame(&ListGame, QueueGame, &Scoreboard);
             }
             else if (IsEqual(currentWord, "QUEUE GAME"))
             {

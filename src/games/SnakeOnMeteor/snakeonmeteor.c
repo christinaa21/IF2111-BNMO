@@ -27,7 +27,7 @@ char* IntToString(int x)
     return str;
 }
 
-void printmap(List L, POINT M, POINT F, POINT O)
+void printmap(Listdp L, POINT M, POINT F, POINT O)
 {
     int i, j;
     POINT S;
@@ -56,7 +56,7 @@ void printmap(List L, POINT M, POINT F, POINT O)
                 {
                     S.x = j / 2;
                     S.y = i / 2;
-                    if (Search(L, S) != Nil)
+                    if (SearchListdp(L, S) != NilListdp)
                     {
                         if (M.x == S.x && M.y == S.y)
                         {
@@ -68,7 +68,7 @@ void printmap(List L, POINT M, POINT F, POINT O)
                         }
                         else
                         {
-                            printf(" %s ", Search(L, S)->info);
+                            printf(" %s ", SearchListdp(L, S)->info);
                         }
                     }
                     else
@@ -97,12 +97,12 @@ void printmap(List L, POINT M, POINT F, POINT O)
     }
 }
 
-POINT Obstacle(List L) {
+POINT Obstacle(Listdp L) {
     POINT O;
     srand(time(NULL));
     O.x = rand() % 5;
     O.y = rand() % 5;
-    while (Search(L, O) != Nil)
+    while (SearchListdp(L, O) != NilListdp)
     {
         O.x = rand() % 5;
         O.y = rand() % 5;
@@ -110,13 +110,13 @@ POINT Obstacle(List L) {
     return O;
 }
 
-POINT Food(List L, POINT Obstacle)
+POINT Food(Listdp L, POINT Obstacle)
 {
     POINT P;
     srand(time(NULL));
     P.x = rand() % 5;
     P.y = rand() % 5;
-    while ((Search(L, P) != Nil) || (P.x == Obstacle.x && P.y == Obstacle.y))
+    while ((SearchListdp(L, P) != NilListdp) || (P.x == Obstacle.x && P.y == Obstacle.y))
     {
         P.x = rand() % 5;
         P.y = rand() % 5;
@@ -138,9 +138,9 @@ POINT Meteor(POINT Food, POINT Obstacle)
     return P;
 }
 
-void UserMove(List L, char input, boolean *illegal_move, POINT Meteor)
+void UserMove(Listdp L, char input, boolean *illegal_move, POINT Meteor)
 {
-    address P = First(L);
+    addressListdp P = First(L);
     *illegal_move = false;
     POINT Temp;
     if (input == 'w')
@@ -163,7 +163,7 @@ void UserMove(List L, char input, boolean *illegal_move, POINT Meteor)
         Temp.x = (Pos(P).x + 1) % 5;
         Temp.y = Pos(P).y % 5;
     }
-    if (Search(L, Temp) != Nil)
+    if (SearchListdp(L, Temp) != NilListdp)
     {
         (*illegal_move) = true;
         printf("Anda tidak dapat bergerak ke tubuh Anda sendiri!\nSilahkan masukkan command yang lain\n\n");
@@ -175,7 +175,7 @@ void UserMove(List L, char input, boolean *illegal_move, POINT Meteor)
     }
     else
     {
-        address Q;
+        addressListdp Q;
         P = Last(L);
         while (P != First(L))
         {
@@ -189,35 +189,35 @@ void UserMove(List L, char input, boolean *illegal_move, POINT Meteor)
     }
 }
 
-void FirstRandSnake(List *L)
+void FirstRandSnake(Listdp *L)
 {
     POINT P;
     srand(time(NULL));
     P.x = rand() % 5;
     P.y = rand() % 5;
-    InsVLast(L, "H", P);
+    InsVLastListdp(L, "H", P);
     if (P.x >= 2)
     {
         P.x -= 1;
-        InsVLast(L, "1", P);
+        InsVLastListdp(L, "1", P);
         P.x -= 1;
-        InsVLast(L, "2", P);
+        InsVLastListdp(L, "2", P);
     }
     else
     {
         if (P.x == 1)
         {
             P.x -= 1;
-            InsVLast(L, "1", P);
+            InsVLastListdp(L, "1", P);
             if (P.y == 0)
             {
                 P.y += 1;
-                InsVLast(L, "2", P);
+                InsVLastListdp(L, "2", P);
             }
             else
             {
                 P.y -= 1;
-                InsVLast(L, "2", P);
+                InsVLastListdp(L, "2", P);
             }
         }
         else if (P.x == 0)
@@ -225,25 +225,25 @@ void FirstRandSnake(List *L)
             if (P.y >= 2)
             {
                 P.y -= 1;
-                InsVLast(L, "1", P);
+                InsVLastListdp(L, "1", P);
                 P.y -= 1;
-                InsVLast(L, "2", P);
+                InsVLastListdp(L, "2", P);
             }
             else
             {
                 if (P.y == 1)
                 {
                     P.y += 1;
-                    InsVLast(L, "1", P);
+                    InsVLastListdp(L, "1", P);
                     P.y += 1;
-                    InsVLast(L, "2", P);
+                    InsVLastListdp(L, "2", P);
                 }
                 else
                 {
                     P.y += 1;
-                    InsVLast(L, "1", P);
+                    InsVLastListdp(L, "1", P);
                     P.y += 1;
-                    InsVLast(L, "2", P);
+                    InsVLastListdp(L, "2", P);
                 }
             }
         }
@@ -252,8 +252,8 @@ void FirstRandSnake(List *L)
 
 void SnakeOnMeteor(int* score)
 {
-    List L;
-    CreateEmpty(&L);
+    Listdp L;
+    CreateEmptyListdp(&L);
     FirstRandSnake(&L);
     POINT temp;
     POINT O = Obstacle(L);
@@ -288,7 +288,7 @@ void SnakeOnMeteor(int* score)
                 STARTINPUTKATA();
                 printf("\n");
             }
-            temp = GetLastPos(L);
+            temp = GetLastPosListdp(L);
             UserMove(L, currentWord.TabWord[0], &illegal_move, M);
         } while (illegal_move);
         printf("Berhasil bergerak!\nBerikut merupakan peta permainan\n");
@@ -296,7 +296,7 @@ void SnakeOnMeteor(int* score)
         if (Pos(First(L)).x == F.x && Pos(First(L)).y == F.y)
         {
             idk_char = IntToString(idk);
-            InsVLast(&L, idk_char, temp);
+            InsVLastListdp(&L, idk_char, temp);
             idk++;
             F = Food(L, O);
         }
@@ -304,8 +304,8 @@ void SnakeOnMeteor(int* score)
         printmap(L, M, F, O);
         if (Pos(First(L)).x == O.x && Pos(First(L)).y == O.y)
         {
-            address p = First(L);
-            while (p != Nil) {
+            addressListdp p = First(L);
+            while (p != NilListdp) {
                 (*score)++;
                 p = Next(p);
             }
@@ -314,11 +314,11 @@ void SnakeOnMeteor(int* score)
             GameOver = true;
         }
         if (!GameOver) {
-            if (Search(L, M) != Nil)
+            if (SearchListdp(L, M) != NilListdp)
             {
                 if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
                 {
-                    address p = First(L);
+                    addressListdp p = First(L);
                     while (p != Last(L)) {
                         (*score)++;
                         p = Next(p);
@@ -327,7 +327,7 @@ void SnakeOnMeteor(int* score)
                     printf("Kepala snake terkena meteor!\n");
                     GameOver = true;
                 } else {
-                    DelP(&L, M);
+                    DelPListdp(&L, M);
                     idk--;
                     printf("\nAnda terkena meteor!\n");
                     printf("Berikut merupakan peta permainan sekarang:\n");
@@ -342,11 +342,4 @@ void SnakeOnMeteor(int* score)
     }
     printf("Game berakhir. Skor %d\n\n", (*score));
     printf("===== GAME OVER =====\n");
-}
-
-int main()
-{
-    int score;
-    SnakeOnMeteor(&score);
-    return 0;
 }

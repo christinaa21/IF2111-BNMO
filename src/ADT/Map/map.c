@@ -140,18 +140,15 @@ boolean IsMemberMap(Map M, keytype k)
  F.S> : semua map berhasil di print*/
 void displayMap(Map M)
 {
-    printf("**** SCOREBOARD ****\n");
-    printf("| NAMA       | SKOR      |\n");
-    printf("|------------------------|\n");
-    if (IsEmptyMap(M))
+    // printf("**** SCOREBOARD ****\n");
+    // printf("| NAMA       | SKOR      |\n");
+    // printf("|------------------------|\n");
+    //     if (IsEmptyMap(M)){
+    //         printf("-----SCOREBOARD KOSONG-----\n");
+    //     } else {
+    for (int i = 0; i < M.Count; i++)
     {
-        printf("-----SCOREBOARD KOSONG-----\n");
-    }
-    else
-    {
-        for (int i = 0; i < M.CountMap; i++)
-        {
-            printf("| %s\t\t\t| %d\t\t\t|\n", M.Elements[i].Key, M.Elements[i].Value);
-        }
+        printf("| %s\t\t\t| %d\t\t\t|\n", M.Elements[i].Key, M.Elements[i].Value);
+        //}
     }
 }
