@@ -3,14 +3,14 @@
 
 int main(){
     //Konstruktor
-    List L;
+    Listdp L;
     printf("Buat List kosong\n");
     CreateEmpty(&L);
     printf("Is Empty = %d\n", IsEmpty(L));
     
     //Alokasi 
     POINT Y = MakePOINT(1,2);
-    address P = Alokasi("3", Y);
+    addressListdp P = Alokasi("3", Y);
     printf("%s\n", Info(P));
     Dealokasi(P);
     printf("%s\n", Info(P));
@@ -30,7 +30,7 @@ int main(){
 
     //Search List
     POINT T = MakePOINT(1,5);
-    address Q = Search(L,T);
+    addressListdp Q = Search(L,T);
     printf("%s\n", Info(Q));
 
     //Delete
