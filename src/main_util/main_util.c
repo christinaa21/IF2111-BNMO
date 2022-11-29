@@ -118,15 +118,19 @@ void help()
     /*ALGORITMA*/
     printf("Hai Hai Jangan Merasa Tersesat,\n");
     printf("Berikut adalah hal-hal yang bisa kamu lakukan :\n");
-    printf("01. SAVE <filename> : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
+    printf("01. SAVE <filename>  : untuk menyimpan state game pemain saat ini ke dalam suatu file\n");
     printf("02. CREATE GAME      : untuk menambahkan game baru pada daftar game\n");
     printf("03. LIST GAME        : untuk menampilkan daftar game yang disediakan oleh sistem\n");
     printf("04. DELETE GAME      : untuk menghapus sebuah game dari daftar game\n");
     printf("05. QUEUE GAME       : untuk mendaftarkan permainan kedalam list\n");
     printf("06. PLAY GAME        : ntuk memainkan sebuah permainan\n");
-    printf("07. SKIPGAME <n>    : untuk melewati n permainan yang ada di dalam list\n");
-    printf("07. QUIT            : untuk keluar dari program\n");
-    printf("08. HELP            : untuk melihat informasi dari command-command\n");
+    printf("07. SKIPGAME <n>     : untuk melewati n permainan yang ada di dalam list\n");
+    printf("08. SCOREBOARD       : untuk menampilkan scoreboard dari semua game\n");
+    printf("09. RESET SCOREBOARD : untuk menghapus riwayat scoreboard baik semua ataupun satu game\n"); 
+    printf("10. HISTORY <n>      : untuk melihat permainan apa saja yang telah dimainkan\n"); 
+    printf("11. RESET HISTORY    : untuk menghapus semua history permainan yang dimainkan\n");
+    printf("12. QUIT             : untuk keluar dari program\n");
+    printf("13. HELP             : untuk melihat informasi dari command-command\n");
 }
 
 /* Prosedur untuk berhenti dari program
