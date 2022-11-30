@@ -165,7 +165,8 @@ boolean IsMemberMapUnique(Map M, keytype k)
     while ((i < M.CountMap) && (found == false))
     {
         capsLock(M.Elements[i].Key);
-        if (M.Elements[i].Key == k)
+        Word Elmt_Word = StringtoWord(M.Elements[i].Key);
+        if (IsEqual(Elmt_Word, k))
         {
             found = true;
         }

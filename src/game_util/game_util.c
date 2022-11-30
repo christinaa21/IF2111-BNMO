@@ -151,6 +151,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     Word game;
     int score, idx;
     char *nama;
+    char* cek_nama;
     boolean invalid = true;
     /*ALOGRITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
@@ -209,8 +210,9 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             printf("Nama: ");
             STARTINPUTKATA();
             nama = WordToString(currentWord);
+            cek_nama = WordToString(currentWord);
             idx = SearchArrayOfGame(arr, game);
-            invalid = IsMemberMapUnique((*L).peta[idx], nama);
+            invalid = IsMemberMapUnique((*L).peta[idx], cek_nama);
             if (invalid)
             {
                 printf("Nama pengguna tersebut sudah ada di scoreboard. Silakan input nama yang berbeda!\n");
@@ -218,6 +220,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             else
             {
                 InsertMap(&(*L).peta[idx], nama, score);
+                printf("Namamu berhasil ditambahkan ke scoreboard!\n");
             }
         }
     }
@@ -233,6 +236,8 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     /*KAMUS LOKAL*/
     int score, idx;
     char *nama;
+    char* cek_nama;
+    boolean invalid = true;
     /*ALGORITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
     displayQueueGame(*qGame);
@@ -312,11 +317,23 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
                 gameTambahan(&score);
             }
             printf("Skor akhir: %d\n", score);
-            printf("Nama: ");
-            STARTINPUTKATA();
-            nama = WordToString(currentWord);
-            idx = SearchArrayOfGame(arr, game);
-            InsertMap(&(*L).peta[idx], nama, score);
+            while (invalid) {
+                printf("Nama: ");
+                STARTINPUTKATA();
+                nama = WordToString(currentWord);
+                cek_nama = WordToString(currentWord);
+                idx = SearchArrayOfGame(arr, game);
+                invalid = IsMemberMapUnique((*L).peta[idx], cek_nama);
+                if (invalid)
+                {
+                    printf("Nama pengguna tersebut sudah ada di scoreboard. Silakan input nama yang berbeda!\n");
+                }
+                else
+                {
+                    InsertMap(&(*L).peta[idx], nama, score);
+                    printf("Namamu berhasil ditambahkan ke scoreboard!\n");
+                }
+            }
         }
         else
         {
