@@ -314,3 +314,45 @@ IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el)
 		return -1;
 	}
 }
+
+/**
+ * Fungsi untuk melakukan search unique suatu ArrayOfGame.
+ * Proses		: Index pertama yang ditemukan akan dikembalikan.
+ * 				  Jika tidak ditemukan, akan mengembalikan -1.
+ * Prekondisi	: array terdefinisi
+ */
+IdxTypeArrayOfGame SearchArrayOfGameUnique(ArrayOfGame array, ElTypeArrayOfGame el)
+{
+	/*KAMUS LOKAL*/
+	IdxTypeArrayOfGame i = 0;
+	boolean found = false;
+	char *x;
+	char *Emlt_Str;
+	Word Emlt_Word;
+	/*ALGORITMA*/
+	x = WordToString(el);
+	capsLock(x);
+	while (i < array.Neff && !found)
+	{
+		Emlt_Str = WordToString(array.A[i]);
+		capsLock(Emlt_Str);
+		Emlt_Word = StringtoWord(Emlt_Str);
+		if (IsEqual(Emlt_Word, x))
+		{
+			found = true;
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	if (found)
+	{
+		return i;
+	}
+	else
+	{
+		return -1;
+	}
+}

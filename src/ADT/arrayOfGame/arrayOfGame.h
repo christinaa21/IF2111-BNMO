@@ -134,4 +134,12 @@ ArrayOfGame CopyArrayOfGame(ArrayOfGame array);
  */
 IdxTypeArrayOfGame SearchArrayOfGame(ArrayOfGame array, ElTypeArrayOfGame el);
 
+/**
+ * Fungsi untuk melakukan search unique suatu ArrayOfGame.
+ * Proses		: Index pertama yang ditemukan akan dikembalikan.
+ * 				  Jika tidak ditemukan, akan mengembalikan -1.
+ * Prekondisi	: array terdefinisi
+ */
+IdxTypeArrayOfGame SearchArrayOfGameUnique(ArrayOfGame array, ElTypeArrayOfGame el);
+
 #endif

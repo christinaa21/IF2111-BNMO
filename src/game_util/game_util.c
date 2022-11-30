@@ -13,7 +13,7 @@ void createGame(ArrayOfGame *arr, ListMap *L, Map *M) // masi bingung pointeer m
     /*ALGORITMA*/
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUTKATA();
-    if (SearchArrayOfGame((*arr), currentWord) == -1)
+    if (SearchArrayOfGameUnique((*arr), currentWord) == -1)
     {
         InsertGameAt(arr, currentWord, (*arr).Neff);
         CreateEmptyMap(M);   // membuat map kosong untuk scoreboard
