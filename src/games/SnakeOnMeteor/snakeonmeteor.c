@@ -272,6 +272,7 @@ void SnakeOnMeteor(int* score)
     char W[] = "w";
     char S[] = "s";
     char D[] = "d";
+    char* cek_input;
     boolean GameOver = false;
     boolean illegal_move = false;
     while (!GameOver)
@@ -281,12 +282,18 @@ void SnakeOnMeteor(int* score)
             printf("Silahkan masukkan command Anda: ");
             STARTINPUTKATA();
             printf("\n");
+            cek_input = WordToString(currentWord);
+            lowerCase(cek_input);
+            currentWord = StringtoWord(cek_input);
             while (!IsEqual(currentWord, A) && !IsEqual(currentWord, W) && !IsEqual(currentWord, S) && !IsEqual(currentWord, D))
             {
                 printf("Command tidak valid! Silahkan input command menggunakan huruf w/a/s/d\n");
                 printf("Silahkan masukkan command Anda: ");
                 STARTINPUTKATA();
                 printf("\n");
+                cek_input = WordToString(currentWord);
+                lowerCase(cek_input);
+                currentWord = StringtoWord(cek_input);
             }
             temp = GetLastPosListdp(L);
             UserMove(L, currentWord.TabWord[0], &illegal_move, M);

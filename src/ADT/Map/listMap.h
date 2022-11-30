@@ -8,7 +8,7 @@
 #define true 1
 #define false 0
 
-#define InitialSizeListMap 10
+#define InitialSizeListMap 50
 #define ElTypeMap Map
 
 typedef int IdxTypeMap;
