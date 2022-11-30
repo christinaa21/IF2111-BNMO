@@ -62,4 +62,22 @@ void PrintStackChar(Stackchar S);
 /* F.S. Jika S tidak kosong, semua elemen S diprint */
 /* Jika S kosong, hanya menuliskan "Stack kosong" */
 
+void CopyStackChar (Stackchar sIn, Stackchar * sOut);
+    /* Membuat salinan sOut */
+    /* I.S. sIn terdefinisi, sOut sembarang */
+    /* sOut berisi salinan sIn yang identik */
+
+void InverseStackChar (Stackchar *S);
+    /* Membalik isi suatu Stack */
+    /* I.S. s terdefinisi */
+    /* F.S. Isi s terbalik dari posisi semula */
+
+Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
+    /* Menghasilkan sebuah stack yang merupakan hasil penggabungan s1
+       dengan s2 dengan s1 berada di posisi yang lebih "bawah". Urutan kedua
+       stack harus sama seperti aslinya. */
+    /* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
+       atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
+       secukupnya yang dapat ditampung. */
+
 #endif

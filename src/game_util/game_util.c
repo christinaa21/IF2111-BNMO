@@ -51,12 +51,15 @@ void listGame(ArrayOfGame *arr)
         - 5 game pertama pada file konfigurasi tidak dapat dihapus.
         - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
 */
-void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L)
+void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L, Stackchar *hist)
 {
     /*KAMUS LOKAL*/
     IdxTypeArrayOfGame idx;
-    listGame(arr);
+    Stackchar hist_copy;
+    infotypeStackchar X;
+    int i, j;
     /*ALGORITMA*/
+    listGame(arr);
     printf("Masukkan nomor yang akan dihapus :");
     STARTINPUTKATA();
     int n = WordToInt(currentWord);
@@ -79,6 +82,15 @@ void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L)
         {
             DeleteGameAt(arr, n - 1);
             deleteListMapAt(L, n);
+            CreateEmptyStackChar(&hist_copy);
+            j = TopStackchar(*hist);
+            for (i=0;i<=j;i++) {
+                PopStackChar(hist, &X);
+                if (!IsEqual(game, X)) {
+                    PushStackChar(&hist_copy, X);
+                }
+            }
+            CopyStackChar(hist_copy, hist);
             printf("Game berhasil dihapus\n");
         }
     }

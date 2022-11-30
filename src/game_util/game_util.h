@@ -37,7 +37,7 @@ void listGame(ArrayOfGame *arr);
         - 5 game pertama pada file konfigurasi tidak dapat dihapus.
         - Game yang saat itu terdapat di dalam queue game tidak dapat dihapus.
 */
-void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L);
+void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L, Stackchar *hist);
 
 /* Prosedur untuk memasukan game dalam antrian
  * I.S: Program telah berjalan
