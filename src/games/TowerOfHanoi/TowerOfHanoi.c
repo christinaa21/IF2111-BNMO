@@ -483,15 +483,19 @@ void TowerOfHanoi(int *score)
     printf("Masukkan jumlah disk yang ingin dimainkan: ");
     STARTINPUTKATA();
     n = WordToIntStack(currentWord);
-    while (n > 31 || n < 1)
+    while (n > 30 || n < 2)
     {
-        printf("Jumlah disk tidak boleh lebih dari 31 dan harus lebih besar dari 0\n");
+        printf("Jumlah disk tidak boleh lebih dari 30 dan harus lebih besar dari 0\n");
         printf("Masukkan jumlah disk yang ingin dimainkan: ");
         STARTINPUTKATA();
         n = WordToIntStack(currentWord);
     }
-    unsigned long long int minMove = pow(2, n) - 1;
-    unsigned long long int currentScore = minMove / 3;
+    long long int minMove = pow(2, n) - 1;
+    long long int currentScore = minMove / 3;
+    if (n == 2 || n == 1)
+    {
+        currentScore = 1;
+    }
     printf("Anda memilih %d disk\n", n);
     printf("\n");
 
