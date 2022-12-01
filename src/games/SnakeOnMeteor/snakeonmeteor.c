@@ -258,9 +258,10 @@ void FirstRandSnake(Listdp *L)
 void SnakeOnMeteor(int* score)
 {
     Listdp L;
+    addressListdp B;
     CreateEmptyListdp(&L);
     FirstRandSnake(&L);
-    POINT temp;
+    POINT temp, Temp1, Temp2, Temp3, Temp4;
     POINT O = Obstacle(L);
     POINT F = Food(L, O);
     POINT M = MakePOINT(5, 5);
@@ -304,7 +305,6 @@ void SnakeOnMeteor(int* score)
             UserMove(L, currentWord.TabWord[0], &illegal_move, M);
         } while (illegal_move);
         printf("Berhasil bergerak!\nBerikut merupakan peta permainan\n");
-
         if (Pos(First(L)).x == F.x && Pos(First(L)).y == F.y)
         {
             idk_char = IntToString(idk);
@@ -314,43 +314,76 @@ void SnakeOnMeteor(int* score)
         }
         M = Meteor(F, O);
         printmap(L, M, F, O);
-        if (Pos(First(L)).x == O.x && Pos(First(L)).y == O.y)
+        B = First(L);
+        Temp1.x = Pos(B).x % 5; //W
+        Temp1.y = (Pos(B).y + 4) % 5;
+        Temp2.x = (Pos(B).x + 4) % 5; //A
+        Temp2.y = Pos(B).y % 5;
+        Temp3.x = Pos(B).x % 5; //S
+        Temp3.y = (Pos(B).y + 1) % 5;
+        Temp4.x = (Pos(B).x + 1) % 5; //D
+        Temp4.y = Pos(B).y % 5;
+        if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+            (GameOver) = true;
+        } else if ((Temp1.x == M.x && Temp1.y == M.y) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+            (GameOver) = true;
+        } else if ((SearchListdp(L, Temp1) != NilListdp) && (Temp2.x == M.x && Temp2.y == M.y) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+            (GameOver) = true;
+        } else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (Temp3.x == M.x && Temp3.y == M.y) && (SearchListdp(L, Temp4) != NilListdp)) {
+            (GameOver) = true;
+        } else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (Temp4.x == M.x && Temp4.y == M.y)) {
+            (GameOver) = true;
+        }
+        if (GameOver)
         {
-            addressListdp p = First(L);
-            while (p != NilListdp) {
+            addressListdp z = First(L);
+            while (z != NilListdp) {
                 (*score)++;
-                p = Next(p);
+                z = Next(z);
             }
             (*score) *= 2;
-            printf("Kepala snake menabrak obstacle!\n");
-            GameOver = true;
+            printf("Kepala snake tidak dapat bergerak kemanapun!\n");
         }
-        if (!GameOver) {
-            if (SearchListdp(L, M) != NilListdp)
+        else
+        {
+            if (Pos(First(L)).x == O.x && Pos(First(L)).y == O.y)
             {
-                if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
-                {
-                    addressListdp p = First(L);
-                    while (p != Last(L)) {
-                        (*score)++;
-                        p = Next(p);
-                    }
-                    (*score) *= 2;
-                    printf("Kepala snake terkena meteor!\n");
-                    GameOver = true;
-                } else {
-                    DelPListdp(&L, M);
-                    idk--;
-                    printf("\nAnda terkena meteor!\n");
-                    printf("Berikut merupakan peta permainan sekarang:\n");
-                    printmap(L, M, F, O);
-                    printf("Silakan lanjutkan permainan.\n");
+                addressListdp p = First(L);
+                while (p != NilListdp) {
+                    (*score)++;
+                    p = Next(p);
                 }
-            } else {
-                printf("Anda beruntung tidak terkena meteor! Silakan lanjutkan permainan.\n\n");
+                (*score) *= 2;
+                printf("Kepala snake menabrak obstacle!\n");
+                GameOver = true;
             }
+            if (!GameOver) {
+                if (SearchListdp(L, M) != NilListdp)
+                {
+                    if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
+                    {
+                        addressListdp p = First(L);
+                        while (p != Last(L)) {
+                            (*score)++;
+                            p = Next(p);
+                        }
+                        (*score) *= 2;
+                        printf("Kepala snake terkena meteor!\n");
+                        GameOver = true;
+                    } else {
+                        DelPListdp(&L, M);
+                        idk--;
+                        printf("\nAnda terkena meteor!\n");
+                        printf("Berikut merupakan peta permainan sekarang:\n");
+                        printmap(L, M, F, O);
+                        printf("Silakan lanjutkan permainan.\n");
+                    }
+                } else {
+                    printf("Anda beruntung tidak terkena meteor! Silakan lanjutkan permainan.\n\n");
+                }
+            }
+            turn++;
         }
-        turn++;
     }
     printf("Game berakhir. Skor %d\n\n", (*score));
     printf("===== GAME OVER =====\n");
