@@ -117,10 +117,10 @@ void PrintForwardListdp(Listdp L){
         printf("[");
         while(P!=NilListdp){
             if(P!=Last(L)){
-                printf("%d,",Info(P));
+                printf("%s,",Info(P));
             }
             else {
-                printf("%d", Info(P));
+                printf("%s", Info(P));
             }
             P = Next(P);
         }
@@ -137,10 +137,10 @@ void PrintBackwardListdp(Listdp L){
         printf("[");
         while(P!=NilListdp){
             if(P!=First(L)){
-                printf("%d,",Info(P));
+                printf("%s,",Info(P));
             }
             else {
-                printf("%d", Info(P));
+                printf("%s", Info(P));
             }
             P = Prev(P);
         }

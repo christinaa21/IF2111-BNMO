@@ -6,42 +6,42 @@ int main(){
     //Konstruktor
     Listdp L;
     printf("Buat List kosong\n");
-    CreateEmpty(&L);
-    printf("Is Empty = %d\n", IsEmpty(L));
+    CreateEmptyListdp(&L);
+    printf("Is Empty = %d\n", IsEmptyListdp(L));
     
     //Alokasi 
     POINT Y = MakePOINT(1,2);
-    addressListdp P = Alokasi("3", Y);
+    addressListdp P = AlokasiListdp("3", Y);
     printf("%s\n", Info(P));
-    Dealokasi(P);
-    printf("%s\n", Info(P));
+    DealokasiListdp(P);
 
     //Insert To List
-    InsVLast(&L,"1",Y);
+    InsVLastListdp(&L,"1",Y);
     Y = MakePOINT(1,3);
-    InsVLast(&L,"2",Y);
+    InsVLastListdp(&L,"2",Y);
     Y = MakePOINT(1,5);
-    InsVLast(&L,"3",Y);
+    InsVLastListdp(&L,"3",Y);
     Y = MakePOINT(1,6);
-    InsVLast(&L,"4",Y);
+    InsVLastListdp(&L,"4",Y);
     Y = MakePOINT(1,9);
-    InsVLast(&L,"5",Y);
-    PrintForward(L);
-    PrintBackward(L);
+    InsVLastListdp(&L,"5",Y);
+    PrintForwardListdp(L);
+    PrintBackwardListdp(L);
+    printf("\n");
 
     //Search List
     POINT T = MakePOINT(1,5);
-    addressListdp Q = Search(L,T);
+    addressListdp Q = SearchListdp(L,T);
     printf("%s\n", Info(Q));
 
     //Delete
-    DelP(&L,T);
-    PrintForward(L);
-    DelFirst(&L,&P);
-    PrintForward(L);
-    DelLast(&L,&P);
-    PrintForward(L);
+    DelPListdp(&L,T);
+    PrintForwardListdp(L);
+    DelFirstListdp(&L,&P);
+    PrintForwardListdp(L);
+    DelLastListdp(&L,&P);
+    PrintForwardListdp(L);
 
-    Dealokasi(P);
-    Dealokasi(Q);
+    DealokasiListdp(P);
+    DealokasiListdp(Q);
 }
