@@ -492,9 +492,17 @@ void TowerOfHanoi(int *score)
     }
     long long int minMove = pow(2, n) - 1;
     long long int currentScore = minMove / 3;
-    if (n == 2 || n == 1)
+    if (n == 2)
+    {
+        currentScore = 2;
+    }
+    else if (n == 1)
     {
         currentScore = 1;
+    }
+    else if (n == 3)
+    {
+        currentScore = 4;
     }
     printf("Anda memilih %d disk\n", n);
     printf("\n");
