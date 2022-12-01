@@ -66,7 +66,7 @@ Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma da
 1. Rahmah Putri Azzahra `18219052`<br/>
     
 2. Vincent Franstyo `18221100`<br/>
-    
+    Diner Dash, Quit, Tower Of Hanoi
 3. Karina Rahadiani `18221104`<br/>
     kontrib
 4. Christina Wijaya `18221106`<br/>
