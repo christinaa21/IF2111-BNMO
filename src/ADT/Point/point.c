@@ -28,7 +28,7 @@ void BacaPOINT (POINT * P){
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
     float X,Y;
-    scanf ("%f &f",&X, &Y);
+    scanf ("%f %f",&X, &Y);
     *P=MakePOINT(X,Y);
 }
 
