@@ -415,6 +415,7 @@ void printTower(Stack tiangA, Stack tiangB, Stack tiangC, int n)
     }
     printf("\n");
 }
+
 void inputTower(Word *tiangAwal, Word *tiangTujuan)
 {
     printf("Tiang Asal: ");
@@ -424,10 +425,12 @@ void inputTower(Word *tiangAwal, Word *tiangTujuan)
     STARTINPUTKATA();
     *tiangTujuan = currentWord;
 }
+
 boolean IsFullTower(Stack S, int n)
 {
     return TopStack(S) == n - 1;
 }
+
 void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move)
 {
     int disc;
@@ -458,6 +461,7 @@ void moveDisc(Stack *tiangAwal, Stack *tiangTujuan, int *move)
         *move += 1;
     }
 }
+
 int WordToIntStack(Word W)
 {
     int res = 0;
@@ -475,6 +479,7 @@ int WordToIntStack(Word W)
     }
     return res;
 }
+
 void TowerOfHanoi(int *score)
 {
     int n;
