@@ -18,6 +18,9 @@ int main (){
     printf("IsFull= %d\n", IsFullMap(M));
     printf("IsMember= %d\n", IsMemberMap(M, "lala")); 
 
+    printf("IsMemberMapUnique\n");
+    IsMemberMapUnique(M, "zilla");
+     
     printf("delete map\n"); 
     DeleteMap(&M, "zilla"); 
     displayMap(M); 
