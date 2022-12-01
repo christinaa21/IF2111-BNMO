@@ -43,7 +43,7 @@ void printmap(Listdp L, POINT M, POINT F, POINT O)
                 }
                 else
                 {
-                    printf("---");
+                    printf("-----");
                 }
             }
             else
@@ -60,34 +60,39 @@ void printmap(Listdp L, POINT M, POINT F, POINT O)
                     {
                         if (M.x == S.x && M.y == S.y)
                         {
-                            printf(" m ");
+                            printf("  m  ");
                         }
                         else if (O.x == S.x && O.y == S.y)
                         {
-                            printf(" # ");
+                            printf("  #  ");
                         }
                         else
                         {
-                            printf(" %s ", SearchListdp(L, S)->info);
+                            if (SearchListdp(L,S)->info[1] == '\0'){
+                                printf("  %s  ", SearchListdp(L, S)->info);
+                            }
+                            else {
+                                printf("  %s ", SearchListdp(L, S)->info);
+                            }
                         }
                     }
                     else
                     {
                         if (F.x == S.x && F.y == S.y)
                         {
-                            printf(" o ");
+                            printf("  o  ");
                         }
                         else if (M.x == S.x && M.y == S.y)
                         {
-                            printf(" m ");
+                            printf("  m  ");
                         }
                         else if (O.x == S.x && O.y == S.y)
                         {
-                            printf(" # ");
+                            printf("  #  ");
                         }
                         else
                         {
-                            printf("   ");
+                            printf("     ");
                         }
                     }
                 }
