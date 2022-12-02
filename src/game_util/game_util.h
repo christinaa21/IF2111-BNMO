@@ -6,8 +6,8 @@
 
 #include "../ADT/queue/queue.h"
 #include "../ADT/array/arraydin.h"
-#include "../ADT/map/map.h"
-#include "../ADT/map/listMap.h"
+#include "../ADT/Map/map.h"
+#include "../ADT/Map/listMap.h"
 #include "../ADT/stackchar/stackchar.h"
 #include "../ADT/arrayOfGame/arrayOfGame.h"
 #include "../games/diner_dash/diner_dash.h"
@@ -75,23 +75,23 @@ Start Game juga, dengan n adalah jumlah permainan yang telah dimainkan yang ingi
 Urutan teratas merupakan permainan terakhir yang dimainkan.
 Jika n lebih besar dari jumlah permainan yang telah dimainkan, akan menampilkan seluruh
 permainan yang telah dimainkan.
-I.S.: Program telah berjalan. 
+I.S.: Program telah berjalan.
 F.S.: Menampilkan daftar game yang telah dimainkan. */
 void history(int n, Stackchar hist);
 
-/* Prosedur untuk menghapus semua history permainan yang dimainkan. 
+/* Prosedur untuk menghapus semua history permainan yang dimainkan.
 I.S.: Program telah berjalan.
 F.S.: Menghapus daftar game yang telah dimainkan. */
 void resetHistory(Stackchar *hist);
 
 /* Prosedur untuk menampilkan scoreboard dari masing-masing game.
  * Setiap scoreboard dari masing-masing game akan direpresentasikan dengan map, dan digabungkan menjadi list of map
- I.S : Program telah berjalan. 
+ I.S : Program telah berjalan.
  F.S : Menampilkan daftar scoreboard dari masing-masing game. */
 void scoreboard(ListMap L, ArrayOfGame arr);
 
 /* Prosedur untuk menghapus semua atau sebagian scoreboard.
 I.S : Program telah berjalan
 F.S : Menghapus semua, sebagian, atau tidak sama sekali scoreboard sesuai dengan input user*/
-void resetScoreboard (ListMap *L, ArrayOfGame *arr);
+void resetScoreboard(ListMap *L, ArrayOfGame *arr);
 #endif
