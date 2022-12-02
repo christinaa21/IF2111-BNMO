@@ -219,7 +219,7 @@ void PrintArrayDin(ArrayDin array)
 			}
 			else
 			{
-				printf("%s, ", (array).A[i]);
+				printf("%s", (array).A[i]);
 			}
 		}
 	}
@@ -294,7 +294,7 @@ IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el)
 		j = 0;
 		if (countArray == countEl)
 		{
-			printf("masuk sini\n");
+			// printf("masuk sini\n");
 			boolean same = true;
 			while (array.A[i][j] != '\0' && same)
 			{

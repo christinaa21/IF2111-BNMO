@@ -95,7 +95,7 @@ void hangMan(int *score)
                             capsLock(katabaru);
                         }
                         InsertLast(&ArrayKata, katabaru);
-                        PrintArrayDin(ArrayKata);
+                        // PrintArrayDin(ArrayKata);
                         addedWordCount++;
                         printf("Kata %s berhasil ditambahkan!\n", katabaru);
                     }
@@ -137,6 +137,7 @@ void hangMan(int *score)
         while (salah < 10)
         {
             srand(time(NULL));
+            printf("length array kata: %d\n", LengthArrayDin(ArrayKata));
             X = rand() % LengthArrayDin(ArrayKata);
             tebakan = GetArrayDin(ArrayKata, X);
             tertebak = StringtoWord(tebakan);
