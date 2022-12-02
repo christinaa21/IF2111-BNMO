@@ -59,11 +59,14 @@ void resetAtMap(ListMap *L, int n)
     /*KAMUS LOKAL*/
 
     /*ALGORITMA*/
-    for (int i = 0; i <= n; i++)
+    int i = 0;
+    boolean found = false;
+    while (i <= n && !found)
     {
         if (i == n)
         {
             CreateEmptyMap(&(*L).peta[i]);
+            found = true;
         }
         else
         {

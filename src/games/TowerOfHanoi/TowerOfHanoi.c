@@ -561,6 +561,13 @@ void TowerOfHanoi(int *score)
             printf("Tiang Tujuan tidak valid!\n");
             inputTower(&tiangAwal, &tiangTujuan);
         }
+
+        while (!IsEqual(tiangAwal, "A") && !IsEqual(tiangAwal, "B") && !IsEqual(tiangAwal, "C"))
+        {
+            printf("Tiang Asal tidak valid!\n");
+            inputTower(&tiangAwal, &tiangTujuan);
+        }
+
         while (IsEqual(tiangAwal, WordToString(tiangTujuan)))
         {
             printf("Tiang Asal dan Tiang Tujuan tidak boleh sama!\n");
@@ -633,6 +640,7 @@ void TowerOfHanoi(int *score)
             gameDone = true;
         }
     }
+    printTower(TowerA, TowerB, TowerC, n);
     printf("Score kamu adalah %lld\n", currentScore);
     *score = currentScore;
 }
