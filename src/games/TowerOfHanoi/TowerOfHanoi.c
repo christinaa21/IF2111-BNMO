@@ -540,8 +540,8 @@ void TowerOfHanoi(int *score)
     int move = 0;
     Word tiangAwal, tiangTujuan;
     boolean gameDone = false;
-    printf("your current score: %d\n", currentScore);
-    printf("The minimum move you have to make: %d\n\n", minMove);
+    printf("your current score: %lld\n", currentScore);
+    printf("The minimum move you have to make: %lld\n\n", minMove);
     while (!IsEqual(tiangTujuan, "EXIT") && !gameDone)
     {
         printf("TURN %d\n", move + 1);
@@ -605,13 +605,13 @@ void TowerOfHanoi(int *score)
 
         if (move == minMove)
         {
-            printf("Anda memiliki sisa %d langkah\n", currentScore);
+            printf("Anda memiliki sisa %lld langkah\n", currentScore);
         }
 
         if (move > minMove)
         {
             currentScore--;
-            printf("Anda memiliki sisa %d langkah\n", currentScore);
+            printf("Anda memiliki sisa %lld langkah\n", currentScore);
         }
 
         if (currentScore == 0)
@@ -633,6 +633,6 @@ void TowerOfHanoi(int *score)
             gameDone = true;
         }
     }
-    printf("Score kamu adalah %d\n", currentScore);
+    printf("Score kamu adalah %lld\n", currentScore);
     *score = currentScore;
 }
