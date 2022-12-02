@@ -137,7 +137,7 @@ void hangMan(int *score)
         while (salah < 10)
         {
             srand(time(NULL));
-            printf("length array kata: %d\n", LengthArrayDin(ArrayKata));
+            // printf("length array kata: %d\n", LengthArrayDin(ArrayKata));
             X = rand() % LengthArrayDin(ArrayKata);
             tebakan = GetArrayDin(ArrayKata, X);
             tertebak = StringtoWord(tebakan);
