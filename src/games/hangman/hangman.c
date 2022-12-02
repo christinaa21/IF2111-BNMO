@@ -101,12 +101,12 @@ void hangMan(int *score)
                         if (IsEqual(currentWord, "Tidak"))
                         {
                             ingintambah = false;
-                            tidakvalid = false;
+                            notvalid = false;
                             startgame = true;
                         }
                         else if (IsEqual(currentWord, "Ya"))
                         {
-                            tidakvalid = false;
+                            notvalid = false;
                         }
                         else
                         {
@@ -115,13 +115,15 @@ void hangMan(int *score)
                     }
                 }
             }
-            else {
+            else
+            {
                 tidakvalid = false;
                 startgame = true;
             }
         }
     }
-    if (startgame) {
+    if (startgame)
+    {
         while (salah < 10)
         {
             srand(time(NULL));

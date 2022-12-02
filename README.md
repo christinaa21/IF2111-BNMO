@@ -62,7 +62,7 @@ make compile
 5. Program telah berjalan dan silahkan nikmati perjalanan anda
 
 ## Kontributor
-Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok **Al-Stroke-Dead**])
+Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok **Al-Stroke-Dead**)
 1. Rahmah Putri Azzahra `18219052`<br/>
     List Game, Queue Game, Delete Game, Start
 2. Vincent Franstyo `18221100`<br/>
@@ -70,9 +70,9 @@ Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma da
 3. Karina Rahadiani `18221104`<br/>
     Scoreboard + Reset Scoreboard, ADT Map + Driver, ADT ListMap + Driver, RNG, Skip Game, Help, Deskripsi
 4. Christina Wijaya `18221106`<br/>
-    Diner Dash, Play Game, Save, Hangman
+    Diner Dash, Play Game, Save, Hangman, History + Reset History, Snake on Meteor
 5. Sultan Alta Alvaro Valencia `18221110`<br/>
-    RNG, Create Game, Load, Tic Tac Toe, History + Reset History, Snake on Meteor,
+    RNG, Create Game, Load, Tic Tac Toe, Snake on Meteor, ADT LinkedList + Driver 
 
 dengan asisten : Jason Stanley Yoman
 
