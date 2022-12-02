@@ -8,18 +8,22 @@
  * -    User akan memasukan sebuah angka untuk menebak
  * -    Sistem akan memberi informasi apakah nomor tebakan lebih besar atau lebih kecil
  * -    User akan terus memasukan input nomor hingga berhasil tertebak */
-void RNG(int *score){
+void RNG(int *score)
+{
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     srand(time(NULL));
     int X = rand() % 50;
     int count = 1;
     printf("Tebakan: ");
     STARTINPUTKATA();
-    while (WordToInt(currentWord)!=X){
-        if (WordToInt(currentWord)>X){
+    while (WordToInt(currentWord) != X)
+    {
+        if (WordToInt(currentWord) > X)
+        {
             printf("Lebih kecil\n");
         }
-        else if(WordToInt(currentWord)<X){
+        else if (WordToInt(currentWord) < X)
+        {
             printf("Lebih besar\n");
         }
         printf("Tebakan: ");
@@ -31,4 +35,3 @@ void RNG(int *score){
     *score = 50 - count;
     printf("Skor yang Anda peroleh adalah: %d\n", *score);
 }
-

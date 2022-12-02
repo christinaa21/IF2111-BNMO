@@ -66,7 +66,7 @@ void enqueue(Queue *q, ElTypeQueue val)
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
-	//kasus kosong 
+	// kasus kosong
 	if (isEmpty(*q))
 	{
 		IDX_HEAD(*q) = 0;
@@ -122,7 +122,7 @@ void displayQueue(Queue q)
 	/*KAMUS LOKAL*/
 	int i, temp1, temp2;
 	ElTypeQueue val;
-	char* valchar;
+	char *valchar;
 	/*ALGORITMA*/
 	if (isEmpty(q))
 	{

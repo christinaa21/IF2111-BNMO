@@ -61,7 +61,7 @@ void ADV()
 }
 
 /* ********** SELEKTOR ********** */
-/* Fungsi yang mengembalikan nilai currentChar 
+/* Fungsi yang mengembalikan nilai currentChar
    Prekondisi : program telah berjalan */
 char GetCC()
 {

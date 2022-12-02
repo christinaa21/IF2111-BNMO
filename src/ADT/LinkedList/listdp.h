@@ -12,15 +12,17 @@
 #define NilListdp NULL
 
 /* Definisi Type Data */
-typedef char* infotypeListdp;
+typedef char *infotypeListdp;
 typedef struct tElmtlistdp *addressListdp;
-typedef struct tElmtlistdp { 
+typedef struct tElmtlistdp
+{
 	infotypeListdp info;
 	addressListdp next;
 	addressListdp prev;
 	POINT pos;
 } ElmtListdp;
-typedef struct {
+typedef struct
+{
 	addressListdp First;
 	addressListdp Last;
 } Listdp;

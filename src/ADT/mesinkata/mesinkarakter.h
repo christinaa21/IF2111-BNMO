@@ -20,7 +20,7 @@ extern boolean EOP;
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void START(char * FILE);
+void START(char *FILE);
 
 /* Prosedur yang memproses dari mesin siap dioperasikan. Pita disiapkan untuk dibaca.
  * Karakter pertama yang ada pada pita posisinya adalah pada jendela.
@@ -39,7 +39,7 @@ void STARTINPUT();
 void ADV();
 
 /* ********** SELEKTOR ********** */
-/* Fungsi yang mengembalikan nilai currentChar 
+/* Fungsi yang mengembalikan nilai currentChar
    Prekondisi : program telah berjalan */
 char GetCC();
 

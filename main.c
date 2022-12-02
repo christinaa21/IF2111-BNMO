@@ -111,7 +111,8 @@ int main()
                 {
                     printf("Tolong masukkan nomor game yang ingin di skip dengan format 'SKIP GAME <n>'!\n");
                 }
-                else {
+                else
+                {
                     skipGame(WordToInt(takeword(currentWord, 3)), ListGame, &QueueGame, &History, &Scoreboard);
                 }
             }
@@ -145,7 +146,8 @@ int main()
                 {
                     printf("Tolong masukkan jumlah history game yang ingin ditampilkan dengan format 'HISTORY <n>'!\n");
                 }
-                else{
+                else
+                {
                     history(WordToInt(takeword(currentWord, 2)), History);
                 }
             }

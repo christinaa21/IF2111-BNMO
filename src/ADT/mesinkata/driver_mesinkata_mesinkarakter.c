@@ -7,7 +7,7 @@ int main()
 	char *file = "file.txt";
 	printf("Test ADT Mesin Karakter dan Mesin Kata\n");
 	printf("----------------------\n\n");
-	
+
 	/* Tes Mesin Karakter */
 	printf("----------------------\n");
 	printf("Tes Mesin Karakter\n");
@@ -68,7 +68,7 @@ int main()
 	printf("Tes IsEqual\n");
 	printf("Tes apakah currentWord dan kata sama.\n");
 	printf("Kata merupakan kata terakhir yang dibaca di file sebelumnya.\n");
-	char* cW = WordToString(currentWord);
+	char *cW = WordToString(currentWord);
 	printf("currentWord = %s\n", cW);
 	printf("kata = %s\n", kata);
 	printf("IsEqual = %d\n\n", IsEqual(currentWord, kata));
@@ -98,16 +98,16 @@ int main()
 	printf("Tes StringtoWord\n");
 	printf("Tes mengubah char* ke word, lalu mengubahnya lagi ke char*.\n");
 	printf("Jika kedua operasi berhasil, char* awal akan sama dengan hasil konversi akhirnya.\n");
-	char* awal = "Tes";
+	char *awal = "Tes";
 	Word kata1 = StringtoWord(awal);
-	char* akhir = WordToString(kata1);
+	char *akhir = WordToString(kata1);
 	printf("awal = %s\n", awal);
 	printf("akhir = %s\n", akhir);
 	printf("----------------------\n");
 
 	printf("Tes ConcateChar\n");
 	printf("Tes menggabungkan dua buah string, yaitu char* awal dan char* akhir tadi.\n");
-	char* awal_akhir = ConcateChar(awal, akhir);
+	char *awal_akhir = ConcateChar(awal, akhir);
 	printf("awal_akhir = %s\n", awal_akhir);
 	printf("----------------------\n");
 

@@ -95,7 +95,7 @@ void save(char *savefile, ArrayOfGame arrGame, Stackchar hist, ListMap L)
         game = WordToString((arrGame).A[i]);
         fprintf(fp, "%s\n", game);
     }
-    fprintf(fp, "%d\n", TopStackchar(hist)+1);
+    fprintf(fp, "%d\n", TopStackchar(hist) + 1);
     while (!IsEmptyStackChar(hist))
     {
         PopStackChar(&hist, &x);

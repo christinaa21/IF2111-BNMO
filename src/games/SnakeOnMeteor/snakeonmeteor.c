@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "snakeonmeteor.h"
 
-char* IntToString(int x)
+char *IntToString(int x)
 {
     int i, x_copy, digit;
     int len = 0;
@@ -13,9 +13,10 @@ char* IntToString(int x)
         len++;
         x_copy /= 10;
     }
-    char* str = malloc(len*sizeof(char));
-    while (str == NULL) {
-        str = malloc(len*sizeof(char));
+    char *str = malloc(len * sizeof(char));
+    while (str == NULL)
+    {
+        str = malloc(len * sizeof(char));
     }
     for (i = 0; i < len; i++)
     {
@@ -68,10 +69,12 @@ void printmap(Listdp L, POINT M, POINT F, POINT O)
                         }
                         else
                         {
-                            if (SearchListdp(L,S)->info[1] == '\0'){
+                            if (SearchListdp(L, S)->info[1] == '\0')
+                            {
                                 printf("  %s  ", SearchListdp(L, S)->info);
                             }
-                            else {
+                            else
+                            {
                                 printf("  %s ", SearchListdp(L, S)->info);
                             }
                         }
@@ -102,7 +105,8 @@ void printmap(Listdp L, POINT M, POINT F, POINT O)
     }
 }
 
-POINT Obstacle(Listdp L) {
+POINT Obstacle(Listdp L)
+{
     POINT O;
     srand(time(NULL));
     O.x = rand() % 5;
@@ -255,7 +259,7 @@ void FirstRandSnake(Listdp *L)
     }
 }
 
-void SnakeOnMeteor(int* score)
+void SnakeOnMeteor(int *score)
 {
     Listdp L;
     addressListdp B;
@@ -271,19 +275,20 @@ void SnakeOnMeteor(int* score)
     printf("Berikut merupakan peta permainan\n");
     printmap(L, M, F, O);
     int idk = 3;
-    char* idk_char;
+    char *idk_char;
     int turn = 1;
     (*score) = 0;
     char A[] = "a";
     char W[] = "w";
     char S[] = "s";
     char D[] = "d";
-    char* cek_input;
+    char *cek_input;
     boolean GameOver = false;
     boolean illegal_move = false;
     while (!GameOver)
     {
-        do {
+        do
+        {
             printf("TURN %d:\n", turn);
             printf("Silahkan masukkan command Anda: ");
             STARTINPUTKATA();
@@ -315,29 +320,39 @@ void SnakeOnMeteor(int* score)
         M = Meteor(F, O);
         printmap(L, M, F, O);
         B = First(L);
-        Temp1.x = Pos(B).x % 5; //W
+        Temp1.x = Pos(B).x % 5; // W
         Temp1.y = (Pos(B).y + 4) % 5;
-        Temp2.x = (Pos(B).x + 4) % 5; //A
+        Temp2.x = (Pos(B).x + 4) % 5; // A
         Temp2.y = Pos(B).y % 5;
-        Temp3.x = Pos(B).x % 5; //S
+        Temp3.x = Pos(B).x % 5; // S
         Temp3.y = (Pos(B).y + 1) % 5;
-        Temp4.x = (Pos(B).x + 1) % 5; //D
+        Temp4.x = (Pos(B).x + 1) % 5; // D
         Temp4.y = Pos(B).y % 5;
-        if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+        if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp))
+        {
             (GameOver) = true;
-        } else if ((Temp1.x == M.x && Temp1.y == M.y) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+        }
+        else if ((Temp1.x == M.x && Temp1.y == M.y) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp))
+        {
             (GameOver) = true;
-        } else if ((SearchListdp(L, Temp1) != NilListdp) && (Temp2.x == M.x && Temp2.y == M.y) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp)) {
+        }
+        else if ((SearchListdp(L, Temp1) != NilListdp) && (Temp2.x == M.x && Temp2.y == M.y) && (SearchListdp(L, Temp3) != NilListdp) && (SearchListdp(L, Temp4) != NilListdp))
+        {
             (GameOver) = true;
-        } else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (Temp3.x == M.x && Temp3.y == M.y) && (SearchListdp(L, Temp4) != NilListdp)) {
+        }
+        else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (Temp3.x == M.x && Temp3.y == M.y) && (SearchListdp(L, Temp4) != NilListdp))
+        {
             (GameOver) = true;
-        } else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (Temp4.x == M.x && Temp4.y == M.y)) {
+        }
+        else if ((SearchListdp(L, Temp1) != NilListdp) && (SearchListdp(L, Temp2) != NilListdp) && (SearchListdp(L, Temp3) != NilListdp) && (Temp4.x == M.x && Temp4.y == M.y))
+        {
             (GameOver) = true;
         }
         if (GameOver)
         {
             addressListdp z = First(L);
-            while (z != NilListdp) {
+            while (z != NilListdp)
+            {
                 (*score)++;
                 z = Next(z);
             }
@@ -349,7 +364,8 @@ void SnakeOnMeteor(int* score)
             if (Pos(First(L)).x == O.x && Pos(First(L)).y == O.y)
             {
                 addressListdp p = First(L);
-                while (p != NilListdp) {
+                while (p != NilListdp)
+                {
                     (*score)++;
                     p = Next(p);
                 }
@@ -357,20 +373,24 @@ void SnakeOnMeteor(int* score)
                 printf("Kepala snake menabrak obstacle!\n");
                 GameOver = true;
             }
-            if (!GameOver) {
+            if (!GameOver)
+            {
                 if (SearchListdp(L, M) != NilListdp)
                 {
                     if (Pos(First(L)).x == M.x && Pos(First(L)).y == M.y)
                     {
                         addressListdp p = First(L);
-                        while (p != Last(L)) {
+                        while (p != Last(L))
+                        {
                             (*score)++;
                             p = Next(p);
                         }
                         (*score) *= 2;
                         printf("Kepala snake terkena meteor!\n");
                         GameOver = true;
-                    } else {
+                    }
+                    else
+                    {
                         DelPListdp(&L, M);
                         idk--;
                         printf("\nAnda terkena meteor!\n");
@@ -378,7 +398,9 @@ void SnakeOnMeteor(int* score)
                         printmap(L, M, F, O);
                         printf("Silakan lanjutkan permainan.\n");
                     }
-                } else {
+                }
+                else
+                {
                     printf("Anda beruntung tidak terkena meteor! Silakan lanjutkan permainan.\n\n");
                 }
             }

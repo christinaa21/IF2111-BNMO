@@ -7,7 +7,7 @@
 
 #include "../../../boolean.h"
 
-void gameTambahan(int* score);
+void gameTambahan(int *score);
 // Game buatan pemain yang dibuat dengan command CREATE GAME
 // Ketika dimainkan, akan langsung selesai & game over dengan skor akhir berupa integer random.
 

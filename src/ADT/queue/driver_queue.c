@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "queue.h"
 
-int main() {
+int main()
+{
     Word val;
     Queue q1, q2;
     ElTypeQueue g1, g2, g3, g4, g5;
@@ -45,25 +46,26 @@ int main() {
     printf("----------------------\n");
 
     printf("Menghapus (Dequeue) elemen queue\n");
-    while (!isEmpty(q1)) {
+    while (!isEmpty(q1))
+    {
         printf("q1 = ");
         displayQueue(q1);
         printf("isEmpty = %d\n", isEmpty(q1));
         printf("isFull = %d\n", isFull(q1));
         printf("length = %d\n", length(q1));
-        printf("head = %d\n",IDX_HEAD(q1));
-        printf("tail = %d\n",IDX_TAIL(q1));
+        printf("head = %d\n", IDX_HEAD(q1));
+        printf("tail = %d\n", IDX_TAIL(q1));
         printf("----------------------\n");
-        dequeue(&q1, &val); 
-        printf("dequeued = %s\n",WordToString(val));
+        dequeue(&q1, &val);
+        printf("dequeued = %s\n", WordToString(val));
     }
     printf("Keadaan saat queue kosong\n");
     displayQueue(q1);
     printf("isEmpty = %d\n", isEmpty(q1));
     printf("isFull = %d\n", isFull(q1));
     printf("length = %d\n", length(q1));
-    printf("head = %d\n",IDX_HEAD(q1));
-    printf("tail = %d\n",IDX_TAIL(q1));
+    printf("head = %d\n", IDX_HEAD(q1));
+    printf("tail = %d\n", IDX_TAIL(q1));
     printf("----------------------\n");
 
     return 0;

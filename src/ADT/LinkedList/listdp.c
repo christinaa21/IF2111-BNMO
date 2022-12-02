@@ -2,17 +2,21 @@
 #include <stdlib.h>
 #include "listdp.h"
 
-boolean IsEmptyListdp(Listdp L){
+boolean IsEmptyListdp(Listdp L)
+{
     return (First(L) == NilListdp && Last(L) == NilListdp);
 }
 
-void CreateEmptyListdp(Listdp *L){
+void CreateEmptyListdp(Listdp *L)
+{
     First(*L) = NilListdp;
     Last(*L) = NilListdp;
 }
-addressListdp AlokasiListdp(infotypeListdp X, POINT Y){
-    addressListdp P = (addressListdp) malloc (sizeof(ElmtListdp));
-    if (P!=NilListdp){
+addressListdp AlokasiListdp(infotypeListdp X, POINT Y)
+{
+    addressListdp P = (addressListdp)malloc(sizeof(ElmtListdp));
+    if (P != NilListdp)
+    {
         Info(P) = X;
         Next(P) = NilListdp;
         Prev(P) = NilListdp;
@@ -21,82 +25,104 @@ addressListdp AlokasiListdp(infotypeListdp X, POINT Y){
     return P;
 }
 
-void DealokasiListdp(addressListdp P){
+void DealokasiListdp(addressListdp P)
+{
     free(P);
 }
 
-addressListdp SearchListdp(Listdp L, POINT Y){
+addressListdp SearchListdp(Listdp L, POINT Y)
+{
     addressListdp P = First(L);
-    boolean ada = false; 
-    while (P!=NilListdp && !ada){
-        if(Pos(P).x == Y.x && Pos(P).y == Y.y){
+    boolean ada = false;
+    while (P != NilListdp && !ada)
+    {
+        if (Pos(P).x == Y.x && Pos(P).y == Y.y)
+        {
             ada = true;
         }
-        else{
+        else
+        {
             P = Next(P);
         }
     }
-    if (ada){
+    if (ada)
+    {
         return P;
     }
-    else {
+    else
+    {
         return NilListdp;
     }
 }
 
-void InsVLastListdp(Listdp *L, infotypeListdp X, POINT Y){
-    addressListdp P = AlokasiListdp(X,Y);
-    if (P!=NilListdp){
-        if(!IsEmptyListdp(*L)){
+void InsVLastListdp(Listdp *L, infotypeListdp X, POINT Y)
+{
+    addressListdp P = AlokasiListdp(X, Y);
+    if (P != NilListdp)
+    {
+        if (!IsEmptyListdp(*L))
+        {
             Next(Last(*L)) = P;
             Prev(P) = Last(*L);
-            Last(*L) = P;           
+            Last(*L) = P;
         }
-        else{
+        else
+        {
             First(*L) = P;
             Last(*L) = P;
         }
     }
 }
 
-void DelFirstListdp(Listdp *L, addressListdp *P){
+void DelFirstListdp(Listdp *L, addressListdp *P)
+{
     *P = First(*L);
-    if (Next(*P) == NilListdp){
+    if (Next(*P) == NilListdp)
+    {
         First(*L) = NilListdp;
         Last(*L) = NilListdp;
     }
-    else {
+    else
+    {
         First(*L) = Next(*P);
         Prev(Next(*P)) = NilListdp;
     }
 }
 
-void DelLastListdp(Listdp *L, addressListdp *P){
+void DelLastListdp(Listdp *L, addressListdp *P)
+{
     *P = Last(*L);
-    if(Prev(*P) == NilListdp){
+    if (Prev(*P) == NilListdp)
+    {
         First(*L) = NilListdp;
         Last(*L) = NilListdp;
     }
-    else {
+    else
+    {
         Last(*L) = Prev(*P);
         Next(Prev(*P)) = NilListdp;
     }
 }
 
-
-void DelPListdp(Listdp *L, POINT X){
-    addressListdp P = SearchListdp(*L,X);
-    if (P!=NilListdp){
-        if (Prev(P) == NilListdp){
-            DelFirstListdp(L,&P);
+void DelPListdp(Listdp *L, POINT X)
+{
+    addressListdp P = SearchListdp(*L, X);
+    if (P != NilListdp)
+    {
+        if (Prev(P) == NilListdp)
+        {
+            DelFirstListdp(L, &P);
         }
-        else if (Next(P) == NilListdp){
-            DelLastListdp(L,&P);
+        else if (Next(P) == NilListdp)
+        {
+            DelLastListdp(L, &P);
         }
-        else {
+        else
+        {
             addressListdp Q = Last(*L);
             addressListdp R;
-            while(Q != P){
+            while (Q != P)
+            {
                 R = Prev(Q);
                 Info(Q) = Info(R);
                 Q = Prev(Q);
@@ -108,18 +134,24 @@ void DelPListdp(Listdp *L, POINT X){
     }
 }
 
-void PrintForwardListdp(Listdp L){
+void PrintForwardListdp(Listdp L)
+{
     addressListdp P = First(L);
-    if (IsEmptyListdp(L)){
+    if (IsEmptyListdp(L))
+    {
         printf("[]");
     }
-    else {
+    else
+    {
         printf("[");
-        while(P!=NilListdp){
-            if(P!=Last(L)){
-                printf("%s,",Info(P));
+        while (P != NilListdp)
+        {
+            if (P != Last(L))
+            {
+                printf("%s,", Info(P));
             }
-            else {
+            else
+            {
                 printf("%s", Info(P));
             }
             P = Next(P);
@@ -128,18 +160,24 @@ void PrintForwardListdp(Listdp L){
     }
 }
 
-void PrintBackwardListdp(Listdp L){
+void PrintBackwardListdp(Listdp L)
+{
     addressListdp P = Last(L);
-    if (IsEmptyListdp(L)){
+    if (IsEmptyListdp(L))
+    {
         printf("[]");
     }
-    else {
+    else
+    {
         printf("[");
-        while(P!=NilListdp){
-            if(P!=First(L)){
-                printf("%s,",Info(P));
+        while (P != NilListdp)
+        {
+            if (P != First(L))
+            {
+                printf("%s,", Info(P));
             }
-            else {
+            else
+            {
                 printf("%s", Info(P));
             }
             P = Prev(P);
@@ -148,8 +186,7 @@ void PrintBackwardListdp(Listdp L){
     }
 }
 
-POINT GetLastPosListdp(Listdp L){
+POINT GetLastPosListdp(Listdp L)
+{
     return Pos(Last(L));
 }
-
-
