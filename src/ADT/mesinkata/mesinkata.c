@@ -319,4 +319,31 @@ void lowerCase(char *huruf)
 		i++;
 	}
 }
-/* Membuat semua huruf menjadi uppercase */
+/* Membuat semua huruf menjadi lowercase */
+
+char* capsLockv2(char *huruf)
+{
+	int i = 0;
+	int len = 0;
+	while (huruf[len] != '\0')
+	{
+		len++;
+	}
+	char *str = malloc(len * sizeof(char));
+    while (str == NULL)
+    {
+        str = malloc(len * sizeof(char));
+    }
+	for (i=0;i<len;i++)
+	{
+		if ((huruf[i] >= 97) && (huruf[i] <= 122))
+		{
+			str[i] = huruf[i] - 32;
+		} else {
+            str[i] = huruf[i];
+        }
+	}
+    str[i] = '\0';
+	return str;
+}
+/* Membuat semua huruf menjadi uppercase v2*/

@@ -119,10 +119,8 @@ boolean IsMemberMap(Map M, keytype k)
     boolean found = false;
 
     /*ALGORITMA*/
-    // capsLock(k);
     while ((i < M.CountMap) && (found == false))
     {
-        // capsLock(M.Elements[i].Key);
         if (M.Elements[i].Key == k)
         {
             found = true;
@@ -157,16 +155,17 @@ void displayMap(Map M)
 boolean IsMemberMapUnique(Map M, keytype k)
 {
     /*KAMUS LOKAL*/
-    int i = 0;
+    int i=0;
     boolean found = false;
+    char* cek_elmt;
 
     /*ALGORITMA*/
-    capsLock(k);
+    char* cek_k = capsLockv2(k);
     while ((i < M.CountMap) && (found == false))
     {
-        capsLock(M.Elements[i].Key);
-        Word Elmt_Word = StringtoWord(M.Elements[i].Key);
-        if (IsEqual(Elmt_Word, k))
+        cek_elmt = capsLockv2(M.Elements[i].Key);
+        Word Elmt_Word = StringtoWord(cek_elmt);
+        if (IsEqual(Elmt_Word, cek_k))
         {
             found = true;
         }

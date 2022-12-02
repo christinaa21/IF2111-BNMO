@@ -328,16 +328,18 @@ IdxTypeArrayOfGame SearchArrayOfGameUnique(ArrayOfGame array, ElTypeArrayOfGame 
 	boolean found = false;
 	char *x;
 	char *Emlt_Str;
+	char* cek_el;
+	char* cek_elmt;
 	Word Emlt_Word;
 	/*ALGORITMA*/
 	x = WordToString(el);
-	capsLock(x);
+	cek_el = capsLockv2(x);
 	while (i < array.Neff && !found)
 	{
 		Emlt_Str = WordToString(array.A[i]);
-		capsLock(Emlt_Str);
-		Emlt_Word = StringtoWord(Emlt_Str);
-		if (IsEqual(Emlt_Word, x))
+		cek_elmt = capsLockv2(Emlt_Str);
+		Emlt_Word = StringtoWord(cek_elmt);
+		if (IsEqual(Emlt_Word, cek_el))
 		{
 			found = true;
 		}

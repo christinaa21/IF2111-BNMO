@@ -99,4 +99,7 @@ void capsLock(char *huruf);
 void lowerCase(char *huruf);
 /* Membuat semua huruf menjadi lowercase */
 
+char* capsLockv2(char *huruf);
+/* Membuat semua huruf menjadi uppercase v2*/
+
 #endif

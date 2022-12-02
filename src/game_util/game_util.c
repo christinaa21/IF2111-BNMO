@@ -480,7 +480,7 @@ void resetScoreboard(ListMap *L, ArrayOfGame *arr)
             printf("Mohon masukkan jawaban yang benar.\n");
         }
     }
-    else if (WordToInt(currentWord) <= LengthArrayOfGame(*arr))
+    else if (WordToInt(currentWord) < LengthArrayOfGame(*arr))
     {
         game = arr->A[WordToInt(currentWord) - 1];
         Word game_idx = currentWord;
