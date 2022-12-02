@@ -64,15 +64,15 @@ make compile
 ## Kontributor
 Program ini dikembangkan sebagai salah satu tugas besar mata kuliah Algoritma dan Struktur Data. Program ini dikembangkan oleh (K02 Kelompok **Al-Stroke-Dead**])
 1. Rahmah Putri Azzahra `18219052`<br/>
-    
+    List Game, Queue Game, Delete Game, Start
 2. Vincent Franstyo `18221100`<br/>
-    Diner Dash, Quit, Tower Of Hanoi, Command Lain
+    ADT, driver, Diner Dash, Quit, Command Lain, ADT Stack + Driver, Tower of Hanoi
 3. Karina Rahadiani `18221104`<br/>
-    kontrib
+    Scoreboard + Reset Scoreboard, ADT Map + Driver, ADT ListMap + Driver, RNG, Skip Game, Help, Deskripsi
 4. Christina Wijaya `18221106`<br/>
-    kontrib
+    Diner Dash, Play Game, Save, Hangman
 5. Sultan Alta Alvaro Valencia `18221110`<br/>
-    kontrib
+    RNG, Create Game, Load, Tic Tac Toe, History + Reset History, Snake on Meteor,
 
 dengan asisten : Jason Stanley Yoman
 
