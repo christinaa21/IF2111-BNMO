@@ -26,12 +26,16 @@ int main()
     InsVLastListdp(&L, "4", Y);
     Y = MakePOINT(1, 9);
     InsVLastListdp(&L, "5", Y);
+    Printf("Print dari depan: ");
     PrintForwardListdp(L);
+    printf("\nPrint dari belakang: ");
     PrintBackwardListdp(L);
     printf("\n");
 
+    POINT T = GetLastPosListdp(L);
+    printf("Berikut titik di akhir indeks di LinkedList: %d %d\n", T.x, T.y);
     // Search List
-    POINT T = MakePOINT(1, 5);
+    T = MakePOINT(1, 5);
     addressListdp Q = SearchListdp(L, T);
     printf("%s\n", Info(Q));
 
