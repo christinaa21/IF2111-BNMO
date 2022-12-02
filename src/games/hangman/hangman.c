@@ -233,7 +233,7 @@ void hangMan(int *score)
         printf("--- GAME OVER ---\n");
 
         FILE *f;
-        f = fopen("listkata.txt", "w+");
+        f = fopen("./src/games/hangman/listkata.txt", "w+");
         fprintf(f, "%d\n", LengthArrayDin(ArrayKata));
         for (i = 0; i < LengthArrayDin(ArrayKata); i++)
         {
