@@ -3,6 +3,16 @@
 #include <stdlib.h>
 #include <time.h>
 
+void printTTT()
+{
+    printf(
+        "                                                                                             \n"
+        "_/_/_/_/_/  _/                _/_/_/_/_/                        _/_/_/_/_/                   \n"
+        "   _/            _/_/_/          _/      _/_/_/    _/_/_/          _/      _/_/      _/_/    \n"
+        "  _/      _/  _/                _/    _/    _/  _/                _/    _/    _/  _/_/_/_/   \n"
+        " _/      _/  _/                _/    _/    _/  _/                _/    _/    _/  _/          \n"
+        "_/      _/    _/_/_/          _/      _/_/_/    _/_/_/          _/      _/_/      _/_/_/");
+}
 void board(ArrayOfGame arr)
 {
 
@@ -181,7 +191,7 @@ void tictactoe(int *score)
     else if (won == 1)
     {
         printf("=====Selamat Anda menang=====\n");
-        *score = 20 - (count/2);
+        *score = 20 - (count / 2);
         printf("Skor yang Anda peroleh adalah: %d\n", *score);
     }
     else if (won == 2)

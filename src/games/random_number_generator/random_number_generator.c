@@ -3,6 +3,15 @@
 #include <time.h>
 #include "random_number_generator.h"
 
+void printRNG()
+{
+    printf("                                     \n "
+           "    _/_/_/    _/      _/    _/_/_/   \n"
+           "   _/    _/  _/_/    _/  _/          \n"
+           "  _/_/_/    _/  _/  _/  _/  _/_/     \n"
+           " _/    _/  _/    _/_/  _/    _/      \n"
+           "_/    _/  _/      _/    _/_/_/");
+}
 /*** Penjelasan Permainan ***\
  * -	Permainan dimulai dengan menyediakan sebuah number random dari sistem
  * -    User akan memasukan sebuah angka untuk menebak
@@ -10,6 +19,8 @@
  * -    User akan terus memasukan input nomor hingga berhasil tertebak */
 void RNG(int *score)
 {
+    printRNG();
+    printf("\n");
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     srand(time(NULL));
     int X = rand() % 50;
