@@ -34,7 +34,7 @@ void DeallocateArrayDin(ArrayDin *array)
 /* Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi.
  */
-boolean IsEmpty(ArrayDin array)
+boolean IsEmptyArrayDin(ArrayDin array)
 {
 	/*KAMUS LOKAL*/
 
@@ -46,7 +46,7 @@ boolean IsEmpty(ArrayDin array)
 /* Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi.
  */
-int Length(ArrayDin array)
+int LengthArrayDin(ArrayDin array)
 {
 	/*KAMUS LOKAL*/
 
@@ -157,7 +157,7 @@ void DeleteAt(ArrayDin *array, IdxTypeArrayDin i)
 	/*KAMUS LOKAL*/
 	int j;
 	/*ALGORITMA*/
-	int length = Length(*array);
+	int length = LengthArrayDin(*array);
 	for (j = i; j < length - 1; j++)
 	{
 		(*array).A[j] = (*array).A[j + 1];
@@ -175,7 +175,7 @@ void DeleteLast(ArrayDin *array)
 	/*KAMUS LOKAL*/
 
 	/*ALGORITMA*/
-	int nums = Length(*array);
+	int nums = LengthArrayDin(*array);
 	DeleteAt(array, nums);
 }
 
@@ -219,7 +219,7 @@ void PrintArrayDin(ArrayDin array)
 			}
 			else
 			{
-				printf("%s", (array).A[i]);
+				printf("%s, ", (array).A[i]);
 			}
 		}
 	}
@@ -235,7 +235,7 @@ void ReverseArrayDin(ArrayDin *array)
 	/*KAMUS LOKAL*/
 	int i;
 	/*ALGORITMA*/
-	int length = Length(*array);
+	int length = LengthArrayDin(*array);
 	for (i = 0; i < length / 2; i++)
 	{
 		ElTypeArrayDin temp = (*array).A[i];
@@ -270,14 +270,59 @@ ArrayDin CopyArrayDin(ArrayDin array)
 IdxTypeArrayDin SearchArrayDin(ArrayDin array, ElTypeArrayDin el)
 {
 	/*KAMUS LOKAL*/
-	int i;
+	int i = 0, countArray = 0, countEl = 0;
 	/*ALGORITMA*/
-	for (i = 0; i < array.Neff; i++)
+	int j = 0;
+	while (el[j] != '\0')
 	{
-		if (array.A[i] == el)
-		{
-			return i;
-		}
+		countEl++;
+		j++;
 	}
-	return -1;
+	boolean found = false;
+	while (i < array.Neff && !found)
+	{
+		// printf("countEl: %d\n", countEl);
+		countArray = 0;
+		j = 0;
+		while (array.A[i][j] != '\0')
+		{
+			countArray++;
+			j++;
+		}
+		// printf("countArray: %d, countEl: %d\n", countArray, countEl);
+
+		j = 0;
+		if (countArray == countEl)
+		{
+			printf("masuk sini\n");
+			boolean same = true;
+			while (array.A[i][j] != '\0' && same)
+			{
+				// printf("array.A[i][j] = %c, el[j] = %c\n", array.A[i][j], el[j]);
+				if (array.A[i][j] != el[j])
+				{
+					same = false;
+				}
+				else
+				{
+					j++;
+				}
+			}
+			if (same)
+			{
+				found = true;
+			}
+		}
+		i++;
+	}
+	// printf("i: %d\n", i);
+	// printf("array.Neff: %d\n", array.Neff);
+	if (!found)
+	{
+		return -1;
+	}
+	else
+	{
+		return i;
+	}
 }

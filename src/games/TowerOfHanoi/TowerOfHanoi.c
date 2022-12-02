@@ -488,7 +488,7 @@ void TowerOfHanoi(int *score)
     printf("Masukkan jumlah disk yang ingin dimainkan: ");
     STARTINPUTKATA();
     n = WordToIntStack(currentWord);
-    while (n > 30 || n < 2)
+    while (n > 30 || n < 1)
     {
         printf("Jumlah disk tidak boleh lebih dari 30 dan harus lebih besar dari 0\n");
         printf("Masukkan jumlah disk yang ingin dimainkan: ");

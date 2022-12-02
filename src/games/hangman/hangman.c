@@ -9,7 +9,7 @@ void hangMan(int *score)
     char *tebakan;
     char *katasudah;
     char *katatebakan;
-    int X, i, ctr, benar, gambar, count;
+    int X, i, ctr, benar, gambar, count, addedWordCount = 0;
     Word tertebak;
     Word tebakan1;
     ArrayDin ArrayBlank;
@@ -84,9 +84,19 @@ void hangMan(int *score)
                     }
                     if (cekangka)
                     {
-                        char *katabaru = WordToString(currentWord);
+                        char *katabaru;
+                        katabaru = WordToString(currentWord);
                         capsLock(katabaru);
+                        while (SearchArrayDin(ArrayKata, katabaru) != -1)
+                        {
+                            printf("Kata sudah ada di dalam kamus. Silakan masukkan kata lain: ");
+                            STARTINPUTKATA();
+                            katabaru = WordToString(currentWord);
+                            capsLock(katabaru);
+                        }
                         InsertLast(&ArrayKata, katabaru);
+                        PrintArrayDin(ArrayKata);
+                        addedWordCount++;
                         printf("Kata %s berhasil ditambahkan!\n", katabaru);
                     }
                     else
@@ -127,7 +137,7 @@ void hangMan(int *score)
         while (salah < 10)
         {
             srand(time(NULL));
-            X = rand() % 25;
+            X = rand() % LengthArrayDin(ArrayKata);
             tebakan = GetArrayDin(ArrayKata, X);
             tertebak = StringtoWord(tebakan);
             tebakan1 = StringtoWord(tebakan);
@@ -223,8 +233,8 @@ void hangMan(int *score)
 
         FILE *f;
         f = fopen("listkata.txt", "w+");
-        fprintf(f, "%d\n", Length(ArrayKata));
-        for (i = 0; i < Length(ArrayKata); i++)
+        fprintf(f, "%d\n", LengthArrayDin(ArrayKata));
+        for (i = 0; i < LengthArrayDin(ArrayKata); i++)
         {
             fprintf(f, "%s\n", GetArrayDin(ArrayKata, i));
         }
