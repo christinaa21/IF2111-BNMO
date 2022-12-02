@@ -61,6 +61,7 @@ void load(char *savefile, ArrayOfGame *arrGame, Stackchar *Hist, ListMap *L)
         ADVWORD();
         PushStackChar(Hist, WordToString(currentWord));
     }
+    InverseStackChar(Hist);
     for (j = 0; j < (*L).Neff; j++)
     {
         ADVWORD();

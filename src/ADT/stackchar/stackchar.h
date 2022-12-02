@@ -79,5 +79,5 @@ Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
     /* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
        atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
        secukupnya yang dapat ditampung. */
-
+       
 #endif
