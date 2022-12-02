@@ -84,9 +84,11 @@ void deleteGame(ArrayOfGame *arr, Queue qGame, ListMap *L, Stackchar *hist)
             deleteListMapAt(L, n);
             CreateEmptyStackChar(&hist_copy);
             j = TopStackchar(*hist);
-            for (i=0;i<=j;i++) {
+            for (i = 0; i <= j; i++)
+            {
                 PopStackChar(hist, &X);
-                if (!IsEqual(game, X)) {
+                if (!IsEqual(game, X))
+                {
                     PushStackChar(&hist_copy, X);
                 }
             }
@@ -163,7 +165,7 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     Word game;
     int score, idx;
     char *nama;
-    char* cek_nama;
+    char *cek_nama;
     boolean invalid = true;
     /*ALOGRITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
@@ -218,7 +220,8 @@ void playGame(ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
             gameTambahan(&score);
         }
         printf("Skor akhir: %d\n", score);
-        while (invalid) {
+        while (invalid)
+        {
             printf("Nama: ");
             STARTINPUTKATA();
             nama = WordToString(currentWord);
@@ -248,7 +251,7 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
     /*KAMUS LOKAL*/
     int score, idx;
     char *nama;
-    char* cek_nama;
+    char *cek_nama;
     boolean invalid = true;
     /*ALGORITMA*/
     printf("Berikut adalah daftar antrian game-mu sekarang: \n");
@@ -329,7 +332,8 @@ void skipGame(int n, ArrayOfGame arr, Queue *qGame, Stackchar *hist, ListMap *L)
                 gameTambahan(&score);
             }
             printf("Skor akhir: %d\n", score);
-            while (invalid) {
+            while (invalid)
+            {
                 printf("Nama: ");
                 STARTINPUTKATA();
                 nama = WordToString(currentWord);
@@ -371,7 +375,8 @@ void history(int n, Stackchar hist)
     {
         printf("Mohon masukkan angka yang benar, yaitu lebih dari 0.\n");
     }
-    else {
+    else
+    {
         if (IsEmptyStackChar(hist))
         {
             printf("-----History Kosong-----\n");
@@ -381,7 +386,7 @@ void history(int n, Stackchar hist)
             printf("Berikut adalah daftar Game yang telah dimainkan\n");
             if (n > TopStackchar(hist))
             {
-                n = TopStackchar(hist)+1;
+                n = TopStackchar(hist) + 1;
             }
             for (int i = 0; i < n; i++)
             {
@@ -430,14 +435,15 @@ void scoreboard(ListMap L, ArrayOfGame arr)
         printf("**** SCOREBOARD %s ****\n", WordToString(game));
         printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
         printf("|-----------------------------------------------|\n");
-        if (IsEmptyMap((L).peta[i])){
+        if (IsEmptyMap((L).peta[i]))
+        {
             printf("--------------- SCOREBOARD KOSONG ---------------\n\n");
         }
         else
         {
             displayMap((L).peta[i]);
-            printf("\n"); 
-            printf("\n"); 
+            printf("\n");
+            printf("\n");
         }
     }
 }
